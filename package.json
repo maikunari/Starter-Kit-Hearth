@@ -4,14 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run start:eleventy & npm run watch:css",
-    "build": "npm run build:eleventy && npm run build:css && npm run critical",
-    "build:css": "postcss CSS/tailwind.css -o _site/css/style.css",
-    "watch:css": "postcss CSS/tailwind.css -o _site/css/style.css --watch",
-    "start:eleventy": "eleventy --serve",
-    "build:eleventy": "eleventy",
-    "critical": "critical _site/index.html --base _site --inline > _site/index-critical.html"
-  },
+  "start": "npm run start:eleventy & npm run watch:css",
+  "build": "npm run build:css && npm run build:eleventy",
+  "build:css": "postcss CSS/tailwind.css -o public/css/style.css",
+  "watch:css": "postcss CSS/tailwind.css -o public/css/style.css --watch",
+  "start:eleventy": "eleventy --serve",
+  "build:eleventy": "eleventy"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/OakHarbor/Starter-Kit-v4-Eleventy-.git"

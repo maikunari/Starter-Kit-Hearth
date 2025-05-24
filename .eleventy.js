@@ -74,6 +74,28 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED);
   });
 
+  eleventyConfig.addTransform('criticalCss', async function(content, outputPath) {
+    if (outputPath && outputPath.endsWith('.html')) {
+      try {
+        const criticalModule = await import('critical');
+        const critical = criticalModule.default || criticalModule;
+        const result = await critical.generate({
+          inline: true,
+          base: 'public/',
+          html: content,
+          width: 1280,
+          height: 800,
+          css: ['public/css/style.css']
+        });
+        return result.html;
+      } catch (err) {
+        console.error(`Critical CSS transform failed for ${outputPath}:`, err);
+        return content;
+      }
+    }
+    return content;
+  });
+
   return {
     dir: {
       input: 'src',
