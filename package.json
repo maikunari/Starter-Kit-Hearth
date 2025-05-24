@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "eleventy --serve",
-    "build": "eleventy"
+    "start": "npm run start:eleventy & npm run watch:css",
+    "build": "npm run build:eleventy && npm run build:css",
+    "build:css": "postcss CSS/tailwind.css -o _site/css/style.css",
+    "watch:css": "postcss CSS/tailwind.css -o _site/css/style.css --watch"
   },
   "repository": {
     "type": "git",
@@ -19,10 +21,14 @@
   },
   "homepage": "https://github.com/OakHarbor/Starter-Kit-v4-Eleventy-#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.2",
-    "@11ty/eleventy-navigation": "^0.3.5"
+    "@11ty/eleventy": "^3.1.0",
+    "@11ty/eleventy-navigation": "^0.3.5",
+    "tailwindcss": "^3.3.2",
+    "@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0"
   },
   "dependencies": {
-    "@11ty/eleventy-img": "^2.0.1"
+    "@11ty/eleventy-img": "^6.0.4"
   }
 }
