@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "start": "npm run start:eleventy & npm run watch:css",
-  "build": "npm run build:css && npm run build:eleventy",
-  "build:css": "postcss CSS/tailwind.css -o public/css/style.css",
-  "watch:css": "postcss CSS/tailwind.css -o public/css/style.css --watch",
-  "start:eleventy": "eleventy --serve",
-  "build:eleventy": "eleventy"
-},
+    "start": "npm run start:proxy & npm run watch:css & npm run start:eleventy",
+    "build": "npm run build:css && npm run build:eleventy",
+    "build:css": "postcss CSS/tailwind.css -o public/css/style.css",
+    "watch:css": "postcss CSS/tailwind.css -o public/css/style.css --watch",
+    "start:eleventy": "eleventy --serve",
+    "build:eleventy": "eleventy",
+    "start:proxy": "netlify-cms-proxy-server"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/maikunari/Starter-Kit-Hearth-.git"
@@ -27,10 +28,11 @@
     "@11ty/eleventy-navigation": "^0.3.5",
     "@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
     "autoprefixer": "^10.4.21",
+    "critical": "^5.1.2",
+    "netlify-cms-proxy-server": "^1.3.24",
     "postcss": "^8.4.21",
     "postcss-cli": "^10.1.0",
-    "tailwindcss": "^3.3.2",
-    "critical": "^5.1.2"
+    "tailwindcss": "^3.3.2"
   },
   "dependencies": {
     "@11ty/eleventy-img": "^6.0.4"
