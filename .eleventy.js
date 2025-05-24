@@ -6,7 +6,7 @@ const path = require('path');
 
 // allows the use of {% image... %} to create responsive, optimised images
 // CHANGE DEFAULT MEDIA QUERIES AND WIDTHS
-async function imageShortcode(src, alt, className, loading, sizes = '(max-width: 600px) 400px, 850px') {
+async function imageShortcode(src, alt, className, loading = 'lazy', sizes = '(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px') {
   // don't pass an alt? chuck it out. passing an empty string is okay though
   if (alt === undefined) {
     throw new Error(`Missing \`alt\` on responsiveimage from: ${src}`);
@@ -14,10 +14,10 @@ async function imageShortcode(src, alt, className, loading, sizes = '(max-width:
 
   // create the metadata for an optimised image
   let metadata = await Image(`${src}`, {
-    widths: [200, 400, 850, 1920, 2500],
-    formats: ['webp', 'jpeg'],
+    widths: [300, 600, 1200],
+    formats: ['avif', 'webp', 'jpeg'],
     urlPath: '/images/',
-    outputDir: './public/images',
+    outputDir: './public/images/',
     filenameFormat: function (id, src, width, format, options) {
       const extension = path.extname(src);
       const name = path.basename(src, extension);
@@ -30,7 +30,7 @@ async function imageShortcode(src, alt, className, loading, sizes = '(max-width:
   let highsrc = metadata.jpeg[metadata.jpeg.length - 1];
 
   // when {% image ... %} is used, this is what's returned
-  return `<picture class="${className}">
+  return `<picture class="${className || ''}">
     ${Object.values(metadata)
       .map((imageFormat) => {
         return `  <source type="${imageFormat[0].sourceType}" srcset="${imageFormat
