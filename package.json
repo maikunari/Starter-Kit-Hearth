@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run start:eleventy & npm run watch:css",
-    "build": "npm run build:eleventy && npm run build:css",
+    "build": "npm run build:eleventy && npm run build:css && npm run critical",
     "build:css": "postcss CSS/tailwind.css -o _site/css/style.css",
-    "watch:css": "postcss CSS/tailwind.css -o _site/css/style.css --watch"
+    "watch:css": "postcss CSS/tailwind.css -o _site/css/style.css --watch",
+    "start:eleventy": "eleventy --serve",
+    "build:eleventy": "eleventy",
+    "critical": "critical _site/index.html --base _site --inline > _site/index-critical.html"
   },
   "repository": {
     "type": "git",
@@ -23,10 +26,12 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.1.0",
     "@11ty/eleventy-navigation": "^0.3.5",
-    "tailwindcss": "^3.3.2",
     "@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
+    "autoprefixer": "^10.4.21",
     "postcss": "^8.4.21",
-    "postcss-cli": "^10.1.0"
+    "postcss-cli": "^10.1.0",
+    "tailwindcss": "^3.3.2",
+    "critical": "^5.1.2"
   },
   "dependencies": {
     "@11ty/eleventy-img": "^6.0.4"
