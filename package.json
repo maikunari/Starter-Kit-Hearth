@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run start:proxy & npm run watch:css & npm run start:eleventy",
-    "build": "npm run build:css && npm run build:eleventy",
+    "build": "npm run clean && npm run build:css && npm run build:eleventy",
     "build:css": "postcss CSS/tailwind.css -o public/css/style.css",
     "watch:css": "postcss CSS/tailwind.css -o public/css/style.css --watch",
     "start:eleventy": "eleventy --serve",
     "build:eleventy": "eleventy",
-    "start:proxy": "netlify-cms-proxy-server"
+    "start:proxy": "netlify-cms-proxy-server",
+    "clean": "rm -rf public/*"
   },
   "repository": {
     "type": "git",

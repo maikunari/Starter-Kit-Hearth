@@ -85,5 +85,19 @@
             });
         </script>
 
+        <!-- PhotoSwipe JS via CDN -->
+        <script type="module" src="https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js"></script>
+        <script type="module" src="https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js"></script>
+        
+        <!-- Initialize PhotoSwipe -->
+        <script>
+            import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js';
+            const lightbox = new PhotoSwipeLightbox({
+                gallery: '.pswp-gallery',
+                children: 'a',
+                pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js')
+            });
+            lightbox.init();
+        </script>
     </body>
 </html>

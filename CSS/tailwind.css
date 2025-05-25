@@ -1,3 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities; 
+/* Import PhotoSwipe default styles via CDN */
+@import url('https://unpkg.com/photoswipe@5/dist/photoswipe.css');
+
+/* Tailwind base styles */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Masonry Grid Styles for PhotoSwipe Gallery */
+.gallery-grid {
+  @apply columns-1 sm:columns-2 lg:columns-3 gap-4 p-4;
+}
+
+.gallery-item {
+  @apply inline-block w-full mb-4 overflow-hidden rounded-lg shadow-md transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg;
+}
+
+.gallery-item img {
+  @apply w-full h-auto object-cover;
+}
+
+/* Ensure natural aspect ratios */
+.gallery-item img {
+  aspect-ratio: auto;
+} 

@@ -96,11 +96,56 @@ module.exports = function (eleventyConfig) {
     return content;
   });
 
+  // Gallery Shortcode for PhotoSwipe
+  eleventyConfig.addShortcode("gallery", async function (images) {
+    if (!images || !Array.isArray(images)) return "";
+
+    const galleryItems = await Promise.all(
+      images.map(async (img) => {
+        if (!img.path) return "";
+
+        // Generate optimized images
+        let stats = await Image(img.path, {
+          widths: [600, 1200],
+          formats: ["avif", "webp", "jpeg"],
+          outputDir: "./public/images/generated/",
+          urlPath: "/images/generated/",
+          useCache: true,
+        });
+
+        // Get thumbnail (600px) and full-size (1200px) URLs
+        const thumb = stats.avif.find((s) => s.width === 600) || stats.webp.find((s) => s.width === 600);
+        const full = stats.avif.find((s) => s.width === 1200) || stats.webp.find((s) => s.width === 1200);
+
+        if (!thumb || !full) return "";
+
+        // Calculate aspect ratio for PhotoSwipe data attributes
+        const aspectRatio = full.height / full.width;
+        const displayHeight = Math.round(1200 * aspectRatio);
+
+        return `
+          <a href="${full.url}" 
+             data-pswp-width="1200" 
+             data-pswp-height="${displayHeight}" 
+             target="_blank" 
+             class="gallery-item">
+            <img src="${thumb.url}" 
+                 alt="${img.alt || 'Gallery image'}" 
+                 loading="lazy" 
+                 decoding="async" />
+          </a>
+        `;
+      })
+    );
+
+    return `<div class="gallery-grid pswp-gallery">${galleryItems.join("")}</div>`;
+  });
+
   return {
     dir: {
       input: 'src',
       includes: '_includes',
-      layouts: "_layouts",
+      layouts: '_layouts',
       output: 'public',
     },
     // allows .html files to contain nunjucks templating language

@@ -1,0 +1,20 @@
+---
+layout: base.html
+title: Gallery
+permalink: /gallery/
+eleventyNavigation:
+  key: Gallery
+  order: 5
+gallery:
+  - path: "/images/uploads/sample1.jpg"
+    alt: "Sample Image 1"
+  - path: "/images/uploads/sample2.jpg"
+    alt: "Sample Image 2"
+  - path: "/images/uploads/sample3.jpg"
+    alt: "Sample Image 3"
+---
+
+<h1 class="text-3xl font-bold mb-6">Photo Gallery</h1>
+<p class="mb-6">Explore our collection of images in a responsive masonry grid with full-screen slideshow.</p>
+
+{% gallery gallery %} 
