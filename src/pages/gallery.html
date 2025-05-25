@@ -1,6 +1,11 @@
 ---
 layout: base.html
 title: Gallery
+description: "Explore our photo gallery featuring a collection of stunning images."
+metaTitle: 'Gallery | Our Collection'
+tagTitle: 'Gallery'
+preloadImg: '/images/port1-840w.webp'
+preloadCSS: '/css/gallery.css'
 permalink: /gallery/
 eleventyNavigation:
   key: Gallery
@@ -14,7 +19,37 @@ gallery:
     alt: "Portfolio Image 3"
 ---
 
-<h1 class="text-3xl font-bold mb-6">Photo Gallery</h1>
-<p class="mb-6">Explore our collection of images in a responsive masonry grid with full-screen slideshow.</p>
+<!-- ============================================ -->
+<!--                    LANDING                   -->
+<!-- ============================================ -->
 
-{% gallery gallery %} 
+<section id="int-hero">
+  <h1 id="home-h">Photo Gallery</h1>
+  {% image './src/images/portfolio/port1.jpg', 'Gallery Featured Image', '', 'lazy', '(max-width: 850px) 850px, 1920px'%}
+</section>
+
+<!-- ============================================ -->
+<!--                 Gallery Grid                 -->
+<!-- ============================================ -->
+
+<section id="sbs">
+  <div class="cs-container">
+    <span class="cs-topper">Our Collection</span>
+    <h2 class="cs-title">Explore Our Gallery</h2>
+    <p class="cs-text">Browse through our collection of images showcased in a responsive masonry grid with full-screen slideshow capability.</p>
+    {% gallery gallery %}
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!--             Final Call to Action             -->
+<!-- ============================================ -->
+
+<section id="cta">
+  <div class="container">
+    <h2 class="title">Like What You See?<br>Contact Us Today</h2>
+    <p>Say something catchy, informative, and encouraging to click the button to go to the contact page.</p>
+    <a href="/contact.html" class="button-solid">Get in Touch</a>
+  </div>
+  {% image './src/images/portfolio/port2.jpg', 'Additional Gallery Image', '', 'lazy', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920'%}
+</section> 

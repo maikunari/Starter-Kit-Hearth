@@ -98,43 +98,58 @@ module.exports = function (eleventyConfig) {
 
   // Gallery Shortcode for PhotoSwipe
   eleventyConfig.addShortcode("gallery", async function (images) {
-    if (!images || !Array.isArray(images)) return "";
+    if (!images || !Array.isArray(images)) return "<p>No images provided for gallery.</p>";
+
+    console.log("Gallery images:", images);
 
     const galleryItems = await Promise.all(
       images.map(async (img) => {
-        if (!img.path) return "";
+        if (!img.path) {
+          console.log("No path for image:", img);
+          return "";
+        }
 
-        // Generate optimized images
-        let stats = await Image(img.path, {
-          widths: [600, 1200],
-          formats: ["avif", "webp", "jpeg"],
-          outputDir: "./public/images/generated/",
-          urlPath: "/images/generated/",
-          useCache: true,
-        });
+        try {
+          // Generate optimized images
+          let stats = await Image(img.path, {
+            widths: [600, 1200],
+            formats: ["avif", "webp", "jpeg"],
+            outputDir: "./public/images/generated/",
+            urlPath: "/images/generated/",
+            useCache: true,
+          });
 
-        // Get thumbnail (600px) and full-size (1200px) URLs
-        const thumb = stats.avif.find((s) => s.width === 600) || stats.webp.find((s) => s.width === 600);
-        const full = stats.avif.find((s) => s.width === 1200) || stats.webp.find((s) => s.width === 1200);
+          console.log("Image stats for", img.path, ":", stats);
 
-        if (!thumb || !full) return "";
+          // Get thumbnail (600px or any available) and full-size (1200px or any available) URLs
+          const thumb = stats.avif.find((s) => s.width === 600) || stats.webp.find((s) => s.width === 600) || stats.jpeg.find((s) => s.width === 600) || stats.avif[0] || stats.webp[0] || stats.jpeg[0];
+          const full = stats.avif.find((s) => s.width === 1200) || stats.webp.find((s) => s.width === 1200) || stats.jpeg.find((s) => s.width === 1200) || stats.avif[stats.avif.length - 1] || stats.webp[stats.webp.length - 1] || stats.jpeg[stats.jpeg.length - 1];
 
-        // Calculate aspect ratio for PhotoSwipe data attributes
-        const aspectRatio = full.height / full.width;
-        const displayHeight = Math.round(1200 * aspectRatio);
+          if (!thumb || !full) {
+            console.log("No thumb or full image found for", img.path);
+            return "";
+          }
 
-        return `
-          <a href="${full.url}" 
-             data-pswp-width="1200" 
-             data-pswp-height="${displayHeight}" 
-             target="_blank" 
-             class="gallery-item">
-            <img src="${thumb.url}" 
-                 alt="${img.alt || 'Gallery image'}" 
-                 loading="lazy" 
-                 decoding="async" />
-          </a>
-        `;
+          // Calculate aspect ratio for PhotoSwipe data attributes
+          const aspectRatio = full.height / full.width;
+          const displayHeight = Math.round(1200 * aspectRatio);
+
+          return `
+            <a href="${full.url}" 
+               data-pswp-width="1200" 
+               data-pswp-height="${displayHeight}" 
+               target="_blank" 
+               class="gallery-item">
+              <img src="${thumb.url}" 
+                   alt="${img.alt || 'Gallery image'}" 
+                   loading="lazy" 
+                   decoding="async" />
+            </a>
+          `;
+        } catch (error) {
+          console.error("Error processing image", img.path, ":", error);
+          return "";
+        }
       })
     );
 
