@@ -101,6 +101,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+  padding-bottom: 75%; /* Maintains a 4:3 aspect ratio */
 }
 
 .pswp-docs__home-gallery-item:first-child {
@@ -113,9 +114,12 @@
 
 .pswp-docs__home-gallery-item img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  object-fit: contain;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /* CTA Section */
