@@ -114,8 +114,8 @@ module.exports = function (eleventyConfig) {
           let stats = await Image(img.src || img.path, {
             widths: [600, 840],
             formats: ["avif", "webp", "jpeg"],
-            outputDir: "./public/images/generated/",
-            urlPath: "/images/generated/",
+            outputDir: "./public/images/",
+            urlPath: "/images/",
             useCache: true,
           });
 
