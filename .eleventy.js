@@ -97,63 +97,54 @@ module.exports = function (eleventyConfig) {
   });
 
   // Gallery Shortcode for PhotoSwipe
-  eleventyConfig.addShortcode("gallery", async function (images) {
+  eleventyConfig.addNunjucksShortcode("gallery", async function (images) {
     if (!images || !Array.isArray(images)) return "<p>No images provided for gallery.</p>";
 
     console.log("Gallery images:", images);
 
     const galleryItems = await Promise.all(
       images.map(async (img) => {
-        if (!img.path) {
-          console.log("No path for image:", img);
+        if (!img.src && !img.path) {
+          console.log("No src or path for image:", img);
           return "";
         }
 
         try {
           // Generate optimized images
-          let stats = await Image(img.path, {
-            widths: [600, 1200],
+          let stats = await Image(img.src || img.path, {
+            widths: [600, 840],
             formats: ["avif", "webp", "jpeg"],
             outputDir: "./public/images/generated/",
             urlPath: "/images/generated/",
             useCache: true,
           });
 
-          console.log("Image stats for", img.path, ":", stats);
+          console.log("Image stats for", img.src || img.path, ":", stats);
 
-          // Get thumbnail (600px or any available) and full-size (1200px or any available) URLs
+          // Get thumbnail and full-size URLs
           const thumb = stats.avif.find((s) => s.width === 600) || stats.webp.find((s) => s.width === 600) || stats.jpeg.find((s) => s.width === 600) || stats.avif[0] || stats.webp[0] || stats.jpeg[0];
-          const full = stats.avif.find((s) => s.width === 1200) || stats.webp.find((s) => s.width === 1200) || stats.jpeg.find((s) => s.width === 1200) || stats.avif[stats.avif.length - 1] || stats.webp[stats.webp.length - 1] || stats.jpeg[stats.jpeg.length - 1];
+          const full = stats.avif.find((s) => s.width === 840) || stats.webp.find((s) => s.width === 840) || stats.jpeg.find((s) => s.width === 840) || stats.avif[stats.avif.length - 1] || stats.webp[stats.webp.length - 1] || stats.jpeg[stats.jpeg.length - 1];
 
           if (!thumb || !full) {
-            console.log("No thumb or full image found for", img.path);
+            console.log("No thumb or full image found for", img.src || img.path);
             return "";
           }
 
-          // Calculate aspect ratio for PhotoSwipe data attributes
-          const aspectRatio = full.height / full.width;
-          const displayHeight = Math.round(1200 * aspectRatio);
-
           return `
-            <a href="${full.url}" 
-               data-pswp-width="1200" 
-               data-pswp-height="${displayHeight}" 
-               target="_blank" 
-               class="gallery-item">
-              <img src="${thumb.url}" 
-                   alt="${img.alt || 'Gallery image'}" 
-                   loading="lazy" 
-                   decoding="async" />
-            </a>
+            <figure class="gallery-item" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+              <a href="${full.url}" itemprop="contentUrl" data-size="${full.width}x${full.height}" data-pswp-width="${full.width}" data-pswp-height="${full.height}" class="pswp-trigger">
+                <img src="${thumb.url}" itemprop="thumbnail" alt="${img.alt || 'Gallery image'}" loading="lazy" decoding="async" width="${thumb.width}" height="${thumb.height}" />
+              </a>
+            </figure>
           `;
         } catch (error) {
-          console.error("Error processing image", img.path, ":", error);
+          console.error("Error processing image", img.src || img.path, ":", error);
           return "";
         }
       })
     );
 
-    return `<div class="gallery-grid pswp-gallery">${galleryItems.join("")}</div>`;
+    return `<div class="masonry-grid pswp-gallery">${galleryItems.join("")}</div>`;
   });
 
   return {
