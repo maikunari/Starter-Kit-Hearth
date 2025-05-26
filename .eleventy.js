@@ -59,6 +59,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('./src/_redirects');
   eleventyConfig.addPassthroughCopy({ './src/robots.txt': '/robots.txt' });
 
+  // Passthrough copy for Barba.js
+  eleventyConfig.addPassthroughCopy('js/barba.js');
+
   // open on npm start and watch CSS files for changes - doesn't trigger 11ty rebuild
   eleventyConfig.setBrowserSyncConfig({
     open: true,
@@ -145,6 +148,14 @@ module.exports = function (eleventyConfig) {
     );
 
     return `<div class="masonry-grid pswp-gallery">${galleryItems.join("")}</div>`;
+  });
+
+  // Filter to conditionally apply Barba container
+  eleventyConfig.addFilter('barbaContainer', function(content, url) {
+    if (url === '/admin/') {
+      return content;
+    }
+    return `<div data-barba="container" data-barba-namespace="${this.ctx.page.fileSlug}">${content}</div>`;
   });
 
   return {

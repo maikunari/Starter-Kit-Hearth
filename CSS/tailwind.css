@@ -1,0 +1,9 @@
+/* Barba.js Transition Styles */
+.barba-container {
+  transition: opacity 300ms ease;
+  opacity: 1;
+}
+
+.barba-container.opacity-0 {
+  opacity: 0;
+}
