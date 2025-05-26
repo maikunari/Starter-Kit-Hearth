@@ -91,7 +91,7 @@ module.exports = function (eleventyConfig) {
           html: content,
           width: 1280,
           height: 800,
-          css: ['public/css/style.css']
+          css: ['public/assets/css/style.css']
         });
         return result.html;
       } catch (err) {

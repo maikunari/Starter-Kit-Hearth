@@ -5,17 +5,17 @@ description: "Explore our photo gallery featuring a collection of stunning image
 metaTitle: 'Gallery | Our Collection'
 tagTitle: 'Gallery'
 preloadImg: '/images/port1-840w.webp'
-preloadCSS: '/css/gallery.css'
+preloadCSS: '/assets/css/gallery.css'
 permalink: /gallery/
 eleventyNavigation:
   key: Gallery
   order: 5
 gallery:
-  - path: "src/images/portfolio/port1.jpg"
+  - path: "src/assets/images/portfolio/port1.jpg"
     alt: "Portfolio Image 1"
-  - path: "src/images/portfolio/port2.jpg"
+  - path: "src/assets/images/portfolio/port2.jpg"
     alt: "Portfolio Image 2"
-  - path: "src/images/portfolio/port3.jpg"
+  - path: "src/assets/images/portfolio/port3.jpg"
     alt: "Portfolio Image 3"
 ---
 
@@ -25,7 +25,7 @@ gallery:
 
 <section id="int-hero">
   <h1 id="home-h">Photo Gallery</h1>
-  {% image './src/images/portfolio/port1.jpg', 'Gallery Featured Image', '', 'lazy', '(max-width: 850px) 850px, 1920px'%}
+  {% image './src/assets/images/portfolio/port1.jpg', 'Gallery Featured Image', '', 'lazy', '(max-width: 850px) 850px, 1920px'%}
 </section>
 
 <!-- ============================================ -->
@@ -43,7 +43,7 @@ gallery:
            data-pswp-width="1200" 
            data-pswp-height="800" 
            target="_blank" class="pswp-trigger">
-            {% image './src/images/luca-bravo-A-fubu9QJxE-unsplash_jxy5p8_c_scale,w_1840.jpg', 'Luca Bravo 1', 'pswp-trigger', 'lazy', '(max-width: 600px) 300px, (max-width: 840px) 600px, 1200px' %}
+            {% image './src/assets/images/luca-bravo-A-fubu9QJxE-unsplash_jxy5p8_c_scale,w_1840.jpg', 'Luca Bravo 1', 'pswp-trigger', 'lazy', '(max-width: 600px) 300px, (max-width: 840px) 600px, 1200px' %}
         </a>
       </figure>
       <figure class="pswp-docs__home-gallery-item">
@@ -51,7 +51,7 @@ gallery:
            data-pswp-width="1200" 
            data-pswp-height="800" 
            target="_blank" class="pswp-trigger">
-            {% image './src/images/luca-bravo-zAjdgNXsMeg-unsplash_q6zdih_c_scale,w_1441.jpg', 'Luca Bravo 2', 'pswp-trigger', 'lazy', '(max-width: 600px) 300px, (max-width: 840px) 600px, 1200px' %}
+            {% image './src/assets/images/luca-bravo-zAjdgNXsMeg-unsplash_q6zdih_c_scale,w_1441.jpg', 'Luca Bravo 2', 'pswp-trigger', 'lazy', '(max-width: 600px) 300px, (max-width: 840px) 600px, 1200px' %}
         </a>
       </figure>
       <figure class="pswp-docs__home-gallery-item">
@@ -59,7 +59,7 @@ gallery:
            data-pswp-width="1200" 
            data-pswp-height="800" 
            target="_blank" class="pswp-trigger">
-            {% image './src/images/luca-bravo-VowIFDxogG4-unsplash_ibrktu_c_scale,w_1385.jpg', 'Luca Bravo 3', 'pswp-trigger', 'lazy', '(max-width: 600px) 300px, (max-width: 840px) 600px, 1200px' %}
+            {% image './src/assets/images/luca-bravo-VowIFDxogG4-unsplash_ibrktu_c_scale,w_1385.jpg', 'Luca Bravo 3', 'pswp-trigger', 'lazy', '(max-width: 600px) 300px, (max-width: 840px) 600px, 1200px' %}
         </a>
       </figure>
       <figure class="pswp-docs__home-gallery-item">
@@ -67,7 +67,7 @@ gallery:
            data-pswp-width="1200" 
            data-pswp-height="800" 
            target="_blank" class="pswp-trigger">
-            {% image './src/images/luca-bravo-O453M2Liufs-unsplash_qqt53u_c_scale,w_1400.jpg', 'Luca Bravo 4', 'pswp-trigger', 'lazy', '(max-width: 600px) 300px, (max-width: 840px) 600px, 1200px' %}
+            {% image './src/assets/images/luca-bravo-O453M2Liufs-unsplash_qqt53u_c_scale,w_1400.jpg', 'Luca Bravo 4', 'pswp-trigger', 'lazy', '(max-width: 600px) 300px, (max-width: 840px) 600px, 1200px' %}
         </a>
       </figure>
       <figure class="pswp-docs__home-gallery-item">
@@ -75,7 +75,7 @@ gallery:
            data-pswp-width="1200" 
            data-pswp-height="800" 
            target="_blank" class="pswp-trigger">
-            {% image './src/images/luca-bravo-ny6qxqv_m04-unsplash_snrzpf_c_scale,w_2500.jpg', 'Luca Bravo 5', 'pswp-trigger', 'lazy', '(max-width: 600px) 300px, (max-width: 840px) 600px, 1200px' %}
+            {% image './src/assets/images/luca-bravo-ny6qxqv_m04-unsplash_snrzpf_c_scale,w_2500.jpg', 'Luca Bravo 5', 'pswp-trigger', 'lazy', '(max-width: 600px) 300px, (max-width: 840px) 600px, 1200px' %}
         </a>
       </figure>
     </div>
@@ -92,5 +92,5 @@ gallery:
     <p>Say something catchy, informative, and encouraging to click the button to go to the contact page.</p>
     <a href="/contact.html" class="button-solid">Get in Touch</a>
   </div>
-  {% image './src/images/portfolio/port2.jpg', 'Additional Gallery Image', '', 'lazy', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920'%}
+  {% image './src/assets/images/portfolio/port2.jpg', 'Additional Gallery Image', '', 'lazy', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920'%}
 </section> 

@@ -4,7 +4,7 @@ description: 'Meta description for the page'
 metaTitle: 'Title that shows up on google searches'
 tagTitle: 'Pixel Perfect Websites'
 preloadImg: '/images/landing-1920w.webp'
-preloadCSS: '/css/local.css'
+preloadCSS: '/assets/css/local.css'
 permalink: '/'
 eleventyNavigation:
   key: Home
@@ -42,7 +42,7 @@ eleventyNavigation:
   </div>
 
   <!-- Background Image -->
-  {% image './src/images/landing.jpg', 'mountains', 'cs-picture', 'eager', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920px'%}
+  {% image './src/assets/images/landing.jpg', 'mountains', 'cs-picture', 'eager', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920px'%}
 </section>
 
 <!-- ============================================ -->
@@ -103,8 +103,8 @@ eleventyNavigation:
   <div class="cs-container">
     <!-- Left Image Section -->
     <div class="cs-left">
-      {% image './src/images/cabinets2.jpg', 'house', 'cs-picture cs-picture1', 'lazy'%}
-      {% image './src/images/construction.jpg', 'house', 'cs-picture cs-picture2', 'lazy'%}
+      {% image './src/assets/images/cabinets2.jpg', 'house', 'cs-picture cs-picture1', 'lazy'%}
+      {% image './src/assets/images/construction.jpg', 'house', 'cs-picture cs-picture2', 'lazy'%}
     </div>
     <!-- Right Content Section-->
     <div class="cs-right">
@@ -150,8 +150,8 @@ eleventyNavigation:
   <div class="cs-container">
     <!-- Left Image Section -->
     <div class="cs-left">
-      {% image './src/images/construction.jpg', 'house', 'cs-picture cs-picture1', 'lazy'%}
-      {% image './src/images/cabinets2.jpg', 'house', 'cs-picture cs-picture2', 'lazy'%}
+      {% image './src/assets/images/construction.jpg', 'house', 'cs-picture cs-picture1', 'lazy'%}
+      {% image './src/assets/images/cabinets2.jpg', 'house', 'cs-picture cs-picture2', 'lazy'%}
     </div>
     <!-- Right Content Section-->
     <div class="cs-right">
@@ -185,23 +185,23 @@ eleventyNavigation:
     <div class="cs-image-group">
       <!-- Row 1-->
       <div class="cs-row cs-row-1">
-        {% image './src/images/portfolio/port1.jpg', 'new hallway', 'cs-picture cs-picture-1', 'lazy', '(max-width: 600px) 200px, 400px'%}
-        {% image './src/images/portfolio/port4.jpg', 'new home construction', 'cs-picture cs-picture-2', 'lazy', '(max-width: 600px) 200px, 400px'%}
-        {% image './src/images/portfolio/port7.jpg', 'building a new wall', 'cs-picture cs-picture-3', 'lazy', '(max-width: 600px) 200px, 400px'%}
+        {% image './src/assets/images/portfolio/port1.jpg', 'new hallway', 'cs-picture cs-picture-1', 'lazy', '(max-width: 600px) 200px, 400px'%}
+        {% image './src/assets/images/portfolio/port4.jpg', 'new home construction', 'cs-picture cs-picture-2', 'lazy', '(max-width: 600px) 200px, 400px'%}
+        {% image './src/assets/images/portfolio/port7.jpg', 'building a new wall', 'cs-picture cs-picture-3', 'lazy', '(max-width: 600px) 200px, 400px'%}
         <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
       </div>
       <!-- Row 2 -->
       <div class="cs-row cs-row-2">
-        {% image './src/images/portfolio/port2.jpg', 'new kitchen', 'cs-picture cs-picture-1', 'lazy', '(max-width: 600px) 200px, 400px'%}
-        {% image './src/images/portfolio/port5.jpg', 'apartment addition', 'cs-picture cs-picture-2', 'lazy', '(max-width: 600px) 200px, 400px'%}
-        {% image './src/images/portfolio/port8.jpg', 'kew kitchen cabinets', 'cs-picture cs-picture-3', 'lazy', '(max-width: 600px) 200px, 400px'%}
+        {% image './src/assets/images/portfolio/port2.jpg', 'new kitchen', 'cs-picture cs-picture-1', 'lazy', '(max-width: 600px) 200px, 400px'%}
+        {% image './src/assets/images/portfolio/port5.jpg', 'apartment addition', 'cs-picture cs-picture-2', 'lazy', '(max-width: 600px) 200px, 400px'%}
+        {% image './src/assets/images/portfolio/port8.jpg', 'kew kitchen cabinets', 'cs-picture cs-picture-3', 'lazy', '(max-width: 600px) 200px, 400px'%}
         <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
       </div>
       <!-- Row 3 -->
       <div class="cs-row cs-row-3">
-        {% image './src/images/portfolio/port3.jpg', 'new kitchen', 'cs-picture cs-picture-1', 'lazy', '(max-width: 600px) 200px, 400px'%}
-        {% image './src/images/portfolio/port6.jpg', 'apartment addition', 'cs-picture cs-picture-2', 'lazy', '(max-width: 600px) 200px, 400px'%}
-        {% image './src/images/portfolio/port9.jpg', 'kew kitchen cabinets', 'cs-picture cs-picture-3', 'lazy', '(max-width: 600px) 200px, 400px'%}
+        {% image './src/assets/images/portfolio/port3.jpg', 'new kitchen', 'cs-picture cs-picture-1', 'lazy', '(max-width: 600px) 200px, 400px'%}
+        {% image './src/assets/images/portfolio/port6.jpg', 'apartment addition', 'cs-picture cs-picture-2', 'lazy', '(max-width: 600px) 200px, 400px'%}
+        {% image './src/assets/images/portfolio/port9.jpg', 'kew kitchen cabinets', 'cs-picture cs-picture-3', 'lazy', '(max-width: 600px) 200px, 400px'%}
 
         <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
       </div>
@@ -308,7 +308,7 @@ eleventyNavigation:
     </p>
     <a href="/contact" class="button-solid">Get an Estimate Now</a>
   </div>
-  {% image './src/images/cabinets2.jpg', 'kitchen cabinets', '', 'lazy', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920px'%}
+  {% image './src/assets/images/cabinets2.jpg', 'kitchen cabinets', '', 'lazy', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920px'%}
 </section>
 
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
