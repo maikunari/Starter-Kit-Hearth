@@ -1,6 +1,6 @@
 import barba from '/js/barba.mjs';
 
-// Reinitialize PhotoSwipe after each transition
+// Reinitialize PhotoSwipe after each transition 
 function initPhotoSwipe() {
   console.log('Initializing PhotoSwipe...');
   import('https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js').then(({ default: PhotoSwipeLightbox }) => {
@@ -14,9 +14,10 @@ function initPhotoSwipe() {
   });
 }
 
-// Initialize Barba.js with a fade transition
+// Initialize Barba.js with a CSS-based fade transition 
 console.log('Initializing Barba.js...');
 barba.init({
+  debug: true, // Enable Barba.js debug mode
   transitions: [{
     name: 'fade',
     // Prevent running on admin page
@@ -27,32 +28,7 @@ barba.init({
         return false;
       }
     },
-    leave(data) {
-      console.log('Leaving current page:', data.current.url.path);
-      return new Promise(resolve => {
-        gsap.to(data.current.container, {
-          opacity: 0,
-          duration: 0.3,
-          onComplete: () => {
-            console.log('Leave transition complete');
-            resolve();
-          }
-        });
-      });
-    },
-    enter(data) {
-      console.log('Entering next page:', data.next.url.path);
-      return new Promise(resolve => {
-        gsap.from(data.next.container, {
-          opacity: 0,
-          duration: 0.3,
-          onComplete: () => {
-            console.log('Enter transition complete');
-            resolve();
-          }
-        });
-      });
-    },
+    /* Use CSS for the transition; no leave/enter hooks needed
     after(data) {
       console.log('After transition - Current URL:', data.next.url.path);
       // Update meta tags
@@ -69,7 +45,7 @@ barba.init({
         } else {
           document.head.appendChild(canonical);
         }
-      }
+      }*/
       // Update JSON-LD structured data
       const jsonLd = data.next.html.querySelector('script[type="application/ld+json"]');
       if (jsonLd) {
@@ -81,6 +57,7 @@ barba.init({
       }
       // Reinitialize PhotoSwipe
       initPhotoSwipe();
+      
     }
   }]
 });

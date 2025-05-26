@@ -62,7 +62,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/assets/js/**/*.js');
   eleventyConfig.addPassthroughCopy({ 'js/barba.js': 'js/barba.js' });
   eleventyConfig.addPassthroughCopy({ 'node_modules/@barba/core/dist/barba.mjs': 'js/barba.mjs' });
-  eleventyConfig.addPassthroughCopy({ 'node_modules/gsap/dist/gsap.min.js': 'js/gsap.min.js' });
 
   // Open on npm start and watch CSS files for changes - doesn't trigger 11ty rebuild
   eleventyConfig.setBrowserSyncConfig({
