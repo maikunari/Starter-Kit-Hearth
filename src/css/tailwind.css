@@ -25,11 +25,6 @@
 }
 
 /* Barba.js Transition Styles */
-.barba-container {
-  transition: opacity 2s ease;
-  opacity: 1;
+[data-barba="container"] {
+  transition: opacity 300ms ease;
 }
-
-.barba-container.opacity-0 {
-  opacity: 0;
-} 

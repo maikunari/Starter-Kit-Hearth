@@ -52,8 +52,6 @@
             {% endif %}
         </title>
 
-        <!-- Barba.js for smooth transitions -->
-        <script type="module" src="/js/barba.js"></script>
     </head>
     <body data-barba="wrapper">
         <!--Screen reader skip main nav-->
@@ -105,6 +103,10 @@
                 });
                 lightbox.init();
             </script>
+            <!-- Load GSAP -->
+            <script src="/js/gsap.min.js"></script>
+            <!-- Barba.js for smooth transitions -->    
+            <script type="module" src="/assets/js/barba.js"></script>
         {% if page.url != '/admin/' %}
         </div>
         {% endif %}

@@ -5,7 +5,6 @@ const Image = require('@11ty/eleventy-img');
 const path = require('path');
 
 // allows the use of {% image... %} to create responsive, optimised images
-// CHANGE DEFAULT MEDIA QUERIES AND WIDTHS
 async function imageShortcode(src, alt, className, loading = 'lazy', sizes = '(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px') {
   // don't pass an alt? chuck it out. passing an empty string is okay though
   if (alt === undefined) {
@@ -49,34 +48,38 @@ async function imageShortcode(src, alt, className, loading = 'lazy', sizes = '(m
 }
 
 module.exports = function (eleventyConfig) {
-  // adds the navigation plugin for easy navs
+  // Adds the navigation plugin for easy navs
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
-  // allows css, assets, robots.txt and CMS config files to be passed into /public
+  // Allows css, assets, robots.txt, and CMS config files to be passed into /public
   eleventyConfig.addPassthroughCopy('./src/css/**/*.css');
   eleventyConfig.addPassthroughCopy('./src/assets');
   eleventyConfig.addPassthroughCopy('./src/admin');
   eleventyConfig.addPassthroughCopy('./src/_redirects');
   eleventyConfig.addPassthroughCopy({ './src/robots.txt': '/robots.txt' });
 
-  // Passthrough copy for Barba.js
-  eleventyConfig.addPassthroughCopy('js/barba.js');
+  // Passthrough copy for Barba.js and GSAP
+  eleventyConfig.addPassthroughCopy('src/assets/js/**/*.js');
+  eleventyConfig.addPassthroughCopy({ 'js/barba.js': 'js/barba.js' });
+  eleventyConfig.addPassthroughCopy({ 'node_modules/@barba/core/dist/barba.mjs': 'js/barba.mjs' });
+  eleventyConfig.addPassthroughCopy({ 'node_modules/gsap/dist/gsap.min.js': 'js/gsap.min.js' });
 
-  // open on npm start and watch CSS files for changes - doesn't trigger 11ty rebuild
+  // Open on npm start and watch CSS files for changes - doesn't trigger 11ty rebuild
   eleventyConfig.setBrowserSyncConfig({
     open: true,
     files: './public/css/**/*.css',
   });
 
-  // allows the {% image %} shortcode to be used for optimised iamges (in webp if possible)
+  // Allows the {% image %} shortcode to be used for optimised images (in webp if possible)
   eleventyConfig.addNunjucksAsyncShortcode('image', imageShortcode);
 
-  // normally, 11ty will render dates on blog posts in full JSDate format (Fri Dec 02 18:00:00 GMT-0600). That's ugly
-  // this filter allows dates to be converted into a normal, locale format. view the docs to learn more (https://moment.github.io/luxon/api-docs/index.html#datetime)
+  // Normally, 11ty will render dates on blog posts in full JSDate format (Fri Dec 02 18:00:00 GMT-0600). That's ugly
+  // This filter allows dates to be converted into a normal, locale format
   eleventyConfig.addFilter('postDate', (dateObj) => {
     return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED);
   });
 
+  // Critical CSS transform
   eleventyConfig.addTransform('criticalCss', async function(content, outputPath) {
     if (outputPath && outputPath.endsWith('.html')) {
       try {
@@ -100,57 +103,38 @@ module.exports = function (eleventyConfig) {
   });
 
   // Gallery Shortcode for PhotoSwipe
-  eleventyConfig.addNunjucksShortcode("gallery", async function (images) {
-    if (!images || !Array.isArray(images)) return "<p>No images provided for gallery.</p>";
+  eleventyConfig.addNunjucksAsyncShortcode("gallery", async function (images) {
+    if (!images || !Array.isArray(images)) return '';
 
-    console.log("Gallery images:", images);
+    const galleryItems = await Promise.all(images.map(async (item, index) => {
+      const src = item.image;
+      const alt = item.alt || `Gallery image ${index + 1}`;
 
-    const galleryItems = await Promise.all(
-      images.map(async (img) => {
-        if (!img.src && !img.path) {
-          console.log("No src or path for image:", img);
-          return "";
-        }
+      const metadata = await Image(`./${src}`, {
+        widths: [600, 1200],
+        formats: ['avif', 'webp', 'jpeg'],
+        outputDir: './public/images/',
+        urlPath: '/images/',
+      });
 
-        try {
-          // Generate optimized images
-          let stats = await Image(img.src || img.path, {
-            widths: [600, 840],
-            formats: ["avif", "webp", "jpeg"],
-            outputDir: "./public/images/",
-            urlPath: "/images/",
-            useCache: true,
-          });
+      const thumb = metadata.jpeg.find(img => img.width === 600);
+      const full = metadata.jpeg.find(img => img.width === 1200);
 
-          console.log("Image stats for", img.src || img.path, ":", stats);
+      return `
+        <a href="${full.url}" data-pswp-width="1200" data-pswp-height="auto" class="pswp-gallery__item">
+          <img src="${thumb.url}" alt="${alt}" class="w-full h-auto object-cover" />
+        </a>
+      `;
+    }));
 
-          // Get thumbnail and full-size URLs
-          const thumb = stats.avif.find((s) => s.width === 600) || stats.webp.find((s) => s.width === 600) || stats.jpeg.find((s) => s.width === 600) || stats.avif[0] || stats.webp[0] || stats.jpeg[0];
-          const full = stats.avif.find((s) => s.width === 840) || stats.webp.find((s) => s.width === 840) || stats.jpeg.find((s) => s.width === 840) || stats.avif[stats.avif.length - 1] || stats.webp[stats.webp.length - 1] || stats.jpeg[stats.jpeg.length - 1];
-
-          if (!thumb || !full) {
-            console.log("No thumb or full image found for", img.src || img.path);
-            return "";
-          }
-
-          return `
-            <figure class="gallery-item" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-              <a href="${full.url}" itemprop="contentUrl" data-size="${full.width}x${full.height}" data-pswp-width="${full.width}" data-pswp-height="${full.height}" class="pswp-trigger">
-                <img src="${thumb.url}" itemprop="thumbnail" alt="${img.alt || 'Gallery image'}" loading="lazy" decoding="async" width="${thumb.width}" height="${thumb.height}" />
-              </a>
-            </figure>
-          `;
-        } catch (error) {
-          console.error("Error processing image", img.src || img.path, ":", error);
-          return "";
-        }
-      })
-    );
-
-    return `<div class="masonry-grid pswp-gallery">${galleryItems.join("")}</div>`;
+    return `
+      <div class="masonry-grid pswp-gallery" id="gallery">
+        ${galleryItems.join('')}
+      </div>
+    `;
   });
 
-  // Filter to conditionally apply Barba container
+  // Filter to conditionally apply Barba container (already present)
   eleventyConfig.addFilter('barbaContainer', function(content, url) {
     if (url === '/admin/') {
       return content;
@@ -165,7 +149,6 @@ module.exports = function (eleventyConfig) {
       layouts: '_layouts',
       output: 'public',
     },
-    // allows .html files to contain nunjucks templating language
     htmlTemplateEngine: 'njk',
   };
 };
