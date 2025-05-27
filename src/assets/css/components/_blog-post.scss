@@ -1,0 +1,99 @@
+/*-- -------------------------- -->
+<---        Blog Post          -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  .blog-post {
+    width: 100%;
+    max-width: calc(795rem / 16);
+
+    &__image-wrapper {
+      position: relative;
+      width: 100%;
+      height: calc(300rem / 16);
+      border-radius: calc(16rem / 16);
+      overflow: hidden;
+      margin-bottom: calc(32rem / 16);
+    }
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &__content {
+      h1, h2, h3, h4, h5, h6 {
+        color: var(--headerColor);
+        margin: calc(32rem / 16) 0 calc(16rem / 16) 0;
+        line-height: 1.3em;
+      }
+
+      h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+      h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); }
+      h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
+
+      p {
+        font-size: calc(18rem / 16);
+        line-height: 1.6em;
+        color: var(--bodyTextColor);
+        margin: 0 0 calc(24rem / 16) 0;
+      }
+
+      ul, ol {
+        margin: calc(24rem / 16) 0;
+        padding-left: calc(32rem / 16);
+        
+        li {
+          font-size: calc(18rem / 16);
+          line-height: 1.6em;
+          color: var(--bodyTextColor);
+          margin-bottom: calc(8rem / 16);
+        }
+      }
+
+      blockquote {
+        border-left: 4px solid var(--primary);
+        padding-left: calc(24rem / 16);
+        margin: calc(32rem / 16) 0;
+        font-style: italic;
+        color: #666;
+      }
+
+      code {
+        background-color: #f8f9fa;
+        padding: calc(2rem / 16) calc(6rem / 16);
+        border-radius: calc(4rem / 16);
+        font-family: 'Courier New', monospace;
+        font-size: calc(14rem / 16);
+      }
+
+      pre {
+        background-color: #f8f9fa;
+        padding: calc(20rem / 16);
+        border-radius: calc(8rem / 16);
+        overflow-x: auto;
+        margin: calc(24rem / 16) 0;
+      }
+    }
+  }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+  .blog-post {
+    &__image-wrapper {
+      height: calc(400rem / 16);
+    }
+  }
+}
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+  .blog-post {
+    &__image-wrapper {
+      height: calc(450rem / 16);
+    }
+  }
+} 

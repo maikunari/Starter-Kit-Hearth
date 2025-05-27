@@ -15,6 +15,18 @@ eleventyComputed:
 <section class="page-banner">
   <div class="page-banner__container">
     <h1 class="page-banner__title">{{ blogTitle }}</h1>
+    <div class="page-banner__meta">
+      <img
+        class="page-banner__author-image"
+        src="/assets/svgs/profile.svg"
+        alt="author"
+        width="32"
+        height="32"
+        decoding="async"
+      />
+      <span class="page-banner__author">{{ author }}</span>
+      <span class="page-banner__date">{{ date | postDate }}</span>
+    </div>
   </div>
   <div class="page-banner__background">
     {% image './src/assets/images/cabinets2.jpg', 'cabinets', '', 'lazy', '(max-width: 850px) 850px, 1920px'%}
@@ -29,32 +41,15 @@ eleventyComputed:
   <div class="blog-layout__container">
     <!--Main content -->
     <main class="blog-layout__main">
-      <article class="article-card article-card--single">
+      <article class="blog-post">
         <!--Main Article Image-->
-        <div class="article-card__image-wrapper">
-          <img class="article-card__image" src="{{ image }}" alt="{{ imageAlt }}" width="795" height="400" decoding="async"/>
+        <div class="blog-post__image-wrapper">
+          <img class="blog-post__image" src="{{ image }}" alt="{{ imageAlt }}" width="795" height="400" decoding="async"/>
         </div>
 
-        <!--Article Info-->
-        <div class="article-card__content">
-          <div class="article-card__meta">
-            <!--Author Image-->
-            <img
-              class="article-card__author-image"
-              src="/assets/svgs/profile.svg"
-              alt="author"
-              width="32"
-              height="32"
-              decoding="async"
-            />
-            <span class="article-card__author">{{ author }}</span>
-            <span aria-hidden="true" class="article-card__dot"></span>
-            <!--Blog Date-->
-            <span class="article-card__date">{{ date | postDate }}</span>
-          </div>
-          <section class="article-card__body">
-            {{ content | safe }}
-          </section>
+        <!--Article Content-->
+        <div class="blog-post__content">
+          {{ content | safe }}
         </div>
       </article>
     </main>
