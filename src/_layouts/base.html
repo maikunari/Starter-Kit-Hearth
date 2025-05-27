@@ -65,10 +65,14 @@
             <main id="main">{{ content | safe }}</main>
             {% include "footer.html" %}
 
+            <!-- Masonry.js via CDN -->
+            <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+            
             {% if process.env.NODE_ENV == 'production' %}
             <script defer src="/assets/js/scripts.min.js"></script>
             {% else %}
             <script defer src="/assets/js/nav.js"></script>
+            <script defer src="/assets/js/gallery.js"></script>
             <script defer>
                 document.addEventListener('scroll', (e) => {
                     const scroll = document.documentElement.scrollTop;

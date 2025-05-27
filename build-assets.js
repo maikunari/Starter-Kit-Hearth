@@ -17,7 +17,7 @@ const cssFiles = [
 // JS Files to Concatenate (excluding PhotoSwipe, which uses ES modules via CDN)
 const jsFiles = [
   'public/assets/js/nav.js',
-  'public/assets/js/dark.js',
+  'public/assets/js/gallery.js',
 ];
 
 // Inline JS (the scroll script)
