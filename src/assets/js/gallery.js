@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // All images loaded, relayout masonry
         masonry.layout();
         
+        // Update PhotoSwipe dimensions to match rendered thumbnails
+        updatePhotoSwipeDimensions();
+        
         // Add loaded class to items for animation
         const items = galleryGrid.querySelectorAll('.gallery-item');
         items.forEach(function(item, index) {
@@ -33,6 +36,46 @@ document.addEventListener('DOMContentLoaded', function() {
           }, index * 100); // Stagger the animations
         });
       }
+    }
+    
+    // Function to update PhotoSwipe dimensions based on actual rendered image sizes
+    function updatePhotoSwipeDimensions() {
+      const galleryItems = galleryGrid.querySelectorAll('.gallery-item');
+      
+      galleryItems.forEach(function(item) {
+        const img = item.querySelector('img');
+        const link = item;
+        
+        if (img && link) {
+          // Get the actual rendered dimensions of the thumbnail
+          const rect = img.getBoundingClientRect();
+          const renderedWidth = Math.round(rect.width);
+          const renderedHeight = Math.round(rect.height);
+          
+          // Update the data attributes for PhotoSwipe
+          // We'll use the original large image dimensions for the full size
+          // but ensure the aspect ratio matches the thumbnail
+          const originalWidth = parseInt(link.getAttribute('data-pswp-width')) || 1200;
+          const originalHeight = parseInt(link.getAttribute('data-pswp-height')) || 800;
+          
+          // Calculate aspect ratio from rendered thumbnail
+          const thumbnailAspectRatio = renderedWidth / renderedHeight;
+          
+          // Adjust the PhotoSwipe dimensions to match thumbnail aspect ratio
+          let pswpWidth = originalWidth;
+          let pswpHeight = Math.round(originalWidth / thumbnailAspectRatio);
+          
+          // If the calculated height is larger than original, scale down
+          if (pswpHeight > originalHeight) {
+            pswpHeight = originalHeight;
+            pswpWidth = Math.round(originalHeight * thumbnailAspectRatio);
+          }
+          
+          // Update PhotoSwipe data attributes
+          link.setAttribute('data-pswp-width', pswpWidth);
+          link.setAttribute('data-pswp-height', pswpHeight);
+        }
+      });
     }
     
     // Listen for image load events
@@ -51,6 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(function() {
         masonry.layout();
+        // Update PhotoSwipe dimensions after resize
+        updatePhotoSwipeDimensions();
       }, 250);
     });
   }
