@@ -82,7 +82,20 @@
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      gap: calc(4rem / 16);
+      gap: 0; /* Remove gap since we're hiding the text */
+      
+      /* Visually hide the label text while keeping it accessible for screen readers */
+      color: transparent;
+      font-size: 0;
+      line-height: 0;
+      
+      /* Reset styles for the input elements */
+      input,
+      textarea {
+        font-size: calc(16rem / 16);
+        line-height: normal;
+        color: var(--headerColor);
+      }
     }
 
     &__input {
@@ -97,8 +110,8 @@
       box-sizing: border-box;
 
       &::placeholder {
-        color: #7d799c;
-        opacity: 0.6;
+        color: #4a4a4a;
+        opacity: 0.8;
       }
     }
 
@@ -119,15 +132,36 @@
     &__info {
       width: 100%;
       max-width: calc(522rem / 16);
+      position: relative;
+    }
+
+    &__info-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       display: flex;
       flex-direction: column;
-      gap: calc(40rem / 16);
+      justify-content: center;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      z-index: 10;
+      gap: calc(32rem / 16);
     }
 
     &__info-group {
       display: flex;
       flex-direction: column;
-      gap: calc(8rem / 16);
+      gap: calc(4rem / 16);
+      padding: calc(8rem / 16);
+      border-radius: calc(8rem / 16);
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(4px);
+        transform: translateX(8px);
+      }
     }
 
     &__info-header {
@@ -136,19 +170,28 @@
       line-height: 1.2em;
       font-weight: 700;
       margin-bottom: calc(4rem / 16);
-      color: var(--headerColor);
+      color: #ffffff;
       display: block;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     &__info-link {
       font-size: calc(16rem / 16);
       line-height: 1.5em;
       text-decoration: none;
-      color: var(--bodyTextColor);
-      transition: color 0.3s;
+      color: #ffffff;
+      transition: all 0.3s ease;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      position: relative;
 
       &:hover {
         color: var(--primary);
+        transform: translateY(-2px);
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      }
+
+      &:active {
+        transform: translateY(0);
       }
     }
 
@@ -158,7 +201,7 @@
 
     &__background {
       width: 100%;
-      height: calc(200rem / 16);
+      height: calc(300rem / 16);
       border-radius: calc(16rem / 16);
       position: relative;
       overflow: hidden;
@@ -167,6 +210,33 @@
       background-color: #fff;
       box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
       border: clamp(0.375rem, 1.5vw, 0.75rem) solid #ffffff;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: rgba(149, 157, 165, 0.3) 0px 16px 32px;
+
+        &:before {
+          background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 100%);
+        }
+
+        img {
+          transform: scale(1.05);
+        }
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 100%);
+        z-index: 5;
+        transition: background 0.3s ease;
+      }
 
       img {
         position: absolute;
@@ -175,6 +245,8 @@
         height: 100%;
         width: 100%;
         object-fit: cover;
+        z-index: 1;
+        transition: transform 0.3s ease;
       }
     }
   }
@@ -210,7 +282,21 @@
     }
 
     &__background {
-      height: calc(300rem / 16);
+      height: calc(350rem / 16);
+      margin-top: 0;
+    }
+
+    &__info-overlay {
+      padding: clamp(2rem, 5vw, 3.5rem);
+      gap: calc(40rem / 16);
+    }
+
+    &__info-group {
+      padding: calc(12rem / 16);
+
+      &:hover {
+        transform: translateX(12px);
+      }
     }
   }
 }
@@ -219,7 +305,20 @@
 @media only screen and (min-width: 64rem) {
   .contact-form {
     &__background {
-      height: calc(400rem / 16);
+      height: calc(450rem / 16);
+    }
+
+    &__info-overlay {
+      padding: clamp(2.5rem, 6vw, 4rem);
+      gap: calc(48rem / 16);
+    }
+
+    &__info-group {
+      padding: calc(16rem / 16);
+
+      &:hover {
+        transform: translateX(16px);
+      }
     }
   }
 } 

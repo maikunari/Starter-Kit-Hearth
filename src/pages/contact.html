@@ -62,20 +62,22 @@ eleventyNavigation:
       <button class="btn btn--solid contact-form__button" type="submit">Submit Message</button>
     </form>
     <div class="contact-form__info">
-      <div class="contact-form__info-group">
-        <span class="contact-form__info-header">Email</span>
-        <a class="contact-form__info-link" href="mailto:support@yourdomain.com">support@yourdomain.com</a>
-      </div>
-      <div class="contact-form__info-group">
-        <span class="contact-form__info-header">Phone</span>
-        <a class="contact-form__info-link" href="tel:219-555-1234">(219) 555-1234</a>
-      </div>
-      <div class="contact-form__info-group">
-        <span class="contact-form__info-header">Address</span>
-        <a class="contact-form__info-link" href="">2553 Woodbridge Lane, <span class="contact-form__info-block">Boston Ware 120</span></a>
-      </div>
       <div class="contact-form__background">
         {% image './src/assets/images/skyscraper.jpg', 'building', '', 'lazy'%}
+        <div class="contact-form__info-overlay">
+          <div class="contact-form__info-group">
+            <span class="contact-form__info-header">Email</span>
+            <a class="contact-form__info-link" href="mailto:support@yourdomain.com">support@yourdomain.com</a>
+          </div>
+          <div class="contact-form__info-group">
+            <span class="contact-form__info-header">Phone</span>
+            <a class="contact-form__info-link" href="tel:219-555-1234">(219) 555-1234</a>
+          </div>
+          <div class="contact-form__info-group">
+            <span class="contact-form__info-header">Address</span>
+            <a class="contact-form__info-link" href="">2553 Woodbridge Lane, <span class="contact-form__info-block">Boston Ware 120</span></a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
