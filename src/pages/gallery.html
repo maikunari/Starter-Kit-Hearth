@@ -105,11 +105,15 @@ eleventyNavigation:
 <!--             Final Call to Action             -->
 <!-- ============================================ -->
 
-<section id="cta">
-  <div class="container">
-    <h2 class="title">Like What You See?<br>Contact Us Today</h2>
-    <p>Say something catchy, informative, and encouraging to click the button to go to the contact page.</p>
-    <a href="/contact.html" class="button-solid">Get in Touch</a>
+<section class="cta">
+  <div class="cta__container">
+    <h2 class="cta__title">Like What You See?<br>Contact Us Today</h2>
+    <p class="cta__text">Say something catchy, informative, and encouraging to click the button to go to the contact page.</p>
+    <div class="cta__button">
+      <a href="/contact" class="btn btn--solid">Get in Touch</a>
+    </div>
   </div>
-  {% image './src/assets/images/portfolio/port2.jpg', 'Additional Gallery Image', '', 'lazy', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920'%}
+  <div class="cta__background">
+    {% image './src/assets/images/portfolio/port2.jpg', 'Additional Gallery Image', '', 'lazy', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920px'%}
+  </div>
 </section> 

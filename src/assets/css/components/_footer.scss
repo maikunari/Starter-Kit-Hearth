@@ -1,0 +1,245 @@
+// =============================================================================
+// FOOTER COMPONENT
+// =============================================================================
+
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mix;
+
+.footer {
+  padding: vars.$section-padding 0 0;
+  background-color: #1a1a1a;
+  color: #fff;
+  
+  &__container {
+    @include mix.container(80rem);
+  }
+  
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    
+    @include mix.tablet-up {
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+    }
+    
+    @include mix.desktop-up {
+      gap: 5rem;
+    }
+  }
+  
+  // Brand section (logo + description)
+  &__brand {
+    text-align: center;
+    
+    @include mix.tablet-up {
+      text-align: left;
+    }
+  }
+  
+  &__logo {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    
+    img {
+      height: auto;
+      max-height: 3rem;
+      width: auto;
+    }
+  }
+  
+  &__description {
+    font-size: vars.$body-font-size;
+    line-height: 1.6;
+    color: #ccc;
+    max-width: 25rem;
+    margin: 0 auto;
+    
+    @include mix.tablet-up {
+      margin: 0;
+    }
+  }
+  
+  // Links section
+  &__links {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    
+    @include mix.mobile-up {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include mix.tablet-up {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+  }
+  
+  &__column {
+    text-align: center;
+    
+    @include mix.tablet-up {
+      text-align: left;
+    }
+  }
+  
+  &__column-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2rem;
+      height: 2px;
+      background-color: vars.$primary;
+      
+      @include mix.tablet-up {
+        left: 0;
+        transform: none;
+      }
+    }
+  }
+  
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  &__list-item {
+    margin-bottom: 0.75rem;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__link {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    transition: color vars.$transition-base;
+    display: block;
+    
+    &:hover {
+      color: vars.$primary;
+    }
+    
+    // Contact links styling
+    &--contact {
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+  
+  // Credit/Copyright section
+  &__credit {
+    border-top: 1px solid #333;
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #999;
+    
+    @include mix.tablet-up {
+      @include mix.flex-between;
+      align-items: center;
+    }
+  }
+  
+  &__copyright {
+    margin-bottom: 1rem;
+    
+    @include mix.tablet-up {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__credit-link {
+    color: #ccc;
+    text-decoration: none;
+    transition: color vars.$transition-base;
+    
+    &:hover {
+      color: vars.$primary;
+    }
+  }
+  
+  // Social media (if needed)
+  &__social {
+    @include mix.flex-center;
+    gap: 1rem;
+    
+    @include mix.tablet-up {
+      justify-content: flex-start;
+    }
+  }
+  
+  &__social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #333;
+    border-radius: 50%;
+    color: #ccc;
+    text-decoration: none;
+    transition: all vars.$transition-base;
+    
+    &:hover {
+      background-color: vars.$primary;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    
+    svg,
+    img {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+  
+  // Variants
+  &--light {
+    background-color: #f8f9fa;
+    color: vars.$header-color;
+    
+    .footer__description,
+    .footer__link {
+      color: vars.$body-text-color;
+    }
+    
+    .footer__column-title {
+      color: vars.$header-color;
+    }
+    
+    .footer__credit {
+      border-top-color: #e9ecef;
+      color: #6c757d;
+    }
+    
+    .footer__social-link {
+      background-color: #e9ecef;
+      color: vars.$body-text-color;
+      
+      &:hover {
+        background-color: vars.$primary;
+        color: #fff;
+      }
+    }
+  }
+} 
