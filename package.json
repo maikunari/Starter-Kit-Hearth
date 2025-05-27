@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run start:proxy & npm run watch:css & npm run start:eleventy",
-    "build": "npm run clean && npm run build:css && npm run build:eleventy && npm run build:assets",
-    "build:css": "postcss src/assets/css/tailwind.css -o public/assets/css/style.css",
-    "watch:css": "postcss src/assets/css/tailwind.css -o public/assets/css/style.css --watch",
+    "start": "npm run start:proxy & npm run watch:scss & npm run start:eleventy",
+    "build": "npm run clean && npm run build:scss && npm run build:eleventy && npm run build:assets",
+    "build:scss": "sass src/assets/css/main.scss public/assets/css/style.css --no-source-map --style=compressed",
+    "watch:scss": "sass --watch src/assets/css/main.scss:public/assets/css/style.css",
     "start:eleventy": "eleventy --serve",
     "build:eleventy": "eleventy",
     "start:proxy": "netlify-cms-proxy-server",
@@ -31,7 +31,6 @@
     "@barba/core": "^2.9.7",
     "autoprefixer": "^10.4.21",
     "critical": "^5.1.2",
-    "esbuild": "^0.25.4",
     "netlify-cms-proxy-server": "^1.3.24",
     "sass": "^1.89.0"
   },

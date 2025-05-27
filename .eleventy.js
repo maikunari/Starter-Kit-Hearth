@@ -53,7 +53,6 @@ module.exports = function (eleventyConfig) {
 
   // Allows css, assets, robots.txt, and CMS config files to be passed into /public
   eleventyConfig.addPassthroughCopy('./src/css/**/*.css');
-  eleventyConfig.addPassthroughCopy('./src/assets/css/**/*.css');
   eleventyConfig.addPassthroughCopy('./src/assets');
   eleventyConfig.addPassthroughCopy('./src/admin');
   eleventyConfig.addPassthroughCopy('./src/_redirects');
