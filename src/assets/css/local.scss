@@ -18,10 +18,13 @@
       flex-direction: column;
       row-gap: 2.5rem;
     }
-    .cs-left {font-size: min(1.2vw, 1em);
-      flex: none;
-      /* Ensure consistent width */
-      max-width: 39.4375em;
+    .cs-left {
+      /* scaling the font size with the view width */
+      font-size: min(2.31vw, .7em);
+      /* using ems so we can use font size to scale the whole section */
+      width: 39.4375em;
+      height: 39.75em;
+      position: relative;
     }
     .cs-picture {
       border-radius: 1.5em;
@@ -346,72 +349,80 @@
     color: vars.$header-color;
     position: relative;
   }
-  #gallery .cs-image-group {
-    /* used rem so it doesn't scale with the font size of on parent */
-    font-size: min(1.1vw, 1em);
+  #gallery .cs-gallery-grid {
     width: 100%;
-    max-width: 82.625em;
-    padding: 0;
+    max-width: 80rem;
     margin: 0 auto 3.75rem;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 1.875em;
+    padding: 0 1rem;
   }
-  #gallery .cs-row {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1.875em;
+  
+  #gallery .cs-gallery-item {
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
   }
-  #gallery .cs-picture {
-    position: relative;
+  
+  #gallery .cs-gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  #gallery .cs-gallery-item picture,
+  #gallery .cs-gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  
+  #gallery .cs-gallery-image {
+    width: 100%;
+    height: auto;
     display: block;
   }
-  #gallery .cs-picture img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
+  
+  #gallery .cs-gallery-item:hover .cs-gallery-image {
+    transform: scale(1.05);
   }
-  #gallery .cs-row-1 .cs-picture-1 {
-    width: 26.25em;
-    height: 35.4375em;
+  
+  /* Responsive columns */
+  @media (max-width: 768px) {
+    #gallery .cs-gallery-grid {
+      column-count: 1;
+      column-gap: 20px;
+    }
+    #gallery .cs-gallery-item {
+      width: 100%;
+    }
   }
-  #gallery .cs-row-1 .cs-picture-2 {
-    width: 26.25em;
-    height: 39.3125em;
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    #gallery .cs-gallery-grid {
+      column-count: 2;
+      column-gap: 20px;
+    }
+    #gallery .cs-gallery-item {
+      width: 100%;
+    }
   }
-  #gallery .cs-row-1 .cs-picture-3 {
-    width: 26.25em;
-    height: 32em;
+  
+  @media (min-width: 1025px) {
+    #gallery .cs-gallery-grid {
+      column-count: 3;
+      column-gap: 20px;
+    }
+    #gallery .cs-gallery-item {
+      width: 100%;
+    }
   }
-  #gallery .cs-row-2 .cs-picture-1 {
-    width: 26.25em;
-    height: 30.75em;
-  }
-  #gallery .cs-row-2 .cs-picture-2 {
-    width: 26.25em;
-    height: 32.3125em;
-  }
-  #gallery .cs-row-2 .cs-picture-3 {
-    width: 26.25em;
-    height: 39.3125em;
-  }
-  #gallery .cs-row-3 .cs-picture-1 {
-    width: 26.25em;
-    height: 39.0625em;
-  }
-  #gallery .cs-row-3 .cs-picture-2 {
-    width: 26.25em;
-    height: 28.25em;
-  }
-  #gallery .cs-row-3 .cs-picture-3 {
-    width: 26.25em;
-    height: 39.3125em;
+  
+  #gallery .cs-gallery-item.masonry-loaded {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

@@ -181,31 +181,36 @@ eleventyNavigation:
   <div class="cs-container">
     <span class="cs-topper">Our Portfolio</span>
     <h2 class="cs-title">Et orci volutpat, back up generator installations</h2>
-    <div class="cs-image-group">
-      <!-- Row 1-->
-      <div class="cs-row cs-row-1">
-        {% image './src/assets/images/portfolio/port1.jpg', 'new hallway', 'cs-picture cs-picture-1', 'lazy', '(max-width: 600px) 200px, 400px'%}
-        {% image './src/assets/images/portfolio/port4.jpg', 'new home construction', 'cs-picture cs-picture-2', 'lazy', '(max-width: 600px) 200px, 400px'%}
-        {% image './src/assets/images/portfolio/port7.jpg', 'building a new wall', 'cs-picture cs-picture-3', 'lazy', '(max-width: 600px) 200px, 400px'%}
-        <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-      </div>
-      <!-- Row 2 -->
-      <div class="cs-row cs-row-2">
-        {% image './src/assets/images/portfolio/port2.jpg', 'new kitchen', 'cs-picture cs-picture-1', 'lazy', '(max-width: 600px) 200px, 400px'%}
-        {% image './src/assets/images/portfolio/port5.jpg', 'apartment addition', 'cs-picture cs-picture-2', 'lazy', '(max-width: 600px) 200px, 400px'%}
-        {% image './src/assets/images/portfolio/port8.jpg', 'kew kitchen cabinets', 'cs-picture cs-picture-3', 'lazy', '(max-width: 600px) 200px, 400px'%}
-        <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-      </div>
-      <!-- Row 3 -->
-      <div class="cs-row cs-row-3">
-        {% image './src/assets/images/portfolio/port3.jpg', 'new kitchen', 'cs-picture cs-picture-1', 'lazy', '(max-width: 600px) 200px, 400px'%}
-        {% image './src/assets/images/portfolio/port6.jpg', 'apartment addition', 'cs-picture cs-picture-2', 'lazy', '(max-width: 600px) 200px, 400px'%}
-        {% image './src/assets/images/portfolio/port9.jpg', 'kew kitchen cabinets', 'cs-picture cs-picture-3', 'lazy', '(max-width: 600px) 200px, 400px'%}
-
-        <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-      </div>
+    <div class="cs-gallery-grid pswp-gallery">
+      <a href="/images/port1-840w.jpeg" class="cs-gallery-item" data-pswp-width="1200" data-pswp-height="800">
+        {% image './src/assets/images/portfolio/port1.jpg', 'new hallway', 'cs-gallery-image', 'lazy' %}
+      </a>
+      <a href="/images/port2-840w.jpeg" class="cs-gallery-item" data-pswp-width="1200" data-pswp-height="800">
+        {% image './src/assets/images/portfolio/port2.jpg', 'new kitchen', 'cs-gallery-image', 'lazy' %}
+      </a>
+      <a href="/images/port3-840w.jpeg" class="cs-gallery-item" data-pswp-width="1200" data-pswp-height="800">
+        {% image './src/assets/images/portfolio/port3.jpg', 'new kitchen', 'cs-gallery-image', 'lazy' %}
+      </a>
+      <a href="/images/port4-840w.jpeg" class="cs-gallery-item" data-pswp-width="1200" data-pswp-height="800">
+        {% image './src/assets/images/portfolio/port4.jpg', 'new home construction', 'cs-gallery-image', 'lazy' %}
+      </a>
+      <a href="/images/port5-840w.jpeg" class="cs-gallery-item" data-pswp-width="1200" data-pswp-height="800">
+        {% image './src/assets/images/portfolio/port5.jpg', 'apartment addition', 'cs-gallery-image', 'lazy' %}
+      </a>
+      <a href="/images/port6-840w.jpeg" class="cs-gallery-item" data-pswp-width="1200" data-pswp-height="800">
+        {% image './src/assets/images/portfolio/port6.jpg', 'apartment addition', 'cs-gallery-image', 'lazy' %}
+      </a>
+      <a href="/images/port7-840w.jpeg" class="cs-gallery-item" data-pswp-width="1200" data-pswp-height="800">
+        {% image './src/assets/images/portfolio/port7.jpg', 'building a new wall', 'cs-gallery-image', 'lazy' %}
+      </a>
+      <a href="/images/port8-840w.jpeg" class="cs-gallery-item" data-pswp-width="1200" data-pswp-height="800">
+        {% image './src/assets/images/portfolio/port8.jpg', 'new kitchen cabinets', 'cs-gallery-image', 'lazy' %}
+      </a>
+      <a href="/images/port9-840w.jpeg" class="cs-gallery-item" data-pswp-width="1200" data-pswp-height="800">
+        {% image './src/assets/images/portfolio/port9.jpg', 'new kitchen cabinets', 'cs-gallery-image', 'lazy' %}
+      </a>
     </div>
-    <a href="/projects" class="button-solid">View Full Gallery</a>
+    <a href="/gallery" class="button-solid">View Full Gallery</a>
   </div>
 </section>
 

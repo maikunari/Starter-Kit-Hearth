@@ -3,8 +3,11 @@
 
 // Gallery initialization function
 function initializeGallery() {
+  // Check for both main gallery page and home page gallery
   const galleryGrid = document.querySelector('.gallery-grid');
+  const homeGalleryGrid = document.querySelector('.cs-gallery-grid');
   
+  // Initialize main gallery page (projects page)
   if (galleryGrid && typeof Masonry !== 'undefined') {
     // Initialize Masonry
     const masonry = new Masonry(galleryGrid, {
@@ -85,6 +88,78 @@ function initializeGallery() {
         masonry.layout();
         // Update PhotoSwipe dimensions after resize
         updatePhotoSwipeDimensions();
+      }, 250);
+    });
+  }
+  
+  // Initialize home page gallery (CSS columns masonry)
+  if (homeGalleryGrid) {
+    // Wait for images to load
+    const images = homeGalleryGrid.querySelectorAll('img');
+    let loadedImages = 0;
+    
+    function imageLoaded() {
+      loadedImages++;
+      if (loadedImages === images.length) {
+        // Update PhotoSwipe dimensions to match rendered thumbnails
+        updateHomeGalleryPhotoSwipeDimensions();
+        
+        // Add loaded class to items for animation
+        const items = homeGalleryGrid.querySelectorAll('.cs-gallery-item');
+        items.forEach(function(item, index) {
+          setTimeout(function() {
+            item.classList.add('masonry-loaded');
+          }, index * 100); // Stagger the animations
+        });
+      }
+    }
+    
+    // Function to update PhotoSwipe dimensions for home gallery
+    function updateHomeGalleryPhotoSwipeDimensions() {
+      const galleryItems = homeGalleryGrid.querySelectorAll('.cs-gallery-item');
+      
+      galleryItems.forEach(function(item) {
+        const img = item.querySelector('img');
+        const link = item;
+        
+        if (img && link) {
+          // Get the actual rendered dimensions of the thumbnail
+          const rect = img.getBoundingClientRect();
+          const renderedWidth = Math.round(rect.width);
+          const renderedHeight = Math.round(rect.height);
+          
+          // Calculate aspect ratio from rendered thumbnail
+          const thumbnailAspectRatio = renderedWidth / renderedHeight;
+          
+          // Set PhotoSwipe dimensions to match the thumbnail aspect ratio
+          // Use a reasonable large size (1200px width as base) and calculate height
+          const baseWidth = 1200;
+          const calculatedHeight = Math.round(baseWidth / thumbnailAspectRatio);
+          
+          // Update PhotoSwipe data attributes to match thumbnail aspect ratio
+          link.setAttribute('data-pswp-width', baseWidth);
+          link.setAttribute('data-pswp-height', calculatedHeight);
+        }
+      });
+    }
+    
+    // Listen for image load events
+    images.forEach(function(img) {
+      if (img.complete) {
+        imageLoaded();
+      } else {
+        img.addEventListener('load', imageLoaded);
+        img.addEventListener('error', imageLoaded); // Handle broken images
+      }
+    });
+    
+    // Handle window resize for home gallery
+    let homeResizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(homeResizeTimer);
+      homeResizeTimer = setTimeout(function() {
+        // Update PhotoSwipe dimensions after resize
+        updateHomeGalleryPhotoSwipeDimensions();
       }, 250);
     });
   }

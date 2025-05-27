@@ -2,6 +2,23 @@ import barba from 'https://unpkg.com/@barba/core@2.9.7/dist/barba.mjs';
 
 // Initialize Barba.js
 barba.init({
+  // Prevent Barba from intercepting gallery links and other external links
+  prevent: ({ el }) => {
+    // Ignore gallery links (PhotoSwipe) - both main gallery and home gallery
+    if (el.closest('.gallery-item') || el.closest('.cs-gallery-item') || el.closest('.pswp-gallery')) {
+      return true;
+    }
+    // Ignore external links
+    if (el.getAttribute('href') && el.getAttribute('href').startsWith('http')) {
+      return true;
+    }
+    // Ignore links with data-no-barba attribute
+    if (el.hasAttribute('data-no-barba')) {
+      return true;
+    }
+    return false;
+  },
+  
   // Define transitions
   transitions: [
     {
