@@ -1,0 +1,124 @@
+// =============================================================================
+// REVIEWS COMPONENT
+// =============================================================================
+
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mix;
+
+.reviews {
+  text-align: center;
+  padding: vars.$section-padding;
+  
+  &__container {
+    @include mix.container(69rem);
+  }
+  
+  &__topper {
+    font-size: vars.$topper-font-size;
+    line-height: 1.2em;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: vars.$primary;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  &__title {
+    font-size: vars.$header-font-size;
+    font-weight: 900;
+    line-height: 1.2em;
+    text-align: center;
+    max-width: 43.75rem;
+    margin: 0 auto 1rem;
+    color: vars.$header-color;
+    position: relative;
+  }
+  
+  &__text {
+    font-size: vars.$body-font-size;
+    line-height: 1.5rem;
+    text-align: center;
+    width: 100%;
+    max-width: 40.625rem;
+    margin: 0 auto;
+    margin-bottom: clamp(5.5em, 10.2vw, 6.5em);
+    color: vars.$body-text-color;
+  }
+  
+  &__grid {
+    padding: 0;
+    margin: 0 auto clamp(3rem, 5vw, 4rem);
+    
+    @include mix.tablet-up {
+      @include mix.flex-between;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+  
+  &__item {
+    text-align: left;
+    list-style: none;
+    width: 100%;
+    max-width: 33.875rem;
+    margin: 0 auto 4rem;
+    padding: 3.75rem clamp(1rem, 3.2vw, 2rem) 0;
+    padding-bottom: clamp(2rem, 5.4vw, 2.5rem);
+    box-shadow: 0px 20px 39px 0px rgba(0, 0, 0, 0.05);
+    border-radius: 0.25rem;
+    background: #fff;
+    position: relative;
+    @include mix.flex-between;
+    flex-wrap: wrap;
+    align-items: center;
+    box-sizing: border-box;
+    
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    
+    @include mix.tablet-up {
+      margin: 0;
+    }
+  }
+  
+  &__avatar {
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    top: -2.5rem;
+  }
+  
+  &__quote {
+    font-size: 1rem;
+    line-height: 1.5em;
+    margin: 0 0 1.25rem;
+    padding-bottom: 1.25rem;
+    color: vars.$body-text-color;
+    border-bottom: 1px solid #E8E9EC;
+  }
+  
+  &__reviewer {
+    font-size: 1rem;
+    line-height: 1.5em;
+    font-weight: 700;
+    width: 40%;
+    margin: 0 auto 0 0;
+    display: block;
+    color: vars.$header-color;
+  }
+  
+  &__role {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #767676;
+    display: block;
+  }
+  
+  &__stars {
+    width: 6rem;
+    height: 1rem;
+  }
+} 

@@ -1,0 +1,204 @@
+// =============================================================================
+// GALLERY COMPONENT
+// =============================================================================
+
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mix;
+
+.gallery {
+  padding: vars.$section-padding;
+  
+  &__container {
+    @include mix.container(80rem);
+  }
+  
+  &__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  &__topper {
+    font-size: vars.$topper-font-size;
+    line-height: 1.2em;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: vars.$primary;
+    margin-bottom: 0.25rem;
+    display: block;
+  }
+  
+  &__title {
+    font-size: vars.$header-font-size;
+    font-weight: 900;
+    line-height: 1.2em;
+    text-align: center;
+    max-width: 50rem;
+    margin: 0 auto 1rem;
+    color: vars.$header-color;
+  }
+  
+  &__text {
+    font-size: vars.$body-font-size;
+    line-height: 1.5em;
+    text-align: center;
+    max-width: 46.875rem;
+    margin: 0 auto;
+    color: vars.$body-text-color;
+  }
+  
+  // Masonry grid
+  &__grid {
+    column-count: 1;
+    column-gap: 20px;
+    
+    @include mix.tablet-up {
+      column-count: 2;
+    }
+    
+    @include mix.desktop-up {
+      column-count: 3;
+    }
+  }
+  
+  // Gallery items
+  &__item {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 20px;
+    break-inside: avoid;
+    position: relative;
+    overflow: hidden;
+    border-radius: vars.$border-radius-lg;
+    transition: transform vars.$transition-base, box-shadow vars.$transition-base;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: vars.$shadow-lg;
+    }
+    
+    // Staggered animation
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.1}s;
+      }
+    }
+    
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform vars.$transition-base;
+    }
+    
+    &:hover img {
+      transform: scale(1.05);
+    }
+    
+    // Overlay for hover effect
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transition: opacity vars.$transition-base;
+      z-index: 1;
+    }
+    
+    &:hover::before {
+      opacity: 1;
+    }
+    
+    // Play icon for lightbox
+    &::after {
+      content: '⚡';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      color: white;
+      opacity: 0;
+      transition: opacity vars.$transition-base;
+      z-index: 2;
+      pointer-events: none;
+    }
+    
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+  
+  // Masonry.js specific styles
+  &--masonry {
+    .gallery__grid {
+      column-count: auto;
+    }
+    
+    .gallery__item {
+      width: calc(33.333% - 14px);
+      margin-bottom: 20px;
+      
+      @include mix.mobile-up {
+        width: 100%;
+      }
+      
+      @include mix.tablet-up {
+        width: calc(50% - 10px);
+      }
+      
+      @include mix.desktop-up {
+        width: calc(33.333% - 14px);
+      }
+    }
+  }
+  
+  // Home gallery variant (smaller, more compact)
+  &--home {
+    padding: clamp(3rem, 6vw, 5rem) 0;
+    
+    .gallery__grid {
+      column-gap: 15px;
+    }
+    
+    .gallery__item {
+      margin-bottom: 15px;
+      border-radius: vars.$border-radius;
+      
+      &:hover {
+        transform: translateY(-3px);
+      }
+    }
+    
+    .gallery__header {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+// Animation keyframes
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// PhotoSwipe integration
+.pswp-gallery {
+  .gallery__item {
+    cursor: pointer;
+  }
+} 

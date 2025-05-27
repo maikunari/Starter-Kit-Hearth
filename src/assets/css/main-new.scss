@@ -1,0 +1,35 @@
+// =============================================================================
+// MAIN STYLESHEET - COMPONENT-BASED ARCHITECTURE
+// =============================================================================
+
+// 1. Abstracts
+// -----------------------------------------------------------------------------
+@use 'abstracts/variables';
+@use 'abstracts/mixins';
+
+// 2. Base
+// -----------------------------------------------------------------------------
+@use 'base/reset';
+
+// 3. Layout
+// -----------------------------------------------------------------------------
+@use 'layout/containers';
+
+// 4. Components
+// -----------------------------------------------------------------------------
+@use 'components/buttons';
+@use 'components/navigation';
+@use 'components/hero';
+@use 'components/content-blocks';
+@use 'components/gallery';
+@use 'components/reviews';
+@use 'components/cta';
+
+// 5. Utilities
+// -----------------------------------------------------------------------------
+@use 'utilities/spacing';
+
+// 6. Legacy/Page-specific (temporary during migration)
+// -----------------------------------------------------------------------------
+@use 'barba-transitions';
+@use 'components/legacy-compatibility'; 

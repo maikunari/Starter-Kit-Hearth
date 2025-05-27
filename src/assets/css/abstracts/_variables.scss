@@ -1,0 +1,65 @@
+// =============================================================================
+// VARIABLES
+// =============================================================================
+
+// Colors
+// -----------------------------------------------------------------------------
+$primary: var(--primary);
+$primary-shade: var(--primaryShade);
+$primary-dark: var(--primaryDark);
+$primary-light: var(--primaryLight);
+$header-color: var(--headerColor);
+$body-text-color: var(--bodyTextColor);
+$body-text-color-white: var(--bodyTextColorWhite);
+$accent: var(--accent);
+$dark: var(--dark);
+$medium: var(--medium);
+
+// Typography
+// -----------------------------------------------------------------------------
+$topper-font-size: var(--topperFontSize);
+$header-font-size: var(--headerFontSize);
+$body-font-size: var(--bodyFontSize);
+
+// Spacing
+// -----------------------------------------------------------------------------
+$section-padding: var(--sectionPadding);
+
+// Breakpoints
+// -----------------------------------------------------------------------------
+$mobile: 0em;
+$tablet: 48em;    // 768px
+$desktop: 64em;   // 1024px
+$large: 75em;     // 1200px
+$xl: 87.5em;      // 1400px
+
+// Z-index scale
+// -----------------------------------------------------------------------------
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;
+$z-navigation: 5000;
+$z-navigation-mobile: 10000;
+
+// Transitions
+// -----------------------------------------------------------------------------
+$transition-base: 0.3s ease;
+$transition-fast: 0.15s ease;
+$transition-slow: 0.5s ease;
+
+// Border radius
+// -----------------------------------------------------------------------------
+$border-radius-sm: 0.375rem;
+$border-radius: 0.5rem;
+$border-radius-lg: 1rem;
+$border-radius-xl: 1.5rem;
+
+// Shadows
+// -----------------------------------------------------------------------------
+$shadow-sm: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+$shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+$shadow-lg: rgba(0, 0, 0, 0.1) 0px 10px 50px; 

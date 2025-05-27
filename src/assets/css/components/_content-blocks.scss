@@ -1,0 +1,181 @@
+// =============================================================================
+// CONTENT BLOCKS COMPONENT
+// =============================================================================
+
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mix;
+
+.content-block {
+  padding: vars.$section-padding;
+  
+  &__container {
+    @include mix.container(80rem);
+    @include mix.flex-center;
+    flex-direction: column;
+    row-gap: 2.5rem;
+    
+    @include mix.desktop-up {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 3.25rem;
+    }
+  }
+  
+  // Left side (images)
+  &__left {
+    font-size: min(2.31vw, 0.7em);
+    width: 39.4375em;
+    height: 39.75em;
+    position: relative;
+    flex: none;
+    
+    @include mix.desktop-up {
+      font-size: min(1.2vw, 1em);
+      max-width: 39.4375em;
+    }
+  }
+  
+  // Right side (content)
+  &__right {
+    margin: auto;
+    max-width: 33.875rem;
+    
+    @include mix.desktop-up {
+      margin: 0;
+      flex: 1;
+    }
+  }
+  
+  // Picture elements
+  &__picture {
+    border-radius: 1.5em;
+    overflow: hidden;
+    position: absolute;
+    display: block;
+    
+    img {
+      @include mix.image-cover;
+    }
+    
+    // Primary picture
+    &--primary {
+      width: 32.625em;
+      height: 36.3125em;
+      left: 0;
+      top: 0;
+    }
+    
+    // Secondary picture
+    &--secondary {
+      width: 25.875em;
+      height: 25em;
+      background-color: #fff;
+      @include mix.box-shadow(#000);
+      border: clamp(0.375em, 1.5vw, 0.75em) solid #ffffff;
+      right: 0;
+      bottom: 0;
+    }
+  }
+  
+  // Typography
+  &__topper {
+    font-size: vars.$topper-font-size;
+    line-height: 1.2em;
+    text-transform: uppercase;
+    text-align: left;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: vars.$primary;
+    margin-bottom: 0.25rem;
+    display: block;
+  }
+  
+  &__title {
+    font-size: vars.$header-font-size;
+    font-weight: 900;
+    line-height: 1.2em;
+    text-align: left;
+    max-width: 50rem;
+    margin: 0 auto 1rem;
+    color: vars.$header-color;
+    position: relative;
+  }
+  
+  &__text {
+    font-size: vars.$body-font-size;
+    line-height: 1.5em;
+    text-align: left;
+    width: 100%;
+    max-width: 46.875rem;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    color: vars.$body-text-color;
+    
+    &:last-of-type {
+      margin-bottom: 2rem;
+    }
+  }
+  
+  // Quote/testimonial section
+  &__quote {
+    padding: clamp(1rem, 3vw, 2rem);
+    background-color: #F7F7F7;
+    border-radius: 1rem;
+    position: relative;
+    
+    &-text {
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      line-height: 1.5em;
+      margin: 0 0 1rem;
+      color: #767676;
+    }
+    
+    &-name {
+      font-size: 1rem;
+      line-height: 1.2em;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin: 0 0 0.25rem;
+      color: vars.$header-color;
+      display: block;
+    }
+    
+    &-job {
+      font-size: 0.875rem;
+      line-height: 1.5em;
+      color: #767676;
+      display: block;
+    }
+    
+    &-icon {
+      width: clamp(3.75rem, 10vw, 8.5rem);
+      height: auto;
+      position: absolute;
+      bottom: 0rem;
+      right: clamp(1rem, 4vw, 2rem);
+    }
+  }
+  
+  &__button {
+    margin-top: 2rem;
+  }
+  
+  // Reversed layout variant
+  &--reversed {
+    .content-block__container {
+      @include mix.desktop-up {
+        flex-direction: row-reverse;
+      }
+    }
+    
+    .content-block__picture--primary {
+      right: 0;
+      left: auto;
+    }
+    
+    .content-block__picture--secondary {
+      left: 0;
+      right: auto;
+    }
+  }
+} 

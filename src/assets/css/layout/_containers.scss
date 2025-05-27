@@ -1,0 +1,40 @@
+// =============================================================================
+// CONTAINERS
+// =============================================================================
+
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mix;
+
+// Base container
+// -----------------------------------------------------------------------------
+.container {
+  position: relative;
+  width: 92%;
+  margin: auto;
+  
+  @include mix.desktop-up {
+    max-width: 75rem;
+  }
+}
+
+// Component containers
+// -----------------------------------------------------------------------------
+.cs-container {
+  @include mix.container(80rem);
+  @include mix.flex-center;
+  flex-direction: column;
+  row-gap: 2.5rem;
+  
+  @include mix.desktop-up {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 3.25rem;
+  }
+}
+
+// Section wrapper
+// -----------------------------------------------------------------------------
+.section {
+  padding: vars.$section-padding;
+  position: relative;
+} 

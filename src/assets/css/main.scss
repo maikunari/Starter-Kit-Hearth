@@ -1,10 +1,7 @@
-@use "root";
-@use "local";
+// New component-based architecture
+@use "main-new";
+
+// Legacy files (temporary - to be migrated)
 @use "mobile-nav-options";
-@use "projects";
-@use "reviews";
-@use "about";
 @use "contact";
-@use "critical";
 @use "blog";
-@use "barba-transitions";

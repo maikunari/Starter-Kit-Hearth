@@ -1,0 +1,94 @@
+// =============================================================================
+// CALL TO ACTION COMPONENT
+// =============================================================================
+
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mix;
+
+.cta {
+  position: relative;
+  padding: 3.125rem 0;
+  text-align: center;
+  
+  // Default overlay
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.7;
+    z-index: 1;
+  }
+  
+  &__container {
+    @include mix.container;
+    position: relative;
+    z-index: 2;
+  }
+  
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    
+    img {
+      @include mix.image-cover;
+    }
+  }
+  
+  &__title {
+    font-weight: 900;
+    font-size: min(9vw, 3rem);
+    line-height: 1.2;
+    color: #fff;
+    position: relative;
+    margin-bottom: 2.25rem;
+    text-align: center;
+  }
+  
+  &__text {
+    font-size: vars.$body-font-size;
+    line-height: 1.5em;
+    color: #fff;
+    text-align: center;
+    max-width: 46.875rem;
+    margin: 0 auto 2rem;
+  }
+  
+  &__buttons {
+    @include mix.flex-center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  // Variants
+  &--dark {
+    &::before {
+      opacity: 0.8;
+    }
+  }
+  
+  &--light {
+    &::before {
+      background: #fff;
+      opacity: 0.3;
+    }
+    
+    .cta__title,
+    .cta__text {
+      color: vars.$header-color;
+    }
+  }
+  
+  &--no-overlay {
+    &::before {
+      display: none;
+    }
+  }
+} 
