@@ -17,20 +17,7 @@
   }
 }
 
-// Component containers
-// -----------------------------------------------------------------------------
-.cs-container {
-  @include mix.container(80rem);
-  @include mix.flex-center;
-  flex-direction: column;
-  row-gap: 2.5rem;
-  
-  @include mix.desktop-up {
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 3.25rem;
-  }
-}
+
 
 // Section wrapper
 // -----------------------------------------------------------------------------

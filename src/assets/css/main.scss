@@ -1,8 +1,39 @@
-// New component-based architecture
-@use "main-new";
+// =============================================================================
+// MAIN STYLESHEET - COMPONENT-BASED ARCHITECTURE
+// =============================================================================
 
-// Legacy files (temporary - to be migrated)
-@use "root"; // Contains footer and other essential styles
-@use "mobile-nav-options";
-@use "contact";
-@use "blog";
+// 1. Abstracts
+// -----------------------------------------------------------------------------
+@use 'abstracts/variables';
+@use 'abstracts/mixins';
+
+// 2. Base
+// -----------------------------------------------------------------------------
+@use 'base/reset';
+
+// 3. Layout
+// -----------------------------------------------------------------------------
+@use 'layout/containers';
+
+// 4. Components
+// -----------------------------------------------------------------------------
+@use 'components/buttons';
+@use 'components/navigation';
+@use 'components/hero';
+@use 'components/page-banner';
+@use 'components/services';
+@use 'components/content-blocks';
+@use 'components/gallery';
+@use 'components/reviews';
+@use 'components/cta';
+@use 'components/forms';
+@use 'components/blog-layout';
+@use 'components/article-card';
+@use 'components/blog-post';
+@use 'components/blog-sidebar';
+@use 'components/footer';
+
+// 5. Utilities
+// -----------------------------------------------------------------------------
+@use 'utilities/spacing';
+@use 'utilities/transitions'; 
