@@ -1,1 +1,362 @@
-/* Mobile - Top Drop Down */\n@media only screen and (max-width: 1023px) {\n\n    //Navigation Styles\n    #navigation {\n        position: fixed;\n        top: 0;\n        left: 0;\n        width: 100%;\n        z-index: 10000;\n        height: auto;\n\n        .background-color-div {\n            position: absolute;\n            top: 0;\n            left: 0;\n            background-color: #fff;\n            width: 100%;\n            height: 100%;\n            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;\n        }\n\n        .container {\n            padding: 13/16em 0;\n            width: 96%;\n        }\n\n        // Logo\n        .logo {\n            display: inline-block;\n            height: 30/16em ;\n            width: auto;\n\n            img {\n                width: auto;\n                height: 100%;\n            }\n\n            .light {\n                display: none;\n            }\n\n            .dark {\n                display: block;\n            }\n        }\n\n        // Hamburger Menu Default State\n        .hamburger-menu {\n            position: absolute;\n            right: 0/16em;\n            border: none;\n            height: 48/16em;\n            width: 48/16em;\n            z-index: 100;\n            display: block;\n            background: transparent;\n            padding: 0;\n            top: 50%;\n            transform: translateY(-50%);\n            transition: top .3s;\n\n            span {\n                height: 2px;\n                width: 30/16em;\n                background-color: #000;\n                display: block;\n                position: absolute;\n                left: 50%;\n                transform: translateX(-50%);\n\n                //transition properties\n                transition: background-color .3s;\n\n                &:before {\n                    content: '';\n                    position: absolute;\n                    display: block;\n                    height: 2px;\n                    width: 80%;\n                    background: #000;\n                    opacity: 1;\n                    top: -6px;\n                    left: 0;\n\n                    //transition properties\n                    transition: width .3s, left .3s, top .3s, transform .5s;\n                }\n\n                &:after {\n                    content: '';\n                    position: absolute;\n                    display: block;\n                    height: 2px;\n                    width: 80%;\n                    background: #000;\n                    opacity: 1;\n                    top: 6px;\n                    left: 0;\n\n                    //transition properties\n                    transition: width .3s, left .3s, top .3s, transform .3s;\n                }\n            }\n        }\n\n        // Hamburger Menu Open State\n        .hamburger-menu.clicked {\n            span {\n                background-color: transparent;\n                &:before {\n                    width: 100%;\n                    transform: translate(-50%, -50%) rotate(225deg);\n                    left: 50%;\n                    top: 50%;\n                }\n\n                &:after {\n                    width: 100%;\n                    transform: translate(-50%, -50%) rotate(-225deg);\n                    left: 50%;\n                    top: 50%;\n                }\n            }\n        }\n\n        // Navbar Menu Default State\n        #navbar-menu {\n            position: fixed;\n            right: 0;\n            padding: 0;\n            width: 100%;\n            border-radius: 0 0 6/16em 6/16em;\n            z-index: -1;\n            overflow: hidden;\n            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;\n            background-color: #fff;\n            top: 64/16em; // same as #navigation height\n\n            //Transition Properties\n            padding-top: 0;\n            height: 0;\n            transition: height .3s, padding-top .3s, top .3s;\n\n\n            ul {\n                padding: 0;\n                perspective: 700px;\n                li {\n                    list-style: none;\n                    margin-bottom: 24/16em;\n                    text-align: center;\n                    //Transition Properties\n                    transform-style: preserve-3d;\n                    opacity: 0;\n                    transform: translateY(-7/16em) rotateX(90deg);\n                    transition: opacity .5s, transform .5s;\n\n                    //Staggar their transitions\n                    &:nth-of-type(1) {\n                        transition-delay: .1s;\n                    }\n                    &:nth-of-type(2) {\n                        transition-delay: .2s;\n                    }\n                    &:nth-of-type(3) {\n                        transition-delay: .3s;\n                    }\n                    &:nth-of-type(4) {\n                        transition-delay: .4s;\n                    }\n                    &:nth-of-type(5) {\n                        transition-delay: .5s;\n                    }\n                    a {\n                        text-decoration: none;\n                        text-transform: uppercase;\n                        color: #000;\n                        font-size: 19/16em;\n                        text-align: center;\n                        display: inline-block;\n                        position: relative;\n                        font-weight: bold;\n\n                        // Active State\n                        &.active {\n                            &:before {\n                                content: '';\n                                position: absolute;\n                                display: block;\n                                height: 8/19em;\n                                background: var(--primary);\n                                opacity: 1;\n                                bottom: 5/19em;\n                                border-radius: 4/19em;\n                                left: -6/19em;\n                                right: -6/19em;\n                                z-index: -1;\n                            }\n                        }\n                    }\n                }\n            }\n        }\n\n        // Navbar Menu Open State\n        #navbar-menu.open {\n            height: 306/16em;\n            padding-top: 20/16em;\n            z-index: -100;\n\n            ul {\n                li {\n                    opacity: 1;\n                    transform: translateY(0) rotateX(0);\n                }\n            }\n        }\n    }\n}\n\n\n// ----------------------------------------------------------\n\n\n/* Mobile - Side Pop Out */\n@media only screen and (max-width: 1023px) {\n\n    //Navigation Styles\n    #navigation {\n        position: fixed;\n        top: 0;\n        left: 0;\n        width: 100%;\n        z-index: 10000;\n        height: auto;\n\n        .background-color-div {\n            position: absolute;\n            top: 0;\n            left: 0;\n            background-color: #fff;\n            width: 100%;\n            height: 100%;\n            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;\n        }\n\n        .container {\n            padding: 13/16em 0;\n            width: 96%;\n        }\n    }\n}\n``` 
+@use 'variables' as vars;
+@use 'mixins' as mix;
+
+/* Mobile - Top Drop Down */
+@media only screen and (max-width: 1023px) {
+  #navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+    height: auto;
+    .background-color-div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #fff;
+      width: 100%;
+      height: 100%;
+      @include mix.box-shadow(#959da5, 0, 8px, 24px);
+    }
+    .container {
+      padding: 0.8125em 0;
+      width: 96%;
+    }
+    .logo {
+      display: inline-block;
+      height: 1.875em;
+      width: auto;
+      img {
+        width: auto;
+        height: 100%;
+      }
+      .light {
+        display: none;
+      }
+      .dark {
+        display: block;
+      }
+    }
+    .hamburger-menu {
+      position: absolute;
+      right: 0em;
+      border: none;
+      height: 3em;
+      width: 3em;
+      z-index: 100;
+      display: block;
+      background: transparent;
+      padding: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: top .3s;
+      span {
+        height: 2px;
+        width: 1.875em;
+        background-color: #000;
+        display: block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: background-color 0.3s;
+        &:before {
+          content: '';
+          position: absolute;
+          display: block;
+          height: 2px;
+          width: 80%;
+          background: #000;
+          opacity: 1;
+          top: -6px;
+          left: 0;
+          transition: width .3s, left .3s, top .3s, transform .5s;
+        }
+        &:after {
+          content: '';
+          position: absolute;
+          display: block;
+          height: 2px;
+          width: 80%;
+          background: #000;
+          opacity: 1;
+          top: 6px;
+          left: 0;
+          transition: width .3s, left .3s, top .3s, transform .3s;
+        }
+      }
+      &.clicked {
+        span {
+          background-color: transparent;
+          &:before {
+            width: 100%;
+            transform: translate(-50%, -50%) rotate(225deg);
+            left: 50%;
+            top: 50%;
+          }
+          &:after {
+            width: 100%;
+            transform: translate(-50%, -50%) rotate(-225deg);
+            left: 50%;
+            top: 50%;
+          }
+        }
+      }
+    }
+    #navbar-menu {
+      position: fixed;
+      right: 0;
+      padding: 0;
+      width: 100%;
+      border-radius: 0 0 0.375em 0.375em;
+      z-index: -1;
+      overflow: hidden;
+      @include mix.box-shadow(#959da5, 0, 8px, 24px);
+      background-color: #fff;
+      top: 4em;
+      padding-top: 0;
+      height: 0;
+      transition: height 0.3s, padding-top 0.3s, top 0.3s;
+      ul {
+        padding: 0;
+        perspective: 700px;
+        li {
+          list-style: none;
+          margin-bottom: 1.5em;
+          text-align: center;
+          transform-style: preserve-3d;
+          opacity: 0;
+          transform: translateY(-0.4375em) rotateX(90deg);
+          transition: opacity .5s, transform .5s;
+          &:nth-of-type(1) {
+            transition-delay: .1s;
+          }
+          &:nth-of-type(2) {
+            transition-delay: .2s;
+          }
+          &:nth-of-type(3) {
+            transition-delay: .3s;
+          }
+          &:nth-of-type(4) {
+            transition-delay: .4s;
+          }
+          &:nth-of-type(5) {
+            transition-delay: .5s;
+          }
+          a {
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #000;
+            font-size: 1.1875em;
+            text-align: center;
+            display: inline-block;
+            position: relative;
+            font-weight: bold;
+            &.active:before {
+              content: '';
+              position: absolute;
+              display: block;
+              height: 0.42105263em;
+              background: vars.$primary-color;
+              opacity: 1;
+              bottom: 0.26315789em;
+              border-radius: 0.21052632em;
+              left: -0.31578947em;
+              right: -0.31578947em;
+              z-index: -1;
+            }
+          }
+        }
+      }
+      &.open {
+        height: 19.125em;
+        padding-top: 1.25em;
+        z-index: -100;
+        ul {
+          li {
+            opacity: 1;
+            transform: translateY(0) rotateX(0);
+          }
+        }
+      }
+    }
+  }
+}
+/* Mobile - Side Pop Out */
+@media only screen and (max-width: 1023px) {
+  #navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+    height: auto;
+  }
+  #navigation .background-color-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+  #navigation .container {
+    padding: 0.8125em 0;
+    width: 96%;
+  }
+  #navigation .logo {
+    display: inline-block;
+    height: 1.875em;
+    width: auto;
+  }
+  #navigation .logo img {
+    width: auto;
+    height: 100%;
+  }
+  #navigation .logo .light {
+    display: none;
+  }
+  #navigation .logo .dark {
+    display: block;
+  }
+  #navigation .hamburger-menu {
+    position: absolute;
+    right: 0em;
+    border: none;
+    height: 3em;
+    width: 3em;
+    z-index: 100;
+    display: block;
+    background: transparent;
+    padding: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: top .3s;
+  }
+  #navigation .hamburger-menu span {
+    height: 2px;
+    width: 1.875em;
+    background-color: #000;
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: background-color 0.3s;
+  }
+  #navigation .hamburger-menu span:before {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 2px;
+    width: 80%;
+    background: #000;
+    opacity: 1;
+    top: -6px;
+    left: 0;
+    transition: width .3s, left .3s, top .3s, transform .5s;
+  }
+  #navigation .hamburger-menu span:after {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 2px;
+    width: 80%;
+    background: #000;
+    opacity: 1;
+    top: 6px;
+    left: 0;
+    transition: width .3s, left .3s, top .3s, transform .3s;
+  }
+  #navigation .hamburger-menu.clicked span {
+    background-color: transparent;
+  }
+  #navigation .hamburger-menu.clicked span:before {
+    width: 100%;
+    transform: translate(-50%, -50%) rotate(225deg);
+    left: 50%;
+    top: 50%;
+  }
+  #navigation .hamburger-menu.clicked span:after {
+    width: 100%;
+    transform: translate(-50%, -50%) rotate(-225deg);
+    left: 50%;
+    top: 50%;
+  }
+  #navigation #navbar-menu {
+    position: fixed;
+    right: 0;
+    padding: 0;
+    height: 100%;
+    border-radius: 0 0 0.375em 0.375em;
+    z-index: -1;
+    overflow: hidden;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    background-color: #fff;
+    top: 4em;
+    padding-top: 0;
+    width: 0em;
+    transition: width .3s;
+  }
+  #navigation #navbar-menu ul {
+    padding: 0;
+    perspective: 700px;
+    padding-right: 1.25em;
+    padding-top: 3.125em;
+  }
+  #navigation #navbar-menu ul li {
+    list-style: none;
+    margin-bottom: 1.5em;
+    text-align: right;
+    transform-style: preserve-3d;
+    opacity: 0;
+    transform: translateY(-0.4375em) rotateX(0deg);
+    transition: opacity .5s, transform .5s;
+  }
+  #navigation #navbar-menu ul li:nth-of-type(1) {
+    transition-delay: .1s;
+  }
+  #navigation #navbar-menu ul li:nth-of-type(2) {
+    transition-delay: .2s;
+  }
+  #navigation #navbar-menu ul li:nth-of-type(3) {
+    transition-delay: .3s;
+  }
+  #navigation #navbar-menu ul li:nth-of-type(4) {
+    transition-delay: .4s;
+  }
+  #navigation #navbar-menu ul li:nth-of-type(5) {
+    transition-delay: .5s;
+  }
+  #navigation #navbar-menu ul li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #000;
+    font-size: 1.1875em;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    font-weight: bold;
+  }
+  #navigation #navbar-menu ul li a.active:before {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 0.42105263em;
+    background: var(--primary);
+    opacity: 1;
+    bottom: 0.26315789em;
+    border-radius: 0.21052632em;
+    left: -0.31578947em;
+    right: -0.31578947em;
+    z-index: -1;
+  }
+  #navigation #navbar-menu.open {
+    width: 15.625em;
+    z-index: -100;
+  }
+  #navigation #navbar-menu.open ul li {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}

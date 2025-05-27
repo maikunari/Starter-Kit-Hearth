@@ -1,1 +1,205 @@
-/*-- -------------------------- -->\n<---          Gallery           -->\n<--- -------------------------- -*/\n\n/* Mobile - 360px - Contains hover animation */\n@media only screen and (min-width: 0em) {\n\n    #gallery {\n        /* Centers button */\n        text-align: center;\n        padding: var(--sectionPadding);\n        position: relative;\n        /* Prevents overflow from the image going off screen */\n        overflow: hidden;\n        .cs-container {\n            width: 100%;\n            max-width: 1322/16em;\n            margin: auto;\n        }\n\n        .cs-image-group {\n            /* used rem so it doesn't scale with the font size of on parent */\n            font-size:min(1.1vw, 1em);\n            width: 100%;\n            max-width: 1322/16em;\n            padding: 0;\n            margin: 0 auto 60/16rem;\n            display: flex;\n            justify-content: center;\n            align-items: flex-start;\n            gap: 30/16em;\n        }\n\n        .cs-row {\n            display: flex;\n            flex-direction: column;\n            justify-content: flex-start;\n            align-items: center;\n            gap: 30/16em;\n        }\n\n        .cs-picture {\n            position: relative;\n            display: block;\n            img {\n                position: absolute;\n                top: 0;\n                left: 0;\n                height: 100%;\n                width: 100%;\n                object-fit: cover;\n            }\n        }\n\n        .cs-row-1 {\n            .cs-picture-1 {\n                width: 420/16em;\n                height: 567/16em;\n            }\n\n            .cs-picture-2 {\n                width: 420/16em;\n                height: 629/16em;\n            }\n\n            .cs-picture-3 {\n                width: 420/16em;\n                height: 512/16em;\n            }\n        }\n\n        .cs-row-2 {\n            .cs-picture-1 {\n                width: 420/16em;\n                height: 492/16em;\n            }\n\n            .cs-picture-2 {\n                width: 420/16em;\n                height: 517/16em;\n            }\n\n            .cs-picture-3 {\n                width: 420/16em;\n                height: 629/16em;\n            }\n        }\n\n        .cs-row-3 {\n            .cs-picture-1 {\n                width: 420/16em;\n                height: 625/16em;\n            }\n\n            .cs-picture-2 {\n                width: 420/16em;\n                height: 452/16em;\n            }\n\n            .cs-picture-3 {\n                width: 420/16em;\n                height: 629/16em;\n            }\n        }\n    }\n}                           \n\n/*-- -------------------------- -->\n<---    Final Call To Action    -->\n<--- -------------------------- -*/\n\n/* Mobile */\n@media only screen and (min-width: 0em) {\n    #cta {\n        position: relative;\n        padding: 50/16rem 0;\n\n        &:before {\n            content: '';\n            position: absolute;\n            display: block;\n            height: 100%;\n            width: 100%;\n            background: #000;\n            opacity: .7;\n            top: 0;\n            left: 0;\n            z-index: -1;\n        }\n\n        .container {\n            text-align: center;\n        }\n\n        picture {\n            position: absolute;\n            top: 0;\n            left: 0;\n            height: 100%;\n            width: 100%;\n            z-index: -2;\n\n            img {\n                position: absolute;\n                top: 0;\n                left: 0;\n                height: 100%;\n                width: 100%;\n                object-fit: cover;\n            }\n        }\n\n        .title {\n            font-weight: 900;\n            font-size:min(9vw, 3rem);\n            line-height: 58/48;\n            color: #fff;\n            position: relative;\n            margin-bottom: 36/16rem;\n            text-align: center;\n        }\n\n        p {\n            color: #fff;\n            text-align: center;\n            opacity: 1;\n            margin: auto;\n            margin-bottom: 36/16rem;\n            width: 96%;\n            max-width: 598/16rem;\n\n        }\n    }\n}\n\n/* Small Desktop */\n@media only screen and (min-width: 64em) {\n    #cta {\n        padding: 168/16rem 0;\n    }\n}\n\n/* Large Desktop */\n@media only screen and (min-width: 1300px) {\n    #cta {\n        position: relative;\n        margin-top: 100/16rem;\n        &:before {\n            display: none;\n        }\n        &:after {\n            content: '';\n            position: absolute;\n            display: block;\n            height: 1108/16rem;\n            width: 2000/16rem;\n            background: url(\"/assets/svgs/cta-squares.svg\");\n            background-size: contain;\n            background-position: center;\n            background-repeat: no-repeat;\n            opacity: 1;\n            bottom: 0;\n            left: 50%;\n            transform: translateX(-50%);\n            z-index: -3;\n         }\n        .container {\n            width: 90.0625%;\n            margin: auto;\n        }\n\n        picture {\n            width: 90.0625%;\n            left: 50%;\n            transform: translateX(-50%);\n\n            &:before {\n                content: '';\n                position: absolute;\n                display: block;\n                height: 100%;\n                width: 100%;\n                background: #000;\n                opacity: .7;\n                top: 0;\n                left: 0;\n                z-index: 1;\n            }\n        }\n    }\n}\n\n/* Dark Mode */\n@media only screen and (min-width: 0em) {\n    body.dark-mode {\n        #cta {\n            &:after {\n                display: none;\n            }\n        }\n    }\n}\n 
+/*-- -------------------------- -->
+<---          Gallery           -->
+<--- -------------------------- -*/
+/* Mobile - 360px - Contains hover animation */
+@media only screen and (min-width: 0em) {
+    #gallery {
+      /* Centers button */
+      text-align: center;
+      padding: var(--sectionPadding);
+      position: relative;
+      /* Prevents overflow from the image going off screen */
+      overflow: hidden;
+    }
+    #gallery .cs-container {
+      width: 100%;
+      max-width: 82.625em;
+      margin: auto;
+    }
+    #gallery .cs-image-group {
+      /* used rem so it doesn't scale with the font size of on parent */
+      font-size: min(1.1vw, 1em);
+      width: 100%;
+      max-width: 82.625em;
+      padding: 0;
+      margin: 0 auto 3.75rem;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 1.875em;
+    }
+    #gallery .cs-row {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 1.875em;
+    }
+    #gallery .cs-picture {
+      position: relative;
+      display: block;
+    }
+    #gallery .cs-picture img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    #gallery .cs-row-1 .cs-picture-1 {
+      width: 26.25em;
+      height: 35.4375em;
+    }
+    #gallery .cs-row-1 .cs-picture-2 {
+      width: 26.25em;
+      height: 39.3125em;
+    }
+    #gallery .cs-row-1 .cs-picture-3 {
+      width: 26.25em;
+      height: 32em;
+    }
+    #gallery .cs-row-2 .cs-picture-1 {
+      width: 26.25em;
+      height: 30.75em;
+    }
+    #gallery .cs-row-2 .cs-picture-2 {
+      width: 26.25em;
+      height: 32.3125em;
+    }
+    #gallery .cs-row-2 .cs-picture-3 {
+      width: 26.25em;
+      height: 39.3125em;
+    }
+    #gallery .cs-row-3 .cs-picture-1 {
+      width: 26.25em;
+      height: 39.0625em;
+    }
+    #gallery .cs-row-3 .cs-picture-2 {
+      width: 26.25em;
+      height: 28.25em;
+    }
+    #gallery .cs-row-3 .cs-picture-3 {
+      width: 26.25em;
+      height: 39.3125em;
+    }
+  }
+  /*-- -------------------------- -->
+  <---    Final Call To Action    -->
+  <--- -------------------------- -*/
+  /* Mobile */
+  @media only screen and (min-width: 0em) {
+    #cta {
+      position: relative;
+      padding: 3.125rem 0;
+    }
+    #cta:before {
+      content: '';
+      position: absolute;
+      display: block;
+      height: 100%;
+      width: 100%;
+      background: #000;
+      opacity: .7;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    #cta .container {
+      text-align: center;
+    }
+    #cta picture {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: -2;
+    }
+    #cta picture img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    #cta .title {
+      font-weight: 900;
+      font-size: min(9vw, 3rem);
+      line-height: 1.20833333;
+      color: #fff;
+      position: relative;
+      margin-bottom: 2.25rem;
+      text-align: center;
+    }
+    #cta p {
+      color: #fff;
+      text-align: center;
+      opacity: 1;
+      margin: auto;
+      margin-bottom: 2.25rem;
+      width: 96%;
+      max-width: 37.375rem;
+    }
+  }
+  /* Small Desktop */
+  @media only screen and (min-width: 64em) {
+    #cta {
+      padding: 10.5rem 0;
+    }
+  }
+  /* Large Desktop */
+  @media only screen and (min-width: 1300px) {
+    #cta {
+      position: relative;
+      margin-top: 6.25rem;
+    }
+    #cta:before {
+      display: none;
+    }
+    #cta:after {
+      content: '';
+      position: absolute;
+      display: block;
+      height: 69.25rem;
+      width: 125rem;
+      background: url("/assets/svgs/cta-squares.svg");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 1;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: -3;
+    }
+    #cta .container {
+      width: 90.0625%;
+      margin: auto;
+    }
+    #cta picture {
+      width: 90.0625%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    #cta picture:before {
+      content: '';
+      position: absolute;
+      display: block;
+      height: 100%;
+      width: 100%;
+      background: #000;
+      opacity: .7;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+  }
+  /* Dark Mode */
+  @media only screen and (min-width: 0em) {
+    body.dark-mode #cta:after {
+      display: none;
+    }
+  }
+  

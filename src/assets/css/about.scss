@@ -1,1 +1,299 @@
-/*-- -------------------------- -->\n<---       Side By Side         -->\n<--- -------------------------- -*/\n\n/* Mobile - 360px */\n@media only screen and (min-width: 0em) {\n\n    #sbs {\n        padding: var(--sectionPadding);\n\n        .cs-container {\n            width: 100%;\n            max-width: 1280/16rem;\n            margin: auto;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            flex-direction: column;\n            row-gap: 40/16rem;\n        }\n\n        .cs-left {\n            /* scaling the font size with the view width */\n            font-size:min(2.31vw, .7em);\n            /* using ems so we can use font size to scale the whole section */\n            width: 631/16em;\n            height: 636/16em;\n            position: relative;\n        }\n\n        .cs-picture {\n            border-radius: 24/16em;\n            /* clips img tag corners */\n            overflow: hidden;\n            position: absolute;\n            display: block;\n            img {\n                position: absolute;\n                top: 0;\n                left: 0;\n                height: 100%;\n                width: 100%;\n                /* makes image act like a background image */\n                object-fit: cover;\n            }\n        }\n\n        .cs-picture1 {\n            width: 522/16em;\n            height: 581/16em;\n            left: 0;\n            top: 0;\n        }\n\n        .cs-picture2 {\n            width: 414/16em;\n            height: 400/16em;\n            background-color: #fff;\n            box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 40px;\n            /* 6px - 12px */\n            border: clamp(.375em, 1.5vw, .75em) solid #fff;\n            right: 0;\n            bottom: 0;\n        }\n\n        .cs-right {\n            margin: auto;\n            max-width: 542/16rem;\n        }\n\n        .cs-topper {\n            font-size: var(--topperFontSize);\n            line-height: 1.2em;\n            text-transform: uppercase;\n            text-align: left;\n            letter-spacing: .1em;\n            font-weight: 700;\n            color: var(--primary);\n            margin-bottom: 4/16rem;\n            display: block;\n        }\n\n        .cs-title {\n            font-size: var(--headerFontSize);\n            font-weight: 900;\n            line-height: 1.2em;\n            text-align: left;\n            max-width: 800/16rem;\n            margin: 0 auto 16/16rem;\n            color: var(--headerColor);\n            position: relative;\n        }\n\n        .cs-text {\n            font-size: var(--bodyFontSize);\n            line-height: 1.5em;\n            text-align: left;\n            width: 100%;\n            max-width: 750/16rem;\n            margin: 0 auto;\n            margin-bottom: 16/16rem;\n            color: var(--bodyTextColor);\n\n            &:last-of-type {\n                margin-bottom: 32/16rem;\n            }\n        }\n\n        .cs-flex-group {\n            /* 16px - 32px */\n            padding: clamp(1rem, 3vw, 2rem);\n            background-color: #F7F7F7;\n            border-radius: 16/16rem;\n            position: relative;\n        }\n\n        .cs-flex-p {\n            /* 14px - 16px */\n            font-size: clamp(.875rem, 1.5vw, 1rem);\n            line-height: 1.5em;\n            margin: 0 0 16/16rem;\n            color: #767676;\n        }\n\n        .cs-name {\n            font-size: 16/16rem;\n            line-height: 1.2em;\n            text-transform: uppercase;\n            font-weight: bold;\n            margin: 0 0 4/16rem;\n            color: var(--headerColor);\n            display: block;\n        }\n\n        .cs-job {\n            font-size: 14/16rem;\n            line-height: 1.5em;\n            color: #767676;\n            display: block;\n        }\n\n        .cs-quote-icon {\n            /* 60px - 136px */\n            width: clamp(3.75rem, 10vw, 8.5rem);\n            height: auto;\n            position: absolute;\n            bottom: 0/16rem;\n            /* 16px - 32px */\n            right: clamp(1rem, 4vw, 2rem);\n        }\n\n        .button-solid {\n            margin-top: 32/16rem;\n        }\n    }\n}\n\n/* Desktop - 1024px */\n@media only screen and (min-width: 64em) {\n    #sbs {\n        .cs-container {\n            flex-flow: row;\n            justify-content: space-between;\n            gap: 52/16rem;\n        }\n\n        .cs-left {\n            font-size:min(1.2vw, 1em);\n            flex: none;\n        }\n\n        .cs-right {\n            margin: 0;\n        }\n    }\n}\n\n/* Dark Mode */\n@media only screen and (min-width: 0em) {\n    body.dark-mode {\n        #sbs {\n\n            .cs-left {\n                &:before, &:after {\n                    background: var(--accent);\n                }\n            }\n\n            .cs-picture2 {\n                background-color: var(--dark);\n                /* 6px - 12px */\n                border: clamp(.375em, 1.5vw, .75em) solid var(--dark);\n            }\n\n            .cs-topper {\n                color: var(--primaryLight)\n            }\n\n            .cs-title, .cs-text, .cs-h3, .cs-flex-p, .cs-name {\n                color: var(--bodyTextColorWhite);\n            }\n\n            .cs-flex-group {\n                background-color: var(--accent);\n            }\n\n            .cs-job {\n                color: var(--bodyTextColorWhite);\n                opacity: .8;\n            }\n\n            .cs-quote-icon {\n                opacity: .2;\n            }\n        }\n    }\n}\n\n/*-- -------------------------- -->\n<---    Final Call To Action    -->\n<--- -------------------------- -*/\n\n/* Mobile */\n@media only screen and (min-width: 0em) {\n    #cta {\n        position: relative;\n        padding: 50/16rem 0;\n\n        &:before {\n            content: '';\n            position: absolute;\n            display: block;\n            height: 100%;\n            width: 100%;\n            background: #000;\n            opacity: .7;\n            top: 0;\n            left: 0;\n            z-index: -1;\n        }\n\n        .container {\n            text-align: center;\n        }\n\n        picture {\n            position: absolute;\n            top: 0;\n            left: 0;\n            height: 100%;\n            width: 100%;\n            z-index: -2;\n\n            img {\n                position: absolute;\n                top: 0;\n                left: 0;\n                height: 100%;\n                width: 100%;\n                object-fit: cover;\n            }\n        }\n\n        .title {\n            font-weight: 900;\n            font-size:min(9vw, 3rem);\n            line-height: 58/48;\n            color: #fff;\n            position: relative;\n            margin-bottom: 36/16rem;\n            text-align: center;\n        }\n\n        p {\n            color: #fff;\n            text-align: center;\n            opacity: 1;\n            margin: auto;\n            margin-bottom: 36/16rem;\n            width: 96%;\n            max-width: 598/16rem;\n\n        }\n    }\n}\n\n/* Small Desktop */\n@media only screen and (min-width: 64em) {\n    #cta {\n        padding: 168/16rem 0;\n    }\n}\n\n/* Large Desktop */\n@media only screen and (min-width: 1300px) {\n    #cta {\n        position: relative;\n        margin-top: 100/16rem;\n        &:before {\n            display: none;\n        }\n        &:after {\n            content: '';\n            position: absolute;\n            display: block;\n            height: 1108/16rem;\n            width: 2000/16rem;\n            background: url(\"/assets/svgs/cta-squares.svg\");\n            background-size: contain;\n            background-position: center;\n            background-repeat: no-repeat;\n            opacity: 1;\n            bottom: 0;\n            left: 50%;\n            transform: translateX(-50%);\n            z-index: -3;\n         }\n        .container {\n            width: 90.0625%;\n            margin: auto;\n        }\n\n        picture {\n            width: 90.0625%;\n            left: 50%;\n            transform: translateX(-50%);\n\n            &:before {\n                content: '';\n                position: absolute;\n                display: block;\n                height: 100%;\n                width: 100%;\n                background: #000;\n                opacity: .7;\n                top: 0;\n                left: 0;\n                z-index: 1;\n            }\n        }\n    }\n}\n\n/* Dark Mode */\n@media only screen and (min-width: 0em) {\n    body.dark-mode {\n        #cta {\n            &:after {\n                display: none;\n            }\n        }\n    }\n}\n 
+@use 'variables' as vars;
+@use 'mixins' as mix;
+
+$section-padding: vars.$section-padding;
+$primary-color: vars.$primary;
+$header-color: vars.$header-color;
+$body-text-color: vars.$body-text-color;
+$topper-font-size: vars.$topper-font-size;
+$header-font-size: vars.$header-font-size;
+$body-font-size: vars.$body-font-size;
+
+@media only screen and (min-width: 0em) {
+  #sbs {
+    padding: $section-padding;
+    .cs-container {
+      width: 100%;
+      max-width: 80rem;
+      margin: auto;
+      @include mix.flex-center;
+      flex-direction: column;
+      row-gap: 2.5rem;
+    }
+    .cs-left {
+      @include mix.responsive-font-size(0.7em, 2.31vw);
+      width: 39.4375em;
+      height: 39.75em;
+      position: relative;
+    }
+    .cs-picture {
+      border-radius: 1.5em;
+      overflow: hidden;
+      position: absolute;
+      display: block;
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    .cs-picture1 {
+      width: 32.625em;
+      height: 36.3125em;
+      left: 0;
+      top: 0;
+    }
+    .cs-picture2 {
+      width: 25.875em;
+      height: 25em;
+      background-color: #fff;
+      @include mix.box-shadow(#000);
+      border: clamp(0.375em, 1.5vw, 0.75em) solid #ffffff;
+      right: 0;
+      bottom: 0;
+    }
+    .cs-right {
+      margin: auto;
+      max-width: 33.875rem;
+    }
+    .cs-topper {
+      font-size: $topper-font-size;
+      line-height: 1.2em;
+      text-transform: uppercase;
+      text-align: left;
+      letter-spacing: .1em;
+      font-weight: 700;
+      color: $primary-color;
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+    .cs-title {
+      font-size: $header-font-size;
+      font-weight: 900;
+      line-height: 1.2em;
+      text-align: left;
+      max-width: 50rem;
+      margin: 0 auto 1rem;
+      color: $header-color;
+      position: relative;
+    }
+    .cs-text {
+      font-size: $body-font-size;
+      line-height: 1.5em;
+      text-align: left;
+      width: 100%;
+      max-width: 46.875rem;
+      margin: 0 auto;
+      margin-bottom: 1rem;
+      color: $body-text-color;
+      &:last-of-type {
+        margin-bottom: 2rem;
+      }
+    }
+    .cs-flex-group {
+      padding: clamp(1rem, 3vw, 2rem);
+      background-color: #F7F7F7;
+      border-radius: 1rem;
+      position: relative;
+    }
+    .cs-flex-p {
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      line-height: 1.5em;
+      margin: 0 0 1rem;
+      color: #767676;
+    }
+    .cs-name {
+      font-size: 1rem;
+      line-height: 1.2em;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin: 0 0 0.25rem;
+      color: $header-color;
+      display: block;
+    }
+    .cs-job {
+      font-size: 0.875rem;
+      line-height: 1.5em;
+      color: #767676;
+      display: block;
+    }
+    .cs-quote-icon {
+      width: clamp(3.75rem, 10vw, 8.5rem);
+      height: auto;
+      position: absolute;
+      bottom: 0rem;
+      right: clamp(1rem, 4vw, 2rem);
+    }
+    .button-solid {
+      margin-top: 2rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 64em) {
+  #sbs .cs-container {
+    flex-flow: row;
+    justify-content: space-between;
+    gap: 3.25rem;
+  }
+  .cs-left {
+    font-size: min(1.2vw, 1em);
+    flex: none;
+  }
+  .cs-right {
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 0em) {
+  body.dark-mode #sbs .cs-left:before,
+  body.dark-mode #sbs .cs-left:after {
+    background: vars.$accent-color;
+  }
+  body.dark-mode #sbs .cs-picture2 {
+    background-color: vars.$dark-color;
+    border: clamp(0.375em, 1.5vw, 0.75em) solid vars.$dark-color;
+  }
+  body.dark-mode #sbs .cs-topper {
+    color: vars.$primary-light-color;
+  }
+  body.dark-mode #sbs .cs-title,
+  body.dark-mode #sbs .cs-text,
+  body.dark-mode #sbs .cs-h3,
+  body.dark-mode #sbs .cs-flex-p,
+  body.dark-mode #sbs .cs-name {
+    color: vars.$body-text-color-white;
+  }
+  body.dark-mode #sbs .cs-flex-group {
+    background-color: vars.$accent-color;
+  }
+  body.dark-mode #sbs .cs-job {
+    color: vars.$body-text-color-white;
+    opacity: .8;
+  }
+  body.dark-mode #sbs .cs-quote-icon {
+    opacity: .2;
+  }
+}
+
+/*-- -------------------------- -->
+<---    Final Call To Action    -->
+<--- -------------------------- -*/
+/* Mobile */
+@media only screen and (min-width: 0em) {
+  #cta {
+    position: relative;
+    padding: 3.125rem 0;
+  }
+  #cta:before {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    opacity: .7;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  #cta .container {
+    text-align: center;
+  }
+  #cta picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+  }
+  #cta picture img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  #cta .title {
+    font-weight: 900;
+    font-size: min(9vw, 3rem);
+    line-height: 1.20833333;
+    color: #fff;
+    position: relative;
+    margin-bottom: 2.25rem;
+    text-align: center;
+  }
+  #cta p {
+    color: #fff;
+    text-align: center;
+    opacity: 1;
+    margin: auto;
+    margin-bottom: 2.25rem;
+    width: 96%;
+    max-width: 37.375rem;
+  }
+}
+/* Small Desktop */
+@media only screen and (min-width: 64em) {
+  #cta {
+    padding: 10.5rem 0;
+  }
+}
+/* Large Desktop */
+@media only screen and (min-width: 1300px) {
+  #cta {
+    position: relative;
+    margin-top: 6.25rem;
+  }
+  #cta:before {
+    display: none;
+  }
+  #cta:after {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 69.25rem;
+    width: 125rem;
+    background: url("/assets/svgs/cta-squares.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -3;
+  }
+  #cta .container {
+    width: 90.0625%;
+    margin: auto;
+  }
+  #cta picture {
+    width: 90.0625%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  #cta picture:before {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    opacity: .7;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+}
+/* Dark Mode */
+@media only screen and (min-width: 0em) {
+  body.dark-mode #cta:after {
+    display: none;
+  }
+}
