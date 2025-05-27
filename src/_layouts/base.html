@@ -10,9 +10,9 @@
 
         <meta name="description" content="{{ description }}">
         <meta name="keywords" content="">
-
+<!--
         <link rel="stylesheet" href="/assets/css/transition.css">
-
+    -->
         <!--Social Media Display-->
         <meta property="og:title" content="{{ metaTitle }}"/>
         <meta property="og:description" content="{{ description }}"/>
@@ -34,10 +34,6 @@
         <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/roboto-v29-latin-regular.woff2" crossorigin>
         <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/roboto-v29-latin-700.woff2" crossorigin>
     
-        <link rel="stylesheet" href="/assets/css/root.css">
-        <link rel="stylesheet" href="/assets/css/dark.css">
-
-
         <link rel="preload" as="image" href="{{ preloadImg }}"/>
 
         <!-- Loading in page specific CSS sheets from css block -->
@@ -67,30 +63,27 @@
             <main id="main">{{ content | safe }}</main>
             {% include "footer.html" %}
 
+            {% if process.env.NODE_ENV == 'production' %}
+            <link rel="stylesheet" href="/assets/css/styles.min.css">
+            <script defer src="/assets/js/scripts.min.js"></script>
+            {% else %}
+            <link rel="stylesheet" href="/assets/css/root.css">
+            <link rel="stylesheet" href="/assets/css/dark.css">
+            <link rel="stylesheet" href="/assets/css/critical.css">
+            <link rel="stylesheet" href="{{ preloadCSS }}">
             <script defer src="/assets/js/nav.js"></script>
             <script defer src="/assets/js/dark.js"></script>
-
-            <!--
-            This script adds a class to the body after scrolling 100px
-            and we used these body.scroll styles to create some on scroll 
-            animations with the navbar
-        -->
             <script defer>
                 document.addEventListener('scroll', (e) => {
                     const scroll = document.documentElement.scrollTop;
                     if (scroll >= 100) {
-                        document
-                            .querySelector('body')
-                            .classList
-                            .add('scroll')
+                        document.querySelector('body').classList.add('scroll');
                     } else {
-                        document
-                            .querySelector('body')
-                            .classList
-                            .remove('scroll')
+                        document.querySelector('body').classList.remove('scroll');
                     }
                 });
             </script>
+            {% endif %}
 
             <!-- PhotoSwipe JS via CDN -->
             <script type="module" src="https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js"></script>
