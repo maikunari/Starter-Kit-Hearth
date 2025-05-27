@@ -232,15 +232,34 @@
       }
     }
   }
-  /* Desktop Parallax Effect - 1300px */
-  @media only screen and (min-width: 81.25em) {
+  /* Desktop Parallax Effect - 1024px */
+  @media only screen and (min-width: 64em) {
     #hero {
-      background: url("/images/landing-2000w.jpeg"); 
+      background: url("/images/landing-1200w.jpeg"); 
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       /* creates parallax effect on background image */
       background-attachment: fixed;
+      
+      /* Add overlay for parallax background */
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        opacity: 0.7;
+        z-index: -1;
+        pointer-events: none;
+      }
+      
+      /* Hide the cs-picture element when parallax is active */
+      .cs-picture {
+        display: none;
+      }
     }
   }
 

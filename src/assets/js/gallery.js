@@ -52,28 +52,17 @@ document.addEventListener('DOMContentLoaded', function() {
           const renderedWidth = Math.round(rect.width);
           const renderedHeight = Math.round(rect.height);
           
-          // Update the data attributes for PhotoSwipe
-          // We'll use the original large image dimensions for the full size
-          // but ensure the aspect ratio matches the thumbnail
-          const originalWidth = parseInt(link.getAttribute('data-pswp-width')) || 1200;
-          const originalHeight = parseInt(link.getAttribute('data-pswp-height')) || 800;
-          
           // Calculate aspect ratio from rendered thumbnail
           const thumbnailAspectRatio = renderedWidth / renderedHeight;
           
-          // Adjust the PhotoSwipe dimensions to match thumbnail aspect ratio
-          let pswpWidth = originalWidth;
-          let pswpHeight = Math.round(originalWidth / thumbnailAspectRatio);
+          // Set PhotoSwipe dimensions to match the thumbnail aspect ratio
+          // Use a reasonable large size (1200px width as base) and calculate height
+          const baseWidth = 1200;
+          const calculatedHeight = Math.round(baseWidth / thumbnailAspectRatio);
           
-          // If the calculated height is larger than original, scale down
-          if (pswpHeight > originalHeight) {
-            pswpHeight = originalHeight;
-            pswpWidth = Math.round(originalHeight * thumbnailAspectRatio);
-          }
-          
-          // Update PhotoSwipe data attributes
-          link.setAttribute('data-pswp-width', pswpWidth);
-          link.setAttribute('data-pswp-height', pswpHeight);
+          // Update PhotoSwipe data attributes to match thumbnail aspect ratio
+          link.setAttribute('data-pswp-width', baseWidth);
+          link.setAttribute('data-pswp-height', calculatedHeight);
         }
       });
     }
