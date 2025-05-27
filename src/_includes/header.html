@@ -3,45 +3,35 @@
 <!-- ============================================ -->
 {% set navPages = collections.all | eleventyNavigation %}
 
-<div id="navigation">
-    <div aria-hidden="true" class="background-color-div">
-        <!--This div is used to overcome a z-index issue where the open
-            #navbar-menu is on top of the #navigation. This bar places itself 
-            the #navbar-menu so that menu appears behind the #navigation
-        -->
-    </div>
-    <div class="container">
+<header class="navigation">
+    <div class="navigation__background"></div>
+    <div class="navigation__container">
         <!--Logo - Get SVGs if you can.  I use fiverr to get png's turned into SVGs. Highly recommend it, worth the $20 - get a light and dark version-->
-        <a class="logo" aria-label="click to go to home page" href="/">
+        <a class="navigation__logo" aria-label="click to go to home page" href="/">
             <!--Light Colored Logo, remove .dark image tag and the .light class if you don't have a dark and light version -->
-            <img class="light" aria-hidden="true" src="/assets/images/logo-light.png" decoding="async" alt="logo" width="221" height="66">
+            <img class="logo--light" aria-hidden="true" src="/assets/images/logo-light.png" decoding="async" alt="logo" width="221" height="66">
 
             <!--Dark Colored Logo-->
-            <img class="dark" aria-hidden="true" src="/assets/images/logo-blue.png" decoding="async" loading="lazy" alt="logo" width="221" height="66">
+            <img class="logo--dark" aria-hidden="true" src="/assets/images/logo-blue.png" decoding="async" loading="lazy" alt="logo" width="221" height="66">
         </a>
 
         <!--Mobile Nav toggle-->
-        <button class="hamburger-menu" aria-expanded="false" aria-controls="navbar-menu">
+        <button class="navigation__hamburger" aria-expanded="false" aria-controls="navigation-menu">
             <span class="visually-hidden">Menu</span>
             <span aria-hidden="true"></span>
         </button>
 
         <!--Main Nav-->
-        <nav id="navbar-menu" aria-label="main navigation">
-            <ul>
+        <nav class="navigation__menu" id="navigation-menu" aria-label="main navigation">
+            <ul class="navigation__list">
                 {%- for entry in navPages %}
-                    <li>
-                        <a 
-                        {% if entry.url == page.url %} class="active" {% endif %}
-                        href="{{ entry.url }}"
-                    >
+                    <li class="navigation__item">
+                        <a class="navigation__link{% if entry.url == page.url %} navigation__link--active{% endif %}" href="{{ entry.url }}">
                             {{ entry.title }}
                         </a>
                     </li>
                 {%- endfor %}
             </ul>
         </nav>
-
-
     </div>
-</div>
+</header>
