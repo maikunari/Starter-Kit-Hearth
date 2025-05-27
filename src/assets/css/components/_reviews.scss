@@ -121,4 +121,14 @@
     width: 6rem;
     height: 1rem;
   }
+  
+  // Button styling
+  &__button {
+    margin-top: vars.$button-spacing;
+    text-align: center;
+    
+    @include mix.tablet-up {
+      margin-top: vars.$button-spacing-lg;
+    }
+  }
 } 

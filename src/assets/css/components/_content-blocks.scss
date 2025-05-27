@@ -21,8 +21,8 @@
     }
   }
   
-  // Left side (images)
-  &__left {
+  // Media side (images)
+  &__media {
     font-size: min(2.31vw, 0.7em);
     width: 39.4375em;
     height: 39.75em;
@@ -35,8 +35,8 @@
     }
   }
   
-  // Right side (content)
-  &__right {
+  // Content side (text)
+  &__content {
     margin: auto;
     max-width: 33.875rem;
     
@@ -75,6 +75,11 @@
       right: 0;
       bottom: 0;
     }
+  }
+  
+  // Image elements (for direct img tags)
+  &__image {
+    @include mix.image-cover;
   }
   
   // Typography
@@ -122,6 +127,7 @@
     background-color: #F7F7F7;
     border-radius: 1rem;
     position: relative;
+    margin-bottom: 2rem;
     
     &-text {
       font-size: clamp(0.875rem, 1.5vw, 1rem);

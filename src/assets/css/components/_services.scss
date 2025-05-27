@@ -1,0 +1,164 @@
+// =============================================================================
+// SERVICES COMPONENT
+// =============================================================================
+
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mix;
+
+.services {
+  padding: vars.$section-padding;
+  background: #fff;
+  position: relative;
+  z-index: 100;
+  
+  // Overlapping effect for home page
+  &--overlap {
+    border-radius: 0.3125rem;
+    margin: auto;
+    margin-top: -10.4375rem;
+    width: 90%;
+    max-width: 82.5rem;
+    padding: 3.125rem 1.25rem;
+    border-top: 0.375rem solid vars.$primary;
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
+    margin-bottom: 3.125rem;
+    
+    @include mix.tablet-up {
+      width: 98%;
+      padding: 3.125rem 5rem;
+    }
+  }
+  
+  &__container {
+    @include mix.container(80rem);
+  }
+  
+  &__header {
+    text-align: center;
+    margin-bottom: 3rem;
+    
+    @include mix.tablet-up {
+      margin-bottom: 4rem;
+    }
+  }
+  
+  &__topper {
+    font-size: vars.$topper-font-size;
+    line-height: 1.2em;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: vars.$primary;
+    margin-bottom: 0.25rem;
+    display: block;
+  }
+  
+  &__title {
+    font-size: vars.$header-font-size;
+    font-weight: 900;
+    line-height: 1.2em;
+    text-align: center;
+    max-width: 50rem;
+    margin: 0 auto 1rem;
+    color: vars.$header-color;
+  }
+  
+  &__text {
+    font-size: vars.$body-font-size;
+    line-height: 1.5em;
+    text-align: center;
+    max-width: 46.875rem;
+    margin: 0 auto;
+    color: vars.$body-text-color;
+  }
+  
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    
+    @include mix.tablet-up {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+    
+    @include mix.desktop-up {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+  }
+  
+  &__item {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: #fff;
+    border-radius: vars.$border-radius-lg;
+    box-shadow: vars.$shadow-sm;
+    transition: transform vars.$transition-base, box-shadow vars.$transition-base;
+    
+    &:hover {
+      transform: translateY(-0.25rem);
+      box-shadow: vars.$shadow;
+    }
+    
+    // Overlap variant styling
+    .services--overlap & {
+      padding: 0;
+      background: transparent;
+      box-shadow: none;
+      border-radius: 0;
+      
+      &:hover {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+  }
+  
+  &__icon {
+    width: 5.5rem;
+    height: 5.5rem;
+    background: vars.$primary;
+    border-radius: 50%;
+    @include mix.flex-center;
+    margin: 0 auto 1.5rem;
+    transition: transform vars.$transition-base;
+    
+    img {
+      width: 3rem;
+      height: 3rem;
+    }
+    
+    .services__item:hover & {
+      transform: scale(1.05);
+    }
+  }
+  
+  &__item-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2em;
+    margin: 0 0 1rem;
+    color: vars.$header-color;
+    
+    // Overlap variant styling
+    .services--overlap & {
+      font-size: 2rem;
+      margin-bottom: 0.65rem;
+    }
+  }
+  
+  &__item-text {
+    font-size: 1rem;
+    line-height: 1.5em;
+    margin: 0;
+    color: vars.$body-text-color;
+    
+    // Overlap variant styling
+    .services--overlap & {
+      opacity: 0.7;
+      line-height: 1.33333333em;
+    }
+  }
+} 

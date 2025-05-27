@@ -52,49 +52,55 @@ eleventyNavigation:
 <!--                  Services                    -->
 <!-- ============================================ -->
 
-<section id="services" class="services">
-  <!-- Get Icons From flaticon.com -->
-  <div class="card">
-    <picture>
-      <img
-        aria-hidden="true"
-        decoding="async"
-        src="/assets/svgs/service1.svg"
-        alt="appliance"
-        width="48"
-        height="48"
-/>
-    </picture>
-    <h2>Service 1</h2>
-    <p>Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.</p>
-  </div>
-  <div class="card">
-    <picture>
-      <img
-        aria-hidden="true"
-        decoding="async"
-        src="/assets/svgs/service2.svg"
-        alt="appliance"
-        width="48"
-        height="48"
-/>
-    </picture>
-    <h2>Service 2</h2>
-    <p>Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.</p>
-  </div>
-  <div class="card">
-    <picture>
-      <img
-        aria-hidden="true"
-        decoding="async"
-        src="/assets/svgs/service3.svg"
-        alt="appliance"
-        width="48"
-        height="48"
-/>
-    </picture>
-    <h2>Service 3</h2>
-    <p>Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.</p>
+<section class="services services--overlap">
+  <div class="services__container">
+    
+    <div class="services__grid">
+      <div class="services__item">
+        <div class="services__icon">
+          <img
+            aria-hidden="true"
+            decoding="async"
+            src="/assets/svgs/service1.svg"
+            alt="appliance"
+            width="48"
+            height="48"
+          />
+        </div>
+        <h3 class="services__item-title">Service 1</h3>
+        <p class="services__item-text">Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.</p>
+      </div>
+      
+      <div class="services__item">
+        <div class="services__icon">
+          <img
+            aria-hidden="true"
+            decoding="async"
+            src="/assets/svgs/service2.svg"
+            alt="appliance"
+            width="48"
+            height="48"
+          />
+        </div>
+        <h3 class="services__item-title">Service 2</h3>
+        <p class="services__item-text">Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.</p>
+      </div>
+      
+      <div class="services__item">
+        <div class="services__icon">
+          <img
+            aria-hidden="true"
+            decoding="async"
+            src="/assets/svgs/service3.svg"
+            alt="appliance"
+            width="48"
+            height="48"
+          />
+        </div>
+        <h3 class="services__item-title">Service 3</h3>
+        <p class="services__item-text">Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -102,45 +108,49 @@ eleventyNavigation:
 <!--                 Side By Side                 -->
 <!-- ============================================ -->
 
-<section id="sbs">
-  <div class="cs-container">
+<section class="content-block">
+  <div class="content-block__container">
     <!-- Left Image Section -->
-    <div class="cs-left">
-      {% image './src/assets/images/construction.jpg', 'house', 'cs-picture cs-picture1', 'lazy', '(max-width: 600px) 300px, 600px'%}
-      {% image './src/assets/images/cabinets2.jpg', 'house', 'cs-picture cs-picture2', 'lazy', '(max-width: 600px) 300px, 600px'%}
+    <div class="content-block__media">
+      <picture class="content-block__picture content-block__picture--primary">
+        {% image './src/assets/images/construction.jpg', 'house', 'content-block__image', 'lazy', '(max-width: 600px) 300px, 600px'%}
+      </picture>
+      <picture class="content-block__picture content-block__picture--secondary">
+        {% image './src/assets/images/cabinets2.jpg', 'house', 'content-block__image', 'lazy', '(max-width: 600px) 300px, 600px'%}
+      </picture>
     </div>
     <!-- Right Content Section-->
-    <div class="cs-right">
-      <span class="cs-topper">About Us</span>
-      <h2 class="cs-title">About Company Title</h2>
-      <p class="cs-text">
+    <div class="content-block__content">
+      <span class="content-block__topper">About Us</span>
+      <h2 class="content-block__title">About Company Title</h2>
+      <p class="content-block__text">
         In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis
         libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei
         aptent taciti sociosqu ad litora torquent per.
       </p>
-      <p class="cs-text">
+      <p class="content-block__text">
         In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis
         libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei
         aptent taciti sociosqu ad litora torquent per.
       </p>
-      <div class="cs-flex-group">
-        <p class="cs-flex-p">
+      <div class="content-block__quote">
+        <p class="content-block__quote-text">
           In consequat tincidunt turpis sit amet imperdiet. Praesent Classei consequat tincidunt turpis sit amet
           imperdiet for mind.
         </p>
-        <span class="cs-name">Justin Time</span>
-        <span class="cs-job">CEO-Founder</span>
+        <span class="content-block__quote-author">Justin Time</span>
+        <span class="content-block__quote-title">CEO-Founder</span>
         <img
-          class="cs-quote-icon"
+          class="content-block__quote-icon"
           loading="lazy"
           decoding="async"
           src="https://csimg.nyc3.digitaloceanspaces.com/SideBySide/quote-white.svg"
           alt="gavel"
           width="136"
           height="77"
-/>
+        />
       </div>
-      <a href="/about" class="button-solid">More About Us</a>
+      <a href="/about" class="btn btn--solid">More About Us</a>
     </div>
   </div>
 </section>
@@ -149,30 +159,34 @@ eleventyNavigation:
 <!--            Extra Content To Rank             -->
 <!-- ============================================ -->
 
-<section id="sbs-r">
-  <div class="cs-container">
+<section class="content-block content-block--reversed">
+  <div class="content-block__container">
     <!-- Left Image Section -->
-    <div class="cs-left">
-      {% image './src/assets/images/construction.jpg', 'house', 'cs-picture cs-picture1', 'lazy', '(max-width: 600px) 300px, 600px'%}
-      {% image './src/assets/images/cabinets2.jpg', 'house', 'cs-picture cs-picture2', 'lazy', '(max-width: 600px) 300px, 600px'%}
+    <div class="content-block__media">
+      <picture class="content-block__picture content-block__picture--primary">
+        {% image './src/assets/images/construction.jpg', 'house', 'content-block__image', 'lazy', '(max-width: 600px) 300px, 600px'%}
+      </picture>
+      <picture class="content-block__picture content-block__picture--secondary">
+        {% image './src/assets/images/cabinets2.jpg', 'house', 'content-block__image', 'lazy', '(max-width: 600px) 300px, 600px'%}
+      </picture>
     </div>
     <!-- Right Content Section-->
-    <div class="cs-right">
-      <span class="cs-topper">SEO Ranking</span>
-      <h2 class="cs-title">Talk about a main service keyword</h2>
-      <p class="cs-text">
+    <div class="content-block__content">
+      <span class="content-block__topper">SEO Ranking</span>
+      <h2 class="content-block__title">Talk about a main service keyword</h2>
+      <p class="content-block__text">
         In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis
         libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei
         aptent taciti sociosqu ad litora torquent per.
       </p>
-      <p class="cs-text">
+      <p class="content-block__text">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non tenetur, iure nihil ipsam qui atque commodi id
         voluptatem nesciunt, quis animi fuga cum doloribus! Eaque laboriosam, unde consectetur iure asperiores ullam.
         Consequuntur debitis a voluptatibus vitae optio autem explicabo quia neque est quas, in placeat. Lorem ipsum
         dolor sit amet consectetur adipisicing elit. Doloribus modi laudantium voluptatibus rem libero error minus quia
         eligendi sapiente eos.
       </p>
-      <a href="" class="button-solid">Learn More About Thing</a>
+      <a href="" class="btn btn--solid">Learn More About Thing</a>
     </div>
   </div>
 </section>
@@ -181,40 +195,44 @@ eleventyNavigation:
 <!--                   Gallery                    -->
 <!-- ============================================ -->
 
-<section id="gallery">
-  <div class="cs-container">
-    <span class="cs-topper">Our Portfolio</span>
-    <h2 class="cs-title">Et orci volutpat, back up generator installations</h2>
-    <div class="cs-gallery-grid pswp-gallery">
-      <a href="/images/port1-840w.jpeg" class="cs-gallery-item" data-pswp-width="1200" data-pswp-height="800">
-        {% image './src/assets/images/portfolio/port1.jpg', 'new hallway', 'cs-gallery-image', 'lazy' %}
+<section class="gallery gallery--home">
+  <div class="gallery__container">
+    <div class="gallery__header">
+      <span class="gallery__topper">Our Portfolio</span>
+      <h2 class="gallery__title">Et orci volutpat, back up generator installations</h2>
+    </div>
+    <div class="gallery__grid pswp-gallery">
+      <a href="/images/port1-840w.jpeg" class="gallery__item" data-pswp-width="1200" data-pswp-height="800">
+        {% image './src/assets/images/portfolio/port1.jpg', 'new hallway', 'gallery__image', 'lazy' %}
       </a>
-      <a href="/images/port2-840w.jpeg" class="cs-gallery-item" data-pswp-width="1200" data-pswp-height="800">
-        {% image './src/assets/images/portfolio/port2.jpg', 'new kitchen', 'cs-gallery-image', 'lazy' %}
+      <a href="/images/port2-840w.jpeg" class="gallery__item" data-pswp-width="1200" data-pswp-height="800">
+        {% image './src/assets/images/portfolio/port2.jpg', 'new kitchen', 'gallery__image', 'lazy' %}
       </a>
-      <a href="/images/port3-840w.jpeg" class="cs-gallery-item" data-pswp-width="1200" data-pswp-height="800">
-        {% image './src/assets/images/portfolio/port3.jpg', 'new kitchen', 'cs-gallery-image', 'lazy' %}
+      <a href="/images/port3-840w.jpeg" class="gallery__item" data-pswp-width="1200" data-pswp-height="800">
+        {% image './src/assets/images/portfolio/port3.jpg', 'new kitchen', 'gallery__image', 'lazy' %}
       </a>
-      <a href="/images/port4-840w.jpeg" class="cs-gallery-item" data-pswp-width="1200" data-pswp-height="800">
-        {% image './src/assets/images/portfolio/port4.jpg', 'new home construction', 'cs-gallery-image', 'lazy' %}
+      <a href="/images/port4-840w.jpeg" class="gallery__item" data-pswp-width="1200" data-pswp-height="800">
+        {% image './src/assets/images/portfolio/port4.jpg', 'new home construction', 'gallery__image', 'lazy' %}
       </a>
-      <a href="/images/port5-840w.jpeg" class="cs-gallery-item" data-pswp-width="1200" data-pswp-height="800">
-        {% image './src/assets/images/portfolio/port5.jpg', 'apartment addition', 'cs-gallery-image', 'lazy' %}
+      <a href="/images/port5-840w.jpeg" class="gallery__item" data-pswp-width="1200" data-pswp-height="800">
+        {% image './src/assets/images/portfolio/port5.jpg', 'apartment addition', 'gallery__image', 'lazy' %}
       </a>
-      <a href="/images/port6-840w.jpeg" class="cs-gallery-item" data-pswp-width="1200" data-pswp-height="800">
-        {% image './src/assets/images/portfolio/port6.jpg', 'apartment addition', 'cs-gallery-image', 'lazy' %}
+      <a href="/images/port6-840w.jpeg" class="gallery__item" data-pswp-width="1200" data-pswp-height="800">
+        {% image './src/assets/images/portfolio/port6.jpg', 'apartment addition', 'gallery__image', 'lazy' %}
       </a>
-      <a href="/images/port7-840w.jpeg" class="cs-gallery-item" data-pswp-width="1200" data-pswp-height="800">
-        {% image './src/assets/images/portfolio/port7.jpg', 'building a new wall', 'cs-gallery-image', 'lazy' %}
+      <a href="/images/port7-840w.jpeg" class="gallery__item" data-pswp-width="1200" data-pswp-height="800">
+        {% image './src/assets/images/portfolio/port7.jpg', 'building a new wall', 'gallery__image', 'lazy' %}
       </a>
-      <a href="/images/port8-840w.jpeg" class="cs-gallery-item" data-pswp-width="1200" data-pswp-height="800">
-        {% image './src/assets/images/portfolio/port8.jpg', 'new kitchen cabinets', 'cs-gallery-image', 'lazy' %}
+      <a href="/images/port8-840w.jpeg" class="gallery__item" data-pswp-width="1200" data-pswp-height="800">
+        {% image './src/assets/images/portfolio/port8.jpg', 'new kitchen cabinets', 'gallery__image', 'lazy' %}
       </a>
-      <a href="/images/port9-840w.jpeg" class="cs-gallery-item" data-pswp-width="1200" data-pswp-height="800">
-        {% image './src/assets/images/portfolio/port9.jpg', 'new kitchen cabinets', 'cs-gallery-image', 'lazy' %}
+      <a href="/images/port9-840w.jpeg" class="gallery__item" data-pswp-width="1200" data-pswp-height="800">
+        {% image './src/assets/images/portfolio/port9.jpg', 'new kitchen cabinets', 'gallery__image', 'lazy' %}
       </a>
     </div>
-    <a href="/gallery" class="button-solid">View Full Gallery</a>
+    <div class="gallery__button">
+      <a href="/gallery" class="btn btn--solid">View Full Gallery</a>
+    </div>
   </div>
 </section>
 
@@ -222,20 +240,20 @@ eleventyNavigation:
 <!--                   Reviews                    -->
 <!-- ============================================ -->
 
-<section id="reviews">
-  <div class="cs-container">
-    <span class="cs-topper">Our Reviews</span>
-    <h2 class="cs-title">Words From Our Customers</h2>
-    <p class="cs-text">
+<section class="reviews">
+  <div class="reviews__container">
+    <span class="reviews__topper">Our Reviews</span>
+    <h2 class="reviews__title">Words From Our Customers</h2>
+    <p class="reviews__text">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit dolor volutpat porttitor sagittis nunc nisl. Sagittis
       sit pellentesque gravida viverra. Leo ut sed euismod tortor risus et. Ornare non neque, leo, ornare. Lorem ipsum
       dolor sit amet.
     </p>
-    <ul class="cs-card-group">
+    <ul class="reviews__grid">
       <!-- Review 1 -->
-      <li class="cs-item">
+      <li class="reviews__item">
         <img
-          class="cs-item-img"
+          class="reviews__avatar"
           aria-hidden="true"
           loading="lazy"
           decoding="async"
@@ -243,18 +261,18 @@ eleventyNavigation:
           alt="profile picture"
           width="80"
           height="80"
-/>
-        <p class="cs-item-p">
+        />
+        <p class="reviews__quote">
           Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor habitasse nam sed tempor. Viverra magna
           pharetra rhoncus, nec sed ullamcorper lectus et. Auctor velit diam fermentum consequat. Feugiat viverra massa
           urna, volutpat orci imperdiet eget eget.
         </p>
-        <span class="cs-reviewer">
+        <span class="reviews__reviewer">
           Jon Doe
-          <span class="cs-desc">Homeowner</span>
+          <span class="reviews__role">Homeowner</span>
         </span>
         <img
-          class="cs-item-stars"
+          class="reviews__stars"
           aria-hidden="true"
           loading="lazy"
           decoding="async"
@@ -262,12 +280,12 @@ eleventyNavigation:
           alt="stars"
           width="96"
           height="16"
-/>
+        />
       </li>
       <!-- Review 2 -->
-      <li class="cs-item">
+      <li class="reviews__item">
         <img
-          class="cs-item-img"
+          class="reviews__avatar"
           aria-hidden="true"
           loading="lazy"
           decoding="async"
@@ -275,18 +293,18 @@ eleventyNavigation:
           alt="profile picture"
           width="80"
           height="80"
-/>
-        <p class="cs-item-p">
+        />
+        <p class="reviews__quote">
           Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor habitasse nam sed tempor. Viverra magna
           pharetra rhoncus, nec sed ullamcorper lectus et. Auctor velit diam fermentum consequat. Feugiat viverra massa
           urna, volutpat orci imperdiet eget eget.
         </p>
-        <span class="cs-reviewer">
+        <span class="reviews__reviewer">
           Jane Doe
-          <span class="cs-desc">Homeowner</span>
+          <span class="reviews__role">Homeowner</span>
         </span>
         <img
-          class="cs-item-stars"
+          class="reviews__stars"
           aria-hidden="true"
           loading="lazy"
           decoding="async"
@@ -294,29 +312,35 @@ eleventyNavigation:
           alt="stars"
           width="96"
           height="16"
-/>
+        />
       </li>
     </ul>
-    <a aria-label="read more reviews" href="/reviews" class="button-solid">Read More</a>
+    <div class="reviews__button">
+      <a aria-label="read more reviews" href="/reviews" class="btn btn--solid">Read More</a>
+    </div>
   </div>
 </section>
 <!-- ============================================ -->
 <!--             Final Call to Action             -->
 <!-- ============================================ -->
 
-<section id="cta">
-  <div class="container">
-    <h2 class="title">
+<section class="cta">
+  <div class="cta__container">
+    <h2 class="cta__title">
       Get It Done <br/>
       With Us Today
     </h2>
-    <p>
+    <p class="cta__text">
       Say something catchy, informative, and encouraging to click the button to go to the contact page. I like to add
       these to the bottom of all pages.
     </p>
-    <a href="/contact" class="button-solid">Get an Estimate Now</a>
+    <div class="cta__button">
+      <a href="/contact" class="btn btn--solid">Get an Estimate Now</a>
+    </div>
   </div>
-  {% image './src/assets/images/cabinets2.jpg', 'kitchen cabinets', '', 'lazy', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920px'%}
+  <div class="cta__background">
+    {% image './src/assets/images/cabinets2.jpg', 'kitchen cabinets', '', 'lazy', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920px'%}
+  </div>
 </section>
 
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>

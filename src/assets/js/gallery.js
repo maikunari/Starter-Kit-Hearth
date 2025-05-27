@@ -27,7 +27,7 @@ function initializeGallery() {
   
   // Check for both main gallery page and home page gallery
   const galleryGrid = document.querySelector('.gallery-grid');
-  const homeGalleryGrid = document.querySelector('.cs-gallery-grid');
+  const homeGalleryGrid = document.querySelector('.cs-gallery-grid, .gallery__grid');
   
   console.log('Gallery initialization:', {
     galleryGrid: !!galleryGrid,
@@ -170,7 +170,7 @@ function initHomeGallery(homeGalleryGrid) {
       updateHomeGalleryPhotoSwipeDimensions();
       
       // Add loaded class to items for animation
-      const items = homeGalleryGrid.querySelectorAll('.cs-gallery-item');
+      const items = homeGalleryGrid.querySelectorAll('.cs-gallery-item, .gallery__item');
       items.forEach(function(item, index) {
         setTimeout(function() {
           item.classList.add('masonry-loaded');
@@ -181,7 +181,7 @@ function initHomeGallery(homeGalleryGrid) {
   
   // Function to update PhotoSwipe dimensions for home gallery
   function updateHomeGalleryPhotoSwipeDimensions() {
-    const galleryItems = homeGalleryGrid.querySelectorAll('.cs-gallery-item');
+    const galleryItems = homeGalleryGrid.querySelectorAll('.cs-gallery-item, .gallery__item');
     
     galleryItems.forEach(function(item) {
       const img = item.querySelector('img');

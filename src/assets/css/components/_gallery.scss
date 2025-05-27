@@ -161,6 +161,16 @@
     }
   }
   
+  // Button styling
+  &__button {
+    margin-top: vars.$button-spacing;
+    text-align: center;
+    
+    @include mix.tablet-up {
+      margin-top: vars.$button-spacing-lg;
+    }
+  }
+  
   // Home gallery variant (smaller, more compact)
   &--home {
     padding: clamp(3rem, 6vw, 5rem) 0;
