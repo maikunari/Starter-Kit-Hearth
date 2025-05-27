@@ -36,9 +36,8 @@
     
         <link rel="preload" as="image" href="{{ preloadImg }}"/>
 
-        <!-- Loading in page specific CSS sheets from css block -->
-        <link rel="stylesheet" href="/assets/css/critical.css"/>
-        <link rel="stylesheet" href="{{ preloadCSS }}">
+        <!-- Loading combined CSS file -->
+        <link rel="stylesheet" href="/assets/css/style.css"/>
 
         <!--Put analytics tag here at the bottom to prevent it from render blocking-->
 
@@ -64,13 +63,8 @@
             {% include "footer.html" %}
 
             {% if process.env.NODE_ENV == 'production' %}
-            <link rel="stylesheet" href="/assets/css/styles.min.css">
             <script defer src="/assets/js/scripts.min.js"></script>
             {% else %}
-            <link rel="stylesheet" href="/assets/css/root.css">
-            <link rel="stylesheet" href="/assets/css/dark.css">
-            <link rel="stylesheet" href="/assets/css/critical.css">
-            <link rel="stylesheet" href="{{ preloadCSS }}">
             <script defer src="/assets/js/nav.js"></script>
             <script defer src="/assets/js/dark.js"></script>
             <script defer>

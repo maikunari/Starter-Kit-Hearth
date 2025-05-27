@@ -2,12 +2,14 @@
 
 // Colors
 $primary-color: var(--primary);
+$primary: var(--primary); // Alias for compatibility
 $header-color: var(--headerColor);
 $body-text-color: var(--bodyTextColor);
 $body-text-color-white: var(--bodyTextColorWhite);
 $accent-color: var(--accent);
 $dark-color: var(--dark);
 $primary-light-color: var(--primaryLight);
+$medium-color: var(--medium); // Added missing medium color
 
 // Font Sizes
 $topper-font-size: var(--topperFontSize);

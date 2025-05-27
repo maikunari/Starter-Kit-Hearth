@@ -7,13 +7,19 @@
     --primary: #FFBA19;
     --primaryShade: #ffd675;
     --primaryDark: #805d0d;
+    --primaryLight: #fff3d6;
     --bodyTextColor: #4E4B66;
     --bodyTextColorWhite: #FAFBFC;
     --headerColor: #1a1a1a;
+    --accent: #334756;
+    --dark: #082032;
+    --medium: #2C394B;
     /* 13px - 16px */
     --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
     /* 31px - 49px */
     --headerFontSize: clamp(1.9375rem, 4.5vw, 3.0625rem);
+    /* 16px - 18px */
+    --bodyFontSize: clamp(1rem, 1.2vw, 1.125rem);
     /* 60px - 100px top and bottom */
     --sectionPadding: clamp(3.75em, 7.82vw, 6.25em) 1rem;
   }
