@@ -1,24 +1,27 @@
 <div class="blog-sidebar">
-  <!--Featured-->
-  <div class="blog-featured-group">
-    <span class="blog-header">Featured Posts</span>
-    {%- for post in collections.featured | reverse -%}
-    <a class="blog-feature" href="{{ post.url }}">
-      <picture class="blog-featureImage">
-        <img
-          src="{{ post.data.image }}"
-          alt="{{ post.data.imageAlt }}"
-          width="60"
-          height="60"
-          decoding="async"
-        />
-      </picture>
-      <div class="content-group">
-        <h3 class="feature-h3">{{ post.data.blogTitle }}</h3>
-        <span class="feature-date">{{ post.date | postDate }}</span>
-      </div>
-    </a>
-    {%- endfor -%}
+  <!--Featured Posts Section-->
+  <div class="blog-sidebar__section">
+    <h2 class="blog-sidebar__title">Featured Posts</h2>
+    <ul class="blog-sidebar__featured-list">
+      {%- for post in collections.featured | reverse -%}
+      <li>
+        <a class="blog-sidebar__featured-item" href="{{ post.url }}">
+          <img
+            class="blog-sidebar__featured-image"
+            src="{{ post.data.image }}"
+            alt="{{ post.data.imageAlt }}"
+            width="60"
+            height="60"
+            decoding="async"
+          />
+          <div class="blog-sidebar__featured-content">
+            <h3 class="blog-sidebar__featured-title">{{ post.data.blogTitle }}</h3>
+            <span class="blog-sidebar__featured-date">{{ post.date | postDate }}</span>
+          </div>
+        </a>
+      </li>
+      {%- endfor -%}
+    </ul>
   </div>
   <!--Add anything else in the sidebar below-->
 </div>

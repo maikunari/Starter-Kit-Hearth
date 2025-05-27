@@ -25,64 +25,66 @@ eleventyNavigation:
 </section>
 
 <!-- ============================================ -->
-<!--              Main Blog Content               -->
+<!--                Blog Layout                   -->
 <!-- ============================================ -->
 
-<div class="blog-container main-content-wrapper">
+<section class="blog-layout">
+  <div class="blog-layout__container">
     <!--Main content -->
-    <div class="main-content">
-        <!-- ============================================ -->
-        <!--                 Blog Articles                -->
-        <!-- ============================================ -->
-
-        {% if collections.post | length == 0 %}
-            <h1>No Recent Posts</h1>
-        {% endif %}
-        {%- for post in collections.post | reverse -%}
-            <article class="recent-articles">
-                <!--Main Article Image-->
-                <picture class="blog-mainImage">
-                    <img
-                        src="{{ post.data.image }}"
-                        alt="{{ post.data.imageAlt }}"
-                        width="795"
-                        height="400"
-                        decoding="async"
-/>
-                </picture>
-                <!--Article Info-->
-                <div class="article-group">
-                    <div class="blog-authorGroup">
-                        <!--Author Image-->
-                        <picture class="blog-author-img">
-                            <img
-              src="/assets/svgs/profile.svg"
-              alt="house"
-              width="32"
-              height="32"
+    <main class="blog-layout__main">
+      {% if collections.post | length == 0 %}
+        <div class="blog-layout__no-posts">
+          <h1>No Recent Posts</h1>
+        </div>
+      {% endif %}
+      {%- for post in collections.post | reverse -%}
+        <article class="article-card">
+          <!--Main Article Image-->
+          <div class="article-card__image-wrapper">
+            <img
+              class="article-card__image"
+              src="{{ post.data.image }}"
+              alt="{{ post.data.imageAlt }}"
+              width="795"
+              height="400"
               decoding="async"
-/>
-                        </picture>
-                        <span class="blog-author">{{ post.data.author }}</span>
-                        <span aria-hidden="true" class="blog-dot"></span>
-                        <!--Blog Date-->
-                        <span class="blog-date">{{ post.date | postDate }}</span>
-                    </div>
-                    <h2 class="blog-h1">
-                        {{ post.data.blogTitle }}
-                    </h2>
-                    <p class="blog-desc">
-                        {{ post.data.blogDescription }}
-                    </p>
-                    <a href="{{ post.url }}" class="blog-link">Continue Reading</a>
-                </div>
-            </article>
-        {%- endfor -%}
-    </div>
+            />
+          </div>
+          <!--Article Info-->
+          <div class="article-card__content">
+            <div class="article-card__meta">
+              <!--Author Image-->
+              <img
+                class="article-card__author-image"
+                src="/assets/svgs/profile.svg"
+                alt="author"
+                width="32"
+                height="32"
+                decoding="async"
+              />
+              <span class="article-card__author">{{ post.data.author }}</span>
+              <span aria-hidden="true" class="article-card__dot"></span>
+              <!--Blog Date-->
+              <span class="article-card__date">{{ post.date | postDate }}</span>
+            </div>
+            <h2 class="article-card__title">
+              {{ post.data.blogTitle }}
+            </h2>
+            <p class="article-card__excerpt">
+              {{ post.data.blogDescription }}
+            </p>
+            <a href="{{ post.url }}" class="article-card__link">Continue Reading</a>
+          </div>
+        </article>
+      {%- endfor -%}
+    </main>
 
     <!-- ============================================ -->
-    <!--                Featured Posts                -->
+    <!--                Blog Sidebar                  -->
     <!-- ============================================ -->
 
-    {% include 'featured-post.html' %}
-</div>
+    <aside class="blog-layout__sidebar">
+      {% include 'featured-post.html' %}
+    </aside>
+  </div>
+</section>

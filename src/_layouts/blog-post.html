@@ -9,60 +9,62 @@ eleventyComputed:
 ---
 
 <!-- ============================================ -->
-<!--                    LANDING                   -->
+<!--                 Page Banner                  -->
 <!-- ============================================ -->
 
-<section id="int-hero">
+<section class="page-banner">
+  <div class="page-banner__container">
+    <h1 class="page-banner__title">{{ blogTitle }}</h1>
+  </div>
+  <div class="page-banner__background">
     {% image './src/assets/images/cabinets2.jpg', 'cabinets', '', 'lazy', '(max-width: 850px) 850px, 1920px'%}
+  </div>
 </section>
 
 <!-- ============================================ -->
-<!--              Main Blog Content               -->
+<!--                Blog Layout                   -->
 <!-- ============================================ -->
 
-<div class="blog-container main-content-wrapper">
+<section class="blog-layout">
+  <div class="blog-layout__container">
     <!--Main content -->
-    <div class="main-content">
-        <!-- ============================================ -->
-        <!--                  Blog Article                -->
-        <!-- ============================================ -->
+    <main class="blog-layout__main">
+      <article class="article-card article-card--single">
+        <!--Main Article Image-->
+        <div class="article-card__image-wrapper">
+          <img class="article-card__image" src="{{ image }}" alt="{{ imageAlt }}" width="795" height="400" decoding="async"/>
+        </div>
 
-        <article class="blog-article">
-            <!--Main Article Image-->
-            <picture class="blog-mainImage">
-                <img src="{{ image }}" alt="{{ imageAlt }}" width="795" height="400" decoding="async"/>
-            </picture>
-
-            <!--Article Info-->
-            <div class="article-group">
-                <h1 class="blog-h1">{{ blogTitle }}</h1>
-                <div class="blog-authorGroup">
-                    <!--Author Image-->
-                    <picture class="blog-author-img">
-                        <img
-            src="/assets/svgs/profile.svg"
-            alt="house"
-            width="32"
-            height="32"
-            decoding="async"
-/>
-                    </picture>
-                    <span class="blog-author">{{ author }}</span>
-                    <span aria-hidden="true" class="blog-dot"></span>
-                    <!--Blog Date-->
-                    <span class="blog-date">{{ date | postDate }}</span>
-                </div>
-            </div>
-            <section id="blog-content">
-                {{ content | safe }}
-            </section>
-        </article>
-    </div>
-    <!-- End .main-content -->
+        <!--Article Info-->
+        <div class="article-card__content">
+          <div class="article-card__meta">
+            <!--Author Image-->
+            <img
+              class="article-card__author-image"
+              src="/assets/svgs/profile.svg"
+              alt="author"
+              width="32"
+              height="32"
+              decoding="async"
+            />
+            <span class="article-card__author">{{ author }}</span>
+            <span aria-hidden="true" class="article-card__dot"></span>
+            <!--Blog Date-->
+            <span class="article-card__date">{{ date | postDate }}</span>
+          </div>
+          <section class="article-card__body">
+            {{ content | safe }}
+          </section>
+        </div>
+      </article>
+    </main>
 
     <!-- ============================================ -->
-    <!--                   Sidebar                    -->
+    <!--                Blog Sidebar                  -->
     <!-- ============================================ -->
 
-    {% include 'featured-post.html' %}
-</div>
+    <aside class="blog-layout__sidebar">
+      {% include 'featured-post.html' %}
+    </aside>
+  </div>
+</section>
