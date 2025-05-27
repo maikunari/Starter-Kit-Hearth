@@ -108,16 +108,28 @@
   
   // Parallax variant
   &--parallax {
-    .hero__picture {
-      @include mix.tablet-up {
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        
-        img {
-          display: none;
-        }
+    @include mix.desktop-up {
+      background-image: url('/images/landing-1200w.jpeg');
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      
+      // Add overlay for parallax background
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: -1;
+        pointer-events: none;
+      }
+      
+      .hero__picture {
+        display: none;
       }
     }
   }

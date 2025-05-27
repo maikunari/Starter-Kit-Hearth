@@ -15,33 +15,37 @@ eleventyNavigation:
 <!--                    Hero                      -->
 <!-- ============================================ -->
 
-<section id="hero">
-  <div class="cs-container">
-    <div class="cs-flex-group">
-      <span class="cs-topper">mountain hiking society</span>
-      <h1 class="cs-title">Explore the World with Exciting People</h1>
-      <p class="cs-text">
+<section class="hero hero--parallax">
+  <div class="hero__container">
+    <div class="hero__content">
+      <span class="hero__topper">mountain hiking society</span>
+      <h1 class="hero__title">Explore the World with Exciting People</h1>
+      <p class="hero__text">
         Tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius. Nibh tortor id aliquet lectus proin nibh
         condimentum.
       </p>
-      <a href="" class="cs-button-solid">Explore More</a>
-      <a href="" class="cs-button-transparent">
-        <img
-          class="cs-img"
-          loading="lazy"
-          decoding="async"
-          src="https://csimg.nyc3.digitaloceanspaces.com/Hero/play.svg"
-          alt="play icon"
-          width="17"
-          height="17"
-/>
-        Learn More
-      </a>
+      <div class="hero__buttons">
+        <a href="" class="btn btn--hero-solid">Explore More</a>
+        <a href="" class="btn btn--hero-transparent">
+          <img
+            class="btn__icon"
+            loading="lazy"
+            decoding="async"
+            src="https://csimg.nyc3.digitaloceanspaces.com/Hero/play.svg"
+            alt="play icon"
+            width="17"
+            height="17"
+          />
+          Learn More
+        </a>
+      </div>
     </div>
   </div>
 
   <!-- Background Image -->
-  {% image './src/assets/images/landing.jpg', 'mountains', 'cs-picture', 'eager', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920px'%}
+  <picture class="hero__picture">
+    {% image './src/assets/images/landing.jpg', 'mountains', '', 'eager', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920px'%}
+  </picture>
 </section>
 
 <!-- ============================================ -->

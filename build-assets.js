@@ -1,24 +1,32 @@
 const esbuild = require('esbuild');
 const fs = require('fs');
 
-// CSS Files to Concatenate
-const cssFiles = [
-  'public/css/root.css',
-  'public/css/dark.css',
-  'public/css/critical.css',
-  'public/css/home.css',
-  'public/css/about.css',
-  'public/css/gallery.css',
-  'public/css/blog.css',
-  'public/css/contact.css',
-  'public/css/reviews.css'
-];
+// CSS is now handled by SCSS compilation in build:scss step
+// We just need to copy the compiled CSS to the minified location
+const cssSource = 'public/assets/css/style.css';
+const cssTarget = 'public/css/styles.min.css';
 
-// JS Files to Concatenate (excluding PhotoSwipe, which uses ES modules via CDN)
-const jsFiles = [
-  'public/assets/js/nav.js',
-  'public/assets/js/gallery.js',
-];
+// Ensure the target directory exists
+if (!fs.existsSync('public/css')) {
+  fs.mkdirSync('public/css', { recursive: true });
+}
+
+// Copy the compiled CSS
+if (fs.existsSync(cssSource)) {
+  fs.copyFileSync(cssSource, cssTarget);
+  console.log('CSS copied to public/css/styles.min.css');
+} else {
+  console.error('CSS source file not found:', cssSource);
+  process.exit(1);
+}
+
+// JS Files to Concatenate (only existing files)
+const jsFiles = [];
+
+// Check if gallery.js exists and add it
+if (fs.existsSync('src/assets/js/gallery.js')) {
+  jsFiles.push('src/assets/js/gallery.js');
+}
 
 // Inline JS (the scroll script)
 const inlineJs = `
@@ -33,32 +41,15 @@ document.addEventListener('scroll', (e) => {
 `;
 
 // Write inline JS to a temporary file
-fs.writeFileSync('public/assets/js/inline-scroll.js', inlineJs);
-jsFiles.push('public/assets/js/inline-scroll.js');
+fs.writeFileSync('temp-inline-scroll.js', inlineJs);
+jsFiles.push('temp-inline-scroll.js');
 
-// Create a temporary CSS entry point that imports all CSS files
-const cssImports = cssFiles.map(file => `@import "${file}";`).join('\n');
-fs.writeFileSync('temp-css-entry.css', cssImports);
-
-// Create a temporary JS entry point that imports all JS files
-const jsImports = jsFiles.map(file => `import "${file}";`).join('\n');
-fs.writeFileSync('temp-js-entry.js', jsImports);
-
-// Build CSS
-esbuild.build({
-  entryPoints: ['temp-css-entry.css'],
-  outfile: 'public/css/styles.min.css',
-  bundle: true,
-  minify: true,
-  sourcemap: false, // Set to true for debugging
-}).then(() => {
-  console.log('CSS concatenated and minified into public/css/styles.min.css');
-  // Clean up temporary CSS entry file
-  fs.unlinkSync('temp-css-entry.css');
-}).catch(err => {
-  console.error('CSS build failed:', err);
-  process.exit(1);
-});
+// Only create JS entry if we have files to bundle
+if (jsFiles.length > 0) {
+  // Create a temporary JS entry point that imports all JS files
+  const jsImports = jsFiles.map(file => `import "./${file}";`).join('\n');
+  fs.writeFileSync('temp-js-entry.js', jsImports);
+}
 
 // Build JS (legacy scripts)
 esbuild.build({

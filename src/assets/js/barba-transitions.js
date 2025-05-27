@@ -85,6 +85,24 @@ barba.init({
   ]
 });
 
+// PhotoSwipe initialization function
+function initPhotoSwipe() {
+  // Destroy any existing PhotoSwipe instances
+  if (window.photoSwipeLightbox) {
+    window.photoSwipeLightbox.destroy();
+  }
+  
+  // Initialize PhotoSwipe
+  import('https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js').then(({ default: PhotoSwipeLightbox }) => {
+    window.photoSwipeLightbox = new PhotoSwipeLightbox({
+      gallery: '.pswp-gallery',
+      children: 'a',
+      pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js'),
+    });
+    window.photoSwipeLightbox.init();
+  });
+}
+
 // Hook to reinitialize scripts after page transition
 barba.hooks.after(() => {
   // Re-run any global scripts that need to be reinitialized
@@ -94,6 +112,22 @@ barba.hooks.after(() => {
     window.initializeNavigation();
   }
   
+  // Always reinitialize gallery scripts (both home and gallery pages have galleries)
+  if (typeof window.initializeGallery === 'function') {
+    // Small delay to ensure DOM is ready
+    setTimeout(() => {
+      window.initializeGallery();
+    }, 100);
+  }
+  
+  // Reinitialize PhotoSwipe
+  setTimeout(() => {
+    initPhotoSwipe();
+  }, 200);
+  
   // Scroll to top after transition
   window.scrollTo(0, 0);
 });
+
+// Initialize PhotoSwipe on initial page load
+document.addEventListener('DOMContentLoaded', initPhotoSwipe);

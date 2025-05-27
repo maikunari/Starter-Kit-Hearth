@@ -2,6 +2,7 @@
 @use "main-new";
 
 // Legacy files (temporary - to be migrated)
+@use "root"; // Contains footer and other essential styles
 @use "mobile-nav-options";
 @use "contact";
 @use "blog";
