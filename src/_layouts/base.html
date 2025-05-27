@@ -10,9 +10,7 @@
 
         <meta name="description" content="{{ description }}">
         <meta name="keywords" content="">
-<!--
-        <link rel="stylesheet" href="/assets/css/transition.css">
-    -->
+    
         <!--Social Media Display-->
         <meta property="og:title" content="{{ metaTitle }}"/>
         <meta property="og:description" content="{{ description }}"/>
@@ -59,49 +57,54 @@
         <a class="skip" aria-label="skip to main content" href="#main">Click To Skip To Main Content</a>
 
         {% if page.url != '/admin/' %}
-        <div data-barba="container" data-barba-namespace="{{ page.fileSlug }}">
+        <div data-barba="wrapper">
+            <div data-barba="container" data-barba-namespace="{{ page.fileSlug }}">
         {% endif %}
-            {% include "header.html" %}
-            <main id="main">{{ content | safe }}</main>
-            {% include "footer.html" %}
-
-            <!-- Masonry.js via CDN -->
-            <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-            
-            {% if process.env.NODE_ENV == 'production' %}
-            <script defer src="/assets/js/scripts.min.js"></script>
-            {% else %}
-            <script defer src="/assets/js/nav.js"></script>
-            <script defer src="/assets/js/gallery.js"></script>
-            <script defer>
-                document.addEventListener('scroll', (e) => {
-                    const scroll = document.documentElement.scrollTop;
-                    if (scroll >= 100) {
-                        document.querySelector('body').classList.add('scroll');
-                    } else {
-                        document.querySelector('body').classList.remove('scroll');
-                    }
-                });
-            </script>
-            {% endif %}
-
-            <!-- PhotoSwipe JS via CDN -->
-            <script type="module" src="https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js"></script>
-            <script type="module" src="https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js"></script>
-            
-            <!-- Initialize PhotoSwipe -->
-            <script type="module">
-                import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js';
-                const lightbox = new PhotoSwipeLightbox({
-                    gallery: '.pswp-gallery',
-                    children: 'a',
-                    pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js')
-                });
-                lightbox.init();
-            </script>
-
+                {% include "header.html" %}
+                <main id="main">{{ content | safe }}</main>
+                {% include "footer.html" %}
         {% if page.url != '/admin/' %}
+            </div>
         </div>
         {% endif %}
+
+        <!-- Scripts outside Barba container -->
+        <!-- Masonry.js via CDN -->
+        <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+        
+        {% if process.env.NODE_ENV == 'production' %}
+        <script defer src="/assets/js/scripts.min.js"></script>
+        {% else %}
+        <script defer src="/assets/js/nav.js"></script>
+        <script defer src="/assets/js/gallery.js"></script>
+        <script defer>
+            document.addEventListener('scroll', (e) => {
+                const scroll = document.documentElement.scrollTop;
+                if (scroll >= 100) {
+                    document.querySelector('body').classList.add('scroll');
+                } else {
+                    document.querySelector('body').classList.remove('scroll');
+                }
+            });
+        </script>
+        {% endif %}
+        
+        <!-- Barba.js for page transitions -->
+        <script type="module" src="/assets/js/barba-transitions.js"></script>
+
+        <!-- PhotoSwipe JS via CDN -->
+        <script type="module" src="https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js"></script>
+        <script type="module" src="https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js"></script>
+        
+        <!-- Initialize PhotoSwipe -->
+        <script type="module">
+            import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js';
+            const lightbox = new PhotoSwipeLightbox({
+                gallery: '.pswp-gallery',
+                children: 'a',
+                pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js')
+            });
+            lightbox.init();
+        </script>
     </body>
 </html>

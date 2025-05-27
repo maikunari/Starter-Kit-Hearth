@@ -12,15 +12,16 @@
       width: 100%;
       max-width: 80rem;
       margin: auto;
-      @include mix.flex-center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       flex-direction: column;
       row-gap: 2.5rem;
     }
-    .cs-left {
-      @include mix.responsive-font-size(0.7em, 2.31vw);
-      width: 39.4375em;
-      height: 39.75em;
-      position: relative;
+    .cs-left {font-size: min(1.2vw, 1em);
+      flex: none;
+      /* Ensure consistent width */
+      max-width: 39.4375em;
     }
     .cs-picture {
       border-radius: 1.5em;
@@ -135,12 +136,16 @@
     justify-content: space-between;
     gap: 3.25rem;
   }
-  .cs-left {
+  #sbs .cs-left {
     font-size: min(1.2vw, 1em);
     flex: none;
+    /* Ensure consistent width */
+    max-width: 39.4375em;
   }
-  .cs-right {
+  #sbs .cs-right {
     margin: 0;
+    /* Take up remaining space */
+    flex: 1;
   }
 }
 
@@ -291,9 +296,13 @@
     flex: none;
     /* sends it to the right */
     order: 2;
+    /* Ensure consistent width */
+    max-width: 39.4375em;
   }
   #sbs-r .cs-right {
     margin: 0;
+    /* Take up remaining space */
+    flex: 1;
   }
 }
 

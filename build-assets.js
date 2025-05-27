@@ -60,17 +60,17 @@ esbuild.build({
   process.exit(1);
 });
 
-// Build JS
+// Build JS (legacy scripts)
 esbuild.build({
   entryPoints: ['temp-js-entry.js'],
-  outfile: 'public/js/scripts.min.js',
+  outfile: 'public/assets/js/scripts.min.js',
   bundle: true,
   minify: true,
   sourcemap: false, // Set to true for debugging
   format: 'iife', // Use IIFE format since scripts are not modules
   globalName: 'app', // Optional: Expose scripts under a global namespace
 }).then(() => {
-  console.log('JS concatenated and minified into public/js/scripts.min.js');
+  console.log('JS concatenated and minified into public/assets/js/scripts.min.js');
   // Clean up temporary files
   fs.unlinkSync('temp-js-entry.js');
   fs.unlinkSync('public/assets/js/inline-scroll.js');
@@ -78,3 +78,4 @@ esbuild.build({
   console.error('JS build failed:', err);
   process.exit(1);
 });
+

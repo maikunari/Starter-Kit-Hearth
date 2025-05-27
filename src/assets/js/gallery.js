@@ -1,8 +1,8 @@
 // Gallery functionality with Masonry.js and PhotoSwipe integration
 // Masonry will be loaded via CDN in base.html
 
-// Initialize gallery when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
+// Gallery initialization function
+function initializeGallery() {
   const galleryGrid = document.querySelector('.gallery-grid');
   
   if (galleryGrid && typeof Masonry !== 'undefined') {
@@ -88,4 +88,10 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 250);
     });
   }
-}); 
+}
+
+// Expose function globally for Barba.js
+window.initializeGallery = initializeGallery;
+
+// Initialize gallery when DOM is loaded
+document.addEventListener('DOMContentLoaded', initializeGallery);
