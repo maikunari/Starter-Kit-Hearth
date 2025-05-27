@@ -13,44 +13,60 @@ eleventyNavigation:
 <!-- Enter html code below -->
 
 <!-- ============================================ -->
-<!--                    LANDING                   -->
+<!--                 Page Banner                  -->
 <!-- ============================================ -->
 
-<section id="int-hero">
-  <h1 id="home-h">About Us</h1>
-  {% image './src/assets/images/cabinets2.jpg', 'cabinets', '', 'lazy', '(max-width: 850px) 850px, 1920px'%}
+<section class="page-banner">
+  <div class="page-banner__container">
+    <h1 class="page-banner__title">About Us</h1>
+  </div>
+  <div class="page-banner__background">
+    {% image './src/assets/images/cabinets2.jpg', 'cabinets', '', 'lazy', '(max-width: 850px) 850px, 1920px'%}
+  </div>
 </section>
 
 <!-- ============================================ -->
-<!--                 Side By Side                 -->
+<!--                 Content Block                -->
 <!-- ============================================ -->
 
-<section id="sbs">
-  <div class="cs-container">
+<section class="content-block">
+  <div class="content-block__container">
     <!-- Left Image Section -->
-    <div class="cs-left">
-      {% image './src/assets/images/cabinets2.jpg', 'cabinets', 'cs-picture cs-picture1', 'lazy'%}
-      {% image './src/assets/images/construction.jpg', 'house', 'cs-picture cs-picture2', 'lazy'%}
+    <div class="content-block__media">
+      <picture class="content-block__picture content-block__picture--primary">
+        {% image './src/assets/images/cabinets2.jpg', 'cabinets', 'content-block__image', 'lazy'%}
+      </picture>
+      <picture class="content-block__picture content-block__picture--secondary">
+        {% image './src/assets/images/construction.jpg', 'house', 'content-block__image', 'lazy'%}
+      </picture>
     </div>
     <!-- Right Content Section-->
-    <div class="cs-right">
-      <span class="cs-topper">About Us</span>
-      <h2 class="cs-title">About Company Title</h2>
-      <p class="cs-text">
-                In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per.
-            </p>
-      <p class="cs-text">
-                In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per.
-            </p>
-      <div class="cs-flex-group">
-        <p class="cs-flex-p">
-                    In consequat tincidunt turpis sit amet imperdiet. Praesent Classei consequat tincidunt turpis sit amet imperdiet for mind.
-                </p>
-        <span class="cs-name">Justin Time</span>
-        <span class="cs-job">CEO-Founder</span>
-        <img class="cs-quote-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/SideBySide/quote-white.svg" alt="gavel" width="136" height="77">
+    <div class="content-block__content">
+      <span class="content-block__topper">About Us</span>
+      <h2 class="content-block__title">About Company Title</h2>
+      <p class="content-block__text">
+        In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per.
+      </p>
+      <p class="content-block__text">
+        In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per.
+      </p>
+      <div class="content-block__quote">
+        <p class="content-block__quote-text">
+          In consequat tincidunt turpis sit amet imperdiet. Praesent Classei consequat tincidunt turpis sit amet imperdiet for mind.
+        </p>
+        <span class="content-block__quote-author">Justin Time</span>
+        <span class="content-block__quote-title">CEO-Founder</span>
+        <img
+          class="content-block__quote-icon"
+          loading="lazy"
+          decoding="async"
+          src="https://csimg.nyc3.digitaloceanspaces.com/SideBySide/quote-white.svg"
+          alt="gavel"
+          width="136"
+          height="77"
+        />
       </div>
-      <a href="" class="button-solid">More About Us</a>
+      <a href="/about" class="btn btn--solid">More About Us</a>
     </div>
   </div>
 </section>

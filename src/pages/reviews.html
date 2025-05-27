@@ -12,104 +12,211 @@ eleventyNavigation:
 <!-- Enter html code below -->
 
 <!-- ============================================ -->
-<!--                    LANDING                   -->
+<!--                 Page Banner                  -->
 <!-- ============================================ -->
 
-<section id="int-hero">
-  <h1 id="home-h">Our Reviews</h1>
-  {% image './src/assets/images/cabinets2.jpg', 'cabinets', '', 'lazy', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920px'%}
+<section class="page-banner">
+  <div class="page-banner__container">
+    <h1 class="page-banner__title">Our Reviews</h1>
+  </div>
+  <div class="page-banner__background">
+    {% image './src/assets/images/cabinets2.jpg', 'cabinets', '', 'lazy', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920px'%}
+  </div>
 </section>
 
 <!-- ============================================ -->
-<!--                  Reviews                     -->
+<!--                   Reviews                    -->
 <!-- ============================================ -->
 
-<section id="reviews">
-  <div class="container">
-    <div class="review">
-      <picture>
-        <img class="profile" loading="lazy" decoding="async" src="/assets/svgs/profile.svg" alt="" width="99" height="99">
-      </picture>
-      <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed recusandae rerum unde similique ratione sapiente necessitatibus natus mollitia nam iusto.
-                </p>
-      <div class="star-group">
-        <span class="name">B Miller<span class="desc">Homeowner</span></span>
-        <picture>
-          <img aria-hidden="true" loading="lazy" decoding="async" src="/assets/svgs/stars.svg" alt="stars" width="91" height="15">
-        </picture>
-      </div>
-    </div>
-    <div class="review">
-      <picture>
-        <img class="profile" loading="lazy" decoding="async" src="/assets/svgs/profile.svg" alt="" width="99" height="99">
-      </picture>
-      <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed recusandae rerum unde similique ratione sapiente necessitatibus natus mollitia nam iusto.
-                </p>
-      <div class="star-group">
-        <span class="name">Vincent M.<span class="desc">Homeowner</span></span>
-        <picture>
-          <img aria-hidden="true" loading="lazy" decoding="async" src="/assets/svgs/stars.svg" alt="stars" width="91" height="15">
-        </picture>
-      </div>
-    </div>
-    <div class="review">
-      <picture>
-        <img class="profile" loading="lazy" decoding="async" src="/assets/svgs/profile.svg" alt="" width="99" height="99">
-      </picture>
-      <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed recusandae rerum unde similique ratione sapiente necessitatibus natus mollitia nam iusto.
-                </p>
-      <div class="star-group">
-        <span class="name">Alex L.<span class="desc">Homeowner</span></span>
-        <picture>
-          <img aria-hidden="true" loading="lazy" decoding="async" src="/assets/svgs/stars.svg" alt="stars" width="91" height="15">
-        </picture>
-      </div>
-    </div>
-    <div class="review">
-      <picture>
-        <img class="profile" loading="lazy" decoding="async" src="/assets/svgs/profile-woman.svg" alt="" width="99" height="99">
-      </picture>
-      <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed recusandae rerum unde similique ratione sapiente necessitatibus natus mollitia nam iusto.
-                </p>
-      <div class="star-group">
-        <span class="name">Arrieana M.<span class="desc">Homeowner</span></span>
-        <picture>
-          <img aria-hidden="true" loading="lazy" decoding="async" src="/assets/svgs/stars.svg" alt="stars" width="91" height="15">
-        </picture>
-      </div>
-    </div>
-    <div class="review">
-      <picture>
-        <img class="profile" loading="lazy" decoding="async" src="/assets/svgs/profile.svg" alt="" width="99" height="99">
-      </picture>
-      <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed recusandae rerum unde similique ratione sapiente necessitatibus natus mollitia nam iusto.
-                </p>
-      <div class="star-group">
-        <span class="name">Leo N.<span class="desc">Homeowner</span></span>
-        <picture>
-          <img aria-hidden="true" loading="lazy" decoding="async" src="/assets/svgs/stars.svg" alt="stars" width="91" height="15">
-        </picture>
-      </div>
-    </div>
-    <div class="review">
-      <picture>
-        <img class="profile" loading="lazy" decoding="async" src="/assets/svgs/profile.svg" alt="" width="99" height="99">
-      </picture>
-      <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed recusandae rerum unde similique ratione sapiente necessitatibus natus mollitia nam iusto.
-                </p>
-      <div class="star-group">
-        <span class="name">Brian A.<span class="desc">Homeowner</span></span>
-        <picture>
-          <img aria-hidden="true" loading="lazy" decoding="async" src="/assets/svgs/stars.svg" alt="stars" width="91" height="15">
-        </picture>
-      </div>
-    </div>
+<section class="reviews">
+  <div class="reviews__container">
+    <span class="reviews__topper">Customer Feedback</span>
+    <h2 class="reviews__title">What Our Customers Say</h2>
+    <p class="reviews__text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit dolor volutpat porttitor sagittis nunc nisl. Sagittis sit pellentesque gravida viverra.
+    </p>
+    <ul class="reviews__grid">
+      <!-- Review 1 -->
+      <li class="reviews__item">
+        <img
+          class="reviews__avatar"
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          src="/assets/svgs/profile.svg"
+          alt="profile picture"
+          width="80"
+          height="80"
+        />
+        <p class="reviews__quote">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed recusandae rerum unde similique ratione sapiente necessitatibus natus mollitia nam iusto.
+        </p>
+        <span class="reviews__reviewer">
+          B Miller
+          <span class="reviews__role">Homeowner</span>
+        </span>
+        <img
+          class="reviews__stars"
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          src="/assets/svgs/stars.svg"
+          alt="stars"
+          width="91"
+          height="15"
+        />
+      </li>
+      <!-- Review 2 -->
+      <li class="reviews__item">
+        <img
+          class="reviews__avatar"
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          src="/assets/svgs/profile.svg"
+          alt="profile picture"
+          width="80"
+          height="80"
+        />
+        <p class="reviews__quote">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed recusandae rerum unde similique ratione sapiente necessitatibus natus mollitia nam iusto.
+        </p>
+        <span class="reviews__reviewer">
+          Vincent M.
+          <span class="reviews__role">Homeowner</span>
+        </span>
+        <img
+          class="reviews__stars"
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          src="/assets/svgs/stars.svg"
+          alt="stars"
+          width="91"
+          height="15"
+        />
+      </li>
+      <!-- Review 3 -->
+      <li class="reviews__item">
+        <img
+          class="reviews__avatar"
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          src="/assets/svgs/profile.svg"
+          alt="profile picture"
+          width="80"
+          height="80"
+        />
+        <p class="reviews__quote">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed recusandae rerum unde similique ratione sapiente necessitatibus natus mollitia nam iusto.
+        </p>
+        <span class="reviews__reviewer">
+          Alex L.
+          <span class="reviews__role">Homeowner</span>
+        </span>
+        <img
+          class="reviews__stars"
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          src="/assets/svgs/stars.svg"
+          alt="stars"
+          width="91"
+          height="15"
+        />
+      </li>
+      <!-- Review 4 -->
+      <li class="reviews__item">
+        <img
+          class="reviews__avatar"
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          src="/assets/svgs/profile-woman.svg"
+          alt="profile picture"
+          width="80"
+          height="80"
+        />
+        <p class="reviews__quote">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed recusandae rerum unde similique ratione sapiente necessitatibus natus mollitia nam iusto.
+        </p>
+        <span class="reviews__reviewer">
+          Arrieana M.
+          <span class="reviews__role">Homeowner</span>
+        </span>
+        <img
+          class="reviews__stars"
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          src="/assets/svgs/stars.svg"
+          alt="stars"
+          width="91"
+          height="15"
+        />
+      </li>
+      <!-- Review 5 -->
+      <li class="reviews__item">
+        <img
+          class="reviews__avatar"
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          src="/assets/svgs/profile.svg"
+          alt="profile picture"
+          width="80"
+          height="80"
+        />
+        <p class="reviews__quote">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed recusandae rerum unde similique ratione sapiente necessitatibus natus mollitia nam iusto.
+        </p>
+        <span class="reviews__reviewer">
+          Leo N.
+          <span class="reviews__role">Homeowner</span>
+        </span>
+        <img
+          class="reviews__stars"
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          src="/assets/svgs/stars.svg"
+          alt="stars"
+          width="91"
+          height="15"
+        />
+      </li>
+      <!-- Review 6 -->
+      <li class="reviews__item">
+        <img
+          class="reviews__avatar"
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          src="/assets/svgs/profile.svg"
+          alt="profile picture"
+          width="80"
+          height="80"
+        />
+        <p class="reviews__quote">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed recusandae rerum unde similique ratione sapiente necessitatibus natus mollitia nam iusto.
+        </p>
+        <span class="reviews__reviewer">
+          Brian A.
+          <span class="reviews__role">Homeowner</span>
+        </span>
+        <img
+          class="reviews__stars"
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          src="/assets/svgs/stars.svg"
+          alt="stars"
+          width="91"
+          height="15"
+        />
+      </li>
+    </ul>
   </div>
 </section>
 
