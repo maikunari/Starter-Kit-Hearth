@@ -22,7 +22,7 @@ A modern, theme-aware static site generator built with Eleventy, featuring compr
 This starter kit provides everything needed to create modern, responsive websites with a powerful theming system, scroll animations, and client-friendly blog management. Built on Eleventy with modern SCSS architecture and comprehensive component system.
 
 ### Live Demo
-[View Demo](https://starterkit-v4-eleventy.netlify.app/)
+Coming Soon
 
 ## Quick Start
 
@@ -50,7 +50,7 @@ Visit `http://localhost:8080` to view your site.
 - **SCSS Architecture** - Modern, scalable component-based styling
 - **Scroll Animations** - GSAP-powered scroll-triggered animations
 - **Image Optimization** - Automatic image compression and next-gen formats
-- **Netlify CMS Integration** - Client-friendly blog management
+- **Decap CMS Integration** - Client-friendly blog management
 - **Responsive Design** - Mobile-first, fully responsive layouts
 - **SEO Optimized** - Meta tags, sitemaps, and performance optimized
 
@@ -381,9 +381,9 @@ gsap.fromTo('.hero__title, .hero__text, .hero__button', {
 
 ## Blog System
 
-### Netlify CMS Integration
+### Decap CMS Integration
 
-The blog system uses Netlify CMS for client-friendly content management.
+The blog system uses Decap CMS for client-friendly content management.
 
 #### Blog Post Structure
 
@@ -471,7 +471,7 @@ starter-kit-hearth/
 │   ├── _layouts/           # Page layouts
 │   │   ├── base.html       # Base layout
 │   │   └── blog-post.html  # Blog post layout
-│   ├── admin/              # Netlify CMS config
+│   ├── admin/              # Decap CMS config
 │   │   ├── index.html      # CMS interface
 │   │   └── config.yml      # CMS configuration
 │   ├── assets/             # Static assets
