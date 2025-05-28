@@ -2,28 +2,30 @@
 // VARIABLES
 // =============================================================================
 
+@use 'schemes' as schemes;
+
 // Colors
 // -----------------------------------------------------------------------------
-$primary: var(--primary);
-$primary-shade: var(--primaryShade);
-$primary-dark: var(--primaryDark);
-$primary-light: var(--primaryLight);
-$header-color: var(--headerColor);
-$body-text-color: var(--bodyTextColor);
-$body-text-color-white: var(--bodyTextColorWhite);
-$accent: var(--accent);
-$dark: var(--dark);
-$medium: var(--medium);
+$primary: schemes.color(primary);
+$primary-shade: schemes.color(primary-shade);
+$primary-dark: schemes.color(primary-dark);
+$primary-light: schemes.color(primary-light);
+$header-color: schemes.color(header-color);
+$body-text-color: schemes.color(body-text-color);
+$body-text-color-white: schemes.color(body-text-color-white);
+$accent: schemes.color(accent);
+$dark: schemes.color(dark);
+$medium: schemes.color(medium);
 
 // Typography
 // -----------------------------------------------------------------------------
-$topper-font-size: var(--topperFontSize);
-$header-font-size: var(--headerFontSize);
-$body-font-size: var(--bodyFontSize);
+$topper-font-size: clamp(0.8125rem, 1.6vw, 1rem);
+$header-font-size: clamp(1.9375rem, 4.5vw, 3.0625rem);
+$body-font-size: clamp(1rem, 1.2vw, 1.125rem);
 
 // Spacing
 // -----------------------------------------------------------------------------
-$section-padding: var(--sectionPadding);
+$section-padding: clamp(3.75em, 7.82vw, 6.25em) 1rem;
 $button-spacing: 3rem;
 $button-spacing-lg: 4rem;
 

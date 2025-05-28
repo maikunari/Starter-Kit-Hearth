@@ -1,0 +1,142 @@
+// =============================================================================
+// COLOR SCHEMES
+// =============================================================================
+
+@use 'sass:map';
+
+// Complete color schemes with 10 properties each for maximum flexibility
+$color-schemes: (
+  // ARTISAN SCHEME: Current warm golden theme with blue-gray accents
+  // Perfect for: Craftspeople, artisans, premium services, warm brands
+  artisan: (
+    primary: #FFBA19,
+    primary-shade: #ffd675,
+    primary-dark: #805d0d,
+    primary-light: #fff3d6,
+    header-color: #1a1a1a,
+    body-text-color: #4E4B66,
+    body-text-color-white: #FAFBFC,
+    accent: #334756,
+    dark: #082032,
+    medium: #2C394B
+  ),
+
+  // MODERN SCHEME: Sleek, tech-inspired, bold contrasts
+  // Perfect for: Tech companies, startups, digital agencies, modern brands
+  modern: (
+    primary: #2b6cb0,
+    primary-shade: #4299e1,
+    primary-dark: #1e4a73,
+    primary-light: #e6f3ff,
+    header-color: #1a202c,
+    body-text-color: #4a5568,
+    body-text-color-white: #ffffff,
+    accent: #00b7eb,
+    dark: #1a365d,
+    medium: #2d3748
+  ),
+
+  // ELEGANT SCHEME: Refined, luxurious, muted tones
+  // Perfect for: Law firms, consulting, high-end services, professional brands
+  elegant: (
+    primary: #2c5282,
+    primary-shade: #4299e1,
+    primary-dark: #1e3a5f,
+    primary-light: #e6f3ff,
+    header-color: #2d3748,
+    body-text-color: #4a4a4a,
+    body-text-color-white: #ffffff,
+    accent: #d4af37,
+    dark: #1a202c,
+    medium: #4a5568
+  ),
+
+  // RUSTIC SCHEME: Earthy, organic, warm tones
+  // Perfect for: Outdoor brands, organic products, eco-friendly, natural brands
+  rustic: (
+    primary: #2f855a,
+    primary-shade: #48bb78,
+    primary-dark: #22543d,
+    primary-light: #f0fff4,
+    header-color: #3c2f2f,
+    body-text-color: #553c3c,
+    body-text-color-white: #ffffff,
+    accent: #d69e2e,
+    dark: #2d1b1b,
+    medium: #4a3636
+  ),
+
+  // VIBRANT SCHEME: Bold, energetic, lively
+  // Perfect for: Creative agencies, entertainment, youth brands, energetic brands
+  vibrant: (
+    primary: #00a3ff,
+    primary-shade: #38b2ff,
+    primary-dark: #0077cc,
+    primary-light: #e6f7ff,
+    header-color: #1a202c,
+    body-text-color: #2d3748,
+    body-text-color-white: #ffffff,
+    accent: #ff4b5c,
+    dark: #1a1a1a,
+    medium: #4a5568
+  ),
+
+  // MINIMALIST SCHEME: Simple, clean, professional
+  // Perfect for: Architecture, design studios, minimal brands, clean aesthetics
+  minimalist: (
+    primary: #4a5568,
+    primary-shade: #718096,
+    primary-dark: #2d3748,
+    primary-light: #f7fafc,
+    header-color: #1a202c,
+    body-text-color: #4a5568,
+    body-text-color-white: #ffffff,
+    accent: #4fd1c5,
+    dark: #1a1a1a,
+    medium: #2d3748
+  ),
+
+  // LUXURY SCHEME: Sophisticated, dark, opulent
+  // Perfect for: Luxury brands, high-end products, exclusive services, premium brands
+  luxury: (
+    primary: #b89778,
+    primary-shade: #d4b896,
+    primary-dark: #8b6f56,
+    primary-light: #f0e8df,
+    header-color: #f1edeb,
+    body-text-color: #c4c0bb,
+    body-text-color-white: #ffffff,
+    accent: #2a6041,
+    dark: #1a1a1a,
+    medium: #2d2d2d
+  )
+);
+
+// Active scheme configuration - CHANGE THIS TO SWITCH THEMES
+$active-scheme: 'artisan' !default;
+
+// Color retrieval function using modern SCSS syntax
+@function color($key) {
+  $scheme: map.get($color-schemes, $active-scheme);
+  @if $scheme == null {
+    @error "Color scheme '#{$active-scheme}' not found. Available schemes: #{map.keys($color-schemes)}";
+  }
+  $color: map.get($scheme, $key);
+  @if $color == null {
+    @error "Color key '#{$key}' not found in scheme '#{$active-scheme}'. Available keys: #{map.keys($scheme)}";
+  }
+  @return $color;
+}
+
+// Helper function to get a color from a specific scheme (useful for testing)
+@function scheme-color($scheme-name, $key) {
+  $scheme: map.get($color-schemes, $scheme-name);
+  @if $scheme == null {
+    @error "Color scheme '#{$scheme-name}' not found. Available schemes: #{map.keys($color-schemes)}";
+  }
+  $color: map.get($scheme, $key);
+  @if $color == null {
+    @error "Color key '#{$key}' not found in scheme '#{$scheme-name}'. Available keys: #{map.keys($scheme)}";
+  }
+  @return $color;
+} 
