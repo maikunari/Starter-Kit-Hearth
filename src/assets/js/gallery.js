@@ -1,5 +1,5 @@
 // Gallery functionality with Masonry.js and PhotoSwipe integration
-// Masonry will be loaded via CDN in base.html
+import Masonry from 'masonry-layout';
 
 // Store masonry instances for cleanup
 let masonryInstance = null;
@@ -32,28 +32,12 @@ function initializeGallery() {
   console.log('Gallery initialization:', {
     galleryGrid: !!galleryGrid,
     homeGalleryGrid: !!homeGalleryGrid,
-    masonryAvailable: typeof Masonry !== 'undefined'
+    masonryImported: !!Masonry
   });
   
-  // Wait for Masonry to be available if gallery grid exists
+  // Initialize Masonry gallery if gallery grid exists
   if (galleryGrid) {
-    if (typeof Masonry !== 'undefined') {
-      initMasonryGallery(galleryGrid);
-    } else {
-      // Wait for Masonry to load
-      const checkMasonry = setInterval(() => {
-        if (typeof Masonry !== 'undefined') {
-          clearInterval(checkMasonry);
-          initMasonryGallery(galleryGrid);
-        }
-      }, 100);
-      
-      // Timeout after 5 seconds
-      setTimeout(() => {
-        clearInterval(checkMasonry);
-        console.error('Masonry failed to load within 5 seconds');
-      }, 5000);
-    }
+    initMasonryGallery(galleryGrid);
   }
   
   // Initialize home page gallery (CSS columns)

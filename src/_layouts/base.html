@@ -37,10 +37,6 @@
         <!-- Loading combined CSS file -->
         <link rel="stylesheet" href="/assets/css/style.css"/>
         
-        <!-- PhotoSwipe CSS -->
-        <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css">
-
-        <!--Put analytics tag here at the bottom to prevent it from render blocking-->
 
         <!-- For home page, use full title, including location for SEO. Other pages should just include the page name -->
         <title>
@@ -69,30 +65,7 @@
         {% endif %}
 
         <!-- Scripts outside Barba container -->
-        <!-- Masonry.js via CDN -->
-        <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-        
-        {% if process.env.NODE_ENV == 'production' %}
         <script defer src="/assets/js/scripts.min.js"></script>
-        {% else %}
-        <script defer src="/assets/js/scripts.min.js"></script>
-        {% endif %}
         
-        <!-- Barba.js is now bundled in scripts.min.js -->
-
-        <!-- PhotoSwipe JS via CDN -->
-        <script type="module" src="https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js"></script>
-        <script type="module" src="https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js"></script>
-        
-        <!-- Initialize PhotoSwipe -->
-        <script type="module">
-            import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js';
-            const lightbox = new PhotoSwipeLightbox({
-                gallery: '.pswp-gallery',
-                children: 'a',
-                pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js')
-            });
-            lightbox.init();
-        </script>
     </body>
 </html>

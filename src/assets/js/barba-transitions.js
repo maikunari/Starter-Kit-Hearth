@@ -1,4 +1,6 @@
 import barba from '@barba/core';
+import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import PhotoSwipe from 'photoswipe';
 
 // Initialize Barba.js
 barba.init({
@@ -92,15 +94,13 @@ function initPhotoSwipe() {
     window.photoSwipeLightbox.destroy();
   }
   
-  // Initialize PhotoSwipe
-  import('https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js').then(({ default: PhotoSwipeLightbox }) => {
-    window.photoSwipeLightbox = new PhotoSwipeLightbox({
-      gallery: '.pswp-gallery',
-      children: 'a',
-      pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js'),
-    });
-    window.photoSwipeLightbox.init();
+  // Initialize PhotoSwipe with npm imports
+  window.photoSwipeLightbox = new PhotoSwipeLightbox({
+    gallery: '.pswp-gallery',
+    children: 'a',
+    pswpModule: PhotoSwipe,
   });
+  window.photoSwipeLightbox.init();
 }
 
 // Placeholder for scroll animations (to be added after cross-fade is working)
