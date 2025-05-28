@@ -40,6 +40,9 @@
       justify-content: center;
       gap: calc(12rem / 16);
       margin-top: calc(20rem / 16);
+      font-size: calc(18rem / 16);
+      color: var(--primary);
+      font-weight: 700;
     }
 
     &__author-image {
@@ -57,7 +60,8 @@
 
     &__date {
       font-size: calc(16rem / 16);
-      color: rgba(255, 255, 255, 0.8);
+      color: var(--bodyTextColorWhite);
+      opacity: 0.8;
     }
 
     &__background {

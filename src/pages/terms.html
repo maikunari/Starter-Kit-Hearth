@@ -4,11 +4,8 @@ layout: 'base.html'
 description: 'Terms of Service for Maplewood Hearth & Home. Review our service terms, conditions, and policies for fireplace installation, repair, and maintenance services in Cedar Falls, IA.'
 metaTitle: 'Terms of Service | Maplewood Hearth & Home | Cedar Falls, IA'
 tagTitle: 'Terms of Service'
-preloadImg: '/assets/images/hero.jpg'
+preloadImg: '/images/cabinets2-1920w.webp'
 permalink: '/terms/'
-eleventyNavigation:
-  key: Terms
-  order: 900
 ---
 
 <!-- ============================================ -->
@@ -23,7 +20,7 @@ eleventyNavigation:
         </div>
     </div>
     <div class="page-banner__background">
-        <img src="/assets/images/hero.jpg" alt="Maplewood Hearth & Home Terms of Service" loading="lazy" decoding="async">
+        {% image './src/assets/images/cabinets2.jpg', 'Maplewood Hearth & Home Terms of Service', '', 'lazy', '(max-width: 850px) 850px, 1920px'%}
     </div>
 </section>
 

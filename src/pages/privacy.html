@@ -4,11 +4,8 @@ layout: 'base.html'
 description: 'Privacy Policy for Maplewood Hearth & Home. Learn how we collect, use, and protect your personal information when you use our fireplace services in Cedar Falls, IA.'
 metaTitle: 'Privacy Policy | Maplewood Hearth & Home | Cedar Falls, IA'
 tagTitle: 'Privacy Policy'
-preloadImg: '/assets/images/hero.jpg'
+preloadImg: '/images/cabinets2-1920w.webp'
 permalink: '/privacy/'
-eleventyNavigation:
-  key: Privacy
-  order: 901
 ---
 
 <!-- ============================================ -->
@@ -23,7 +20,7 @@ eleventyNavigation:
         </div>
     </div>
     <div class="page-banner__background">
-        <img src="/assets/images/hero.jpg" alt="Maplewood Hearth & Home Privacy Policy" loading="lazy" decoding="async">
+        {% image './src/assets/images/cabinets2.jpg', 'Maplewood Hearth & Home Privacy Policy', '', 'lazy', '(max-width: 850px) 850px, 1920px'%}
     </div>
 </section>
 
