@@ -7,7 +7,7 @@
 
 .services {
   padding: vars.$section-padding;
-  background: #fff;
+  background: vars.$body-bg-color;
   position: relative;
   z-index: 100;
   
@@ -22,10 +22,32 @@
     border-top: 0.375rem solid vars.$primary;
     box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
     margin-bottom: 3.125rem;
+    background: vars.$medium;
     
     @include mix.tablet-up {
       width: 98%;
       padding: 3.125rem 5rem;
+    }
+    
+    // Update text colors for dark background
+    .services__topper {
+      color: vars.$primary;
+    }
+    
+    .services__title {
+      color: vars.$body-text-color-white;
+    }
+    
+    .services__text {
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .services__item-title {
+      color: vars.$body-text-color-white;
+    }
+    
+    .services__item-text {
+      color: rgba(255, 255, 255, 0.7);
     }
   }
   

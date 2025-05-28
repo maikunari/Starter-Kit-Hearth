@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as vars;
+
 /*-- -------------------------- -->
 <---       Contact Info         -->
 <--- -------------------------- -*/
@@ -10,10 +12,10 @@
     gap: calc(32rem / 16);
 
     &__section {
-      background-color: #f8f9fa;
+      background-color: vars.$medium;
       border-radius: calc(12rem / 16);
       padding: 0;
-      border: 1px solid #e9ecef;
+      border: 1px solid rgba(255, 255, 255, 0.1);
       overflow: hidden;
       position: relative;
     }
@@ -21,7 +23,7 @@
     &__title {
       font-size: clamp(1.125rem, 2vw, 1.25rem);
       font-weight: 700;
-      color: var(--headerColor);
+      color: vars.$body-text-color-white;
       margin: 0 0 calc(20rem / 16) 0;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -39,6 +41,14 @@
       display: flex;
       flex-direction: column;
       gap: calc(8rem / 16);
+      padding: calc(12rem / 16);
+      border-radius: calc(8rem / 16);
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+        transform: translateY(-2px);
+      }
     }
 
     &__header {
@@ -46,7 +56,7 @@
       line-height: 1.2em;
       font-weight: 700;
       margin: 0;
-      color: var(--headerColor);
+      color: vars.$body-text-color-white;
       display: block;
     }
 
@@ -54,11 +64,11 @@
       font-size: calc(16rem / 16);
       line-height: 1.5em;
       text-decoration: none;
-      color: var(--bodyTextColor);
+      color: rgba(255, 255, 255, 0.8);
       transition: color 0.3s ease;
 
       &:hover {
-        color: var(--primary);
+        color: vars.$primary;
       }
     }
 

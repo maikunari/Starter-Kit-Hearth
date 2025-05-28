@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as vars;
+
 /*-- -------------------------- -->
 <---        Blog Layout         -->
 <--- -------------------------- -*/
@@ -6,7 +8,7 @@
 @media only screen and (min-width: 0rem) {
   .blog-layout {
     padding: var(--sectionPadding);
-    background-color: #fff;
+    background-color: vars.$body-bg-color;
 
     &__container {
       width: 100%;

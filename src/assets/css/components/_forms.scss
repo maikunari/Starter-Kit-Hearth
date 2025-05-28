@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as vars;
+
 /*-- -------------------------- -->
 <---           Forms            -->
 <--- -------------------------- -*/
@@ -10,14 +12,14 @@
       /* 24px - 48px top and bottom */
       /* 16px - 48px left and right */
       padding: clamp(1.5rem, 5.18vw, 3rem) clamp(1rem, 5.18vw, 3rem);
-      background-color: #fff;
+      background-color: vars.$body-bg-color;
       border-radius: calc(16rem / 16);
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       align-items: center;
       gap: calc(12rem / 16);
-      border: 1px solid #e9ecef;
+      border: 1px solid vars.$border-color;
     }
 
     &__content {
@@ -193,9 +195,9 @@
       overflow: hidden;
       display: block;
       margin-top: calc(40rem / 16);
-      background-color: #fff;
+      background-color: vars.$body-bg-color;
       box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-      border: clamp(0.375rem, 1.5vw, 0.75rem) solid #ffffff;
+      border: clamp(0.375rem, 1.5vw, 0.75rem) solid vars.$body-bg-color;
       transition: all 0.3s ease;
       cursor: pointer;
 

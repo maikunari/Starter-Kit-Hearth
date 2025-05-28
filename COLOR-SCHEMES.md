@@ -1,13 +1,13 @@
 # Color Schemes Documentation
 
-This project includes a comprehensive color scheme system with 7 carefully crafted themes. Each theme contains 10 color properties designed to work harmoniously together while maintaining proper contrast ratios for accessibility.
+This project includes a comprehensive color scheme system with 7 carefully crafted themes. Each theme contains 13 color properties designed to work harmoniously together while maintaining proper contrast ratios for accessibility.
 
 ## How to Switch Themes
 
 To change the active color scheme:
 
 1. Open `src/assets/css/abstracts/_schemes.scss`
-2. Find the line: `$active-scheme: 'artisan' !default;`
+2. Find the line: `$active-scheme: 'artisan';`
 3. Change `'artisan'` to any of the available scheme names
 4. Run `npm run build` to compile the changes
 
@@ -15,7 +15,7 @@ To change the active color scheme:
 
 ## Color Properties
 
-Each scheme includes these 10 color properties:
+Each scheme includes these 13 color properties:
 
 - **primary**: Main brand color (buttons, links, highlights)
 - **primary-shade**: Lighter version of primary (hover states, backgrounds)
@@ -24,9 +24,12 @@ Each scheme includes these 10 color properties:
 - **header-color**: Color for all headings (h1, h2, h3, etc.)
 - **body-text-color**: Color for body text and paragraphs
 - **body-text-color-white**: White/light text for dark backgrounds
-- **accent**: Secondary brand color (accents, highlights, icons)
-- **dark**: Darkest color in the palette (deep backgrounds, strong contrast)
-- **medium**: Medium tone color (borders, dividers, subtle elements)
+- **body-bg-color**: Main background color for pages and components
+- **border-color**: Standard border color for forms, cards, and components
+- **border-color-subtle**: Subtle border color for overlays and accents
+- **accent**: Secondary accent color for variety and contrast
+- **dark**: Darkest color in the scheme (deep backgrounds, strong contrast)
+- **medium**: Medium tone color (complementary panels, sidebars)
 
 ## Available Color Schemes
 
@@ -42,6 +45,7 @@ Each scheme includes these 10 color properties:
 - Header Color: `#1a1a1a` (Dark Charcoal)
 - Body Text: `#4E4B66` (Muted Purple-Gray)
 - Body Text White: `#FAFBFC` (Off-White)
+- Body Background: `#ffffff` (White)
 - Accent: `#334756` (Blue-Gray)
 - Dark: `#082032` (Deep Navy)
 - Medium: `#2C394B` (Medium Blue-Gray)
@@ -58,6 +62,7 @@ Each scheme includes these 10 color properties:
 - Header Color: `#1a202c` (Dark Slate)
 - Body Text: `#4a5568` (Medium Gray)
 - Body Text White: `#ffffff` (Pure White)
+- Body Background: `#ffffff` (White)
 - Accent: `#00b7eb` (Bright Cyan)
 - Dark: `#1a365d` (Dark Navy)
 - Medium: `#2d3748` (Dark Gray)
@@ -74,6 +79,7 @@ Each scheme includes these 10 color properties:
 - Header Color: `#2d3748` (Dark Gray)
 - Body Text: `#4a4a4a` (Warm Gray)
 - Body Text White: `#ffffff` (Pure White)
+- Body Background: `#ffffff` (White)
 - Accent: `#d4af37` (Gold)
 - Dark: `#1a202c` (Charcoal)
 - Medium: `#4a5568` (Medium Gray)
@@ -90,6 +96,7 @@ Each scheme includes these 10 color properties:
 - Header Color: `#3c2f2f` (Dark Brown)
 - Body Text: `#553c3c` (Brown-Gray)
 - Body Text White: `#ffffff` (Pure White)
+- Body Background: `#ffffff` (White)
 - Accent: `#d69e2e` (Mustard Yellow)
 - Dark: `#2d1b1b` (Very Dark Brown)
 - Medium: `#4a3636` (Medium Brown)
@@ -106,6 +113,7 @@ Each scheme includes these 10 color properties:
 - Header Color: `#1a202c` (Dark Slate)
 - Body Text: `#2d3748` (Dark Gray)
 - Body Text White: `#ffffff` (Pure White)
+- Body Background: `#ffffff` (White)
 - Accent: `#ff4b5c` (Coral Red)
 - Dark: `#1a1a1a` (Black)
 - Medium: `#4a5568` (Medium Gray)
@@ -122,6 +130,7 @@ Each scheme includes these 10 color properties:
 - Header Color: `#1a202c` (Charcoal)
 - Body Text: `#4a5568` (Slate Gray)
 - Body Text White: `#ffffff` (Pure White)
+- Body Background: `#ffffff` (White)
 - Accent: `#4fd1c5` (Soft Teal)
 - Dark: `#1a1a1a` (Black)
 - Medium: `#2d3748` (Dark Gray)
@@ -138,6 +147,7 @@ Each scheme includes these 10 color properties:
 - Header Color: `#f1edeb` (Ivory)
 - Body Text: `#c4c0bb` (Light Gray)
 - Body Text White: `#ffffff` (Pure White)
+- Body Background: `#1a1a1a` (Deep Charcoal)
 - Accent: `#2a6041` (Emerald Green)
 - Dark: `#1a1a1a` (Deep Charcoal)
 - Medium: `#2d2d2d` (Medium Charcoal)
@@ -190,7 +200,7 @@ To add a new color scheme:
 
 1. Open `src/assets/css/abstracts/_schemes.scss`
 2. Add your new scheme to the `$color-schemes` map
-3. Include all 10 required color properties
+3. Include all 13 required color properties
 4. Test the scheme by setting it as the active scheme
 5. Update this documentation with the new scheme details
 

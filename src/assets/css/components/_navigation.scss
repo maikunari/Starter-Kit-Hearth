@@ -24,7 +24,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #fff;
+    background-color: vars.$body-bg-color;
     width: 100%;
     height: 100%;
     box-shadow: vars.$shadow-sm;
@@ -191,7 +191,7 @@
     z-index: -1;
     overflow: hidden;
     box-shadow: vars.$shadow-sm;
-    background-color: #fff;
+    background-color: vars.$body-bg-color;
     top: 3.7rem;
     padding-top: 0;
     height: 0;
@@ -273,7 +273,7 @@
     
     @include mix.desktop-up {
       font-size: clamp(0.875rem, 1.5vw, 1.125rem);
-      color: #fff;
+      color: vars.$body-text-color-white;
       transition: color vars.$transition-base;
     }
     

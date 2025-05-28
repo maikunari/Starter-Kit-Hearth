@@ -7,16 +7,18 @@
 // CSS Custom Properties
 // -----------------------------------------------------------------------------
 :root {
-  --primary: #FFBA19;
-  --primaryShade: #ffd675;
-  --primaryDark: #805d0d;
-  --primaryLight: #fff3d6;
-  --bodyTextColor: #4E4B66;
-  --bodyTextColorWhite: #FAFBFC;
-  --headerColor: #1a1a1a;
-  --accent: #334756;
-  --dark: #082032;
-  --medium: #2C394B;
+  --primary: #{vars.$primary};
+  --primaryShade: #{vars.$primary-shade};
+  --primaryDark: #{vars.$primary-dark};
+  --primaryLight: #{vars.$primary-light};
+  --bodyTextColor: #{vars.$body-text-color};
+  --bodyTextColorWhite: #{vars.$body-text-color-white};
+  --headerColor: #{vars.$header-color};
+  --borderColor: #{vars.$border-color};
+  --borderColorSubtle: #{vars.$border-color-subtle};
+  --accent: #{vars.$accent};
+  --dark: #{vars.$dark};
+  --medium: #{vars.$medium};
   
   /* Typography scale */
   --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
@@ -75,6 +77,7 @@ body {
   padding: 0;
   font-family: 'Roboto', Arial, sans-serif;
   color: vars.$body-text-color;
+  background-color: vars.$body-bg-color;
   overflow-x: hidden;
   transition: background-color 0.3s;
 }

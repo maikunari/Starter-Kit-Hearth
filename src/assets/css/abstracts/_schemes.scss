@@ -4,7 +4,7 @@
 
 @use 'sass:map';
 
-// Complete color schemes with 10 properties each for maximum flexibility
+// Complete color schemes with 13 properties each for maximum flexibility
 $color-schemes: (
   // ARTISAN SCHEME: Current warm golden theme with blue-gray accents
   // Perfect for: Craftspeople, artisans, premium services, warm brands
@@ -16,104 +16,125 @@ $color-schemes: (
     header-color: #1a1a1a,
     body-text-color: #4E4B66,
     body-text-color-white: #FAFBFC,
+    body-bg-color: #ffffff,
+    border-color: #e9ecef,
+    border-color-subtle: rgba(255, 255, 255, 0.2),
     accent: #334756,
     dark: #082032,
     medium: #2C394B
   ),
 
   // MODERN SCHEME: Sleek, tech-inspired, bold contrasts
-  // Perfect for: Tech companies, startups, digital agencies, modern brands
+  // Perfect for: Tech companies, startups, modern services, digital agencies
   modern: (
-    primary: #2b6cb0,
-    primary-shade: #4299e1,
-    primary-dark: #1e4a73,
+    primary: #007BFF,
+    primary-shade: #66b3ff,
+    primary-dark: #0056b3,
     primary-light: #e6f3ff,
-    header-color: #1a202c,
-    body-text-color: #4a5568,
+    header-color: #212529,
+    body-text-color: #495057,
     body-text-color-white: #ffffff,
-    accent: #00b7eb,
-    dark: #1a365d,
-    medium: #2d3748
+    body-bg-color: #ffffff,
+    border-color: #dee2e6,
+    border-color-subtle: rgba(255, 255, 255, 0.2),
+    accent: #6C757D,
+    dark: #343A40,
+    medium: #495057
   ),
 
-  // ELEGANT SCHEME: Refined, luxurious, muted tones
-  // Perfect for: Law firms, consulting, high-end services, professional brands
+  // ELEGANT SCHEME: Sophisticated, refined, professional
+  // Perfect for: Law firms, consulting, luxury services, high-end retail
   elegant: (
-    primary: #2c5282,
-    primary-shade: #4299e1,
-    primary-dark: #1e3a5f,
-    primary-light: #e6f3ff,
-    header-color: #2d3748,
-    body-text-color: #4a4a4a,
+    primary: #8B4513,
+    primary-shade: #cd853f,
+    primary-dark: #5d2f0a,
+    primary-light: #f5e6d3,
+    header-color: #2c1810,
+    body-text-color: #5a4a3a,
     body-text-color-white: #ffffff,
-    accent: #d4af37,
-    dark: #1a202c,
-    medium: #4a5568
+    body-bg-color: #ffffff,
+    border-color: #e8ddd4,
+    border-color-subtle: rgba(255, 255, 255, 0.2),
+    accent: #6B4423,
+    dark: #3C2415,
+    medium: #5A4A3A
   ),
 
-  // RUSTIC SCHEME: Earthy, organic, warm tones
-  // Perfect for: Outdoor brands, organic products, eco-friendly, natural brands
+  // RUSTIC SCHEME: Earthy, natural, organic feeling
+  // Perfect for: Outdoor services, landscaping, rustic businesses, farms
   rustic: (
-    primary: #2f855a,
-    primary-shade: #48bb78,
-    primary-dark: #22543d,
-    primary-light: #f0fff4,
-    header-color: #3c2f2f,
-    body-text-color: #553c3c,
+    primary: #8FBC8F,
+    primary-shade: #b8d4b8,
+    primary-dark: #5f7a5f,
+    primary-light: #f0f8f0,
+    header-color: #2F4F2F,
+    body-text-color: #556B2F,
     body-text-color-white: #ffffff,
-    accent: #d69e2e,
-    dark: #2d1b1b,
-    medium: #4a3636
+    body-bg-color: #ffffff,
+    border-color: #d4e4d4,
+    border-color-subtle: rgba(255, 255, 255, 0.2),
+    accent: #6B8E23,
+    dark: #2F4F2F,
+    medium: #556B2F
   ),
 
-  // VIBRANT SCHEME: Bold, energetic, lively
-  // Perfect for: Creative agencies, entertainment, youth brands, energetic brands
+  // VIBRANT SCHEME: Energetic, youthful, creative
+  // Perfect for: Creative agencies, entertainment, youth services, fitness
   vibrant: (
-    primary: #00a3ff,
-    primary-shade: #38b2ff,
-    primary-dark: #0077cc,
-    primary-light: #e6f7ff,
-    header-color: #1a202c,
-    body-text-color: #2d3748,
+    primary: #FF6B6B,
+    primary-shade: #ff9999,
+    primary-dark: #cc5555,
+    primary-light: #ffe6e6,
+    header-color: #2C3E50,
+    body-text-color: #34495E,
     body-text-color-white: #ffffff,
-    accent: #ff4b5c,
-    dark: #1a1a1a,
-    medium: #4a5568
+    body-bg-color: #ffffff,
+    border-color: #ecf0f1,
+    border-color-subtle: rgba(255, 255, 255, 0.2),
+    accent: #3498DB,
+    dark: #2C3E50,
+    medium: #34495E
   ),
 
-  // MINIMALIST SCHEME: Simple, clean, professional
-  // Perfect for: Architecture, design studios, minimal brands, clean aesthetics
+  // MINIMALIST SCHEME: Clean, simple, understated
+  // Perfect for: Architecture, design studios, minimalist brands, galleries
   minimalist: (
-    primary: #4a5568,
-    primary-shade: #718096,
-    primary-dark: #2d3748,
-    primary-light: #f7fafc,
-    header-color: #1a202c,
-    body-text-color: #4a5568,
+    primary: #2C3E50,
+    primary-shade: #5a6c7d,
+    primary-dark: #1a252f,
+    primary-light: #ecf0f1,
+    header-color: #2C3E50,
+    body-text-color: #7F8C8D,
     body-text-color-white: #ffffff,
-    accent: #4fd1c5,
-    dark: #1a1a1a,
-    medium: #2d3748
+    body-bg-color: #ffffff,
+    border-color: #bdc3c7,
+    border-color-subtle: rgba(255, 255, 255, 0.2),
+    accent: #95A5A6,
+    dark: #34495E,
+    medium: #7F8C8D
   ),
 
-  // LUXURY SCHEME: Sophisticated, dark, opulent
-  // Perfect for: Luxury brands, high-end products, exclusive services, premium brands
+  // LUXURY SCHEME: Dark, sophisticated, premium
+  // Perfect for: High-end services, luxury brands, exclusive businesses
   luxury: (
-    primary: #b89778,
-    primary-shade: #d4b896,
-    primary-dark: #8b6f56,
-    primary-light: #f0e8df,
-    header-color: #f1edeb,
-    body-text-color: #c4c0bb,
+    primary: #D4AF37,
+    primary-shade: #e6c866,
+    primary-dark: #b8941f,
+    primary-light: #f7f0d6,
+    header-color: #ffffff,
+    body-text-color: #cccccc,
     body-text-color-white: #ffffff,
-    accent: #2a6041,
-    dark: #1a1a1a,
-    medium: #2d2d2d
+    body-bg-color: #1a1a1a,
+    border-color: #404040,
+    border-color-subtle: rgba(212, 175, 55, 0.3),
+    accent: #8B7355,
+    dark: #0f0f0f,
+    medium: #2C394B
   )
 );
 
 // Active scheme configuration - CHANGE THIS TO SWITCH THEMES
-$active-scheme: 'artisan' !default;
+$active-scheme: 'luxury';
 
 // Color retrieval function using modern SCSS syntax
 @function color($key) {

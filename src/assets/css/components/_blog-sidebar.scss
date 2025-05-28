@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as vars;
+
 /*-- -------------------------- -->
 <---       Blog Sidebar        -->
 <--- -------------------------- -*/
@@ -10,16 +12,16 @@
     gap: calc(32rem / 16);
 
     &__section {
-      background-color: #f8f9fa;
+      background-color: vars.$medium;
       border-radius: calc(12rem / 16);
       padding: clamp(1.5rem, 4vw, 2rem);
-      border: 1px solid #e9ecef;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     &__title {
       font-size: clamp(1.125rem, 2vw, 1.25rem);
       font-weight: 700;
-      color: var(--headerColor);
+      color: vars.$body-text-color-white;
       margin: 0 0 calc(20rem / 16) 0;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -45,6 +47,7 @@
 
       &:hover {
         transform: translateY(-2px);
+        background-color: rgba(255, 255, 255, 0.05);
       }
     }
 
@@ -68,7 +71,7 @@
       font-size: calc(14rem / 16);
       font-weight: 600;
       line-height: 1.3em;
-      color: var(--headerColor);
+      color: vars.$body-text-color-white;
       margin: 0;
       transition: color 0.3s ease;
       
@@ -79,13 +82,13 @@
       overflow: hidden;
 
       .blog-sidebar__featured-item:hover & {
-        color: var(--primary);
+        color: vars.$primary;
       }
     }
 
     &__featured-date {
       font-size: calc(12rem / 16);
-      color: #767676;
+      color: rgba(255, 255, 255, 0.7);
       font-weight: 500;
     }
   }

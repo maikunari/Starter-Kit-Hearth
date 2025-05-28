@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as vars;
+
 /*-- -------------------------- -->
 <---       Article Card         -->
 <--- -------------------------- -*/
@@ -5,17 +7,17 @@
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
   .article-card {
-    background-color: #fff;
+    background-color: vars.$body-bg-color;
     border-radius: calc(16rem / 16);
     overflow: hidden;
-    border: 1px solid #e9ecef;
+    border: 1px solid vars.$border-color;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
 
     &:hover {
       transform: translateY(-4px);
-      border-color: #d0d7de;
+      border-color: vars.$border-color-subtle;
     }
 
     &__image-wrapper {
