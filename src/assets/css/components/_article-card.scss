@@ -1,4 +1,5 @@
 @use '../abstracts/variables' as vars;
+@use '../abstracts/schemes' as schemes;
 
 /*-- -------------------------- -->
 <---       Article Card         -->
@@ -7,17 +8,17 @@
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
   .article-card {
-    background-color: vars.$body-bg-color;
+    background-color: schemes.color(body-bg-color);
     border-radius: calc(16rem / 16);
     overflow: hidden;
-    border: 1px solid vars.$border-color;
+    border: 1px solid schemes.color(border-color);
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
 
     &:hover {
       transform: translateY(-4px);
-      border-color: vars.$border-color-subtle;
+      border-color: schemes.color(border-color-subtle);
     }
 
     &__image-wrapper {
@@ -63,38 +64,38 @@
     &__author {
       font-size: calc(14rem / 16);
       font-weight: 600;
-      color: var(--headerColor);
+      color: schemes.color(header-color);
     }
 
     &__dot {
       width: calc(4rem / 16);
       height: calc(4rem / 16);
-      background-color: var(--primary);
+      background-color: schemes.color(primary);
       border-radius: 50%;
     }
 
     &__date {
       font-size: calc(14rem / 16);
-      color: #767676;
+      color: rgba(schemes.color(body-text-color), 0.7);
     }
 
     &__title {
       font-size: clamp(1.25rem, 2.5vw, 1.5rem);
       font-weight: 700;
       line-height: 1.3em;
-      color: var(--headerColor);
+      color: schemes.color(header-color);
       margin: 0 0 calc(12rem / 16) 0;
       transition: color 0.3s ease;
 
       .article-card:hover & {
-        color: var(--primary);
+        color: schemes.color(primary);
       }
     }
 
     &__excerpt {
       font-size: calc(16rem / 16);
       line-height: 1.5em;
-      color: var(--bodyTextColor);
+      color: schemes.color(body-text-color);
       margin: 0 0 calc(20rem / 16) 0;
       flex-grow: 1;
     }
@@ -104,8 +105,8 @@
       line-height: 3.125em;
       height: 3.125rem;
       padding: 0 1.875rem;
-      background-color: var(--primary);
-      color: #000;
+      background-color: schemes.color(primary);
+      color: schemes.color(dark);
       font-size: 1rem;
       font-weight: 700;
       text-decoration: none;
@@ -123,7 +124,7 @@
         display: block;
         height: 100%;
         width: 0;
-        background-color: #000;
+        background-color: schemes.color(dark);
         opacity: 1;
         top: 0;
         left: 0;
@@ -132,7 +133,7 @@
       }
 
       &:hover {
-        color: #fff;
+        color: schemes.color(body-text-color-white);
 
         &::before {
           width: 100%;
@@ -165,7 +166,7 @@
         margin-top: calc(32rem / 16);
         
         h1, h2, h3, h4, h5, h6 {
-          color: var(--headerColor);
+          color: schemes.color(header-color);
           margin: calc(32rem / 16) 0 calc(16rem / 16) 0;
           line-height: 1.3em;
         }
@@ -177,7 +178,7 @@
         p {
           font-size: calc(18rem / 16);
           line-height: 1.6em;
-          color: var(--bodyTextColor);
+          color: schemes.color(body-text-color);
           margin: 0 0 calc(24rem / 16) 0;
         }
 
@@ -188,21 +189,27 @@
           li {
             font-size: calc(18rem / 16);
             line-height: 1.6em;
-            color: var(--bodyTextColor);
+            color: schemes.color(body-text-color);
             margin-bottom: calc(8rem / 16);
           }
         }
 
         blockquote {
-          border-left: 4px solid var(--primary);
+          border-left: 4px solid schemes.color(primary);
           padding-left: calc(24rem / 16);
           margin: calc(32rem / 16) 0;
           font-style: italic;
-          color: #666;
+          color: schemes.color(body-text-color);
+          
+          p {
+            color: schemes.color(body-text-color);
+            font-style: italic;
+          }
         }
 
         code {
-          background-color: #f8f9fa;
+          background-color: schemes.color(primary-light);
+          color: schemes.color(header-color);
           padding: calc(2rem / 16) calc(6rem / 16);
           border-radius: calc(4rem / 16);
           font-family: 'Courier New', monospace;
@@ -210,11 +217,18 @@
         }
 
         pre {
-          background-color: #f8f9fa;
+          background-color: schemes.color(medium);
+          color: schemes.color(body-text-color-white);
           padding: calc(20rem / 16);
           border-radius: calc(8rem / 16);
           overflow-x: auto;
           margin: calc(24rem / 16) 0;
+          
+          code {
+            background: none;
+            color: schemes.color(body-text-color-white);
+            padding: 0;
+          }
         }
       }
     }
@@ -236,6 +250,21 @@
     &__meta {
       gap: calc(16rem / 16);
       margin-bottom: calc(12rem / 16);
+    }
+
+    &__author-image {
+      width: calc(40rem / 16);
+      height: calc(40rem / 16);
+    }
+
+    &__author,
+    &__date {
+      font-size: calc(16rem / 16);
+    }
+
+    &__dot {
+      width: calc(6rem / 16);
+      height: calc(6rem / 16);
     }
   }
 }

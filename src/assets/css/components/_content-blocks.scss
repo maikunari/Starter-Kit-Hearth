@@ -4,6 +4,7 @@
 
 @use '../abstracts/variables' as vars;
 @use '../abstracts/mixins' as mix;
+@use '../abstracts/schemes' as schemes;
 
 .content-block {
   padding: vars.$section-padding;
@@ -69,9 +70,9 @@
     &--secondary {
       width: 25.875em;
       height: 25em;
-      background-color: vars.$body-bg-color;
-      @include mix.box-shadow(#000);
-      border: clamp(0.375em, 1.5vw, 0.75em) solid vars.$border-color;
+      background-color: schemes.color(body-bg-color);
+      @include mix.box-shadow(schemes.color(dark));
+      border: clamp(0.375em, 1.5vw, 0.75em) solid schemes.color(border-color);
       right: 0;
       bottom: 0;
     }
@@ -90,7 +91,7 @@
     text-align: left;
     letter-spacing: 0.1em;
     font-weight: 700;
-    color: vars.$primary;
+    color: schemes.color(primary);
     margin-bottom: 0.25rem;
     display: block;
   }
@@ -102,7 +103,7 @@
     text-align: left;
     max-width: 50rem;
     margin: 0 auto 1rem;
-    color: vars.$header-color;
+    color: schemes.color(header-color);
     position: relative;
   }
   
@@ -114,7 +115,7 @@
     max-width: 46.875rem;
     margin: 0 auto;
     margin-bottom: 1rem;
-    color: vars.$body-text-color;
+    color: schemes.color(body-text-color);
     
     &:last-of-type {
       margin-bottom: 2rem;
@@ -124,7 +125,7 @@
   // Quote/testimonial section
   &__quote {
     padding: clamp(1rem, 3vw, 2rem);
-    background-color: vars.$medium;
+    background-color: schemes.color(medium);
     border-radius: 1rem;
     position: relative;
     margin-bottom: 2rem;
@@ -133,7 +134,7 @@
       font-size: clamp(0.875rem, 1.5vw, 1rem);
       line-height: 1.5em;
       margin: 0 0 1rem;
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(schemes.color(body-text-color-white), 0.8);
     }
     
     &-name {
@@ -142,14 +143,14 @@
       text-transform: uppercase;
       font-weight: bold;
       margin: 0 0 0.25rem;
-      color: vars.$body-text-color-white;
+      color: schemes.color(body-text-color-white);
       display: block;
     }
     
     &-job {
       font-size: 0.875rem;
       line-height: 1.5em;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(schemes.color(body-text-color-white), 0.7);
       display: block;
     }
     

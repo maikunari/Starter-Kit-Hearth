@@ -1,32 +1,14 @@
 // =============================================================================
-// VARIABLES
+// GLOBAL VARIABLES (Theme-Independent)
 // =============================================================================
 
-@use 'schemes' as schemes;
-
-// Colors
-// -----------------------------------------------------------------------------
-$primary: schemes.color(primary);
-$primary-shade: schemes.color(primary-shade);
-$primary-dark: schemes.color(primary-dark);
-$primary-light: schemes.color(primary-light);
-$header-color: schemes.color(header-color);
-$body-text-color: schemes.color(body-text-color);
-$body-text-color-white: schemes.color(body-text-color-white);
-$body-bg-color: schemes.color(body-bg-color);
-$border-color: schemes.color(border-color);
-$border-color-subtle: schemes.color(border-color-subtle);
-$accent: schemes.color(accent);
-$dark: schemes.color(dark);
-$medium: schemes.color(medium);
-
-// Typography
+// Typography Scale
 // -----------------------------------------------------------------------------
 $topper-font-size: clamp(0.8125rem, 1.6vw, 1rem);
 $header-font-size: clamp(1.9375rem, 4.5vw, 3.0625rem);
 $body-font-size: clamp(1rem, 1.2vw, 1.125rem);
 
-// Spacing
+// Spacing Scale
 // -----------------------------------------------------------------------------
 $section-padding: clamp(3.75em, 7.82vw, 6.25em) 1rem;
 $button-spacing: 3rem;
@@ -40,7 +22,7 @@ $desktop: 64em;   // 1024px
 $large: 75em;     // 1200px
 $xl: 87.5em;      // 1400px
 
-// Z-index scale
+// Z-index Scale
 // -----------------------------------------------------------------------------
 $z-dropdown: 1000;
 $z-sticky: 1020;
@@ -58,15 +40,45 @@ $transition-base: 0.3s ease;
 $transition-fast: 0.15s ease;
 $transition-slow: 0.5s ease;
 
-// Border radius
+// Border Radius Scale
 // -----------------------------------------------------------------------------
 $border-radius-sm: 0.375rem;
 $border-radius: 0.5rem;
 $border-radius-lg: 1rem;
 $border-radius-xl: 1.5rem;
 
-// Shadows
+// Shadow Structure (colors applied via mixins)
 // -----------------------------------------------------------------------------
-$shadow-sm: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-$shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-$shadow-lg: rgba(0, 0, 0, 0.1) 0px 10px 50px; 
+$shadow-sm-structure: 0px 8px 24px;
+$shadow-structure: 0px 7px 29px 0px;
+$shadow-lg-structure: 0px 10px 50px;
+
+// =============================================================================
+// THEME-AWARE VARIABLES
+// =============================================================================
+
+@use 'schemes' as schemes;
+
+// Theme-specific colors - use color() function in components
+// These are kept as variables for backward compatibility during migration
+// Eventually, components should use color() function directly
+// -----------------------------------------------------------------------------
+$primary: schemes.color(primary);
+$primary-shade: schemes.color(primary-shade);
+$primary-dark: schemes.color(primary-dark);
+$primary-light: schemes.color(primary-light);
+$header-color: schemes.color(header-color);
+$body-text-color: schemes.color(body-text-color);
+$body-text-color-white: schemes.color(body-text-color-white);
+$body-bg-color: schemes.color(body-bg-color);
+$border-color: schemes.color(border-color);
+$border-color-subtle: schemes.color(border-color-subtle);
+$accent: schemes.color(accent);
+$dark: schemes.color(dark);
+$medium: schemes.color(medium);
+
+// Theme-aware shadows (using theme colors)
+// -----------------------------------------------------------------------------
+$shadow-sm: $shadow-sm-structure rgba(schemes.color(dark), 0.2);
+$shadow: $shadow-structure rgba(schemes.color(dark), 0.2);
+$shadow-lg: $shadow-lg-structure rgba(schemes.color(dark), 0.1); 

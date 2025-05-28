@@ -134,7 +134,7 @@ $color-schemes: (
 );
 
 // Active scheme configuration - CHANGE THIS TO SWITCH THEMES
-$active-scheme: 'luxury';
+$active-scheme: 'artisan'; 
 
 // Color retrieval function using modern SCSS syntax
 @function color($key) {
