@@ -27,37 +27,45 @@ function initializeGallery() {
   
   // Check for both main gallery page and home page gallery
   const galleryGrid = document.querySelector('.gallery-grid');
-  const homeGalleryGrid = document.querySelector('.cs-gallery-grid, .gallery__grid');
+  const homeGalleryGrid = document.querySelector('.gallery__grid--masonry');
+  const cssGalleryGrid = document.querySelector('.gallery__grid:not(.gallery__grid--masonry)');
   
   console.log('Gallery initialization:', {
     galleryGrid: !!galleryGrid,
     homeGalleryGrid: !!homeGalleryGrid,
+    cssGalleryGrid: !!cssGalleryGrid,
     masonryImported: !!Masonry
   });
   
-  // Initialize Masonry gallery if gallery grid exists
+  // Initialize Masonry gallery if gallery grid exists (main gallery page)
   if (galleryGrid) {
     initMasonryGallery(galleryGrid);
   }
   
-  // Initialize home page gallery (CSS columns)
+  // Initialize home page gallery with Masonry
   if (homeGalleryGrid) {
-    initHomeGallery(homeGalleryGrid);
+    initMasonryGallery(homeGalleryGrid);
+  }
+  
+  // Initialize CSS-only gallery (fallback)
+  if (cssGalleryGrid) {
+    initCSSGallery(cssGalleryGrid);
   }
 }
 
 // Separate function for Masonry gallery initialization
 function initMasonryGallery(galleryGrid) {
   // Set up initial item widths before Masonry initialization
-  const items = galleryGrid.querySelectorAll('.gallery-item');
+  const items = galleryGrid.querySelectorAll('.gallery-item, .gallery__item');
   items.forEach(item => {
     item.style.position = 'absolute';
   });
   
   // Initialize Masonry
+  const itemSelector = galleryGrid.classList.contains('gallery__grid--masonry') ? '.gallery__item' : '.gallery-item';
   masonryInstance = new Masonry(galleryGrid, {
-    itemSelector: '.gallery-item',
-    columnWidth: '.gallery-item',
+    itemSelector: itemSelector,
+    columnWidth: itemSelector,
     gutter: 20,
     percentPosition: false,
     transitionDuration: '0.3s',
@@ -77,19 +85,18 @@ function initMasonryGallery(galleryGrid) {
       // Update PhotoSwipe dimensions to match rendered thumbnails
       updatePhotoSwipeDimensions();
       
-      // Add loaded class to items for animation
-      const items = galleryGrid.querySelectorAll('.gallery-item');
-      items.forEach(function(item, index) {
-        setTimeout(function() {
-          item.classList.add('masonry-loaded');
-        }, index * 100); // Stagger the animations
+      // Items are ready for scroll-triggered animation
+      // The actual animation will be handled by GSAP ScrollTrigger in barba-transitions.js
+      const items = galleryGrid.querySelectorAll('.gallery-item, .gallery__item');
+      items.forEach(function(item) {
+        item.classList.add('masonry-ready');
       });
     }
   }
   
   // Function to update PhotoSwipe dimensions based on actual rendered image sizes
   function updatePhotoSwipeDimensions() {
-    const galleryItems = galleryGrid.querySelectorAll('.gallery-item');
+    const galleryItems = galleryGrid.querySelectorAll('.gallery-item, .gallery__item');
     
     galleryItems.forEach(function(item) {
       const img = item.querySelector('img');
@@ -141,31 +148,23 @@ function initMasonryGallery(galleryGrid) {
   window.addEventListener('resize', resizeHandler);
 }
 
-// Separate function for home gallery initialization
-function initHomeGallery(homeGalleryGrid) {
+// Separate function for CSS-only gallery initialization (fallback)
+function initCSSGallery(cssGalleryGrid) {
   // Wait for images to load
-  const images = homeGalleryGrid.querySelectorAll('img');
+  const images = cssGalleryGrid.querySelectorAll('img');
   let loadedImages = 0;
   
   function imageLoaded() {
     loadedImages++;
     if (loadedImages === images.length) {
       // Update PhotoSwipe dimensions to match rendered thumbnails
-      updateHomeGalleryPhotoSwipeDimensions();
-      
-      // Add loaded class to items for animation
-      const items = homeGalleryGrid.querySelectorAll('.cs-gallery-item, .gallery__item');
-      items.forEach(function(item, index) {
-        setTimeout(function() {
-          item.classList.add('masonry-loaded');
-        }, index * 100); // Stagger the animations
-      });
+      updateCSSGalleryPhotoSwipeDimensions();
     }
   }
   
-  // Function to update PhotoSwipe dimensions for home gallery
-  function updateHomeGalleryPhotoSwipeDimensions() {
-    const galleryItems = homeGalleryGrid.querySelectorAll('.cs-gallery-item, .gallery__item');
+  // Function to update PhotoSwipe dimensions for CSS gallery
+  function updateCSSGalleryPhotoSwipeDimensions() {
+    const galleryItems = cssGalleryGrid.querySelectorAll('.gallery__item');
     
     galleryItems.forEach(function(item) {
       const img = item.querySelector('img');
@@ -201,17 +200,6 @@ function initHomeGallery(homeGalleryGrid) {
       img.addEventListener('error', imageLoaded); // Handle broken images
     }
   });
-  
-  // Handle window resize for home gallery
-  let homeResizeTimer;
-  homeResizeHandler = function() {
-    clearTimeout(homeResizeTimer);
-    homeResizeTimer = setTimeout(function() {
-      // Update PhotoSwipe dimensions after resize
-      updateHomeGalleryPhotoSwipeDimensions();
-    }, 250);
-  };
-  window.addEventListener('resize', homeResizeHandler);
 }
 
 // Expose function globally for Barba.js
