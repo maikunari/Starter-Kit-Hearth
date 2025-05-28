@@ -58,6 +58,13 @@
       border-radius: calc(6rem / 16);
       object-fit: cover;
       flex-shrink: 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: inherit;
+      }
     }
 
     &__featured-content {
@@ -116,6 +123,13 @@
     &__featured-image {
       width: calc(80rem / 16);
       height: calc(80rem / 16);
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: inherit;
+      }
     }
 
     &__featured-content {

@@ -44,14 +44,7 @@ eleventyNavigation:
         <article class="article-card">
           <!--Main Article Image-->
           <div class="article-card__image-wrapper">
-            <img
-              class="article-card__image"
-              src="{{ post.data.image }}"
-              alt="{{ post.data.imageAlt }}"
-              width="795"
-              height="400"
-              decoding="async"
-            />
+            {% image './src/assets/images/blog/' + post.data.pageName + '.jpg', post.data.imageAlt, 'article-card__image', 'lazy', '(max-width: 850px) 850px, 1920px'%}
           </div>
           <!--Article Info-->
           <div class="article-card__content">

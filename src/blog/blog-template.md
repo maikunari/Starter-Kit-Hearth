@@ -8,7 +8,7 @@ date: 2024-01-22T09:15:00.000Z
 tags:
   - post
   - featured
-image: /images/blog/winter-maintenance.jpg
+image: /images/blog/winter-fireplace-maintenance.jpg
 imageAlt: Winter fireplace maintenance in Cedar Falls
 ---
 
