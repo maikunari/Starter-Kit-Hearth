@@ -50,11 +50,17 @@
   &__grid {
     padding: 0;
     margin: 0 auto clamp(3rem, 5vw, 4rem);
+    display: grid;
+    gap: 2rem;
     
     @include mix.tablet-up {
-      @include mix.flex-between;
-      align-items: center;
-      gap: 1rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    
+    @include mix.desktop-up {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
     }
   }
   
@@ -62,26 +68,16 @@
     text-align: left;
     list-style: none;
     width: 100%;
-    max-width: 33.875rem;
-    margin: 0 auto 4rem;
+    margin: 0;
     padding: 3.75rem clamp(1rem, 3.2vw, 2rem) 0;
     padding-bottom: clamp(2rem, 5.4vw, 2.5rem);
     box-shadow: 0px 20px 39px 0px rgba(0, 0, 0, 0.05);
     border-radius: 0.25rem;
     background: #fff;
     position: relative;
-    @include mix.flex-between;
-    flex-wrap: wrap;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
-    
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-    
-    @include mix.tablet-up {
-      margin: 0;
-    }
   }
   
   &__avatar {

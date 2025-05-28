@@ -28,6 +28,7 @@
     width: 100%;
     height: 100%;
     box-shadow: vars.$shadow-sm;
+    z-index: -1;
     
     @include mix.desktop-up {
       height: 0;
@@ -61,7 +62,8 @@
       }
     }
   }
-  
+
+
   // Container
   &__container {
     padding: 0.8125rem 0;
@@ -316,4 +318,30 @@
       }
     }
   }
-} 
+}
+
+// Body scroll state (when body has .scroll class)
+body.scroll .navigation {
+  .navigation__background {
+    @include mix.desktop-up {
+      height: 100%;
+      box-shadow: vars.$shadow;
+    }
+  }
+  
+  .navigation__logo {
+    .logo--light {
+      display: none !important;
+    }
+    
+    .logo--dark {
+      display: block !important;
+    }
+  }
+  
+  .navigation__link {
+    @include mix.desktop-up {
+      color: vars.$header-color;
+    }
+  }
+}
