@@ -109,9 +109,9 @@ eleventyNavigation:
 <!-- ============================================ -->
 
 <section class="content-block">
-  <div class="content-block__container" data-animate-group>
+  <div class="content-block__container">
     <!-- Left Image Section -->
-    <div class="content-block__media">
+    <div class="content-block__media" data-animate-group>
       <picture class="content-block__picture content-block__picture--primary">
         {% image './src/assets/images/construction.jpg', 'house', 'content-block__image', 'lazy', '(max-width: 600px) 300px, 600px'%}
       </picture>
@@ -120,7 +120,7 @@ eleventyNavigation:
       </picture>
     </div>
     <!-- Right Content Section-->
-    <div class="content-block__content">
+    <div class="content-block__content" data-animate-group>
       <span class="content-block__topper">About Us</span>
       <h2 class="content-block__title">About Company Title</h2>
       <p class="content-block__text">
@@ -160,9 +160,9 @@ eleventyNavigation:
 <!-- ============================================ -->
 
 <section class="content-block content-block--reversed">
-  <div class="content-block__container" data-animate-group>
+  <div class="content-block__container">
     <!-- Left Image Section -->
-    <div class="content-block__media">
+    <div class="content-block__media" data-animate-group>
       <picture class="content-block__picture content-block__picture--primary">
         {% image './src/assets/images/construction.jpg', 'house', 'content-block__image', 'lazy', '(max-width: 600px) 300px, 600px'%}
       </picture>
@@ -171,7 +171,7 @@ eleventyNavigation:
       </picture>
     </div>
     <!-- Right Content Section-->
-    <div class="content-block__content">
+    <div class="content-block__content" data-animate-group>
       <span class="content-block__topper">SEO Ranking</span>
       <h2 class="content-block__title">Talk about a main service keyword</h2>
       <p class="content-block__text">
@@ -242,10 +242,10 @@ eleventyNavigation:
 
 <section class="reviews">
   <div class="reviews__container">
-    <div data-animate-group>
-      <span class="reviews__topper">Our Reviews</span>
-      <h2 class="reviews__title">Words From Our Customers</h2>
-      <p class="reviews__text">
+    <div>
+      <span class="reviews__topper" data-animate="fade-up">Our Reviews</span>
+      <h2 class="reviews__title" data-animate="fade-up">Words From Our Customers</h2>
+      <p class="reviews__text" data-animate="fade-up">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit dolor volutpat porttitor sagittis nunc nisl. Sagittis
         sit pellentesque gravida viverra. Leo ut sed euismod tortor risus et. Ornare non neque, leo, ornare. Lorem ipsum
         dolor sit amet.
@@ -327,16 +327,16 @@ eleventyNavigation:
 <!-- ============================================ -->
 
 <section class="cta">
-  <div class="cta__container" data-animate-group>
-    <h2 class="cta__title">
+  <div class="cta__container">
+    <h2 class="cta__title" data-animate="fade-up">
       Get It Done <br/>
       With Us Today
     </h2>
-    <p class="cta__text">
+    <p class="cta__text" data-animate="fade-up">
       Say something catchy, informative, and encouraging to click the button to go to the contact page. I like to add
       these to the bottom of all pages.
     </p>
-    <div class="cta__button">
+    <div class="cta__button" data-animate="fade-up">
       <a href="/contact" class="btn btn--solid">Get an Estimate Now</a>
     </div>
   </div>
