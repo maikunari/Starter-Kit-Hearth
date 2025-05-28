@@ -1,7 +1,7 @@
 ---
 layout: 'base.html'
-description: 'Meta description for the page'
-metaTitle: 'Title that shows up on google searches'
+description: 'Expert fireplace advice from Maplewood Hearth & Home. Read our blog for safety tips, maintenance guides, and fireplace insights from Cedar Falls trusted experts.'
+metaTitle: 'Fireplace Blog | Expert Tips & Advice | Maplewood Hearth & Home | Cedar Falls, IA'
 tagTitle: 'Blog'
 preloadImg: '/images/cabinets2-1920w.webp'
 permalink: 'blog/'
@@ -17,10 +17,11 @@ eleventyNavigation:
 
 <section class="page-banner">
   <div class="page-banner__container">
-    <h1 class="page-banner__title">Blog</h1>
+    <h1 class="page-banner__title">Fireplace Insights</h1>
+    <p class="page-banner__meta">Expert advice from Cedar Falls' fireplace professionals</p>
   </div>
   <div class="page-banner__background">
-    {% image './src/assets/images/cabinets2.jpg', 'cabinets', '', 'lazy', '(max-width: 850px) 850px, 1920px'%}
+    {% image './src/assets/images/cabinets2.jpg', 'Maplewood Hearth & Home fireplace blog', '', 'lazy', '(max-width: 850px) 850px, 1920px'%}
   </div>
 </section>
 
@@ -34,7 +35,9 @@ eleventyNavigation:
     <main class="blog-layout__main">
       {% if collections.post | length == 0 %}
         <div class="blog-layout__no-posts">
-          <h1>No Recent Posts</h1>
+          <h2>Coming Soon</h2>
+          <p>We're working on bringing you expert fireplace advice and insights. Check back soon for helpful tips on fireplace safety, maintenance, and choosing the right fireplace for your Cedar Falls home.</p>
+          <p>In the meantime, feel free to <a href="/contact">contact us</a> with any fireplace questions you may have. Our team of experts is always happy to help!</p>
         </div>
       {% endif %}
       {%- for post in collections.post | reverse -%}
@@ -86,5 +89,24 @@ eleventyNavigation:
     <aside class="blog-layout__sidebar">
       {% include 'featured-post.html' %}
     </aside>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!--             Final Call to Action             -->
+<!-- ============================================ -->
+
+<section class="cta">
+  <div class="cta__container" data-animate-group>
+    <h2 class="cta__title">Have a Fireplace <br> Question?</h2>
+    <p class="cta__text">
+      Our blog covers many common fireplace topics, but every situation is unique. If you have specific questions about your fireplace, chimney, or heating needs, our Cedar Falls experts are here to help with personalized advice.
+    </p>
+    <div class="cta__button">
+      <a href="/contact" class="btn btn--solid">Ask the Experts</a>
+    </div>
+  </div>
+  <div class="cta__background">
+    {% image './src/assets/images/cabinets2.jpg', 'fireplace experts ready to help', '', 'lazy', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920px'%}
   </div>
 </section>

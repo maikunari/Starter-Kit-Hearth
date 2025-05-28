@@ -56,6 +56,12 @@
       }
     }
     
+    .navigation__logo-sub {
+      @include mix.desktop-up {
+        color: vars.$header-color;
+      }
+    }
+    
     .navigation__link {
       @include mix.desktop-up {
         color: vars.$header-color;
@@ -82,6 +88,7 @@
     display: inline-block;
     height: 1.875rem;
     width: auto;
+    text-decoration: none;
     
     @include mix.desktop-up {
       margin-right: auto;
@@ -107,6 +114,39 @@
       @include mix.desktop-up {
         display: none;
       }
+    }
+  }
+  
+  // Text logo styling
+  &__logo-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  &__logo-main {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: vars.$primary;
+    line-height: 1;
+    font-family: 'Georgia', serif;
+    
+    @include mix.desktop-up {
+      font-size: 1.75rem;
+    }
+  }
+  
+  &__logo-sub {
+    font-size: 0.625rem;
+    font-weight: 400;
+    color: vars.$header-color;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.125rem;
+    
+    @include mix.desktop-up {
+      font-size: 0.75rem;
+      color: vars.$body-text-color-white;
     }
   }
   

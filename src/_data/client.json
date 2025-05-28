@@ -1,15 +1,37 @@
 {
-  "name": "Oak Harbor Web Designs",
-  "email": "hello@oakharbor.com",
-  "phone": "555-779-4407",
-  "phoneFormatted": "(555) 779-4407",
+  "name": "Maplewood Hearth & Home",
+  "email": "info@maplewoodhearth.com",
+  "phone": "319-555-0123",
+  "phoneFormatted": "(319) 555-0123",
+  "emergencyPhone": "319-555-0911",
+  "emergencyPhoneFormatted": "(319) 555-0911",
   "address": {
-    "lineOne": "First Address Line",
-    "lineTwo": "Second Address Line, If Needed",
-    "city": "Denver",
-    "county": "CO",
-    "postcode": "80206",
-    "mapLink": "https://goo.gl/maps/UAQn4vuGDiwv7DV39"
+    "lineOne": "1847 Main Street",
+    "lineTwo": "",
+    "city": "Cedar Falls",
+    "county": "IA",
+    "postcode": "50613",
+    "mapLink": "https://maps.google.com/?q=1847+Main+Street+Cedar+Falls+IA"
   },
-  "domain": "www.website.com"
+  "domain": "www.maplewoodhearth.com",
+  "hours": {
+    "monday": "8:00 AM - 6:00 PM",
+    "tuesday": "8:00 AM - 6:00 PM", 
+    "wednesday": "8:00 AM - 6:00 PM",
+    "thursday": "8:00 AM - 6:00 PM",
+    "friday": "8:00 AM - 6:00 PM",
+    "saturday": "9:00 AM - 4:00 PM",
+    "sunday": "Closed"
+  },
+  "services": [
+    "Fireplace Installation",
+    "Chimney Cleaning & Inspection", 
+    "Fireplace Repair & Maintenance",
+    "Gas Line Installation",
+    "Chimney Repair",
+    "Emergency Services"
+  ],
+  "established": "1999",
+  "yearsInBusiness": "25",
+  "teamSize": "7"
 }

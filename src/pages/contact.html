@@ -1,7 +1,7 @@
 ---
 layout: 'base.html'
-description: 'Meta description for the page'
-metaTitle: 'Title that shows up on google searches'
+description: 'Contact Maplewood Hearth & Home for fireplace installation, chimney cleaning, and repair services in Cedar Falls, IA. Free estimates available.'
+metaTitle: 'Contact Maplewood Hearth & Home | Free Fireplace Estimates | Cedar Falls, IA'
 tagTitle: 'Contact'
 preloadImg: '/images/cabinets2-1920w.webp'
 permalink: 'contact/'
@@ -19,9 +19,10 @@ eleventyNavigation:
 <section class="page-banner">
   <div class="page-banner__container">
     <h1 class="page-banner__title">Contact Us</h1>
+    <p class="page-banner__meta">Ready to transform your home? Let's talk!</p>
   </div>
   <div class="page-banner__background">
-    {% image './src/assets/images/cabinets2.jpg', 'cabinets', '', 'lazy', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920px'%}
+    {% image './src/assets/images/cabinets2.jpg', 'contact Maplewood Hearth & Home', '', 'lazy', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920px'%}
   </div>
 </section>
 
@@ -35,33 +36,41 @@ eleventyNavigation:
     <main class="contact-layout__main">
       <form class="contact-form__form" name="Contact Form" method="post">
         <div class="contact-form__content">
-          <span class="contact-form__topper">Contact</span>
-          <h2 class="contact-form__title">Get in Touch</h2>
+          <span class="contact-form__topper">Get Your Free Estimate</span>
+          <h2 class="contact-form__title">Start Your Fireplace Project</h2>
           <p class="contact-form__text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ridiculus elementum ullamcorper ipsum porttitor aliquam. Id magna urna ultrices odio pulvinar. Sed ut.
+            Ready to bring warmth and comfort to your home? Contact Maplewood Hearth & Home today for your free consultation. Whether you need installation, repair, or chimney services, our family is here to help yours.
           </p>
         </div>
         <label class="contact-form__label">
           Name
-          <input class="contact-form__input" required type="text" id="name" name="name" placeholder="Name">
+          <input class="contact-form__input" required type="text" id="name" name="name" placeholder="Your Name">
         </label>
         <label class="contact-form__label">
           Email
-          <input class="contact-form__input" required type="email" id="email" name="email" placeholder="Email">
+          <input class="contact-form__input" required type="email" id="email" name="email" placeholder="Your Email">
         </label>
         <label class="contact-form__label">
           Phone
-          <input class="contact-form__input" required type="tel" id="phone" name="phone" placeholder="Phone">
+          <input class="contact-form__input" required type="tel" id="phone" name="phone" placeholder="Your Phone Number">
         </label>
         <label class="contact-form__label">
-          How Did You Find Us
-          <input class="contact-form__input" type="text" id="find" name="find-us" placeholder="How did you find us?">
+          Service Needed
+          <select class="contact-form__input" name="service" id="service">
+            <option value="">Select a Service</option>
+            <option value="fireplace-installation">Fireplace Installation</option>
+            <option value="chimney-cleaning">Chimney Cleaning & Inspection</option>
+            <option value="fireplace-repair">Fireplace Repair</option>
+            <option value="maintenance">Annual Maintenance</option>
+            <option value="consultation">Free Consultation</option>
+            <option value="other">Other</option>
+          </select>
         </label>
         <label class="contact-form__label contact-form__label-message">
-          Message
-          <textarea class="contact-form__input contact-form__textarea" required name="Message" id="message" placeholder="Write message..."></textarea>
+          Project Details
+          <textarea class="contact-form__input contact-form__textarea" required name="Message" id="message" placeholder="Tell us about your fireplace project or service needs..."></textarea>
         </label>
-        <button class="btn btn--solid contact-form__button" type="submit">Submit Message</button>
+        <button class="btn btn--solid contact-form__button" type="submit">Get My Free Estimate</button>
       </form>
     </main>
     
@@ -69,23 +78,60 @@ eleventyNavigation:
     <aside class="contact-layout__sidebar">
       <div class="contact-info">
         <div class="contact-info__section">
-          <h3 class="contact-info__title">Get In Touch</h3>
+          <h3 class="contact-info__title">Visit Our Showroom</h3>
           <div class="contact-info__content">
             <div class="contact-info__group">
               <span class="contact-info__header">Email</span>
-              <a class="contact-info__link" href="mailto:support@yourdomain.com">support@yourdomain.com</a>
+              <a class="contact-info__link" href="mailto:info@maplewoodhearth.com">info@maplewoodhearth.com</a>
             </div>
             <div class="contact-info__group">
               <span class="contact-info__header">Phone</span>
-              <a class="contact-info__link" href="tel:219-555-1234">(219) 555-1234</a>
+              <a class="contact-info__link" href="tel:319-555-0123">(319) 555-0123</a>
             </div>
             <div class="contact-info__group">
               <span class="contact-info__header">Address</span>
-              <a class="contact-info__link" href="">2553 Woodbridge Lane, <span class="contact-info__block">Boston Ware 120</span></a>
+              <a class="contact-info__link" href="https://maps.google.com/?q=1847+Main+Street+Cedar+Falls+IA">1847 Main Street, <span class="contact-info__block">Cedar Falls, IA 50613</span></a>
             </div>
+            <div class="contact-info__group">
+              <span class="contact-info__header">Hours</span>
+              <div class="contact-info__hours">
+                <div class="contact-info__hour">Mon-Fri: 8:00 AM - 6:00 PM</div>
+                <div class="contact-info__hour">Saturday: 9:00 AM - 4:00 PM</div>
+                <div class="contact-info__hour">Sunday: Closed</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-info__section">
+          <h3 class="contact-info__title">Emergency Service</h3>
+          <div class="contact-info__content">
+            <p class="contact-info__emergency-text">
+              Need urgent fireplace or chimney repair? We offer 24/7 emergency services for safety issues.
+            </p>
+            <a class="contact-info__emergency-link" href="tel:319-555-0911">Emergency: (319) 555-0911</a>
           </div>
         </div>
       </div>
     </aside>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!--             Final Call to Action             -->
+<!-- ============================================ -->
+
+<section class="cta">
+  <div class="cta__container" data-animate-group>
+    <h2 class="cta__title">Questions About <br> Our Services?</h2>
+    <p class="cta__text">
+      Not sure which service you need? Our friendly team is happy to discuss your fireplace goals and recommend the best solution for your home and budget. All consultations are free with no obligation.
+    </p>
+    <div class="cta__button">
+      <a href="tel:319-555-0123" class="btn btn--solid">Call Us Today</a>
+    </div>
+  </div>
+  <div class="cta__background">
+    {% image './src/assets/images/cabinets2.jpg', 'beautiful fireplace in Cedar Falls home', '', 'lazy', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920px'%}
   </div>
 </section>

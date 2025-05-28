@@ -42,6 +42,7 @@
   &__logo {
     display: inline-block;
     margin-bottom: 1.5rem;
+    text-decoration: none;
     
     img {
       height: auto;
@@ -50,15 +51,52 @@
     }
   }
   
+  // Text logo styling
+  &__logo-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    @include mix.tablet-up {
+      align-items: flex-start;
+    }
+  }
+  
+  &__logo-main {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: vars.$primary;
+    line-height: 1;
+    font-family: 'Georgia', serif;
+    
+    @include mix.tablet-up {
+      font-size: 2rem;
+    }
+  }
+  
+  &__logo-sub {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-top: 0.25rem;
+    
+    @include mix.tablet-up {
+      font-size: 0.875rem;
+    }
+  }
+  
   &__description {
-    font-size: vars.$body-font-size;
+    font-size: 0.9rem;
     line-height: 1.6;
-    color: #ccc;
+    color: #e0e0e0;
     max-width: 25rem;
     margin: 0 auto;
     
     @include mix.tablet-up {
       margin: 0;
+      font-size: 1rem;
     }
   }
   
@@ -87,13 +125,17 @@
   }
   
   &__column-title {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 700;
     color: #fff;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     position: relative;
+    
+    @include mix.tablet-up {
+      font-size: 1.125rem;
+    }
     
     &::after {
       content: '';
@@ -120,6 +162,8 @@
   
   &__list-item {
     margin-bottom: 0.75rem;
+    color: #d0d0d0;
+    font-size: 0.9rem;
     
     &:last-child {
       margin-bottom: 0;
@@ -127,7 +171,7 @@
   }
   
   &__link {
-    color: #ccc;
+    color: #d0d0d0;
     text-decoration: none;
     font-size: 0.9rem;
     line-height: 1.5;
@@ -146,13 +190,20 @@
     }
   }
   
+  &__hours {
+    strong {
+      color: #fff;
+      font-size: 0.9rem;
+    }
+  }
+  
   // Credit/Copyright section
   &__credit {
     border-top: 1px solid #333;
     padding: 2rem 0;
     text-align: center;
     font-size: 0.875rem;
-    color: #999;
+    color: #b0b0b0;
     
     @include mix.tablet-up {
       @include mix.flex-between;
@@ -168,8 +219,13 @@
     }
   }
   
+  &__separator {
+    margin: 0 0.5rem;
+    color: #666;
+  }
+  
   &__credit-link {
-    color: #ccc;
+    color: #d0d0d0;
     text-decoration: none;
     transition: color vars.$transition-base;
     
@@ -196,7 +252,7 @@
     height: 2.5rem;
     background-color: #333;
     border-radius: 50%;
-    color: #ccc;
+    color: #d0d0d0;
     text-decoration: none;
     transition: all vars.$transition-base;
     

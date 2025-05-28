@@ -1,8 +1,8 @@
 ---
 layout: 'base.html'
-description: "Meta description for the page"
-metaTitle: 'Title that shows up on google searches'
-tagTitle: 'About'
+description: "Learn about Maplewood Hearth & Home, Cedar Falls' trusted family-owned fireplace business. 25 years of expert service, 7 skilled professionals, and strong community roots."
+metaTitle: 'About Maplewood Hearth & Home | Family-Owned Fireplace Experts | Cedar Falls, IA'
+tagTitle: 'About Us'
 preloadImg: '/images/cabinets2-1920w.webp'
 permalink: 'about/'
 eleventyNavigation:
@@ -18,10 +18,11 @@ eleventyNavigation:
 
 <section class="page-banner">
   <div class="page-banner__container">
-    <h1 class="page-banner__title">About Us</h1>
+    <h1 class="page-banner__title">About Maplewood Hearth & Home</h1>
+    <p class="page-banner__meta">Serving Cedar Falls families since 1999</p>
   </div>
   <div class="page-banner__background">
-    {% image './src/assets/images/cabinets2.jpg', 'cabinets', '', 'lazy', '(max-width: 850px) 850px, 1920px'%}
+    {% image './src/assets/images/cabinets2.jpg', 'Maplewood Hearth & Home team at work', '', 'lazy', '(max-width: 850px) 850px, 1920px'%}
   </div>
 </section>
 
@@ -34,39 +35,125 @@ eleventyNavigation:
     <!-- Left Image Section -->
     <div class="content-block__media" data-animate-group>
       <picture class="content-block__picture content-block__picture--primary">
-        {% image './src/assets/images/cabinets2.jpg', 'cabinets', 'content-block__image', 'lazy'%}
+        {% image './src/assets/images/cabinets2.jpg', 'Tom and Sarah Maplewood with their team', 'content-block__image', 'lazy'%}
       </picture>
       <picture class="content-block__picture content-block__picture--secondary">
-        {% image './src/assets/images/construction.jpg', 'house', 'content-block__image', 'lazy'%}
+        {% image './src/assets/images/construction.jpg', 'fireplace installation by Maplewood team', 'content-block__image', 'lazy'%}
       </picture>
     </div>
     <!-- Right Content Section-->
     <div class="content-block__content" data-animate-group>
-      <span class="content-block__topper">About Us</span>
-      <h2 class="content-block__title">About Company Title</h2>
+      <span class="content-block__topper">Our Story</span>
+      <h2 class="content-block__title">A Quarter Century of Warmth</h2>
       <p class="content-block__text">
-        In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per.
+        In 1999, Tom and Sarah Maplewood had a simple vision: to bring the warmth and comfort of beautiful fireplaces to every home in Cedar Falls. What started as a two-person operation in their garage has grown into the Cedar Valley's most trusted fireplace specialists, but we've never forgotten our roots as a family business that puts relationships first.
       </p>
       <p class="content-block__text">
-        In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per.
+        Today, our team of 7 skilled professionals brings decades of combined experience to every project. From our certified chimney sweeps to our master installers, each team member shares our commitment to exceptional craftsmanship and honest service. We're not just colleagues – we're a family, and we treat every customer like part of that family.
       </p>
       <div class="content-block__quote">
         <p class="content-block__quote-text">
-          In consequat tincidunt turpis sit amet imperdiet. Praesent Classei consequat tincidunt turpis sit amet imperdiet for mind.
+          "When we started this business, we promised ourselves we'd never compromise on quality or integrity. 25 years later, that promise still guides everything we do."
         </p>
-        <span class="content-block__quote-author">Justin Time</span>
-        <span class="content-block__quote-title">CEO-Founder</span>
+        <span class="content-block__quote-author">Tom & Sarah Maplewood</span>
+        <span class="content-block__quote-title">Owners & Founders</span>
         <img
           class="content-block__quote-icon"
           loading="lazy"
           decoding="async"
           src="https://csimg.nyc3.digitaloceanspaces.com/SideBySide/quote-white.svg"
-          alt="gavel"
+          alt="quote"
           width="136"
           height="77"
         />
       </div>
-      <a href="/about" class="btn btn--solid">More About Us</a>
+      <a href="/contact" class="btn btn--solid">Meet Our Team</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!--              Community Section               -->
+<!-- ============================================ -->
+
+<section class="content-block content-block--reversed">
+  <div class="content-block__container">
+    <!-- Left Image Section -->
+    <div class="content-block__media" data-animate-group>
+      <picture class="content-block__picture content-block__picture--primary">
+        {% image './src/assets/images/construction.jpg', 'Cedar Falls community event sponsored by Maplewood', 'content-block__image', 'lazy'%}
+      </picture>
+      <picture class="content-block__picture content-block__picture--secondary">
+        {% image './src/assets/images/cabinets2.jpg', 'youth sports team sponsored by Maplewood Hearth', 'content-block__image', 'lazy'%}
+      </picture>
+    </div>
+    <!-- Right Content Section-->
+    <div class="content-block__content" data-animate-group>
+      <span class="content-block__topper">Community Commitment</span>
+      <h2 class="content-block__title">Proud Members of Cedar Falls</h2>
+      <p class="content-block__text">
+        Being part of the Cedar Falls community means more than just running a business here – it means giving back. Over the years, we've been proud sponsors of Cedar Falls High School athletics, supporters of the local food bank, and active participants in community events like the Sturgis Falls Celebration.
+      </p>
+      <p class="content-block__text">
+        Our team volunteers regularly with Habitat for Humanity, donating our fireplace expertise to help build homes for families in need. We believe that when our community thrives, we all thrive. That's why we source materials locally when possible, hire from within our community, and support other Cedar Falls small businesses.
+      </p>
+      <div class="content-block__stats">
+        <div class="content-block__stat">
+          <span class="content-block__stat-number">2,000+</span>
+          <span class="content-block__stat-label">Fireplaces Installed</span>
+        </div>
+        <div class="content-block__stat">
+          <span class="content-block__stat-number">25</span>
+          <span class="content-block__stat-label">Years in Business</span>
+        </div>
+        <div class="content-block__stat">
+          <span class="content-block__stat-number">7</span>
+          <span class="content-block__stat-label">Team Members</span>
+        </div>
+      </div>
+      <a href="/reviews" class="btn btn--solid">Read Customer Stories</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!--                Our Values                    -->
+<!-- ============================================ -->
+
+<section class="content-block">
+  <div class="content-block__container">
+    <!-- Left Image Section -->
+    <div class="content-block__media" data-animate-group>
+      <picture class="content-block__picture content-block__picture--primary">
+        {% image './src/assets/images/cabinets2.jpg', 'quality fireplace installation work', 'content-block__image', 'lazy'%}
+      </picture>
+      <picture class="content-block__picture content-block__picture--secondary">
+        {% image './src/assets/images/construction.jpg', 'safety inspection and maintenance', 'content-block__image', 'lazy'%}
+      </picture>
+    </div>
+    <!-- Right Content Section-->
+    <div class="content-block__content" data-animate-group>
+      <span class="content-block__topper">Our Values</span>
+      <h2 class="content-block__title">What Drives Us Every Day</h2>
+      <div class="content-block__values">
+        <div class="content-block__value">
+          <h3 class="content-block__value-title">Safety First</h3>
+          <p class="content-block__value-text">Every installation and repair is done to the highest safety standards. Your family's wellbeing is our top priority.</p>
+        </div>
+        <div class="content-block__value">
+          <h3 class="content-block__value-title">Honest Service</h3>
+          <p class="content-block__value-text">We'll never recommend work you don't need. Our reputation is built on trust and transparent communication.</p>
+        </div>
+        <div class="content-block__value">
+          <h3 class="content-block__value-title">Quality Craftsmanship</h3>
+          <p class="content-block__value-text">We take pride in our work and stand behind every installation with comprehensive warranties.</p>
+        </div>
+        <div class="content-block__value">
+          <h3 class="content-block__value-title">Community Focus</h3>
+          <p class="content-block__value-text">As your neighbors, we're invested in making Cedar Falls a better place for everyone.</p>
+        </div>
+      </div>
+      <a href="/gallery" class="btn btn--solid">See Our Craftsmanship</a>
     </div>
   </div>
 </section>
@@ -77,15 +164,15 @@ eleventyNavigation:
 
 <section class="cta">
   <div class="cta__container" data-animate-group>
-    <h2 class="cta__title">Get It Done <br> With Us Today</h2>
+    <h2 class="cta__title">Ready to Work <br> With Cedar Falls' Best?</h2>
     <p class="cta__text">
-      Say something catchy, informative, and encouraging to click the button to go to the contact page. I like to add these to the bottom of all pages.
+      Experience the difference that 25 years of expertise and genuine care makes. Contact Maplewood Hearth & Home today for your free consultation and discover why Cedar Falls families have trusted us for a quarter century.
     </p>
     <div class="cta__button">
-      <a href="/contact" class="btn btn--solid">Free Estimate</a>
+      <a href="/contact" class="btn btn--solid">Get Your Free Estimate</a>
     </div>
   </div>
   <div class="cta__background">
-    {% image './src/assets/images/cabinets2.jpg', 'kitchen cabinets', '', 'lazy', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920px'%}
+    {% image './src/assets/images/cabinets2.jpg', 'beautiful fireplace in Cedar Falls home', '', 'lazy', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920px'%}
   </div>
 </section>
