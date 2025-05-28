@@ -17,7 +17,7 @@ eleventyNavigation:
 
 <section class="hero hero--parallax">
   <div class="hero__container">
-    <div class="hero__content">
+    <div class="hero__content" data-animate-group>
       <span class="hero__topper">mountain hiking society</span>
       <h1 class="hero__title">Explore the World with Exciting People</h1>
       <p class="hero__text">
@@ -55,7 +55,7 @@ eleventyNavigation:
 <section class="services services--overlap">
   <div class="services__container">
     
-    <div class="services__grid">
+    <div class="services__grid" data-animate-group>
       <div class="services__item">
         <div class="services__icon">
           <img
@@ -109,7 +109,7 @@ eleventyNavigation:
 <!-- ============================================ -->
 
 <section class="content-block">
-  <div class="content-block__container">
+  <div class="content-block__container" data-animate-group>
     <!-- Left Image Section -->
     <div class="content-block__media">
       <picture class="content-block__picture content-block__picture--primary">
@@ -160,7 +160,7 @@ eleventyNavigation:
 <!-- ============================================ -->
 
 <section class="content-block content-block--reversed">
-  <div class="content-block__container">
+  <div class="content-block__container" data-animate-group>
     <!-- Left Image Section -->
     <div class="content-block__media">
       <picture class="content-block__picture content-block__picture--primary">
@@ -197,7 +197,7 @@ eleventyNavigation:
 
 <section class="gallery gallery--home">
   <div class="gallery__container">
-    <div class="gallery__header">
+    <div class="gallery__header" data-animate-group>
       <span class="gallery__topper">Our Portfolio</span>
       <h2 class="gallery__title">Et orci volutpat, back up generator installations</h2>
     </div>
@@ -242,14 +242,16 @@ eleventyNavigation:
 
 <section class="reviews">
   <div class="reviews__container">
-    <span class="reviews__topper">Our Reviews</span>
-    <h2 class="reviews__title">Words From Our Customers</h2>
-    <p class="reviews__text">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit dolor volutpat porttitor sagittis nunc nisl. Sagittis
-      sit pellentesque gravida viverra. Leo ut sed euismod tortor risus et. Ornare non neque, leo, ornare. Lorem ipsum
-      dolor sit amet.
-    </p>
-    <ul class="reviews__grid">
+    <div data-animate-group>
+      <span class="reviews__topper">Our Reviews</span>
+      <h2 class="reviews__title">Words From Our Customers</h2>
+      <p class="reviews__text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit dolor volutpat porttitor sagittis nunc nisl. Sagittis
+        sit pellentesque gravida viverra. Leo ut sed euismod tortor risus et. Ornare non neque, leo, ornare. Lorem ipsum
+        dolor sit amet.
+      </p>
+    </div>
+    <ul class="reviews__grid" data-animate-group>
       <!-- Review 1 -->
       <li class="reviews__item">
         <img
@@ -325,7 +327,7 @@ eleventyNavigation:
 <!-- ============================================ -->
 
 <section class="cta">
-  <div class="cta__container">
+  <div class="cta__container" data-animate-group>
     <h2 class="cta__title">
       Get It Done <br/>
       With Us Today

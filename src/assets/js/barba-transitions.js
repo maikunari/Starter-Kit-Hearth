@@ -1,6 +1,11 @@
 import barba from '@barba/core';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import PhotoSwipe from 'photoswipe';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
 
 // Initialize Barba.js
 barba.init({
@@ -103,9 +108,60 @@ function initPhotoSwipe() {
   window.photoSwipeLightbox.init();
 }
 
-// Placeholder for scroll animations (to be added after cross-fade is working)
+// Initialize scroll animations
 function initScrollAnimations() {
-  console.log('Scroll animations placeholder - to be implemented');
+  // Clear any existing ScrollTriggers
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  
+  // Animate single elements with data-animate="fade-up" or .animate-fade-up
+  const singleElements = document.querySelectorAll('[data-animate="fade-up"], .animate-fade-up');
+  singleElements.forEach(element => {
+    gsap.fromTo(element,
+      {
+        opacity: 0,
+        y: 30
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: element,
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+  });
+  
+  // Animate groups with staggered timing
+  const animateGroups = document.querySelectorAll('[data-animate-group], .animate-group');
+  animateGroups.forEach(group => {
+    const children = group.children;
+    if (children.length > 0) {
+      gsap.fromTo(children,
+        {
+          opacity: 0,
+          y: 30
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: group,
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    }
+  });
+  
+  console.log('Scroll animations initialized');
 }
 
 // Hook to reinitialize scripts after page transition
@@ -130,17 +186,21 @@ barba.hooks.after(() => {
     initPhotoSwipe();
   }, 200);
   
-  // Scroll animations will be added later
-  // setTimeout(() => {
-  //   initScrollAnimations();
-  // }, 300);
+  // Initialize scroll animations
+  setTimeout(() => {
+    initScrollAnimations();
+  }, 300);
   
   // Scroll to top after transition
   window.scrollTo(0, 0);
 });
 
-// Initialize PhotoSwipe on initial page load (scroll animations to be added later)
+// Initialize PhotoSwipe and scroll animations on initial page load
 document.addEventListener('DOMContentLoaded', () => {
   initPhotoSwipe();
-  // initScrollAnimations(); // Will be added later
+  
+  // Initialize scroll animations after a short delay to ensure DOM is ready
+  setTimeout(() => {
+    initScrollAnimations();
+  }, 100);
 });

@@ -56,22 +56,38 @@ if (jsFiles.length > 0) {
   fs.writeFileSync('temp-js-entry.js', jsImports);
 }
 
-// Build JS (legacy scripts)
-esbuild.build({
-  entryPoints: ['temp-js-entry.js'],
-  outfile: 'public/assets/js/scripts.min.js',
-  bundle: true,
-  minify: true,
-  sourcemap: false, // Set to true for debugging
-  format: 'iife', // Use IIFE format since scripts are not modules
-  globalName: 'app', // Optional: Expose scripts under a global namespace
-}).then(() => {
-  console.log('JS concatenated and minified into public/assets/js/scripts.min.js');
-  // Clean up temporary files
-  fs.unlinkSync('temp-js-entry.js');
-  fs.unlinkSync('temp-inline-scroll.js');
-}).catch(err => {
-  console.error('JS build failed:', err);
-  process.exit(1);
-});
+// Only build JS if we have files to bundle
+if (jsFiles.length > 0) {
+  // Build JS (legacy scripts)
+  esbuild.build({
+    entryPoints: ['temp-js-entry.js'],
+    outfile: 'public/assets/js/scripts.min.js',
+    bundle: true,
+    minify: true,
+    sourcemap: false, // Set to true for debugging
+    format: 'iife', // Use IIFE format since scripts are not modules
+    globalName: 'app', // Optional: Expose scripts under a global namespace
+  }).then(() => {
+    console.log('JS concatenated and minified into public/assets/js/scripts.min.js');
+    // Clean up temporary files safely
+    if (fs.existsSync('temp-js-entry.js')) {
+      fs.unlinkSync('temp-js-entry.js');
+    }
+    if (fs.existsSync('temp-inline-scroll.js')) {
+      fs.unlinkSync('temp-inline-scroll.js');
+    }
+  }).catch(err => {
+    console.error('JS build failed:', err);
+    // Clean up temporary files even on error
+    if (fs.existsSync('temp-js-entry.js')) {
+      fs.unlinkSync('temp-js-entry.js');
+    }
+    if (fs.existsSync('temp-inline-scroll.js')) {
+      fs.unlinkSync('temp-inline-scroll.js');
+    }
+    process.exit(1);
+  });
+} else {
+  console.log('No JS files to bundle');
+}
 
