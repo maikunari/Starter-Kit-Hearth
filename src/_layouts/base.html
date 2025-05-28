@@ -75,22 +75,10 @@
         {% if process.env.NODE_ENV == 'production' %}
         <script defer src="/assets/js/scripts.min.js"></script>
         {% else %}
-        <script defer src="/assets/js/nav.js"></script>
-        <script defer src="/assets/js/gallery.js"></script>
-        <script defer>
-            document.addEventListener('scroll', (e) => {
-                const scroll = document.documentElement.scrollTop;
-                if (scroll >= 100) {
-                    document.querySelector('body').classList.add('scroll');
-                } else {
-                    document.querySelector('body').classList.remove('scroll');
-                }
-            });
-        </script>
+        <script defer src="/assets/js/scripts.min.js"></script>
         {% endif %}
         
-        <!-- Barba.js for page transitions -->
-        <script type="module" src="/assets/js/barba-transitions.js"></script>
+        <!-- Barba.js is now bundled in scripts.min.js -->
 
         <!-- PhotoSwipe JS via CDN -->
         <script type="module" src="https://unpkg.com/photoswipe@5/dist/photoswipe.esm.js"></script>

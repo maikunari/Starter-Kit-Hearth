@@ -1,4 +1,4 @@
-import barba from 'https://unpkg.com/@barba/core@2.9.7/dist/barba.mjs';
+import barba from '@barba/core';
 
 // Initialize Barba.js
 barba.init({
@@ -103,6 +103,11 @@ function initPhotoSwipe() {
   });
 }
 
+// Placeholder for scroll animations (to be added after cross-fade is working)
+function initScrollAnimations() {
+  console.log('Scroll animations placeholder - to be implemented');
+}
+
 // Hook to reinitialize scripts after page transition
 barba.hooks.after(() => {
   // Re-run any global scripts that need to be reinitialized
@@ -125,9 +130,17 @@ barba.hooks.after(() => {
     initPhotoSwipe();
   }, 200);
   
+  // Scroll animations will be added later
+  // setTimeout(() => {
+  //   initScrollAnimations();
+  // }, 300);
+  
   // Scroll to top after transition
   window.scrollTo(0, 0);
 });
 
-// Initialize PhotoSwipe on initial page load
-document.addEventListener('DOMContentLoaded', initPhotoSwipe);
+// Initialize PhotoSwipe on initial page load (scroll animations to be added later)
+document.addEventListener('DOMContentLoaded', () => {
+  initPhotoSwipe();
+  // initScrollAnimations(); // Will be added later
+});

@@ -28,6 +28,11 @@ if (fs.existsSync('src/assets/js/gallery.js')) {
   jsFiles.push('src/assets/js/gallery.js');
 }
 
+// Check if barba-transitions.js exists and add it
+if (fs.existsSync('src/assets/js/barba-transitions.js')) {
+  jsFiles.push('src/assets/js/barba-transitions.js');
+}
+
 // Inline JS (the scroll script)
 const inlineJs = `
 document.addEventListener('scroll', (e) => {
@@ -64,7 +69,7 @@ esbuild.build({
   console.log('JS concatenated and minified into public/assets/js/scripts.min.js');
   // Clean up temporary files
   fs.unlinkSync('temp-js-entry.js');
-  fs.unlinkSync('public/assets/js/inline-scroll.js');
+  fs.unlinkSync('temp-inline-scroll.js');
 }).catch(err => {
   console.error('JS build failed:', err);
   process.exit(1);
