@@ -1,8 +1,10 @@
 ---
 pageName: winter-fireplace-maintenance
 blogTitle: "Winter Fireplace Maintenance: Keeping Your Cedar Falls Home Warm and Safe"
-titleTag: "Winter Fireplace Maintenance Tips | Maplewood Hearth & Home | Cedar Falls, IA"
-blogDescription: "Essential winter fireplace maintenance tips from Cedar Falls' trusted experts. Learn how to keep your fireplace running safely and efficiently all season long."
+titleTag: Winter Fireplace Maintenance Tips | Maplewood Hearth & Home | Cedar Falls, IA
+blogDescription: Essential winter fireplace maintenance tips from Cedar Falls'
+  trusted experts. Learn how to keep your fireplace running safely and
+  efficiently all season long.
 author: Tom Maplewood
 date: 2024-01-22T09:15:00.000Z
 tags:

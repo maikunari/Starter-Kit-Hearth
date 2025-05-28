@@ -135,11 +135,14 @@ function initScrollAnimations() {
     );
   });
   
-  // Animate groups with staggered timing
+  // Animate groups with staggered timing - check for fast variant
   const animateGroups = document.querySelectorAll('[data-animate-group], .animate-group');
   animateGroups.forEach(group => {
     const children = group.children;
     if (children.length > 0) {
+      // Check if this is a fast animation group (for blog/contact pages)
+      const isFast = group.hasAttribute('data-animate-fast') || group.classList.contains('animate-fast');
+      
       gsap.fromTo(children,
         {
           opacity: 0,
@@ -148,8 +151,8 @@ function initScrollAnimations() {
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
-          stagger: 0.15,
+          duration: isFast ? 0.6 : 0.8,
+          stagger: isFast ? 0.08 : 0.15,
           ease: "power2.out",
           scrollTrigger: {
             trigger: group,

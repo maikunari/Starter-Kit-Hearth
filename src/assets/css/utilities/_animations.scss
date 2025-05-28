@@ -19,12 +19,23 @@
   transform: translateY(30px);
 }
 
+// Fast animation variant for pages with fewer elements
+// Use data-animate-fast attribute or .animate-fast class
+// Reduces duration from 0.8s to 0.6s and stagger from 0.15s to 0.08s
+[data-animate-group][data-animate-fast] > *,
+.animate-group.animate-fast > * {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
 // Fallback for when JavaScript is disabled
 .no-js {
   [data-animate="fade-up"],
   .animate-fade-up,
   [data-animate-group] > *,
-  .animate-group > * {
+  .animate-group > *,
+  [data-animate-group][data-animate-fast] > *,
+  .animate-group.animate-fast > * {
     opacity: 1;
     transform: none;
   }
