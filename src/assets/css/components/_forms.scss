@@ -5,23 +5,8 @@
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
   .contact-form {
-    padding: var(--sectionPadding);
-    background-color: #fff;
-
-    &__container {
-      width: 100%;
-      max-width: calc(1280rem / 16);
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-direction: column;
-      gap: calc(40rem / 16);
-    }
-
     &__form {
       width: 100%;
-      max-width: calc(630rem / 16);
       /* 24px - 48px top and bottom */
       /* 16px - 48px left and right */
       padding: clamp(1.5rem, 5.18vw, 3rem) clamp(1rem, 5.18vw, 3rem);
@@ -32,6 +17,7 @@
       flex-wrap: wrap;
       align-items: center;
       gap: calc(12rem / 16);
+      border: 1px solid #e9ecef;
     }
 
     &__content {
@@ -274,7 +260,7 @@
     }
 
     &__form {
-      max-width: calc(630rem / 16);
+      /* Remove max-width to allow form to fill container in new layout */
     }
 
     &__info {

@@ -29,56 +29,63 @@ eleventyNavigation:
 <!--                Contact Form                  -->
 <!-- ============================================ -->
 
-<section class="contact-form">
-  <div class="contact-form__container" data-animate-group>
-    <form class="contact-form__form" name="Contact Form" method="post">
-      <div class="contact-form__content">
-        <span class="contact-form__topper">Contact</span>
-        <h2 class="contact-form__title">Get in Touch</h2>
-        <p class="contact-form__text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ridiculus elementum ullamcorper ipsum porttitor aliquam. Id magna urna ultrices odio pulvinar. Sed ut.
-        </p>
-      </div>
-      <label class="contact-form__label">
-        Name
-        <input class="contact-form__input" required type="text" id="name" name="name" placeholder="Name">
-      </label>
-      <label class="contact-form__label">
-        Email
-        <input class="contact-form__input" required type="email" id="email" name="email" placeholder="Email">
-      </label>
-      <label class="contact-form__label">
-        Phone
-        <input class="contact-form__input" required type="tel" id="phone" name="phone" placeholder="Phone">
-      </label>
-      <label class="contact-form__label">
-        How Did You Find Us
-        <input class="contact-form__input" type="text" id="find" name="find-us" placeholder="How did you find us?">
-      </label>
-      <label class="contact-form__label contact-form__label-message">
-        Message
-        <textarea class="contact-form__input contact-form__textarea" required name="Message" id="message" placeholder="Write message..."></textarea>
-      </label>
-      <button class="btn btn--solid contact-form__button" type="submit">Submit Message</button>
-    </form>
-    <div class="contact-form__info">
-      <div class="contact-form__background">
-        {% image './src/assets/images/skyscraper.jpg', 'building', '', 'lazy'%}
-        <div class="contact-form__info-overlay">
-          <div class="contact-form__info-group">
-            <span class="contact-form__info-header">Email</span>
-            <a class="contact-form__info-link" href="mailto:support@yourdomain.com">support@yourdomain.com</a>
-          </div>
-          <div class="contact-form__info-group">
-            <span class="contact-form__info-header">Phone</span>
-            <a class="contact-form__info-link" href="tel:219-555-1234">(219) 555-1234</a>
-          </div>
-          <div class="contact-form__info-group">
-            <span class="contact-form__info-header">Address</span>
-            <a class="contact-form__info-link" href="">2553 Woodbridge Lane, <span class="contact-form__info-block">Boston Ware 120</span></a>
+<section class="contact-layout">
+  <div class="contact-layout__container" data-animate-group>
+    <!--Main content -->
+    <main class="contact-layout__main">
+      <form class="contact-form__form" name="Contact Form" method="post">
+        <div class="contact-form__content">
+          <span class="contact-form__topper">Contact</span>
+          <h2 class="contact-form__title">Get in Touch</h2>
+          <p class="contact-form__text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ridiculus elementum ullamcorper ipsum porttitor aliquam. Id magna urna ultrices odio pulvinar. Sed ut.
+          </p>
+        </div>
+        <label class="contact-form__label">
+          Name
+          <input class="contact-form__input" required type="text" id="name" name="name" placeholder="Name">
+        </label>
+        <label class="contact-form__label">
+          Email
+          <input class="contact-form__input" required type="email" id="email" name="email" placeholder="Email">
+        </label>
+        <label class="contact-form__label">
+          Phone
+          <input class="contact-form__input" required type="tel" id="phone" name="phone" placeholder="Phone">
+        </label>
+        <label class="contact-form__label">
+          How Did You Find Us
+          <input class="contact-form__input" type="text" id="find" name="find-us" placeholder="How did you find us?">
+        </label>
+        <label class="contact-form__label contact-form__label-message">
+          Message
+          <textarea class="contact-form__input contact-form__textarea" required name="Message" id="message" placeholder="Write message..."></textarea>
+        </label>
+        <button class="btn btn--solid contact-form__button" type="submit">Submit Message</button>
+      </form>
+    </main>
+    
+    <!--Sidebar-->
+    <aside class="contact-layout__sidebar">
+      <div class="contact-info">
+        <div class="contact-info__section">
+          <h3 class="contact-info__title">Get In Touch</h3>
+          <div class="contact-info__content">
+            <div class="contact-info__group">
+              <span class="contact-info__header">Email</span>
+              <a class="contact-info__link" href="mailto:support@yourdomain.com">support@yourdomain.com</a>
+            </div>
+            <div class="contact-info__group">
+              <span class="contact-info__header">Phone</span>
+              <a class="contact-info__link" href="tel:219-555-1234">(219) 555-1234</a>
+            </div>
+            <div class="contact-info__group">
+              <span class="contact-info__header">Address</span>
+              <a class="contact-info__link" href="">2553 Woodbridge Lane, <span class="contact-info__block">Boston Ware 120</span></a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </aside>
   </div>
 </section>

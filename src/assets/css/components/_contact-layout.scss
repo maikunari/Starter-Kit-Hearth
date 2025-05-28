@@ -1,10 +1,10 @@
 /*-- -------------------------- -->
-<---        Blog Layout         -->
+<---       Contact Layout       -->
 <--- -------------------------- -*/
 
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
-  .blog-layout {
+  .contact-layout {
     padding: var(--sectionPadding);
     background-color: #fff;
 
@@ -28,23 +28,12 @@
       width: 100%;
       order: -1; /* Show sidebar first on mobile */
     }
-
-    &__no-posts {
-      text-align: center;
-      padding: calc(80rem / 16) calc(20rem / 16);
-      
-      h1 {
-        font-size: clamp(1.5rem, 4vw, 2.5rem);
-        color: var(--headerColor);
-        margin: 0;
-      }
-    }
   }
 }
 
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
-  .blog-layout {
+  .contact-layout {
     &__container {
       flex-direction: row;
       gap: calc(60rem / 16);
@@ -68,7 +57,7 @@
 
 /* Desktop - 1024px */
 @media only screen and (min-width: 64rem) {
-  .blog-layout {
+  .contact-layout {
     &__container {
       gap: calc(80rem / 16);
     }

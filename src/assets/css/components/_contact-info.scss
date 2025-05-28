@@ -1,0 +1,99 @@
+/*-- -------------------------- -->
+<---       Contact Info         -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: calc(32rem / 16);
+
+    &__section {
+      background-color: #f8f9fa;
+      border-radius: calc(12rem / 16);
+      padding: 0;
+      border: 1px solid #e9ecef;
+      overflow: hidden;
+      position: relative;
+    }
+
+    &__title {
+      font-size: clamp(1.125rem, 2vw, 1.25rem);
+      font-weight: 700;
+      color: var(--headerColor);
+      margin: 0 0 calc(20rem / 16) 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: clamp(1.5rem, 4vw, 2rem) clamp(1.5rem, 4vw, 2rem) 0;
+    }
+
+    &__content {
+      padding: clamp(1.5rem, 4vw, 2rem);
+      display: flex;
+      flex-direction: column;
+      gap: calc(32rem / 16);
+    }
+
+    &__group {
+      display: flex;
+      flex-direction: column;
+      gap: calc(8rem / 16);
+    }
+
+    &__header {
+      font-size: calc(16rem / 16);
+      line-height: 1.2em;
+      font-weight: 700;
+      margin: 0;
+      color: var(--headerColor);
+      display: block;
+    }
+
+    &__link {
+      font-size: calc(16rem / 16);
+      line-height: 1.5em;
+      text-decoration: none;
+      color: var(--bodyTextColor);
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: var(--primary);
+      }
+    }
+
+    &__block {
+      display: block;
+    }
+  }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+  .contact-info {
+    gap: calc(40rem / 16);
+
+    &__section {
+      padding: 0;
+    }
+
+    &__title {
+      padding: clamp(2rem, 4vw, 2.5rem) clamp(2rem, 4vw, 2.5rem) 0;
+    }
+
+    &__content {
+      padding: clamp(2rem, 4vw, 2.5rem);
+      gap: calc(36rem / 16);
+    }
+  }
+}
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+  .contact-info {
+    &__content {
+      padding: clamp(2.5rem, 4vw, 3rem);
+      gap: calc(40rem / 16);
+    }
+  }
+} 
