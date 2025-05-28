@@ -8,6 +8,7 @@ A modern, theme-aware static site generator built with Eleventy, featuring compr
 - [Quick Start](#quick-start)
 - [Features](#features)
 - [Installation & Setup](#installation--setup)
+- [Template Inheritance](#template-inheritance)
 - [SCSS Architecture](#scss-architecture)
 - [Theme System](#theme-system)
 - [Component Development](#component-development)
@@ -16,6 +17,100 @@ A modern, theme-aware static site generator built with Eleventy, featuring compr
 - [Deployment](#deployment)
 - [File Structure](#file-structure)
 - [Development Workflow](#development-workflow)
+
+## Template Inheritance
+
+Eleventy supports two main approaches for page layouts, each with different use cases and complexity levels.
+
+### Simple Layout Approach (Recommended)
+
+The simplest and most commonly used approach. Perfect for most pages:
+
+```yaml
+---
+title: 'Page Title'
+layout: 'base.html'
+description: 'Page description'
+---
+
+<!-- Your page content here -->
+<section class="page-banner">
+  <h1>{{ title }}</h1>
+</section>
+```
+
+**How it works:**
+- Specify the layout in the front matter
+- Page content automatically gets inserted into the layout's `{{ content | safe }}` area
+- Clean and straightforward
+
+### Template Inheritance Approach (Advanced)
+
+More powerful but complex approach using Nunjucks template inheritance:
+
+```nunjucks
+---
+title: 'Page Title'
+---
+
+{% extends "_layouts/base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="/custom.css">
+{% endblock %}
+
+{% block body %}
+  <section class="custom-section">
+    <h1>{{ title }}</h1>
+  </section>
+{% endblock %}
+```
+
+**How it works:**
+- Uses `{% extends %}` to inherit from a base template
+- Allows overriding specific blocks defined in the base layout
+- Provides granular control over different sections (head, body, scripts, etc.)
+
+### When to Use Each Approach
+
+**Use Simple Layout when:**
+- Building standard pages (About, Contact, Services, etc.)
+- Content fits within the standard page structure
+- You want clean, maintainable code
+
+**Use Template Inheritance when:**
+- Need custom head content (specific CSS, meta tags)
+- Require different body structures
+- Building complex, unique page layouts
+- Need to override multiple sections of the base template
+
+### Base Layout Structure
+
+The base layout (`src/_layouts/base.html`) provides the foundation:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Standard head content -->
+  {% block head %}{% endblock %}
+</head>
+<body>
+  {% include "header.html" %}
+  
+  <main>
+    {% block body %}
+      {{ content | safe }}
+    {% endblock %}
+  </main>
+  
+  {% include "footer.html" %}
+  {% block scripts %}{% endblock %}
+</body>
+</html>
+```
+
+This structure allows both approaches to work seamlessly.
 
 ## Overview
 

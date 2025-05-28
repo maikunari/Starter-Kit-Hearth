@@ -1,0 +1,158 @@
+// =============================================================================
+// TERMS CONTENT COMPONENT
+// =============================================================================
+
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mix;
+
+.terms-content {
+  padding: vars.$section-padding 0;
+  background-color: #fff;
+  
+  &__container {
+    @include mix.container(50rem);
+  }
+  
+  &__wrapper {
+    max-width: 45rem;
+    margin: 0 auto;
+  }
+  
+  &__intro {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-left: 4px solid vars.$primary;
+    border-radius: 0.25rem;
+    
+    p {
+      font-size: 1.125rem;
+      line-height: 1.6;
+      color: vars.$header-color;
+      margin: 0;
+      font-weight: 500;
+    }
+  }
+  
+  &__section {
+    margin-bottom: 3rem;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: vars.$header-color;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #e9ecef;
+      
+      @include mix.tablet-up {
+        font-size: 1.75rem;
+      }
+    }
+    
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: vars.$header-color;
+      margin: 2rem 0 1rem 0;
+      
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: vars.$body-text-color;
+      margin-bottom: 1.5rem;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    
+    ul, ol {
+      margin: 1.5rem 0;
+      padding-left: 2rem;
+      
+      li {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: vars.$body-text-color;
+        margin-bottom: 0.75rem;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+        
+        strong {
+          color: vars.$header-color;
+          font-weight: 600;
+        }
+      }
+    }
+    
+    ol {
+      li {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+  
+  &__link {
+    color: vars.$primary;
+    text-decoration: underline;
+    transition: color vars.$transition-base;
+    
+    &:hover {
+      color: #1a5490;
+    }
+  }
+  
+  &__contact {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    margin-top: 1.5rem;
+    
+    p {
+      margin-bottom: 1rem;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    
+    strong {
+      color: vars.$header-color;
+    }
+  }
+  
+  // Responsive adjustments
+  @include mix.mobile-up {
+    &__container {
+      padding: 0 2rem;
+    }
+  }
+  
+  @include mix.tablet-up {
+    padding: 6rem 0;
+    
+    &__intro {
+      padding: 2.5rem;
+      
+      p {
+        font-size: 1.25rem;
+      }
+    }
+    
+    &__contact {
+      padding: 2.5rem;
+    }
+  }
+} 

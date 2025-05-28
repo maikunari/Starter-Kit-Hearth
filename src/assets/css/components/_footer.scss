@@ -219,6 +219,23 @@
     }
   }
   
+  &__legal {
+    @include mix.tablet-up {
+      margin-left: auto;
+    }
+  }
+  
+  &__legal-link {
+    color: #d0d0d0;
+    text-decoration: none;
+    transition: color vars.$transition-base;
+    font-size: 0.875rem;
+    
+    &:hover {
+      color: vars.$primary;
+    }
+  }
+  
   &__separator {
     margin: 0 0.5rem;
     color: #666;
