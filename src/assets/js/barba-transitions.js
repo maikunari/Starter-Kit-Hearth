@@ -161,6 +161,32 @@ function initScrollAnimations() {
     }
   });
   
+  // Animate Masonry gallery items with staggered timing
+  const masonryGalleries = document.querySelectorAll('.gallery__grid--masonry');
+  masonryGalleries.forEach(gallery => {
+    const readyItems = gallery.querySelectorAll('.masonry-ready');
+    if (readyItems.length > 0) {
+      gsap.fromTo(readyItems,
+        {
+          opacity: 0,
+          y: 30
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: gallery,
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    }
+  });
+  
   console.log('Scroll animations initialized');
 }
 
