@@ -13,6 +13,8 @@ A modern, theme-aware static site generator built with Eleventy, featuring compr
 - [Theme System](#theme-system)
 - [Component Development](#component-development)
 - [Scroll Animations](#scroll-animations)
+- [Fast Animation System](#fast-animation-system)
+- [Decap CMS Configuration](#decap-cms-configuration)
 - [Blog System](#blog-system)
 - [Deployment](#deployment)
 - [File Structure](#file-structure)
@@ -473,6 +475,357 @@ gsap.fromTo('.hero__title, .hero__text, .hero__button', {
 2. Define initial and final states
 3. Configure ScrollTrigger settings
 4. Test across different screen sizes
+
+## Fast Animation System
+
+The Fast Animation System provides optimized scroll animations for pages with fewer elements, ensuring snappy performance while maintaining visual consistency.
+
+### Overview
+
+Different page types have different content densities:
+- **Content-heavy pages** (Home, About) benefit from slower, more immersive animations
+- **Content-light pages** (Blog, Contact) need faster, more responsive animations
+
+The Fast Animation System automatically detects and applies appropriate timing based on page content.
+
+### Usage
+
+#### Standard Animations (Default)
+```html
+<!-- Standard timing: 0.8s duration, 0.15s stagger -->
+<div class="content-section" data-animate-group>
+  <div class="item">Item 1</div>
+  <div class="item">Item 2</div>
+  <div class="item">Item 3</div>
+</div>
+```
+
+#### Fast Animations
+```html
+<!-- Fast timing: 0.6s duration, 0.08s stagger -->
+<div class="content-section" data-animate-group data-animate-fast>
+  <div class="item">Item 1</div>
+  <div class="item">Item 2</div>
+  <div class="item">Item 3</div>
+</div>
+```
+
+### Implementation Details
+
+#### Animation Types
+
+**Single Element Animation**
+```html
+<div data-animate="fade-up">Animates individually</div>
+```
+
+**Group Animation (Standard)**
+```html
+<div data-animate-group>
+  <div>Staggers with 0.15s delay</div>
+  <div>Between each element</div>
+</div>
+```
+
+**Group Animation (Fast)**
+```html
+<div data-animate-group data-animate-fast>
+  <div>Staggers with 0.08s delay</div>
+  <div>Between each element</div>
+</div>
+```
+
+#### Timing Comparison
+
+| Animation Type | Duration | Stagger | Use Case |
+|---------------|----------|---------|----------|
+| Standard | 0.8s | 0.15s | Content-heavy pages (Home, About) |
+| Fast | 0.6s | 0.08s | Content-light pages (Blog, Contact) |
+| Single | 1.0s | N/A | Individual elements |
+
+### CSS Classes
+
+The system also supports CSS classes for styling:
+
+```scss
+// Standard animations
+.animate-fade-up { /* Single element */ }
+.animate-group > * { /* Group children */ }
+
+// Fast animations
+.animate-group.animate-fast > * { /* Fast group children */ }
+```
+
+### JavaScript Configuration
+
+Animations are handled in `src/assets/js/barba-transitions.js`:
+
+```javascript
+// Fast animation detection
+const isFast = group.hasAttribute('data-animate-fast') || 
+               group.classList.contains('animate-fast');
+
+// Apply appropriate timing
+gsap.fromTo(children, {
+  opacity: 0,
+  y: 30
+}, {
+  opacity: 1,
+  y: 0,
+  duration: isFast ? 0.6 : 0.8,
+  stagger: isFast ? 0.08 : 0.15,
+  ease: "power2.out"
+});
+```
+
+### Best Practices
+
+1. **Use Fast Animations for:**
+   - Blog listing pages
+   - Contact forms
+   - Simple content pages
+   - Navigation menus
+
+2. **Use Standard Animations for:**
+   - Hero sections
+   - Feature showcases
+   - Gallery grids
+   - Rich content sections
+
+3. **Performance Tips:**
+   - Fast animations reduce perceived load time
+   - Maintain consistent easing across all animations
+   - Test on slower devices to ensure smooth performance
+
+## Decap CMS Configuration
+
+Decap CMS (formerly Netlify CMS) provides a user-friendly interface for content management. This section covers setup, configuration, and usage.
+
+### Overview
+
+Decap CMS is configured to work seamlessly with our Eleventy blog system, providing:
+- Visual blog post editor
+- Image upload and management
+- Live preview functionality
+- Git-based workflow
+- Branch-specific editing
+
+### Setup & Access
+
+#### Local Development
+1. **Start the development server:**
+   ```bash
+   npm start
+   ```
+
+2. **Access the CMS:**
+   - Navigate to `http://localhost:8080/admin`
+   - The CMS runs in local mode during development
+
+#### Production Setup
+For production deployment, you'll need to configure Git Gateway through your hosting provider (Netlify, Vercel, etc.).
+
+### Configuration Files
+
+#### Main Configuration (`src/admin/config.yml`)
+
+```yaml
+backend:
+  name: git-gateway
+  branch: develop  # Matches your current branch
+
+local_backend: true  # Enables local development mode
+
+# Media storage configuration
+media_folder: "src/assets/images/blog"
+public_folder: "/images/blog"
+
+# Logo for the CMS interface
+logo_url: https://d33wubrfki0l68.cloudfront.net/c89899bad974606ce0e0f5d5a95842dc787dcb56/7fe98/assets/images/logo-blue.png
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "src/blog"
+    create: true
+    slug: "{{pageName}}"
+    fields:
+      - {label: "Page Name", name: "pageName", widget: "string", hint: "Used for the URL and image filename (no spaces, use dashes)"}
+      - {label: "Blog Title", name: "blogTitle", widget: "string"}
+      - {label: "Title Tag", name: "titleTag", widget: "string", hint: "SEO title for search engines"}
+      - {label: "Blog Description", name: "blogDescription", widget: "text", hint: "Brief description for blog listing and SEO"}
+      - {label: "Author", name: "author", widget: "string", default: "Mike"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Tags", name: "tags", widget: "list", default: ["post"]}
+      - {label: "Featured Image", name: "image", widget: "image", hint: "Upload an image for this blog post"}
+      - {label: "Image Alt Text", name: "imageAlt", widget: "string", hint: "Describe the image for accessibility"}
+      - {label: "Body", name: "body", widget: "markdown"}
+```
+
+#### Admin Interface (`src/admin/index.html`)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decap CMS</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  </body>
+</html>
+```
+
+### Field Configuration
+
+#### Required Fields
+
+Every blog post requires these fields to work properly with the Eleventy system:
+
+| Field | Purpose | Example |
+|-------|---------|---------|
+| `pageName` | URL slug and image filename | `fireplace-safety-tips` |
+| `blogTitle` | Display title | `Essential Fireplace Safety Tips` |
+| `titleTag` | SEO title | `Fireplace Safety Tips \| Maplewood Hearth & Home` |
+| `blogDescription` | Meta description and excerpt | `Learn essential safety tips...` |
+| `author` | Post author | `Mike` |
+| `date` | Publication date | `2025-01-15T10:00:00.000Z` |
+| `tags` | Post categories | `["post", "safety"]` |
+| `image` | Featured image path | `/images/blog/fireplace-safety-tips.jpg` |
+| `imageAlt` | Image accessibility text | `Modern fireplace with safety screen` |
+| `body` | Post content | Markdown content |
+
+#### Field Validation
+
+The system expects:
+- **Page Name**: No spaces, use dashes (becomes URL slug)
+- **Image**: Must be uploaded through CMS (auto-handled)
+- **Tags**: Always include "post" for proper collection filtering
+- **Date**: ISO format (auto-generated by CMS)
+
+### Content Management Workflow
+
+#### Creating a New Blog Post
+
+1. **Access the CMS:**
+   - Go to `http://localhost:8080/admin`
+   - Click "New Blog" or navigate to Blog → New Blog
+
+2. **Fill Required Fields:**
+   ```
+   Page Name: winter-fireplace-maintenance
+   Blog Title: Winter Fireplace Maintenance Guide
+   Title Tag: Winter Fireplace Maintenance | Maplewood Hearth & Home
+   Blog Description: Essential maintenance tips to keep your fireplace safe and efficient during winter months.
+   Author: Mike
+   Date: [Auto-generated]
+   Tags: post, maintenance, winter
+   ```
+
+3. **Upload Featured Image:**
+   - Click "Choose an image"
+   - Upload your image (automatically saved to `/src/assets/images/blog/`)
+   - Add descriptive alt text
+
+4. **Write Content:**
+   - Use the rich text editor or markdown mode
+   - Preview your changes in real-time
+
+5. **Save and Publish:**
+   - Click "Save" to create a draft
+   - Click "Publish" to make it live
+
+#### Editing Existing Posts
+
+1. Navigate to Blog in the CMS
+2. Click on the post you want to edit
+3. Make your changes
+4. Save or publish your updates
+
+### Image Management
+
+#### Automatic Image Handling
+
+The CMS automatically:
+- Saves images to `src/assets/images/blog/`
+- Names images based on the `pageName` field
+- Generates responsive image variants during build
+- Creates optimized formats (WebP, AVIF)
+
+#### Image Requirements
+
+- **Format**: JPG, PNG, or WebP
+- **Size**: Recommended 1920x1080 or similar aspect ratio
+- **File Size**: Under 2MB for optimal performance
+- **Naming**: Automatically handled by CMS
+
+### Branch Configuration
+
+The CMS is configured to work with your current Git branch:
+
+```yaml
+backend:
+  name: git-gateway
+  branch: develop  # Change this to match your working branch
+```
+
+**Important**: Update the branch name in `config.yml` when switching branches or deploying to production.
+
+### Troubleshooting
+
+#### Common Issues
+
+**1. Blog posts not showing titles in CMS:**
+- Check that `blogTitle` field is properly configured
+- Verify frontmatter structure matches configuration
+
+**2. Images not displaying:**
+- Ensure image is uploaded through CMS
+- Check that `pageName` matches image filename
+- Verify image exists in `src/assets/images/blog/`
+
+**3. Posts not appearing on site:**
+- Confirm `tags` includes "post"
+- Check that all required fields are filled
+- Rebuild the site: `npm run build`
+
+**4. CMS not loading:**
+- Verify you're on the correct branch
+- Check that `local_backend: true` is set for development
+- Ensure development server is running
+
+#### Debug Steps
+
+1. **Check the browser console** for JavaScript errors
+2. **Verify file structure** matches configuration
+3. **Rebuild the site** after making changes
+4. **Check Eleventy collections** in the build output
+
+### Production Deployment
+
+For production deployment:
+
+1. **Update configuration:**
+   ```yaml
+   backend:
+     name: git-gateway
+     branch: main  # or your production branch
+   
+   local_backend: false  # Disable for production
+   ```
+
+2. **Configure Git Gateway** through your hosting provider
+3. **Set up authentication** (GitHub, GitLab, etc.)
+4. **Deploy and test** the CMS functionality
+
+### Security Considerations
+
+- CMS access is controlled through Git authentication
+- All content changes go through Git workflow
+- No direct database access required
+- Content is version controlled and auditable
 
 ## Blog System
 
