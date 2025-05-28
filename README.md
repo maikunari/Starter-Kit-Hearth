@@ -1,4 +1,4 @@
-# Starter Kit Hearth - Modern Eleventy Blog + Netlify CMS
+# Starter Kit Hearth - Modern Eleventy Business Template + Decap CMS
 
 A modern, theme-aware static site generator built with Eleventy, featuring comprehensive SCSS architecture, scroll animations, and a powerful theming system.
 
