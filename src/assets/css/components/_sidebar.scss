@@ -2,12 +2,12 @@
 @use '../abstracts/schemes' as schemes;
 
 /*-- -------------------------- -->
-<---       Blog Sidebar        -->
+<---         Sidebar           -->
 <--- -------------------------- -*/
 
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
-  .blog-sidebar {
+  .sidebar {
     display: flex;
     flex-direction: column;
     gap: calc(32rem / 16);
@@ -89,7 +89,7 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
 
-      .blog-sidebar__featured-item:hover & {
+      .sidebar__featured-item:hover & {
         color: schemes.color(primary);
       }
     }
@@ -104,7 +104,7 @@
 
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
-  .blog-sidebar {
+  .sidebar {
     gap: calc(40rem / 16);
 
     &__section {
@@ -148,7 +148,7 @@
 
 /* Desktop - 1024px */
 @media only screen and (min-width: 64rem) {
-  .blog-sidebar {
+  .sidebar {
     &__featured-item {
       padding: calc(20rem / 16);
     }
