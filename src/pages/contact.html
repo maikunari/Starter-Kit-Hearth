@@ -34,7 +34,7 @@ eleventyNavigation:
   <div class="contact-layout__container" data-animate-group data-animate-fast>
     <!--Main content -->
     <main class="contact-layout__main">
-      <form class="contact-form__form" name="Contact Form" method="post">
+      <form class="contact-form__form" name="Contact Form" method="post" data-netlify="true" action="/thank-you/">
         <div class="contact-form__content">
           <span class="contact-form__topper">Get Your Free Estimate</span>
           <h2 class="contact-form__title">Start Your Fireplace Project</h2>
@@ -42,6 +42,10 @@ eleventyNavigation:
             Ready to bring warmth and comfort to your home? Contact Maplewood Hearth & Home today for your free consultation. Whether you need installation, repair, or chimney services, our family is here to help yours.
           </p>
         </div>
+        
+        <!-- Hidden field for Netlify -->
+        <input type="hidden" name="form-name" value="Contact Form" />
+        
         <label class="contact-form__label">
           Name
           <input class="contact-form__input" required type="text" id="name" name="name" placeholder="Your Name">
@@ -68,7 +72,7 @@ eleventyNavigation:
         </label>
         <label class="contact-form__label contact-form__label-message">
           Project Details
-          <textarea class="contact-form__input contact-form__textarea" required name="Message" id="message" placeholder="Tell us about your fireplace project or service needs..."></textarea>
+          <textarea class="contact-form__input contact-form__textarea" required name="message" id="message" placeholder="Tell us about your fireplace project or service needs..."></textarea>
         </label>
         <button class="btn btn--solid contact-form__button" type="submit">Get My Free Estimate</button>
       </form>
