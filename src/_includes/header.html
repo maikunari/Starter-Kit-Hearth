@@ -6,12 +6,10 @@
 <header class="navigation">
     <div class="navigation__background"></div>
     <div class="navigation__container">
-        <!--Logo - Text-based logo for Maplewood Hearth & Home-->
+        <!--Logo - Image logo for Maplewood Hearth & Home-->
         <a class="navigation__logo" aria-label="click to go to home page" href="/">
-            <div class="navigation__logo-text">
-                <span class="navigation__logo-main">Maplewood</span>
-                <span class="navigation__logo-sub">Hearth & Home</span>
-            </div>
+            {% image './src/assets/images/logo-light.png', 'Maplewood Hearth & Home Logo', 'logo--light', 'eager', '300px' %}
+            {% image './src/assets/images/logo-color.png', 'Maplewood Hearth & Home Logo', 'logo--dark', 'eager', '300px' %}
         </a>
 
         <!--Mobile Nav toggle-->
