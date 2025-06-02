@@ -13,7 +13,7 @@
     gap: calc(32rem / 16);
 
     &__section {
-      background-color: schemes.color(medium);
+      background-color: schemes.color(accent);
       border-radius: calc(12rem / 16);
       padding: clamp(1.5rem, 4vw, 2rem);
       border: 1px solid rgba(schemes.color(border-color-subtle), 0.1);

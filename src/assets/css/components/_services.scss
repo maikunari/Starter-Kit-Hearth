@@ -23,7 +23,7 @@
     border-top: 0.375rem solid schemes.color(primary);
     box-shadow: 0px 20px 40px rgba(schemes.color(dark), 0.05);
     margin-bottom: 3.125rem;
-    background: schemes.color(medium);
+    background: schemes.color(body-bg-color);
     
     @include mix.tablet-up {
       width: 98%;
@@ -36,19 +36,19 @@
     }
     
     .services__title {
-      color: schemes.color(body-text-color-white);
+      color: schemes.color(header-color);
     }
     
     .services__text {
-      color: rgba(schemes.color(body-text-color-white), 0.8);
+      color: rgba(schemes.color(body-text-color), 0.8);
     }
     
     .services__item-title {
-      color: schemes.color(body-text-color-white);
+      color: schemes.color(body-text-color);
     }
     
     .services__item-text {
-      color: rgba(schemes.color(body-text-color-white), 0.7);
+      color: rgba(schemes.color(body-text-color), 0.8);
     }
   }
   

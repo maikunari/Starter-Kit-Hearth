@@ -9,7 +9,8 @@ $color-schemes: (
   // ARTISAN SCHEME: Current warm golden theme with blue-gray accents
   // Perfect for: Craftspeople, artisans, premium services, warm brands
   artisan: (
-    primary: #FFBA19,
+    primary: #FFBA19, 
+    // primary: #dc1c2f (maplewood red,
     primary-shade: #ffd675,
     primary-dark: #805d0d,
     primary-light: #fff3d6,
@@ -21,7 +22,8 @@ $color-schemes: (
     border-color-subtle: rgba(255, 255, 255, 0.2),
     accent: #334756,
     dark: #082032,
-    medium: #2C394B
+    // medium: #2C394B
+    medium: #f7f7f7
   ),
 
   // MODERN SCHEME: Sleek, tech-inspired, bold contrasts
