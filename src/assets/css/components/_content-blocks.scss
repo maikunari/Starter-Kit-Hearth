@@ -167,6 +167,75 @@
     margin-top: 2rem;
   }
   
+  // Generic list styling (replaces overly specific value classes)
+  &__list {
+    margin-bottom: 2rem;
+  }
+
+  &__item {
+    margin-bottom: clamp(1.5rem, 3vw, 2rem);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &-title {
+      font-size: clamp(1.125rem, 2vw, 1.25rem);
+      font-weight: 700;
+      line-height: 1.3em;
+      color: schemes.color(header-color);
+      margin: 0 0 0.75rem 0;
+    }
+
+    &-text {
+      font-size: vars.$body-font-size;
+      line-height: 1.5em;
+      color: schemes.color(body-text-color);
+      margin: 0;
+    }
+  }
+  
+  // Stats section styling
+  &__stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: 2rem;
+    
+    @include mix.tablet-up {
+      justify-content: flex-start;
+      gap: clamp(2rem, 6vw, 4rem);
+    }
+  }
+
+  &__stat {
+    flex: 1;
+    min-width: calc(50% - 0.75rem);
+    text-align: left;
+    
+    @include mix.tablet-up {
+      min-width: auto;
+      flex: none;
+    }
+
+    &-number {
+      display: block;
+      font-size: clamp(1.25rem, 3vw, 1.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: schemes.color(header-color);
+      margin-bottom: 0.25rem;
+    }
+
+    &-label {
+      display: block;
+      font-size: vars.$body-font-size;
+      font-weight: 500;
+      line-height: 1.4;
+      color: schemes.color(body-text-color);
+    }
+  }
+  
   // Reversed layout variant
   &--reversed {
     .content-block__container {

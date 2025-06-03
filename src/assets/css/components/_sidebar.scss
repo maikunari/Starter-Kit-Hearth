@@ -100,20 +100,6 @@
       font-weight: 500;
     }
 
-    // Contact-specific sidebar styles
-    &__contact-group {
-      margin-bottom: calc(24rem / 16);
-      // styling for contact groups
-    }
-
-    &__contact-header {
-      // styling for contact headers
-    }
-
-    &__contact-link {
-      // styling for contact links
-    }
-
     // Contact sidebar elements (matching actual HTML classes)
     &__group {
       margin-bottom: calc(24rem / 16);
@@ -197,13 +183,6 @@
     &__featured-image {
       width: calc(80rem / 16);
       height: calc(80rem / 16);
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: inherit;
-      }
     }
 
     &__featured-content {
@@ -219,11 +198,6 @@
     }
 
     // Contact sidebar tablet adjustments
-    &__group {
-      margin-bottom: calc(28rem / 16);
-      padding-bottom: calc(24rem / 16);
-    }
-
     &__header {
       font-size: calc(15rem / 16);
       margin-bottom: calc(10rem / 16);
@@ -247,11 +221,6 @@
     }
 
     // Contact sidebar desktop adjustments
-    &__group {
-      margin-bottom: calc(32rem / 16);
-      padding-bottom: calc(28rem / 16);
-    }
-
     &__header {
       font-size: calc(16rem / 16);
       margin-bottom: calc(12rem / 16);
