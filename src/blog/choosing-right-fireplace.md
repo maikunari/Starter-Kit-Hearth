@@ -18,7 +18,7 @@ Let's explore the three main fireplace types and help you determine which is rig
 ## Wood-Burning Fireplaces: The Traditional Choice
 
 ### The Appeal of Wood-Burning
-There's nothing quite like the authentic experience of a wood-burning fireplace. The crackling sounds, the aroma of burning wood, and the dancing flames create an ambiance that many homeowners cherish.
+There's nothing quite like the authentic experience of a wood-burning fireplace. The crackling sounds, the aroma of <a href="#">burning wood</a>, and the dancing flames create an ambiance that many homeowners cherish.
 
 ### Pros:
 - **Authentic experience** with real flames, sounds, and smells

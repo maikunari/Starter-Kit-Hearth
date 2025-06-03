@@ -4,6 +4,7 @@
 
 @use '../abstracts/variables' as vars;
 @use '../abstracts/mixins' as mix;
+@use '../abstracts/schemes' as schemes;
 
 .navigation {
   position: fixed;
@@ -65,6 +66,14 @@
     .navigation__link {
       @include mix.desktop-up {
         color: vars.$header-color;
+      }
+
+      // Override global link styles for scrolled state
+      &:hover {
+        @include mix.desktop-up {
+          color: vars.$header-color;
+          text-decoration: none;
+        }
       }
     }
   }
@@ -169,7 +178,7 @@
     span {
       height: 2px;
       width: 1.875rem;
-      background-color: #000;
+      background-color: schemes.color(header-color);
       display: block;
       position: absolute;
       left: 50%;
@@ -183,7 +192,7 @@
         display: block;
         height: 2px;
         width: 80%;
-        background: #000;
+        background: schemes.color(header-color);
         opacity: 1;
         left: 0;
         transition: width vars.$transition-base, left vars.$transition-base, 
@@ -304,7 +313,7 @@
   &__link {
     text-decoration: none;
     text-transform: uppercase;
-    color: #000;
+    color: schemes.color(header-color);
     font-size: 1.1875rem;
     text-align: center;
     display: inline-block;
@@ -315,6 +324,16 @@
       font-size: clamp(0.875rem, 1.5vw, 1.125rem);
       color: vars.$body-text-color-white;
       transition: color vars.$transition-base;
+    }
+
+    // Override global link styles
+    &:hover {
+      color: schemes.color(header-color); // Keep mobile color on hover
+      text-decoration: none;
+      
+      @include mix.desktop-up {
+        color: vars.$body-text-color-white; // Keep desktop color on hover
+      }
     }
     
     // Active/hover underline
@@ -382,6 +401,14 @@ body.scroll .navigation {
   .navigation__link {
     @include mix.desktop-up {
       color: vars.$header-color;
+    }
+
+    // Override global link styles for body scroll state
+    &:hover {
+      @include mix.desktop-up {
+        color: vars.$header-color;
+        text-decoration: none;
+      }
     }
   }
 }

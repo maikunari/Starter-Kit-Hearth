@@ -3,6 +3,7 @@
 // =============================================================================
 
 @use '../abstracts/variables' as vars;
+@use '../abstracts/schemes' as schemes;
 
 // CSS Custom Properties
 // -----------------------------------------------------------------------------
@@ -101,9 +102,13 @@ p, li {
 
 a {
   text-decoration: none;
+  color: schemes.color(primary-dark);
+  transition: all 0.3s ease;
   
   &:hover {
     cursor: pointer;
+    color: schemes.color(primary);
+    text-decoration: none;
   }
 }
 
