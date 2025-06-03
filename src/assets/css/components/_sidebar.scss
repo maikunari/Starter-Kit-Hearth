@@ -99,6 +99,80 @@
       color: rgba(schemes.color(body-text-color-white), 0.7);
       font-weight: 500;
     }
+
+    // Contact-specific sidebar styles
+    &__contact-group {
+      margin-bottom: calc(24rem / 16);
+      // styling for contact groups
+    }
+
+    &__contact-header {
+      // styling for contact headers
+    }
+
+    &__contact-link {
+      // styling for contact links
+    }
+
+    // Contact sidebar elements (matching actual HTML classes)
+    &__group {
+      margin-bottom: calc(24rem / 16);
+      padding-bottom: calc(20rem / 16);
+      border-bottom: 1px solid rgba(schemes.color(body-text-color-white), 0.1);
+
+      &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+    }
+
+    &__header {
+      display: block;
+      font-size: calc(14rem / 16);
+      font-weight: 700;
+      color: schemes.color(body-text-color-white);
+      margin-bottom: calc(8rem / 16);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.8;
+    }
+
+    &__link {
+      display: inline-block;
+      color: schemes.color(body-text-color-white);
+      text-decoration: none;
+      font-size: calc(16rem / 16);
+      line-height: 1.5em;
+      transition: all 0.3s ease;
+      font-weight: 500;
+
+      &:hover {
+        color: schemes.color(primary);
+        transform: translateX(calc(4rem / 16));
+      }
+    }
+
+    &__block {
+      display: block;
+    }
+
+    &__hours {
+      display: flex;
+      flex-direction: column;
+      gap: calc(6rem / 16);
+    }
+
+    &__hour {
+      color: schemes.color(body-text-color-white);
+      font-size: calc(15rem / 16);
+      line-height: 1.4em;
+      font-weight: 500;
+      
+      &:first-child {
+        font-weight: 600;
+      }
+    }
   }
 }
 
@@ -143,6 +217,25 @@
     &__featured-date {
       font-size: calc(14rem / 16);
     }
+
+    // Contact sidebar tablet adjustments
+    &__group {
+      margin-bottom: calc(28rem / 16);
+      padding-bottom: calc(24rem / 16);
+    }
+
+    &__header {
+      font-size: calc(15rem / 16);
+      margin-bottom: calc(10rem / 16);
+    }
+
+    &__link {
+      font-size: calc(17rem / 16);
+    }
+
+    &__hour {
+      font-size: calc(16rem / 16);
+    }
   }
 }
 
@@ -151,6 +244,33 @@
   .sidebar {
     &__featured-item {
       padding: calc(20rem / 16);
+    }
+
+    // Contact sidebar desktop adjustments
+    &__group {
+      margin-bottom: calc(32rem / 16);
+      padding-bottom: calc(28rem / 16);
+    }
+
+    &__header {
+      font-size: calc(16rem / 16);
+      margin-bottom: calc(12rem / 16);
+    }
+
+    &__link {
+      font-size: calc(18rem / 16);
+
+      &:hover {
+        transform: translateX(calc(6rem / 16));
+      }
+    }
+
+    &__hours {
+      gap: calc(8rem / 16);
+    }
+
+    &__hour {
+      font-size: calc(17rem / 16);
     }
   }
 } 
