@@ -310,8 +310,7 @@
     overflow: hidden;
     
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0px 25px 45px 0px rgba(0, 0, 0, 0.1);
+      // Hover effects now handled by GSAP
     }
     
     &-image {

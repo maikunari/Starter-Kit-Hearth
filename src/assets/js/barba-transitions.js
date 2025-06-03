@@ -193,6 +193,38 @@ function initScrollAnimations() {
   console.log('Scroll animations initialized');
 }
 
+// Initialize brand hover animations
+function initBrandHoverAnimations() {
+  // Clear any existing brand hover timelines
+  if (window.brandHoverTimelines) {
+    window.brandHoverTimelines.forEach(tl => tl.kill());
+  }
+  window.brandHoverTimelines = [];
+  
+  // Set up hover animations for brand cards
+  const brandCards = document.querySelectorAll('.content-block__brand');
+  brandCards.forEach(brand => {
+    // Create a timeline for this brand card
+    const hoverTl = gsap.timeline({ paused: true });
+    
+    hoverTl.to(brand, {
+      y: -4,
+      boxShadow: "0px 25px 45px 0px rgba(0, 0, 0, 0.1)",
+      duration: 0.2,
+      ease: "power2.out"
+    });
+    
+    // Store timeline for cleanup
+    window.brandHoverTimelines.push(hoverTl);
+    
+    // Add event listeners
+    brand.addEventListener('mouseenter', () => hoverTl.play());
+    brand.addEventListener('mouseleave', () => hoverTl.reverse());
+  });
+  
+  console.log(`Brand hover animations initialized for ${brandCards.length} cards`);
+}
+
 // Hook to reinitialize scripts after page transition
 barba.hooks.after(() => {
   // Re-run any global scripts that need to be reinitialized
@@ -220,6 +252,11 @@ barba.hooks.after(() => {
     initScrollAnimations();
   }, 300);
   
+  // Initialize brand hover animations
+  setTimeout(() => {
+    initBrandHoverAnimations();
+  }, 400);
+  
   // Scroll to top after transition
   window.scrollTo(0, 0);
 });
@@ -232,4 +269,9 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     initScrollAnimations();
   }, 100);
+  
+  // Initialize brand hover animations
+  setTimeout(() => {
+    initBrandHoverAnimations();
+  }, 200);
 });
