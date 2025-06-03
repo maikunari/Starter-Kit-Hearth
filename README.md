@@ -19,6 +19,7 @@ A modern, theme-aware static site generator built with Eleventy, featuring compr
 - [Deployment](#deployment)
 - [File Structure](#file-structure)
 - [Development Workflow](#development-workflow)
+- [Image Processing](#image-processing)
 
 ## Template Inheritance
 
@@ -433,6 +434,167 @@ When creating or updating components:
   }
 }
 ```
+
+## Image Processing
+
+### Eleventy Image Optimization
+
+The project uses `@11ty/eleventy-img` for automatic image optimization, generating multiple formats (AVIF, WebP, JPEG) and sizes for optimal performance.
+
+#### Image Shortcode Usage
+
+```html
+<!-- Basic usage -->
+{% image './src/assets/images/example.jpg', 'Alt text', 'css-class', 'lazy' %}
+
+<!-- With custom sizes -->
+{% image './src/assets/images/example.jpg', 'Alt text', 'css-class', 'lazy', '(max-width: 768px) 400px, 800px' %}
+
+<!-- Small images (logos, thumbnails) -->
+{% image './src/assets/images/logo.jpg', 'Company logo', 'logo-class', 'lazy', '120px' %}
+```
+
+#### Generated Output Structure
+
+The image shortcode generates responsive `<picture>` elements:
+
+```html
+<picture class="css-class">
+  <source type="image/avif" srcset="..." sizes="...">
+  <source type="image/webp" srcset="..." sizes="...">
+  <img src="fallback.jpg" width="1200" height="800" alt="Alt text" loading="lazy">
+</picture>
+```
+
+### CSS Styling Patterns
+
+#### ✅ Correct: Target the `<img>` Element
+
+The image shortcode sets explicit `width` and `height` attributes on the `<img>` tag. To properly style images, target the actual `<img>` element:
+
+```scss
+.image-container {
+  width: calc(120rem / 16);
+  height: calc(120rem / 16);
+  border-radius: calc(6rem / 16);
+  object-fit: contain;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: inherit;
+  }
+}
+```
+
+#### ❌ Incorrect: Styling Only the Container
+
+```scss
+.image-container {
+  width: 100px;
+  height: 100px;
+  /* This won't work - the img inside has hardcoded dimensions */
+}
+```
+
+### Common Use Cases
+
+#### Large Hero/Banner Images
+```html
+{% image './src/assets/images/hero.jpg', 'Hero image', '', 'eager', '(max-width: 850px) 850px, 1920px' %}
+```
+
+#### Gallery/Portfolio Images
+```html
+{% image './src/assets/images/portfolio/project1.jpg', 'Project showcase', 'gallery__image', 'lazy' %}
+```
+
+#### Small Thumbnails/Logos
+```html
+{% image './src/assets/images/brand-logo.jpg', 'Brand logo', 'brand-image', 'lazy', '60px' %}
+```
+
+#### Blog Featured Images
+```html
+{% image './src/assets/images/blog/' + pageName + '.jpg', imageAlt, 'featured-image', 'lazy', '(max-width: 850px) 850px, 1920px' %}
+```
+
+### Sizing Guidelines
+
+#### Sizes Attribute Best Practices
+
+- **Large images**: Use responsive sizes with breakpoints
+  ```html
+  sizes="(max-width: 768px) 400px, (max-width: 1200px) 800px, 1200px"
+  ```
+
+- **Small images**: Use fixed pixel values
+  ```html
+  sizes="120px"
+  ```
+
+- **Full-width images**: Match your layout breakpoints
+  ```html
+  sizes="(max-width: 850px) 850px, 1920px"
+  ```
+
+#### Generated Image Widths
+
+The system generates images at: `[300, 600, 1200]` pixels wide. The browser selects the most appropriate size based on your `sizes` attribute.
+
+### CSS Dimension Patterns
+
+#### Explicit Dimensions (Recommended)
+```scss
+.image-wrapper {
+  width: calc(200rem / 16);   // 200px
+  height: calc(150rem / 16);  // 150px
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+```
+
+#### Responsive Containers
+```scss
+.responsive-image {
+  width: 100%;
+  max-width: calc(400rem / 16);
+  aspect-ratio: 16 / 9;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+```
+
+### Performance Considerations
+
+1. **Use appropriate sizes**: Don't load 1200px images for 60px thumbnails
+2. **Lazy loading**: Use `loading="lazy"` for images below the fold
+3. **Eager loading**: Use `loading="eager"` for above-the-fold images
+4. **Format priority**: Browser automatically selects AVIF → WebP → JPEG
+
+### Troubleshooting
+
+#### Images Not Sizing Correctly
+- **Problem**: CSS applied to `<picture>` element instead of `<img>`
+- **Solution**: Target the `img` element inside the picture wrapper
+
+#### Images Too Large/Small
+- **Problem**: Incorrect `sizes` attribute
+- **Solution**: Match sizes to actual display dimensions
+
+#### Poor Performance
+- **Problem**: Loading large images for small displays
+- **Solution**: Use appropriate responsive sizes or fixed pixel values for small images
 
 ## Scroll Animations
 
