@@ -23,6 +23,11 @@ if (fs.existsSync(cssSource)) {
 // JS Files to Concatenate (only existing files)
 const jsFiles = [];
 
+// Check if nav.js exists and add it
+if (fs.existsSync('src/assets/js/nav.js')) {
+  jsFiles.push('src/assets/js/nav.js');
+}
+
 // Check if gallery.js exists and add it
 if (fs.existsSync('src/assets/js/gallery.js')) {
   jsFiles.push('src/assets/js/gallery.js');
