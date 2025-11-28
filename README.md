@@ -145,19 +145,22 @@ Visit `http://localhost:8080` to view your site.
 ### Core Features
 - **Modern Eleventy Setup** - Static site generation with Nunjucks templating
 - **Comprehensive Theme System** - 7 pre-built themes with easy switching
-- **SCSS Architecture** - Modern, scalable component-based styling
+- **SCSS Architecture** - Modern, scalable component-based styling with PostCSS/Autoprefixer
+- **View Transitions API** - Native browser page transitions (replaces Barba.js)
 - **Scroll Animations** - GSAP-powered scroll-triggered animations
-- **Image Optimization** - Automatic image compression and next-gen formats
+- **Image Optimization** - Automatic image compression and next-gen formats (AVIF, WebP)
 - **Decap CMS Integration** - Client-friendly blog management
 - **Responsive Design** - Mobile-first, fully responsive layouts
-- **SEO Optimized** - Meta tags, sitemaps, and performance optimized
+- **SEO Optimized** - Auto-generated sitemap, meta tags, and performance optimized
 
 ### Advanced Features
 - **Component Architecture** - BEM methodology with reusable components
-- **Dark/Light Theme Support** - Automatic theme detection and switching
+- **Critical CSS** - Automatic inline critical CSS for faster first paint (production)
+- **HTML Minification** - Compressed HTML output in production builds
 - **Performance Optimized** - 90+ Lighthouse scores out of the box
 - **Development Tools** - Live reload, SCSS compilation, asset optimization
 - **Accessibility Ready** - WCAG compliant components and markup
+- **Modern Browser Support** - Targets last 2 years of browsers via browserslist
 
 ## Installation & Setup
 
@@ -188,12 +191,13 @@ Visit `http://localhost:8080` to view your site.
 
 ### Available Scripts
 
-- `npm run build` - Full production build
-- `npm run build:scss` - Compile SCSS only
+- `npm run build` - Full production build (SCSS + Autoprefixer + Eleventy + Critical CSS + HTML minification + JS bundling)
+- `npm run build:scss` - Compile SCSS and run Autoprefixer
 - `npm run build:eleventy` - Build Eleventy site only
-- `npm run build:assets` - Process and copy assets
+- `npm run build:assets` - Bundle JS with esbuild
 - `npm start` - Development server with live reload
 - `npm run clean` - Clean build directory
+- `npm run postcss` - Run Autoprefixer on compiled CSS
 
 ## SCSS Architecture
 
@@ -600,7 +604,7 @@ The system generates images at: `[300, 600, 1200]` pixels wide. The browser sele
 
 ### GSAP ScrollTrigger Integration
 
-The project uses GSAP ScrollTrigger for smooth, performant scroll animations.
+The project uses GSAP ScrollTrigger for smooth, performant scroll animations with native View Transitions API for page transitions.
 
 #### Current Animations
 
@@ -612,24 +616,34 @@ The project uses GSAP ScrollTrigger for smooth, performant scroll animations.
 
 #### Animation Configuration
 
-Animations are configured in `src/assets/js/barba-transitions.js`:
+Animations are configured in `src/assets/js/main.js`:
 
 ```javascript
-// Hero animations
-gsap.fromTo('.hero__title, .hero__text, .hero__button', {
-  y: 50,
-  opacity: 0
+// Group animations with stagger
+gsap.fromTo(children, {
+  opacity: 0,
+  y: 30
 }, {
-  y: 0,
   opacity: 1,
-  duration: 1,
-  stagger: 0.2,
+  y: 0,
+  duration: isFast ? 0.6 : 0.8,
+  stagger: isFast ? 0.08 : 0.15,
+  ease: "power2.out",
   scrollTrigger: {
-    trigger: '.hero',
-    start: 'top 80%'
+    trigger: group,
+    start: "top 80%",
+    toggleActions: "play none none reverse"
   }
 });
 ```
+
+#### View Transitions API
+
+Page transitions use the native View Transitions API instead of Barba.js:
+- Enabled via `<meta name="view-transition" content="same-origin">` in base layout
+- Cross-fade transitions (300ms) between pages
+- Respects `prefers-reduced-motion`
+- Scripts reinitialize via `pagereveal` event
 
 #### Adding New Animations
 
@@ -637,6 +651,7 @@ gsap.fromTo('.hero__title, .hero__text, .hero__button', {
 2. Define initial and final states
 3. Configure ScrollTrigger settings
 4. Test across different screen sizes
+5. Ensure re-initialization after View Transitions
 
 ## Fast Animation System
 
@@ -720,11 +735,11 @@ The system also supports CSS classes for styling:
 
 ### JavaScript Configuration
 
-Animations are handled in `src/assets/js/barba-transitions.js`:
+Animations are handled in `src/assets/js/main.js`:
 
 ```javascript
 // Fast animation detection
-const isFast = group.hasAttribute('data-animate-fast') || 
+const isFast = group.hasAttribute('data-animate-fast') ||
                group.classList.contains('animate-fast');
 
 // Apply appropriate timing
@@ -1079,22 +1094,27 @@ starter-kit-hearth/
 │   │   ├── footer.html     # Site footer
 │   │   └── featured-post.html
 │   ├── _layouts/           # Page layouts
-│   │   ├── base.html       # Base layout
+│   │   ├── base.html       # Base layout (includes View Transitions meta)
 │   │   └── blog-post.html  # Blog post layout
 │   ├── admin/              # Decap CMS config
 │   │   ├── index.html      # CMS interface
 │   │   └── config.yml      # CMS configuration
 │   ├── assets/             # Static assets
 │   │   ├── css/            # SCSS source files
-│   │   ├── js/             # JavaScript files
+│   │   ├── js/             # JavaScript files (main.js, gallery.js, nav.js)
 │   │   └── images/         # Unoptimized images
 │   ├── blog/               # Blog posts (Markdown)
 │   ├── images/             # Images for optimization
 │   ├── pages/              # Site pages
+│   ├── sitemap.njk         # Auto-generated sitemap
 │   └── index.html          # Homepage
 ├── public/                 # Built site (auto-generated)
-├── .eleventy.js           # Eleventy configuration
+├── .eleventy.js           # Eleventy configuration (Critical CSS, HTML minification)
+├── build-assets.js        # esbuild JS bundling configuration
+├── netlify.toml           # Netlify deployment config, headers, caching
+├── postcss.config.js      # Autoprefixer configuration
 ├── package.json           # Dependencies and scripts
+├── CLAUDE.md              # AI assistant instructions
 └── README.md              # This file
 ```
 

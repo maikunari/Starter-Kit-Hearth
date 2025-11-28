@@ -171,6 +171,11 @@ Global design tokens in `src/assets/css/base/_reset.scss`:
 
 **Gallery Shortcode**: `{% gallery images %}` - Generates PhotoSwipe-enabled Masonry grid
 
+**Important - Image Loading with View Transitions**:
+- Gallery/Masonry images must use `loading="eager"` (not `lazy`)
+- Browser lazy loading doesn't re-trigger after View Transitions
+- Example: `{% image src, alt, 'gallery__image', 'eager' %}`
+
 ### Decap CMS Integration
 **Access**: `http://localhost:8080/admin` (local development)
 
@@ -295,6 +300,7 @@ output: public/
 4. **Not killing ScrollTriggers** before creating new ones (causes duplicates)
 5. **Missing "post" tag** in blog post frontmatter (posts won't appear in collections)
 6. **Branch mismatch** in Decap CMS config (must match current Git branch)
+7. **Using `loading="lazy"` on gallery images** - breaks with View Transitions, use `eager` instead
 
 ## Deployment Notes
 
