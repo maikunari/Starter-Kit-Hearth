@@ -70,15 +70,24 @@ module.exports = function (eleventyConfig) {
   // Allows the {% image %} shortcode to be used for optimised images (in webp if possible)
   eleventyConfig.addNunjucksAsyncShortcode('image', imageShortcode);
 
-  // Normally, 11ty will render dates on blog posts in full JSDate format (Fri Dec 02 18:00:00 GMT-0600). That's ugly
-  // This filter allows dates to be converted into a normal, locale format
+  // Date filters
+  // postDate: Human-readable format for blog posts (Nov 28, 2025)
   eleventyConfig.addFilter('postDate', (dateObj) => {
     return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED);
   });
 
-  // Critical CSS transform - only runs in production builds
+  // date: Flexible date formatting for sitemap and other uses
+  eleventyConfig.addFilter('date', (dateObj, format) => {
+    if (format === '%Y-%m-%d') {
+      return DateTime.fromJSDate(dateObj).toFormat('yyyy-MM-dd');
+    }
+    return DateTime.fromJSDate(dateObj).toISO();
+  });
+
+  // Production-only transforms (Critical CSS and HTML minification)
   const isProduction = process.env.NODE_ENV === 'production';
   if (isProduction) {
+    // Critical CSS transform
     eleventyConfig.addTransform('criticalCss', async function(content, outputPath) {
       if (outputPath && outputPath.endsWith('.html')) {
         try {
@@ -95,6 +104,31 @@ module.exports = function (eleventyConfig) {
           return result.html;
         } catch (err) {
           console.error(`Critical CSS transform failed for ${outputPath}:`, err);
+          return content;
+        }
+      }
+      return content;
+    });
+
+    // HTML minification transform
+    eleventyConfig.addTransform('htmlmin', async function(content, outputPath) {
+      if (outputPath && outputPath.endsWith('.html')) {
+        try {
+          const htmlmin = await import('html-minifier-terser');
+          const minified = await htmlmin.minify(content, {
+            useShortDoctype: true,
+            removeComments: true,
+            collapseWhitespace: true,
+            conservativeCollapse: true,
+            minifyCSS: true,
+            minifyJS: true,
+            removeRedundantAttributes: true,
+            removeScriptTypeAttributes: true,
+            removeStyleLinkTypeAttributes: true
+          });
+          return minified;
+        } catch (err) {
+          console.error(`HTML minification failed for ${outputPath}:`, err);
           return content;
         }
       }
