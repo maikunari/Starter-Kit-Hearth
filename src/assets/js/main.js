@@ -161,17 +161,49 @@ function initAll() {
   }
 }
 
-// Initialize on DOM ready
-document.addEventListener('DOMContentLoaded', initAll);
+// Track if we've initialized to prevent double-init
+let hasInitialized = false;
+
+// Initialize on DOM ready (initial page load)
+document.addEventListener('DOMContentLoaded', () => {
+  if (!hasInitialized) {
+    hasInitialized = true;
+    initAll();
+  }
+});
 
 // Re-initialize after View Transitions (for browsers that support it)
-document.addEventListener('pagereveal', () => {
-  // Small delay to ensure new DOM is ready
-  requestAnimationFrame(() => {
+// pagereveal fires when a page is revealed - either initial load, bfcache restore, or view transition
+document.addEventListener('pagereveal', (event) => {
+  // For view transitions, wait for the transition to be ready
+  if (event.viewTransition) {
+    event.viewTransition.ready.then(() => {
+      // Reset the flag since this is a new page
+      hasInitialized = true;
+      setTimeout(() => {
+        initAll();
+        if (typeof window.initializeNavigation === 'function') {
+          window.initializeNavigation();
+        }
+      }, 100);
+    });
+  } else if (!hasInitialized) {
+    // Handle bfcache restore or fallback cases
+    hasInitialized = true;
     initAll();
-    // Re-initialize navigation
     if (typeof window.initializeNavigation === 'function') {
       window.initializeNavigation();
     }
-  });
+  }
+});
+
+// Handle back/forward cache restoration (pagehide + pageshow pattern)
+window.addEventListener('pageshow', (event) => {
+  if (event.persisted) {
+    // Page was restored from bfcache, need to reinitialize
+    initAll();
+    if (typeof window.initializeNavigation === 'function') {
+      window.initializeNavigation();
+    }
+  }
 });

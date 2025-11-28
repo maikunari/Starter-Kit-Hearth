@@ -93,16 +93,10 @@
       }
     }
     
-    // Masonry items start hidden and are animated by ScrollTrigger
+    // Masonry items - visible by default, positioned by Masonry.js
     .gallery__grid--masonry & {
-      opacity: 0;
-      transform: translateY(30px);
-      
-      &.masonry-ready {
-        // Ready for ScrollTrigger animation - keep hidden until scroll trigger
-        opacity: 0;
-        transform: translateY(30px);
-      }
+      opacity: 1;
+      transform: none;
     }
     
     &:hover {
