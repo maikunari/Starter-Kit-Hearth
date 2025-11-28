@@ -28,6 +28,23 @@
   
   /* Spacing */
   --sectionPadding: clamp(3.75em, 7.82vw, 6.25em) 1rem;
+
+  /* Spacing scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+
+  /* Border radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
 // Font faces
@@ -36,7 +53,8 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  src: local(''), 
+  font-display: swap;
+  src: local(''),
        url('/assets/fonts/roboto-v29-latin-regular.woff2') format('woff2'),
        url('/assets/fonts/roboto-v29-latin-regular.woff') format('woff');
 }
@@ -45,7 +63,8 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  src: local(''), 
+  font-display: swap;
+  src: local(''),
        url('/assets/fonts/roboto-v29-latin-700.woff2') format('woff2'),
        url('/assets/fonts/roboto-v29-latin-700.woff') format('woff');
 }
@@ -54,7 +73,8 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
-  src: local(''), 
+  font-display: swap;
+  src: local(''),
        url('/assets/fonts/roboto-v29-latin-900.woff2') format('woff2'),
        url('/assets/fonts/roboto-v29-latin-900.woff') format('woff');
 }

@@ -148,4 +148,27 @@
   @media only screen and (min-width: 75em) {
     @content;
   }
+}
+
+// Container queries (modern CSS)
+// -----------------------------------------------------------------------------
+// Use these for component-based responsive design
+// The parent element needs: container-type: inline-size;
+
+@mixin container-sm {
+  @container (min-width: 400px) {
+    @content;
+  }
+}
+
+@mixin container-md {
+  @container (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin container-lg {
+  @container (min-width: 800px) {
+    @content;
+  }
 } 

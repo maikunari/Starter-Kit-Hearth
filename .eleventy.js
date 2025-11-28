@@ -58,10 +58,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('./src/_redirects');
   eleventyConfig.addPassthroughCopy({ './src/robots.txt': '/robots.txt' });
 
-  // Passthrough copy for Barba.js and GSAP
+  // Passthrough copy for JS files
   eleventyConfig.addPassthroughCopy('src/assets/js/**/*.js');
-  eleventyConfig.addPassthroughCopy({ 'js/barba.js': 'js/barba.js' });
-  eleventyConfig.addPassthroughCopy({ 'node_modules/@barba/core/dist/barba.mjs': 'js/barba.mjs' });
 
   // Open on npm start and watch CSS files for changes - doesn't trigger 11ty rebuild
   eleventyConfig.setBrowserSyncConfig({
@@ -78,28 +76,31 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED);
   });
 
-  // Critical CSS transform - disabled for development
-  // eleventyConfig.addTransform('criticalCss', async function(content, outputPath) {
-  //   if (outputPath && outputPath.endsWith('.html')) {
-  //     try {
-  //       const criticalModule = await import('critical');
-  //       const critical = criticalModule.default || criticalModule;
-  //       const result = await critical.generate({
-  //         inline: true,
-  //         base: 'public/',
-  //         html: content,
-  //         width: 1280,
-  //         height: 800,
-  //         css: ['public/assets/css/style.css']
-  //       });
-  //       return result.html;
-  //     } catch (err) {
-  //       console.error(`Critical CSS transform failed for ${outputPath}:`, err);
-  //       return content;
-  //     }
-  //   }
-  //   return content;
-  // });
+  // Critical CSS transform - only runs in production builds
+  const isProduction = process.env.NODE_ENV === 'production';
+  if (isProduction) {
+    eleventyConfig.addTransform('criticalCss', async function(content, outputPath) {
+      if (outputPath && outputPath.endsWith('.html')) {
+        try {
+          const criticalModule = await import('critical');
+          const critical = criticalModule.default || criticalModule;
+          const result = await critical.generate({
+            inline: true,
+            base: 'public/',
+            html: content,
+            width: 1280,
+            height: 800,
+            css: ['public/assets/css/style.css']
+          });
+          return result.html;
+        } catch (err) {
+          console.error(`Critical CSS transform failed for ${outputPath}:`, err);
+          return content;
+        }
+      }
+      return content;
+    });
+  }
 
   // Gallery Shortcode for PhotoSwipe
   eleventyConfig.addNunjucksAsyncShortcode("gallery", async function (images) {
@@ -133,13 +134,6 @@ module.exports = function (eleventyConfig) {
     `;
   });
 
-  // Filter to conditionally apply Barba container (already present)
-  eleventyConfig.addFilter('barbaContainer', function(content, url) {
-    if (url === '/admin/') {
-      return content;
-    }
-    return `<div data-barba="container" data-barba-namespace="${this.ctx.page.fileSlug}">${content}</div>`;
-  });
 
   return {
     dir: {

@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="view-transition" content="same-origin">
 
         <!--Swap our for actual link-->
         <link rel="canonical" href="https://{{ client.domain }}{{ page.url }}">
@@ -31,6 +32,7 @@
         <link rel="preload" as="image" href="/assets/logo-light.png">
         <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/roboto-v29-latin-regular.woff2" crossorigin>
         <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/roboto-v29-latin-700.woff2" crossorigin>
+        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/roboto-v29-latin-900.woff2" crossorigin>
     
         <link rel="preload" as="image" href="{{ preloadImg }}"/>
 
@@ -54,19 +56,10 @@
         <!--Screen reader skip main nav-->
         <a class="skip" aria-label="skip to main content" href="#main">Click To Skip To Main Content</a>
 
-        {% if page.url != '/admin/' %}
-        <div data-barba="wrapper">
-            <div data-barba="container" data-barba-namespace="{{ page.fileSlug }}">
-        {% endif %}
-                {% include "header.html" %}
-                <main id="main">{{ content | safe }}</main>
-                {% include "footer.html" %}
-        {% if page.url != '/admin/' %}
-            </div>
-        </div>
-        {% endif %}
+        {% include "header.html" %}
+        <main id="main">{{ content | safe }}</main>
+        {% include "footer.html" %}
 
-        <!-- Scripts outside Barba container -->
         <script defer src="/assets/js/scripts.min.js"></script>
         
     </body>

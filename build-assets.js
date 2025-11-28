@@ -20,7 +20,7 @@ if (fs.existsSync(cssSource)) {
   process.exit(1);
 }
 
-// JS Files to Concatenate (only existing files)
+// JS Files to bundle
 const jsFiles = [];
 
 // Check if nav.js exists and add it
@@ -33,26 +33,10 @@ if (fs.existsSync('src/assets/js/gallery.js')) {
   jsFiles.push('src/assets/js/gallery.js');
 }
 
-// Check if barba-transitions.js exists and add it
-if (fs.existsSync('src/assets/js/barba-transitions.js')) {
-  jsFiles.push('src/assets/js/barba-transitions.js');
+// Check if main.js exists and add it (replaces barba-transitions.js)
+if (fs.existsSync('src/assets/js/main.js')) {
+  jsFiles.push('src/assets/js/main.js');
 }
-
-// Inline JS (the scroll script)
-const inlineJs = `
-document.addEventListener('scroll', (e) => {
-    const scroll = document.documentElement.scrollTop;
-    if (scroll >= 100) {
-        document.querySelector('body').classList.add('scroll');
-    } else {
-        document.querySelector('body').classList.remove('scroll');
-    }
-});
-`;
-
-// Write inline JS to a temporary file
-fs.writeFileSync('temp-inline-scroll.js', inlineJs);
-jsFiles.push('temp-inline-scroll.js');
 
 // Only create JS entry if we have files to bundle
 if (jsFiles.length > 0) {
@@ -63,7 +47,7 @@ if (jsFiles.length > 0) {
 
 // Only build JS if we have files to bundle
 if (jsFiles.length > 0) {
-  // Build JS (legacy scripts)
+  // Build JS
   esbuild.build({
     entryPoints: ['temp-js-entry.js'],
     outfile: 'public/assets/js/scripts.min.js',
@@ -78,21 +62,14 @@ if (jsFiles.length > 0) {
     if (fs.existsSync('temp-js-entry.js')) {
       fs.unlinkSync('temp-js-entry.js');
     }
-    if (fs.existsSync('temp-inline-scroll.js')) {
-      fs.unlinkSync('temp-inline-scroll.js');
-    }
   }).catch(err => {
     console.error('JS build failed:', err);
     // Clean up temporary files even on error
     if (fs.existsSync('temp-js-entry.js')) {
       fs.unlinkSync('temp-js-entry.js');
     }
-    if (fs.existsSync('temp-inline-scroll.js')) {
-      fs.unlinkSync('temp-inline-scroll.js');
-    }
     process.exit(1);
   });
 } else {
   console.log('No JS files to bundle');
 }
-
