@@ -1,13 +1,16 @@
 ---
 pageName: choosing-right-fireplace
-blogTitle: "Gas vs. Wood vs. Electric: Choosing the Right Fireplace for Your Cedar Falls Home"
-titleTag: "Choosing the Right Fireplace | Gas vs Wood vs Electric | Cedar Falls, IA"
-blogDescription: "Confused about fireplace options? Our Cedar Falls experts explain the pros and cons of gas, wood-burning, and electric fireplaces to help you choose the perfect fit."
+blogTitle: "Gas vs. Wood vs. Electric: Choosing the Right Fireplace for Your
+  Cedar Falls Home"
+titleTag: Choosing the Right Fireplace | Gas vs Wood vs Electric | Cedar Falls, IA
+blogDescription: Confused about fireplace options? Our Cedar Falls experts
+  explain the pros and cons of gas, wood-burning, and electric fireplaces to
+  help you choose the perfect fit.
 author: Sarah Maplewood
 date: 2024-01-08T14:30:00.000Z
 tags:
   - post
-image: /images/blog/fireplace-types.jpg
+image: /images/blog/choosing-right-fireplace.jpg
 imageAlt: Different types of fireplaces in Cedar Falls homes
 ---
 
