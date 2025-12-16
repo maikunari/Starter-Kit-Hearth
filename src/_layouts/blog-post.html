@@ -1,9 +1,9 @@
 ---
 layout: 'base.html'
 eleventyComputed:
-    description: '{{ blogDescription }}'
-    metaTitle: '{{ blogTitle }}'
-    tagTitle: '{{ titleTag }}'
+    description: '{{ metaDescription | default: excerpt }}'
+    metaTitle: '{{ postTitle }}'
+    tagTitle: '{{ seoTitle }}'
     preloadImg: '{{ image }}'
     permalink: '/blog/{{ pageName | slug }}/index.html'
 ---
@@ -14,7 +14,7 @@ eleventyComputed:
 
 <section class="page-banner">
   <div class="page-banner__container">
-    <h1 class="page-banner__title">{{ blogTitle }}</h1>
+    <h1 class="page-banner__title">{{ postTitle }}</h1>
     <div class="page-banner__meta">
       <img
         class="page-banner__author-image"

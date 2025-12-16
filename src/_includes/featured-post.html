@@ -8,7 +8,7 @@
         <a class="sidebar__featured-item" href="{{ post.url }}">
           {% image './src/assets/images/blog/' + post.data.pageName + '.jpg', post.data.imageAlt, 'sidebar__featured-image', 'lazy', '60px'%}
           <div class="sidebar__featured-content">
-            <h3 class="sidebar__featured-title">{{ post.data.blogTitle }}</h3>
+            <h3 class="sidebar__featured-title">{{ post.data.postTitle }}</h3>
             <span class="sidebar__featured-date">{{ post.date | postDate }}</span>
           </div>
         </a>

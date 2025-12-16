@@ -12,14 +12,17 @@ public_folder: "/images/blog"
 collections:
   - name: "blog"
     label: "Blog"
+    label_singular: "Post"
     folder: "src/blog"
     create: true
     slug: "{{pageName}}"
+    summary: "{{postTitle}}"
     fields:
-      - {label: "Page Name", name: "pageName", widget: "string", hint: "Used for the URL and image filename (no spaces, use dashes)"}
-      - {label: "Blog Title", name: "blogTitle", widget: "string"}
-      - {label: "Title Tag", name: "titleTag", widget: "string", hint: "SEO title for search engines"}
-      - {label: "Blog Description", name: "blogDescription", widget: "text", hint: "Short description for blog listing and SEO"}
+      - {label: "Page Slug", name: "pageName", widget: "string", hint: "Used for the URL and image filename (no spaces, use dashes)"}
+      - {label: "Post Title", name: "postTitle", widget: "string", hint: "Main heading shown on the page"}
+      - {label: "SEO Title", name: "seoTitle", widget: "string", hint: "Title shown in Google search results"}
+      - {label: "Excerpt", name: "excerpt", widget: "text", hint: "Short summary for blog listing page"}
+      - {label: "Meta Description", name: "metaDescription", widget: "text", hint: "Description shown in Google search results", required: false}
       - {label: "Author", name: "author", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Tags", name: "tags", widget: "list", default: ["post"]}

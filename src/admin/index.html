@@ -7,5 +7,46 @@
   </head>
   <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+      // Register preview styles to match front-end blog post design
+      CMS.registerPreviewStyle("/admin/preview.css");
+
+      // Custom preview template for blog posts
+      const BlogPostPreview = createClass({
+        render: function() {
+          const entry = this.props.entry;
+          const postTitle = entry.getIn(['data', 'postTitle']);
+          const author = entry.getIn(['data', 'author']);
+          const date = entry.getIn(['data', 'date']);
+          const image = entry.getIn(['data', 'image']);
+          const imageAlt = entry.getIn(['data', 'imageAlt']);
+          const body = this.props.widgetFor('body');
+
+          // Format date
+          const formattedDate = date ? new Date(date).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+          }) : '';
+
+          return h('article', { className: 'blog-preview' },
+            h('h1', { className: 'blog-preview__title' }, postTitle),
+            h('div', { className: 'blog-preview__meta' },
+              author && h('span', { className: 'blog-preview__author' }, author),
+              author && formattedDate && h('span', { className: 'blog-preview__separator' }, ' • '),
+              formattedDate && h('span', { className: 'blog-preview__date' }, formattedDate)
+            ),
+            image && h('img', {
+              className: 'blog-preview__image',
+              src: this.props.getAsset(image).toString(),
+              alt: imageAlt || ''
+            }),
+            h('div', { className: 'blog-preview__content' }, body)
+          );
+        }
+      });
+
+      CMS.registerPreviewTemplate('blog', BlogPostPreview);
+    </script>
   </body>
 </html>
