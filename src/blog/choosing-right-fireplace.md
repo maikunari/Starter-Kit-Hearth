@@ -1,17 +1,27 @@
 ---
-pageName: choosing-right-fireplace
-blogTitle: "Gas vs. Wood vs. Electric: Choosing the Right Fireplace for Your
-  Cedar Falls Home"
+excerpt: Choosing the right fireplace for your Cedar Falls home is an important
+  decision that affects your comfort, energy costs, and lifestyle for years to
+  come.
 titleTag: Choosing the Right Fireplace | Gas vs Wood vs Electric | Cedar Falls, IA
-blogDescription: Confused about fireplace options? Our Cedar Falls experts
-  explain the pros and cons of gas, wood-burning, and electric fireplaces to
-  help you choose the perfect fit.
+pageName: choosing-right-fireplace
+postTitle: "Gas vs. Wood vs. Electric: Choosing the Right Fireplace for Your
+  Cedar Falls Home"
+seoTitle: "Gas vs. Wood vs. Electric: Choosing the Right Fireplace for Your
+  Cedar Falls Home"
+metaDescription: Choosing the right fireplace for your Cedar Falls home is an
+  important decision that affects your comfort, energy costs, and lifestyle for
+  years to come.
 author: Sarah Maplewood
 date: 2024-01-08T14:30:00.000Z
 tags:
   - post
 image: /images/blog/choosing-right-fireplace.jpg
 imageAlt: Different types of fireplaces in Cedar Falls homes
+blogTitle: "Gas vs. Wood vs. Electric: Choosing the Right Fireplace for Your
+  Cedar Falls Home"
+blogDescription: Confused about fireplace options? Our Cedar Falls experts
+  explain the pros and cons of gas, wood-burning, and electric fireplaces to
+  help you choose the perfect fit.
 ---
 
 Choosing the right fireplace for your Cedar Falls home is an important decision that affects your comfort, energy costs, and lifestyle for years to come. At Maplewood Hearth & Home, we help families navigate this choice every day. After 25 years in the business, we've learned that the "best" fireplace is the one that fits your specific needs, budget, and preferences.
