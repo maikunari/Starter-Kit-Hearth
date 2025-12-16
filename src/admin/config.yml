@@ -23,9 +23,14 @@ collections:
       - {label: "SEO Title", name: "seoTitle", widget: "string", hint: "Title shown in Google search results"}
       - {label: "Excerpt", name: "excerpt", widget: "text", hint: "Short summary for blog listing page"}
       - {label: "Meta Description", name: "metaDescription", widget: "text", hint: "Description shown in Google search results", required: false}
-      - {label: "Author", name: "author", widget: "string"}
+      - label: "Author"
+        name: "author"
+        widget: "select"
+        options:
+          - {label: "Tom Maplewood", value: "tom-maplewood"}
+          - {label: "Sarah Maplewood", value: "sarah-maplewood"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Tags", name: "tags", widget: "list", default: ["post"]}
-      - {label: "Image", name: "image", widget: "image", hint: "Upload image - it will be automatically named based on Page Name"}
+      - {label: "Featured Image", name: "image", widget: "image", hint: "Upload image - it will be automatically named based on Page Name"}
       - {label: "Image Alt Text", name: "imageAlt", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}

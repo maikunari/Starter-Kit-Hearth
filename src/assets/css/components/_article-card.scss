@@ -59,6 +59,7 @@
       height: calc(32rem / 16);
       border-radius: 50%;
       object-fit: cover;
+      border: 2px solid schemes.color(primary);
     }
 
     &__author {

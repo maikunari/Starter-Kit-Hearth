@@ -11,12 +11,25 @@
       // Register preview styles to match front-end blog post design
       CMS.registerPreviewStyle("/admin/preview.css");
 
+      // Author data lookup
+      const authors = {
+        'tom-maplewood': {
+          name: 'Tom Maplewood',
+          image: '/assets/images/authors/tom-maplewood.jpg'
+        },
+        'sarah-maplewood': {
+          name: 'Sarah Maplewood',
+          image: '/assets/images/authors/sarah-maplewood.jpg'
+        }
+      };
+
       // Custom preview template for blog posts
       const BlogPostPreview = createClass({
         render: function() {
           const entry = this.props.entry;
           const postTitle = entry.getIn(['data', 'postTitle']);
-          const author = entry.getIn(['data', 'author']);
+          const authorSlug = entry.getIn(['data', 'author']);
+          const authorData = authors[authorSlug] || { name: authorSlug, image: '' };
           const date = entry.getIn(['data', 'date']);
           const image = entry.getIn(['data', 'image']);
           const imageAlt = entry.getIn(['data', 'imageAlt']);
@@ -32,8 +45,13 @@
           return h('article', { className: 'blog-preview' },
             h('h1', { className: 'blog-preview__title' }, postTitle),
             h('div', { className: 'blog-preview__meta' },
-              author && h('span', { className: 'blog-preview__author' }, author),
-              author && formattedDate && h('span', { className: 'blog-preview__separator' }, ' • '),
+              authorData.image && h('img', {
+                className: 'blog-preview__author-image',
+                src: authorData.image,
+                alt: authorData.name
+              }),
+              authorData.name && h('span', { className: 'blog-preview__author' }, authorData.name),
+              authorData.name && formattedDate && h('span', { className: 'blog-preview__separator' }, ' • '),
               formattedDate && h('span', { className: 'blog-preview__date' }, formattedDate)
             ),
             image && h('img', {

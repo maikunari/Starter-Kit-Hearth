@@ -48,17 +48,18 @@ eleventyNavigation:
           </div>
           <!--Article Info-->
           <div class="article-card__content">
+            {% set authorData = authors[post.data.author] %}
             <div class="article-card__meta">
               <!--Author Image-->
               <img
                 class="article-card__author-image"
-                src="/assets/svgs/profile.svg"
-                alt="author"
+                src="{{ authorData.image }}"
+                alt="{{ authorData.name }}"
                 width="32"
                 height="32"
                 decoding="async"
               />
-              <span class="article-card__author">{{ post.data.author }}</span>
+              <span class="article-card__author">{{ authorData.name }}</span>
               <span aria-hidden="true" class="article-card__dot"></span>
               <!--Blog Date-->
               <span class="article-card__date">{{ post.date | postDate }}</span>

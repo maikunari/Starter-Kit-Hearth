@@ -1,0 +1,16 @@
+{
+  "tom-maplewood": {
+    "name": "Tom Maplewood",
+    "slug": "tom-maplewood",
+    "image": "/assets/images/authors/tom-maplewood.jpg",
+    "bio": "Owner and founder of Maplewood Hearth & Home with 25 years of experience in fireplace installation and service.",
+    "title": "Owner & Founder"
+  },
+  "sarah-maplewood": {
+    "name": "Sarah Maplewood",
+    "slug": "sarah-maplewood",
+    "image": "/assets/images/authors/sarah-maplewood.jpg",
+    "bio": "Co-owner and design specialist at Maplewood Hearth & Home, helping Cedar Falls families find their perfect fireplace.",
+    "title": "Co-Owner & Design Specialist"
+  }
+}

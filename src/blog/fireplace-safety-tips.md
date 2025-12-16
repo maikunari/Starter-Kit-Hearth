@@ -4,7 +4,7 @@ postTitle: Essential Fireplace Safety Tips Every Cedar Falls Homeowner Should Kn
 seoTitle: Fireplace Safety Tips | Maplewood Hearth & Home | Cedar Falls, IA
 excerpt: Keep your family safe with these essential fireplace safety tips from Cedar Falls' trusted fireplace experts. Learn proper maintenance, operation, and safety practices.
 metaDescription: Essential fireplace safety tips from Maplewood Hearth & Home. Learn proper maintenance, operation, and safety practices to protect your Cedar Falls family.
-author: Tom Maplewood
+author: tom-maplewood
 date: 2024-01-15T10:00:00.000Z
 tags:
   - post

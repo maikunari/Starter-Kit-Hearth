@@ -4,7 +4,7 @@ postTitle: "Gas vs. Wood vs. Electric: Choosing the Right Fireplace for Your Ced
 seoTitle: "Choosing the Right Fireplace | Gas vs Wood vs Electric | Cedar Falls, IA"
 excerpt: "Confused about fireplace options? Our Cedar Falls experts explain the pros and cons of gas, wood-burning, and electric fireplaces to help you choose the perfect fit."
 metaDescription: "Compare gas, wood-burning, and electric fireplaces with expert guidance from Maplewood Hearth & Home. Find the perfect fireplace for your Cedar Falls home."
-author: Sarah Maplewood
+author: sarah-maplewood
 date: 2024-01-08T14:30:00.000Z
 tags:
   - post

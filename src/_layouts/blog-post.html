@@ -15,16 +15,17 @@ eleventyComputed:
 <section class="page-banner">
   <div class="page-banner__container">
     <h1 class="page-banner__title">{{ postTitle }}</h1>
+    {% set authorData = authors[author] %}
     <div class="page-banner__meta">
       <img
         class="page-banner__author-image"
-        src="/assets/svgs/profile.svg"
-        alt="author"
+        src="{{ authorData.image }}"
+        alt="{{ authorData.name }}"
         width="32"
         height="32"
         decoding="async"
       />
-      <span class="page-banner__author">{{ author }}</span>
+      <span class="page-banner__author">{{ authorData.name }}</span>
       <span class="page-banner__date">{{ date | postDate }}</span>
     </div>
   </div>
