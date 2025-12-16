@@ -30,7 +30,7 @@ eleventyComputed:
     </div>
   </div>
   <div class="page-banner__background">
-    {% image './src/assets/images/cabinets2.jpg', 'cabinets', '', 'lazy', '(max-width: 850px) 850px, 1920px'%}
+    {% image './src/assets/images/cabinets2.jpg', 'cabinets', '', 'eager', '(max-width: 850px) 850px, 1920px'%}
   </div>
 </section>
 
@@ -45,7 +45,7 @@ eleventyComputed:
       <article class="blog-post">
         <!--Main Article Image-->
         <div class="blog-post__image-wrapper">
-          {% image './src/assets/images/blog/' + pageName + '.jpg', imageAlt, '', 'lazy', '(max-width: 850px) 850px, 1920px'%}
+          {% image './src/assets/images/blog/' + pageName + '.jpg', imageAlt, '', 'eager', '(max-width: 850px) 850px, 1920px'%}
         </div>
 
         <!--Article Content-->

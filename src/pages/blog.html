@@ -4,10 +4,15 @@ description: 'Expert fireplace advice from Maplewood Hearth & Home. Read our blo
 metaTitle: 'Fireplace Blog | Expert Tips & Advice | Maplewood Hearth & Home | Cedar Falls, IA'
 tagTitle: 'Blog'
 preloadImg: '/images/cabinets2-1920w.webp'
-permalink: 'blog/'
 eleventyNavigation:
     key: Blog
     order: 500
+pagination:
+    data: collections.post
+    size: 6
+    reverse: true
+    alias: posts
+permalink: "blog/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}"
 ---
 
 <!-- Enter html code below -->
@@ -21,7 +26,7 @@ eleventyNavigation:
     <p class="page-banner__meta">Expert advice from Cedar Falls' fireplace professionals</p>
   </div>
   <div class="page-banner__background">
-    {% image './src/assets/images/cabinets2.jpg', 'Maplewood Hearth & Home fireplace blog', '', 'lazy', '(max-width: 850px) 850px, 1920px'%}
+    {% image './src/assets/images/cabinets2.jpg', 'Maplewood Hearth & Home fireplace blog', '', 'eager', '(max-width: 850px) 850px, 1920px'%}
   </div>
 </section>
 
@@ -33,14 +38,14 @@ eleventyNavigation:
   <div class="blog-layout__container" data-animate-group data-animate-fast>
     <!--Main content -->
     <main class="blog-layout__main">
-      {% if collections.post | length == 0 %}
+      {% if posts | length == 0 %}
         <div class="blog-layout__no-posts">
           <h2>Coming Soon</h2>
           <p>We're working on bringing you expert fireplace advice and insights. Check back soon for helpful tips on fireplace safety, maintenance, and choosing the right fireplace for your Cedar Falls home.</p>
           <p>In the meantime, feel free to <a href="/contact">contact us</a> with any fireplace questions you may have. Our team of experts is always happy to help!</p>
         </div>
       {% endif %}
-      {%- for post in collections.post | reverse -%}
+      {%- for post in posts -%}
         <article class="article-card">
           <!--Main Article Image-->
           <div class="article-card__image-wrapper">
@@ -74,6 +79,41 @@ eleventyNavigation:
           </div>
         </article>
       {%- endfor -%}
+
+      <!-- Pagination Navigation -->
+      {% if pagination.pages.length > 1 %}
+      <nav class="pagination" aria-label="Blog pagination">
+        <ul class="pagination__list">
+          {% if pagination.href.previous %}
+            <li class="pagination__item pagination__item--prev">
+              <a href="{{ pagination.href.previous }}" class="pagination__link pagination__link--prev">
+                <span class="pagination__arrow">&larr;</span>
+                <span>Previous</span>
+              </a>
+            </li>
+          {% endif %}
+
+          {% for pageEntry in pagination.pages %}
+            <li class="pagination__item">
+              {% if loop.index0 == pagination.pageNumber %}
+                <span class="pagination__link pagination__link--current" aria-current="page">{{ loop.index }}</span>
+              {% else %}
+                <a href="{{ pagination.hrefs[loop.index0] }}" class="pagination__link">{{ loop.index }}</a>
+              {% endif %}
+            </li>
+          {% endfor %}
+
+          {% if pagination.href.next %}
+            <li class="pagination__item pagination__item--next">
+              <a href="{{ pagination.href.next }}" class="pagination__link pagination__link--next">
+                <span>Next</span>
+                <span class="pagination__arrow">&rarr;</span>
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+      {% endif %}
     </main>
 
     <!-- ============================================ -->

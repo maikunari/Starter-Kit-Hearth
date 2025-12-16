@@ -1,0 +1,92 @@
+@use '../abstracts/schemes' as schemes;
+
+/*-- -------------------------- -->
+<---        Pagination         -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  .pagination {
+    width: 100%;
+    margin-top: calc(48rem / 16);
+    padding-top: calc(32rem / 16);
+    border-top: 1px solid schemes.color(border-color);
+
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: calc(8rem / 16);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    &__item {
+      &--prev {
+        margin-right: auto;
+      }
+
+      &--next {
+        margin-left: auto;
+      }
+    }
+
+    &__link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: calc(8rem / 16);
+      min-width: calc(44rem / 16);
+      height: calc(44rem / 16);
+      padding: 0 calc(16rem / 16);
+      font-size: calc(16rem / 16);
+      font-weight: 600;
+      color: schemes.color(body-text-color);
+      background-color: schemes.color(body-bg-color);
+      border: 1px solid schemes.color(border-color);
+      border-radius: calc(8rem / 16);
+      text-decoration: none;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: schemes.color(body-text-color-white);
+        background-color: schemes.color(primary);
+        border-color: schemes.color(primary);
+      }
+
+      &--current {
+        color: schemes.color(body-text-color-white);
+        background-color: schemes.color(primary);
+        border-color: schemes.color(primary);
+        cursor: default;
+      }
+
+      &--prev,
+      &--next {
+        padding: 0 calc(20rem / 16);
+      }
+    }
+
+    &__arrow {
+      font-size: calc(18rem / 16);
+    }
+  }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+  .pagination {
+    margin-top: calc(64rem / 16);
+
+    &__list {
+      gap: calc(12rem / 16);
+    }
+
+    &__link {
+      min-width: calc(48rem / 16);
+      height: calc(48rem / 16);
+    }
+  }
+}
