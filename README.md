@@ -120,36 +120,44 @@ This structure allows both approaches to work seamlessly.
 This starter kit provides everything needed to create modern, responsive websites with a powerful theming system, scroll animations, and client-friendly blog management. Built on Eleventy with modern SCSS architecture and comprehensive component system.
 
 ### Live Demo
-Coming Soon
+[https://hearth-demo.netlify.app](https://hearth-demo.netlify.app)
 
 ## Quick Start
 
 ```bash
 # Clone the repository
 git clone [repository-url]
+cd starter-kit-hearth
 
 # Install dependencies
 npm install
 
-# Build the project
-npm run build
-
-# Start development server
+# Start development server (includes CMS proxy)
 npm start
 ```
 
-Visit `http://localhost:8080` to view your site.
+Visit `http://localhost:8080` to view your site, or `http://localhost:8080/admin` for the CMS.
+
+### First-Time Setup
+
+1. **Update client data** in `src/_data/client.json` with business name, contact info, etc.
+2. **Choose a theme** by setting `$active-scheme` in `src/assets/css/abstracts/_schemes.scss`
+3. **Update authors** in `src/_data/authors.json` and `src/admin/config.yml`
+4. **Add author photos** to `src/assets/images/authors/` (named `{author-slug}.jpg`)
 
 ## Features
 
 ### Core Features
-- **Modern Eleventy Setup** - Static site generation with Nunjucks templating
+- **Modern Eleventy 3.x Setup** - Static site generation with Nunjucks templating
 - **Comprehensive Theme System** - 7 pre-built themes with easy switching
 - **SCSS Architecture** - Modern, scalable component-based styling with PostCSS/Autoprefixer
 - **View Transitions API** - Native browser page transitions (replaces Barba.js)
 - **Scroll Animations** - GSAP-powered scroll-triggered animations
 - **Image Optimization** - Automatic image compression and next-gen formats (AVIF, WebP)
-- **Decap CMS Integration** - Client-friendly blog management
+- **Decap CMS Integration** - Client-friendly blog management with live preview
+- **Author Profiles** - Centralized author data with profile images
+- **Blog Pagination** - Built-in pagination (6 posts per page)
+- **Automatic Blog Image Processing** - Images auto-cropped and optimized on build
 - **Responsive Design** - Mobile-first, fully responsive layouts
 - **SEO Optimized** - Auto-generated sitemap, meta tags, and performance optimized
 
@@ -157,7 +165,8 @@ Visit `http://localhost:8080` to view your site.
 - **Component Architecture** - BEM methodology with reusable components
 - **Critical CSS** - Automatic inline critical CSS for faster first paint (production)
 - **HTML Minification** - Compressed HTML output in production builds
-- **Performance Optimized** - 90+ Lighthouse scores out of the box
+- **Performance Optimized** - 100 Lighthouse performance score out of the box
+- **Local Font Hosting** - Self-hosted Roboto fonts with preloading
 - **Development Tools** - Live reload, SCSS compilation, asset optimization
 - **Accessibility Ready** - WCAG compliant components and markup
 - **Modern Browser Support** - Targets last 2 years of browsers via browserslist
@@ -165,8 +174,8 @@ Visit `http://localhost:8080` to view your site.
 ## Installation & Setup
 
 ### Prerequisites
-- Node.js (v14 or higher)
-- npm or yarn
+- Node.js (v18 or higher - required for Eleventy 3.x)
+- npm
 
 ### Development Setup
 
@@ -191,13 +200,16 @@ Visit `http://localhost:8080` to view your site.
 
 ### Available Scripts
 
-- `npm run build` - Full production build (SCSS + Autoprefixer + Eleventy + Critical CSS + HTML minification + JS bundling)
-- `npm run build:scss` - Compile SCSS and run Autoprefixer
-- `npm run build:eleventy` - Build Eleventy site only
-- `npm run build:assets` - Bundle JS with esbuild
-- `npm start` - Development server with live reload
-- `npm run clean` - Clean build directory
-- `npm run postcss` - Run Autoprefixer on compiled CSS
+| Command | Description |
+|---------|-------------|
+| `npm start` | Start development server with live reload + CMS proxy |
+| `npm run build` | Full production build (blog images + SCSS + Eleventy + Critical CSS + JS) |
+| `npm run build:blog-images` | Process blog images (crop to 16:9, optimize) |
+| `npm run build:scss` | Compile SCSS and run Autoprefixer |
+| `npm run build:eleventy` | Build Eleventy site only |
+| `npm run build:assets` | Bundle JS with esbuild |
+| `npm run clean` | Clean build directory |
+| `npm run start:proxy` | Start Decap CMS proxy server only |
 
 ## SCSS Architecture
 
@@ -809,33 +821,39 @@ For production deployment, you'll need to configure Git Gateway through your hos
 ```yaml
 backend:
   name: git-gateway
-  branch: develop  # Matches your current branch
+  branch: develop  # Change to 'main' for production
 
-local_backend: true  # Enables local development mode
+local_backend: true  # Set to false for production
 
-# Media storage configuration
 media_folder: "src/assets/images/blog"
 public_folder: "/images/blog"
 
-# Logo for the CMS interface
-logo_url: https://d33wubrfki0l68.cloudfront.net/c89899bad974606ce0e0f5d5a95842dc787dcb56/7fe98/assets/images/logo-blue.png
+logo_url: https://hearth-demo.netlify.app/assets/images/logo-color.png
 
 collections:
   - name: "blog"
     label: "Blog"
+    label_singular: "Post"
     folder: "src/blog"
     create: true
     slug: "{{pageName}}"
+    summary: "{{postTitle}}"
     fields:
-      - {label: "Page Name", name: "pageName", widget: "string", hint: "Used for the URL and image filename (no spaces, use dashes)"}
-      - {label: "Blog Title", name: "blogTitle", widget: "string"}
-      - {label: "Title Tag", name: "titleTag", widget: "string", hint: "SEO title for search engines"}
-      - {label: "Blog Description", name: "blogDescription", widget: "text", hint: "Brief description for blog listing and SEO"}
-      - {label: "Author", name: "author", widget: "string", default: "Mike"}
-      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Page Slug", name: "pageName", widget: "string", hint: "URL and image filename (no spaces, use dashes)"}
+      - {label: "Post Title", name: "postTitle", widget: "string", hint: "Main heading shown on the page"}
+      - {label: "SEO Title", name: "seoTitle", widget: "string", hint: "Title shown in search results"}
+      - {label: "Excerpt", name: "excerpt", widget: "text", hint: "Short summary for blog listing"}
+      - {label: "Meta Description", name: "metaDescription", widget: "text", required: false}
+      - label: "Author"
+        name: "author"
+        widget: "select"
+        options:
+          - {label: "Tom Maplewood", value: "tom-maplewood"}
+          - {label: "Sarah Maplewood", value: "sarah-maplewood"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Tags", name: "tags", widget: "list", default: ["post"]}
-      - {label: "Featured Image", name: "image", widget: "image", hint: "Upload an image for this blog post"}
-      - {label: "Image Alt Text", name: "imageAlt", widget: "string", hint: "Describe the image for accessibility"}
+      - {label: "Featured Image", name: "image", widget: "image", hint: "Auto-named based on Page Slug"}
+      - {label: "Image Alt Text", name: "imageAlt", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
 ```
 
@@ -859,28 +877,24 @@ collections:
 
 #### Required Fields
 
-Every blog post requires these fields to work properly with the Eleventy system:
-
 | Field | Purpose | Example |
 |-------|---------|---------|
 | `pageName` | URL slug and image filename | `fireplace-safety-tips` |
-| `blogTitle` | Display title | `Essential Fireplace Safety Tips` |
-| `titleTag` | SEO title | `Fireplace Safety Tips \| Maplewood Hearth & Home` |
-| `blogDescription` | Meta description and excerpt | `Learn essential safety tips...` |
-| `author` | Post author | `Mike` |
+| `postTitle` | Display title on page | `Essential Fireplace Safety Tips` |
+| `seoTitle` | SEO title for search results | `Fireplace Safety Tips \| Maplewood Hearth & Home` |
+| `excerpt` | Short summary for blog listing | `Learn essential safety tips...` |
+| `author` | Author slug (select dropdown) | `tom-maplewood` |
 | `date` | Publication date | `2025-01-15T10:00:00.000Z` |
 | `tags` | Post categories | `["post", "safety"]` |
 | `image` | Featured image path | `/images/blog/fireplace-safety-tips.jpg` |
 | `imageAlt` | Image accessibility text | `Modern fireplace with safety screen` |
-| `body` | Post content | Markdown content |
 
 #### Field Validation
 
-The system expects:
-- **Page Name**: No spaces, use dashes (becomes URL slug)
-- **Image**: Must be uploaded through CMS (auto-handled)
+- **Page Slug**: No spaces, use dashes (becomes URL and image filename)
+- **Image**: Upload any image - automatically cropped to 16:9 and renamed to match page slug on build
 - **Tags**: Always include "post" for proper collection filtering
-- **Date**: ISO format (auto-generated by CMS)
+- **Author**: Select from dropdown (configured in `config.yml` and `src/_data/authors.json`)
 
 ### Content Management Workflow
 
@@ -1006,33 +1020,70 @@ For production deployment:
 
 ## Blog System
 
-### Decap CMS Integration
-
-The blog system uses Decap CMS for client-friendly content management.
-
-#### Blog Post Structure
+### Blog Post Structure
 
 ```markdown
 ---
 pageName: blog-post-slug
-blogTitle: Your Blog Post Title
-titleTag: SEO Title Tag
-blogDescription: Meta description for SEO
-author: Author Name
+postTitle: Your Blog Post Title
+seoTitle: SEO Title Tag | Company Name
+excerpt: Short summary for blog listing page
+metaDescription: Full meta description for search results (optional)
+author: tom-maplewood
 date: 2024-01-01T12:00:00.000Z
 tags:
   - post
   - featured
-image: /images/blog/featured-image.jpg
+image: /images/blog/blog-post-slug.jpg
 imageAlt: Image description
 ---
 
 Your blog content in Markdown format...
 ```
 
-#### Featured Posts
+### Author Profiles
 
-Add `featured` to the tags array to display posts in the featured section:
+Authors are managed centrally in `src/_data/authors.json`:
+
+```json
+{
+  "tom-maplewood": {
+    "name": "Tom Maplewood",
+    "slug": "tom-maplewood",
+    "image": "/assets/images/authors/tom-maplewood.jpg",
+    "bio": "Owner and founder with 25 years of experience.",
+    "title": "Owner & Founder"
+  }
+}
+```
+
+**To add a new author:**
+1. Add entry to `src/_data/authors.json`
+2. Add author option to `src/admin/config.yml` (under Author field options)
+3. Add author photo to `src/assets/images/authors/{slug}.jpg`
+4. Update author lookup in `src/admin/index.html` (for CMS preview)
+
+### Blog Pagination
+
+The blog listing page (`src/pages/blog.html`) uses Eleventy's built-in pagination:
+- 6 posts per page
+- Automatic page generation (`/blog/`, `/blog/page-2/`, etc.)
+- Previous/Next navigation
+
+### Automatic Blog Image Processing
+
+The `build-blog-images.js` script runs during build to:
+- Find all images in `src/assets/images/blog/`
+- Match images to blog posts by `pageName`
+- Auto-crop to 16:9 aspect ratio (center crop)
+- Resize to max 1920px width
+- Output optimized JPEG (quality 85)
+
+This means authors can upload any image through the CMS - it will be automatically processed on the next build.
+
+### Featured Posts
+
+Add `featured` to the tags array to display posts in the sidebar featured section:
 
 ```yaml
 tags:
@@ -1040,31 +1091,24 @@ tags:
   - featured
 ```
 
-#### CMS Configuration
-
-Blog settings are configured in `src/admin/config.yml`. Customize fields, validation, and editor options as needed.
-
 ## Deployment
 
 ### Pre-Deployment Checklist
 
 1. **Update Client Data**
-   - Edit `src/_data/client.json` with actual client information
-   - Update contact details, business name, etc.
+   - Edit `src/_data/client.json` with business name, contact info, address, hours
+   - Update `src/_data/authors.json` with actual author profiles
+   - Add author photos to `src/assets/images/authors/`
 
 2. **Configure Theme**
-   - Set desired theme in `_schemes.scss`
+   - Set desired theme in `src/assets/css/abstracts/_schemes.scss`
    - Test all pages with chosen theme
 
-3. **SEO Setup**
-   - Add sitemap.xml to `/src` directory
-   - Update robots.txt with correct domain
-   - Configure meta tags in page frontmatter
-
-4. **CMS Setup**
+3. **CMS Setup**
    - Update logo URL in `src/admin/config.yml`
-   - Configure authentication settings
-   - Test CMS functionality
+   - Change `branch: develop` to `branch: main` for production
+   - Set `local_backend: false` for production
+   - Update author options in config.yml to match your authors
 
 ### Netlify Deployment
 
@@ -1088,31 +1132,35 @@ Blog settings are configured in `src/admin/config.yml`. Customize fields, valida
 starter-kit-hearth/
 ├── src/
 │   ├── _data/              # Global data files
-│   │   └── client.json     # Client information
+│   │   ├── client.json     # Client/business information
+│   │   └── authors.json    # Author profiles for blog
 │   ├── _includes/          # Reusable components
 │   │   ├── header.html     # Site header
 │   │   ├── footer.html     # Site footer
 │   │   └── featured-post.html
 │   ├── _layouts/           # Page layouts
-│   │   ├── base.html       # Base layout (includes View Transitions meta)
+│   │   ├── base.html       # Base layout (View Transitions, font preloads)
 │   │   └── blog-post.html  # Blog post layout
-│   ├── admin/              # Decap CMS config
-│   │   ├── index.html      # CMS interface
-│   │   └── config.yml      # CMS configuration
-│   ├── assets/             # Static assets
-│   │   ├── css/            # SCSS source files
-│   │   ├── js/             # JavaScript files (main.js, gallery.js, nav.js)
-│   │   └── images/         # Unoptimized images
+│   ├── admin/              # Decap CMS
+│   │   ├── index.html      # CMS interface + custom preview template
+│   │   ├── config.yml      # CMS configuration
+│   │   └── preview.css     # CMS preview styling
+│   ├── assets/
+│   │   ├── css/            # SCSS source files (7-1 architecture)
+│   │   ├── js/             # JavaScript (main.js, gallery.js, nav.js)
+│   │   ├── fonts/          # Local Roboto font files (woff2/woff)
+│   │   └── images/
+│   │       ├── authors/    # Author profile photos
+│   │       └── blog/       # Blog featured images
 │   ├── blog/               # Blog posts (Markdown)
-│   ├── images/             # Images for optimization
 │   ├── pages/              # Site pages
-│   ├── sitemap.njk         # Auto-generated sitemap
 │   └── index.html          # Homepage
 ├── public/                 # Built site (auto-generated)
-├── .eleventy.js           # Eleventy configuration (Critical CSS, HTML minification)
-├── build-assets.js        # esbuild JS bundling configuration
-├── netlify.toml           # Netlify deployment config, headers, caching
-├── postcss.config.js      # Autoprefixer configuration
+├── .eleventy.js           # Eleventy config (image shortcode, Critical CSS)
+├── build-assets.js        # esbuild JS bundling
+├── build-blog-images.js   # Blog image processing (crop, resize)
+├── netlify.toml           # Netlify deployment, headers, caching
+├── postcss.config.js      # Autoprefixer config
 ├── package.json           # Dependencies and scripts
 ├── CLAUDE.md              # AI assistant instructions
 └── README.md              # This file
