@@ -314,20 +314,3 @@ eleventyNavigation:
     {% image './src/assets/images/cabinets2.jpg', 'cozy fireplace in Cedar Falls home', '', 'lazy', '(max-width: 400px) 400px, (max-width: 850px) 850px, 1920px'%}
   </div>
 </section>
-
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<script>
-  if (window.netlifyIdentity) {
-    window
-      .netlifyIdentity
-      .on('init', (user) => {
-        if (!user) {
-          window
-            .netlifyIdentity
-            .on('login', () => {
-              document.location.href = '/admin/';
-            });
-        }
-      });
-  }
-</script>
