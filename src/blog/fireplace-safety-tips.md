@@ -1,15 +1,25 @@
 ---
-pageName: fireplace-safety-tips
-blogTitle: Essential Fireplace Safety Tips Every Cedar Falls Homeowner Should Know
+excerpt: Keep your family safe with these essential fireplace safety tips from
+  Cedar Falls' trusted fireplace experts. Learn proper maintenance, operation,
+  and safety practices.
 titleTag: Fireplace Safety Tips | Maplewood Hearth & Home | Cedar Falls, IA
-blogDescription: Keep your family safe with these essential fireplace safety tips from Cedar Falls' trusted fireplace experts. Learn proper maintenance, operation, and safety practices.
-author: Tom Maplewood
+pageName: fireplace-safety-tips
+postTitle: Essential Fireplace Safety Tips Every Cedar Falls Homeowner Should Know
+seoTitle: Essential Fireplace Safety Tips Every Cedar Falls Homeowner Should Know
+metaDescription: Keep your family safe with these essential fireplace safety
+  tips from Cedar Falls' trusted fireplace experts. Learn proper maintenance,
+  operation, and safety practices.
+author: tom-maplewood
 date: 2024-01-15T10:00:00.000Z
 tags:
   - post
   - featured
 image: /images/blog/fireplace-safety.jpg
 imageAlt: Safe fireplace operation in Cedar Falls home
+blogTitle: Essential Fireplace Safety Tips Every Cedar Falls Homeowner Should Know
+blogDescription: Keep your family safe with these essential fireplace safety
+  tips from Cedar Falls' trusted fireplace experts. Learn proper maintenance,
+  operation, and safety practices.
 ---
 
 As Cedar Falls' trusted fireplace experts for over 25 years, we at Maplewood Hearth & Home have seen firsthand how proper safety practices can prevent accidents and keep families safe. Whether you have a wood-burning fireplace, gas insert, or electric unit, following these essential safety tips will help you enjoy your fireplace with peace of mind.
